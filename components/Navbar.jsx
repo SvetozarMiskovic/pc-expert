@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import logo from "../assets/T1.png";
 import { Icon } from "@chakra-ui/icons";
+import { Button } from "@chakra-ui/react";
 import { FaList, FaSearch, FaShoppingCart, FaHeart } from "react-icons/fa";
 function Navbar() {
   return (
@@ -33,32 +34,32 @@ function Navbar() {
           </ul>
         </div>
         <div className="toggle-nav hidden">
-          <button type="button" className="nav-btn">
+          <Button type="button" className="nav-btn">
             <Icon as={FaList} />
-          </button>
+          </Button>
         </div>
         <div className="navbar-search">
           <input type={"text"} />
-          <button type="button" className="search-btn">
+          <Button type="button" className="search-btn">
             <Icon as={FaSearch} />
-          </button>
+          </Button>
         </div>
         <div className="cart-and-wishlist">
           <div className="mobile-search">
-            <button type="button" className="mobile-search-btn">
+            <Button type="button" className="mobile-search-btn">
               <Icon as={FaSearch} />
-            </button>
+            </Button>
           </div>
           <div className="wishlist">
-            <button type="button" className="wishlist-btn">
+            <Button type="button" className="wishlist-btn">
               <Icon as={FaHeart} />
-            </button>
+            </Button>
           </div>
           <div className="shopping-cart">
-            <button type="button" className="shopping-cart-btn">
+            <Button type="button" className="shopping-cart-btn">
               <Icon as={FaShoppingCart} />
               <p>0.00KM</p>
-            </button>
+            </Button>
           </div>
         </div>
       </div>
