@@ -323,7 +323,7 @@ a {
   }
 }
 /*Small screen phone*/
-@media (min-width: 0px) and (max-width: 719px) {
+@media (min-width: 500px) and (max-width: 719px) {
   .info-line {
     display: none;
   }
@@ -350,5 +350,15 @@ a {
 
   svg {
     font-size: 21px;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 499px) {
+  .cart-and-wishlist {
+    display: flex;
+    width: 100%;
+
+    align-items: center;
+    justify-content: space-evenly;
   }
 }
