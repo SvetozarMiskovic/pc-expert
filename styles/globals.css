@@ -361,4 +361,28 @@ a {
     align-items: center;
     justify-content: space-evenly;
   }
+
+  .info-line {
+    display: none;
+  }
+  .logo-link-div {
+    min-width: 90px;
+    width: 90px;
+  }
+  .toggle-nav {
+    display: block;
+  }
+  .upper-part {
+    margin: 0 0.4rem 0 0.4rem;
+    justify-content: space-between;
+  }
+  .navbar-links {
+    display: none;
+  }
+  .navbar-search {
+    display: none;
+  }
+  .cart-and-wishlist .mobile-search {
+    display: inline-block;
+  }
 }
