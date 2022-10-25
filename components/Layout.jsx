@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import FirstComponent from "./FirstComponent";
 import Navbar from "./Navbar";
 import PreFooter from "./PreFooter";
+import MobileMenu from "./MobileMenu";
 
 const Layout = ({ children }) => {
   return (
@@ -14,6 +15,7 @@ const Layout = ({ children }) => {
       <header>
         <FirstComponent />
         <Navbar />
+        <MobileMenu />
       </header>
       <main className="container main-container">{children}</main>
       <footer>

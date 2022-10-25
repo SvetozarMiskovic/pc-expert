@@ -1,13 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useRef } from "react";
 import logo from "../assets/T1.png";
 import { Icon } from "@chakra-ui/icons";
 import { Button } from "@chakra-ui/react";
 import { FaList, FaSearch, FaShoppingCart, FaHeart } from "react-icons/fa";
+import MobileMenu from "./MobileMenu";
+import { useGlobalContext } from "../context/GlobalContext";
+
 function Navbar() {
+  const { updateMobile } = useGlobalContext();
+
   return (
     <div className="navbar">
+      <MobileMenu />
       <div className="container upper-part">
         <div className="logo-link-div">
           <Link href="/" passHref className="logo-link">
@@ -39,7 +45,11 @@ function Navbar() {
         </div>
         <div className="cart-and-wishlist">
           <div className="toggle-nav hidden">
-            <Button type="button" className="nav-btn">
+            <Button
+              onClick={() => updateMobile()}
+              type="button"
+              className="nav-btn"
+            >
               <Icon as={FaList} />
             </Button>
           </div>
