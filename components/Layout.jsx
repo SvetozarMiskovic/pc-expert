@@ -3,6 +3,7 @@ import Head from "next/head";
 import Footer from "./Footer";
 import FirstComponent from "./FirstComponent";
 import Navbar from "./Navbar";
+import PreFooter from "./PreFooter";
 
 const Layout = ({ children }) => {
   return (
@@ -16,6 +17,7 @@ const Layout = ({ children }) => {
       </header>
       <main className="container main-container">{children}</main>
       <footer>
+        <PreFooter />
         <Footer />
       </footer>
     </div>

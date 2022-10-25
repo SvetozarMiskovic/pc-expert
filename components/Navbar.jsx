@@ -31,6 +31,9 @@ function Navbar() {
             <li>
               <Link href={"/orders"}>NARUDZBE</Link>
             </li>
+            <li>
+              <Link href={"/profile"}>PROFIL</Link>
+            </li>
           </ul>
         </div>
 
