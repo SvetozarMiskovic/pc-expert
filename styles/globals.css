@@ -376,7 +376,7 @@ a {
   }
   .upper-part {
     margin: 0 0.4rem 0 0.4rem;
-    /* justify-content: space-between; */
+    justify-content: space-between;
   }
   .navbar-links {
     display: none;
