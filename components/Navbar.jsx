@@ -33,11 +33,7 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        <div className="toggle-nav hidden">
-          <Button type="button" className="nav-btn">
-            <Icon as={FaList} />
-          </Button>
-        </div>
+
         <div className="navbar-search">
           <input type={"text"} />
           <Button type="button" className="search-btn">
@@ -45,7 +41,12 @@ function Navbar() {
           </Button>
         </div>
         <div className="cart-and-wishlist">
-          <div className="mobile-search">
+          <div className="toggle-nav hidden">
+            <Button type="button" className="nav-btn">
+              <Icon as={FaList} />
+            </Button>
+          </div>
+          <div className="mobile-search hidden">
             <Button type="button" className="mobile-search-btn">
               <Icon as={FaSearch} />
             </Button>
