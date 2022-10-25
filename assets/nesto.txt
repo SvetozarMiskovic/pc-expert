@@ -1,0 +1,8 @@
+first load animacija pri requestu
+sivkasta boja za tekst, bez boje samo prelaz za first component
+lokacija ne treba, shop - o nama - pravila koristenja, 
+svjetlija boja bijela, bez plavih tih, sivkasta boja teksta, 
+nijansa veci tekst prva linija
+input bijeli i border narandzasti, shop oner boja narandzastu
+icone u kategorije, 
+izbaci informacije

@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import logo from "../assets/T1.png";
 import partner from "../assets/Prointer.png";
+import amazon from "../assets/amazon-logo-transparent.png";
 import { PhoneIcon, EmailIcon, Icon } from "@chakra-ui/icons";
 import {
   FaInfoCircle,
@@ -16,15 +17,17 @@ function PreFooter() {
         <div className="contact">
           <div className="footer-logo">
             <Image width={100} height={100} src={logo} />
-            <h3>PC Expert Prodavnica</h3>
           </div>
           <div className="small-text">
-            <p>
-              Imate pitanje ili zelite da narucite uredjaj koji trenutno nije u
-              ponudi?
-            </p>
-            <p>Kontaktirajte nas na bilo koji od navedenih nacina!</p>
+            <p>Mladena Stojanovića br. 44</p>
+            <p>78240 Čelinac</p>
           </div>
+          <div className="small-text-2">
+            <p>JIB: 4511548430002</p>
+            <p>Carinski broj: 511548430002</p>
+          </div>
+        </div>
+        <div className="footer-information">
           <h3 className="contact-info-header">Kontakt informacije</h3>
           <div className="footer-info">
             <div className="footer-info-email">
@@ -39,18 +42,15 @@ function PreFooter() {
               <PhoneIcon />
               <p>+38765318132</p>
             </div>
-            <div className="footer-address">
-              <Icon as={FaLocationArrow} />
-              <div>
-                <p>Celinac 78240</p>
-              </div>
-            </div>
           </div>
         </div>
         <div className="partners">
-          <h3 className="partners-heading">Partners</h3>
+          <h3 className="partners-heading">Partneri</h3>
           <div className="single-partner">
             <Image src={partner} />
+          </div>
+          <div className="single-partner amazon">
+            <Image src={amazon} />
           </div>
         </div>
       </div>

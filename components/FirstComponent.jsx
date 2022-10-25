@@ -4,6 +4,8 @@ import {
   FaShoppingBasket,
   FaInfoCircle,
   FaLocationArrow,
+  FaUserAlt,
+  FaUser,
 } from "react-icons/fa";
 import Link from "next/link";
 
@@ -16,16 +18,13 @@ const FirstComponent = () => {
         <div className="left-side">
           <div className="phone-number">
             <PhoneIcon />
-            <h5 className="number-text">
-              Pozovite na broj <span className="number">+38765318132</span>
-            </h5>
+            <h5 className="number-text">Pozovite info broj +38765318132</h5>
           </div>
           <div className="vl">|</div>
           <div className="email">
             <EmailIcon />
             <h5>
-              Posaljite email na <span className="info">info@pcexpert.ba</span>{" "}
-              ili <span className="store">prodaja@pcexpert.ba</span>
+              Pošaljite e-mail na info@pcexpert.ba ili prodaja@pcexpert.ba
             </h5>
           </div>
         </div>
@@ -36,16 +35,16 @@ const FirstComponent = () => {
               <h5>Shop</h5>
             </div>
           </Link>
-          <Link href="/information">
+          <Link href="/about">
             <div className="information">
               <Icon w={"15px"} as={FaInfoCircle} />
-              <h5>Informacije</h5>
+              <h5>O nama</h5>
             </div>
           </Link>
-          <Link href="/location">
-            <div className="location">
-              <Icon w={"15px"} as={FaLocationArrow} />
-              <h5>Lokacija</h5>
+          <Link href="/rules">
+            <div className="rules">
+              <Icon w={"15px"} as={FaUserAlt} />
+              <h5>Pravila korištenja</h5>
             </div>
           </Link>
         </div>

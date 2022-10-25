@@ -8,10 +8,10 @@ export default function Document() {
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
-          crossOrigin="true"
+          crossOrigin
         ></link>
         <link
-          href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&display=auto"
+          href="https://fonts.googleapis.com/css2?family=Dosis&family=Titillium+Web:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&display=swap"
           rel="stylesheet"
         ></link>
       </Head>

@@ -23,22 +23,16 @@ function Navbar() {
               <Link href={"/shop"}>SHOP</Link>
             </li>
             <li>
-              <Link href={"/information"}>INFORMACIJE</Link>
+              <Link href={"/orders"}>NARUDŽBE</Link>
             </li>
             <li>
-              <Link href={"/location"}>LOKACIJA</Link>
-            </li>
-            <li>
-              <Link href={"/orders"}>NARUDZBE</Link>
-            </li>
-            <li>
-              <Link href={"/profile"}>PROFIL</Link>
+              <Link href={"/about"}>O NAMA</Link>
             </li>
           </ul>
         </div>
 
         <div className="navbar-search">
-          <input type={"text"} />
+          <input type={"text"} placeholder="Pretraži proizvode..." />
           <Button type="button" className="search-btn">
             <Icon as={FaSearch} />
           </Button>
@@ -52,11 +46,6 @@ function Navbar() {
           <div className="mobile-search hidden">
             <Button type="button" className="mobile-search-btn">
               <Icon as={FaSearch} />
-            </Button>
-          </div>
-          <div className="wishlist">
-            <Button type="button" className="wishlist-btn">
-              <Icon as={FaHeart} />
             </Button>
           </div>
           <div className="shopping-cart">
