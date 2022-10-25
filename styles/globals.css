@@ -77,9 +77,9 @@ a {
 
 .navbar {
   background-color: rgb(252, 252, 252);
-  box-shadow: 0px 8px 30px -6px rgba(0, 0, 0, 0.38);
+  /* box-shadow: 0px 8px 30px -6px rgba(0, 0, 0, 0.38);
   -webkit-box-shadow: 0px 8px 30px -6px rgba(0, 0, 0, 0.38);
-  -moz-box-shadow: 0px 8px 30px -6px rgba(0, 0, 0, 0.38);
+  -moz-box-shadow: 0px 8px 30px -6px rgba(0, 0, 0, 0.38); */
   border-bottom: 0.2px solid #5f5f5f;
   border-top: 0.2px solid #5f5f5f;
 }
@@ -249,7 +249,7 @@ a {
 }
 
 .toggle-nav {
-  color: #256d85;
+  color: #5f5f5f;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
   cursor: pointer;
@@ -267,7 +267,7 @@ a {
 }
 
 .navbar-search .search-btn {
-  /* background-color: #f89a20; */
+  background-color: #fff;
   border: 2px solid #f89a20;
 }
 
@@ -281,7 +281,12 @@ a {
   align-items: center;
   gap: 0.2rem;
   width: 100%;
+
   border: 2px solid #f89a20;
+}
+
+.shopping-cart .shopping-cart-btn {
+  background-color: #fff;
 }
 .search-btn {
   margin: 0.3rem;
@@ -291,6 +296,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #fff;
 }
 
 .shopping-cart-btn:hover,
@@ -320,10 +326,10 @@ a {
 .pre-footer {
   background-color: rgb(252, 252, 252);
 
-  border-top: 0.2px solid #256d85;
-  box-shadow: 6px 0px 30px -6px rgba(0, 0, 0, 0.38);
+  border-top: 0.2px solid #5f5f5f;
+  /* box-shadow: 6px 0px 30px -6px rgba(0, 0, 0, 0.38);
   -webkit-box-shadow: 6px 0px 30px -6px rgba(0, 0, 0, 0.38);
-  -moz-box-shadow: 6px 0px 30px -6px rgba(0, 0, 0, 0.38);
+  -moz-box-shadow: 6px 0px 30px -6px rgba(0, 0, 0, 0.38); */
 }
 .pre-footer-child {
   display: flex;
@@ -337,7 +343,8 @@ a {
 
   align-items: center;
   width: 100%;
-  padding: 0.6rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
 }
 .footer-info {
   width: 100%;
@@ -348,10 +355,13 @@ a {
   flex-wrap: wrap;
 }
 
-.footer-information {
-  margin-bottom: 2rem;
+.mobile-search .mobile-search-btn {
+  background-color: #fff;
 }
 
+.toggle-nav .nav-btn {
+  background-color: #fff;
+}
 .footer-address,
 .footer-number,
 .footer-sale-email,
@@ -418,6 +428,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 0.6rem;
   margin-bottom: 0.6rem;
 }
 .partners-heading {
@@ -638,8 +649,8 @@ a {
     display: none;
   }
   .logo-link-div {
-    min-width: 60px;
-    width: 60px;
+    min-width: 80px;
+    width: 80px;
   }
   .toggle-nav {
     display: block;
