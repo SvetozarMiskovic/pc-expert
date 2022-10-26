@@ -5,6 +5,7 @@ import FirstComponent from "./FirstComponent";
 import Navbar from "./Navbar";
 import PreFooter from "./PreFooter";
 import MobileMenu from "./MobileMenu";
+import MobileSearch from "./MobileSearch";
 
 const Layout = ({ children }) => {
   return (
@@ -15,6 +16,7 @@ const Layout = ({ children }) => {
       <header>
         <FirstComponent />
         <Navbar />
+        <MobileSearch />
         <MobileMenu />
       </header>
       <main className="container main-container">{children}</main>

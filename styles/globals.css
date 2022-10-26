@@ -209,7 +209,14 @@ a {
 .hidden {
   display: none;
 }
+/* 
+.mobile-search-active {
+  display: inline-block;
+}
 
+.mobile-search-hidden {
+  display: none;
+} */
 .shop::after,
 .information::after,
 .location::after {
@@ -525,6 +532,25 @@ a {
   flex-direction: column;
   justify-content: center;
   list-style-type: none;
+}
+
+.search-container {
+  width: 100%;
+  padding: 1rem;
+}
+
+.search-container > input {
+  background-color: rgb(252, 252, 252);
+  border-radius: 25px;
+  outline: none;
+  border: 2px solid #f89a20;
+  width: 100%;
+  color: 5f5f5f;
+  padding-left: 0.8rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 16px;
 }
 /*Laptops/Monitors in range of 900px - 1200px */
 @media (min-width: 1024px) and (max-width: 1569px) {

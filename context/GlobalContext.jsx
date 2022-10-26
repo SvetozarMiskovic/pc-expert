@@ -5,13 +5,20 @@ const Context = createContext();
 
 function GlobalContextProvider({ children }) {
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [mobileSearch, setMobileSearch] = useState();
+
+  const updateMobileSearch = () => {
+    setMobileSearch(prevState => !prevState);
+  };
 
   const updateMobile = () => {
     setMobileMenu(prevState => !prevState);
   };
 
   return (
-    <Context.Provider value={{ mobileMenu, updateMobile }}>
+    <Context.Provider
+      value={{ mobileMenu, updateMobile, mobileSearch, updateMobileSearch }}
+    >
       {children}
     </Context.Provider>
   );

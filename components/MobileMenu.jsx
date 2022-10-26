@@ -15,7 +15,7 @@ import Link from "next/link";
 function MobileMenu() {
   const { mobileMenu, updateMobile } = useGlobalContext();
   return (
-    <div className="modal">
+    <div className="drawer">
       <Drawer
         isOpen={mobileMenu}
         onClose={() => updateMobile()}
@@ -61,15 +61,18 @@ function MobileMenu() {
           </DrawerBody>
 
           <DrawerFooter justifyContent={"space-between"}>
-            <Button
-              _hover={{ backgroundColor: "#f89a20", color: "#fff" }}
-              color={"#5f5f5f"}
-              border={"1px solid"}
-              borderColor={"#f89a20"}
-              variant="outline"
-            >
-              <Link href={"/login"}>Prijavi se</Link>
-            </Button>
+            <Link href={"/login"}>
+              <Button
+                _hover={{ backgroundColor: "#f89a20", color: "#fff" }}
+                color={"#5f5f5f"}
+                border={"1px solid"}
+                borderColor={"#f89a20"}
+                variant="outline"
+                onClick={() => updateMobile()}
+              >
+                Prijavi se
+              </Button>
+            </Link>
             <Button
               _hover={{ backgroundColor: "#f89a20", color: "#fff" }}
               color={"#5f5f5f"}

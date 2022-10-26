@@ -9,7 +9,7 @@ import MobileMenu from "./MobileMenu";
 import { useGlobalContext } from "../context/GlobalContext";
 
 function Navbar() {
-  const { updateMobile } = useGlobalContext();
+  const { updateMobile, updateMobileSearch } = useGlobalContext();
 
   return (
     <div className="navbar">
@@ -57,7 +57,11 @@ function Navbar() {
             </Button>
           </div>
           <div className="mobile-search hidden">
-            <Button type="button" className="mobile-search-btn">
+            <Button
+              onClick={() => updateMobileSearch()}
+              type="button"
+              className="mobile-search-btn"
+            >
               <Icon as={FaSearch} />
             </Button>
           </div>
