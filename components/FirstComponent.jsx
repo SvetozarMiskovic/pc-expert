@@ -6,6 +6,7 @@ import {
   FaLocationArrow,
   FaUserAlt,
   FaUser,
+  FaLock,
 } from "react-icons/fa";
 import Link from "next/link";
 
@@ -29,6 +30,12 @@ const FirstComponent = () => {
           </div>
         </div>
         <div className="right-side">
+          <Link href="/login">
+            <div className="shop">
+              <Icon w={"15px"} as={FaLock} />
+              <h5>Login</h5>
+            </div>
+          </Link>
           <Link href="/shop">
             <div className="shop">
               <Icon w={"15px"} as={FaShoppingBasket} />
