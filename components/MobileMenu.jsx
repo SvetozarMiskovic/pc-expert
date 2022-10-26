@@ -10,6 +10,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { useGlobalContext } from "../context/GlobalContext";
+import Link from "next/link";
 
 function MobileMenu() {
   const { mobileMenu, updateMobile } = useGlobalContext();
@@ -21,16 +22,63 @@ function MobileMenu() {
         placement="right"
       >
         <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton onClose={() => updateMobile()} />
-          <DrawerHeader>PC Expert</DrawerHeader>
+        <DrawerContent fontFamily={"Dosis, sans-serif"}>
+          <DrawerCloseButton color="#5f5f5f" onClose={() => updateMobile()} />
+          <DrawerHeader color={"#f89a20"}>PC Expert</DrawerHeader>
 
-          <DrawerBody>
-            <input placeholder="Type here..." />
+          <DrawerBody padding={0}>
+            <div className="menu-container">
+              <ul>
+                <div className="menu-home-link">
+                  <Link href="/">
+                    <li onClick={() => updateMobile()}>POČETNA</li>
+                  </Link>
+                </div>
+                <div className="menu-shop-link">
+                  <Link href="/shop">
+                    <li onClick={() => updateMobile()}>SHOP</li>
+                  </Link>
+                </div>
+
+                <div className="menu-orders-link">
+                  <Link href="/orders">
+                    <li onClick={() => updateMobile()}>NARUDŽBE</li>
+                  </Link>
+                </div>
+
+                <div className="menu-about-link">
+                  <Link href="/about">
+                    <li onClick={() => updateMobile()}>O NAMA</li>
+                  </Link>
+                </div>
+                <div className="menu-account-link">
+                  <Link href="/account">
+                    <li onClick={() => updateMobile()}>NALOG</li>
+                  </Link>
+                </div>
+              </ul>
+            </div>
           </DrawerBody>
 
-          <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={() => updateMobile()}>
+          <DrawerFooter justifyContent={"space-between"}>
+            <Button
+              _hover={{ backgroundColor: "#f89a20", color: "#fff" }}
+              color={"#5f5f5f"}
+              border={"1px solid"}
+              borderColor={"#f89a20"}
+              variant="outline"
+            >
+              <Link href={"/login"}>Prijavi se</Link>
+            </Button>
+            <Button
+              _hover={{ backgroundColor: "#f89a20", color: "#fff" }}
+              color={"#5f5f5f"}
+              border={"1px solid"}
+              borderColor={"#f89a20"}
+              variant="outline"
+              mr={3}
+              onClick={() => updateMobile()}
+            >
               Zatvori
             </Button>
           </DrawerFooter>

@@ -34,6 +34,9 @@ function Navbar() {
             <li>
               <Link href={"/about"}>O NAMA</Link>
             </li>
+            <li>
+              <Link href={"/account"}>NALOG</Link>
+            </li>
           </ul>
         </div>
 

@@ -193,9 +193,11 @@ a {
 .navbar-links > ul > li {
   cursor: pointer;
   margin: 0.4rem;
+  transition: 200ms ease-in-out;
 }
 
 .navbar-links > ul > li:hover {
+  transition: 200ms ease-in;
   color: #f89a20;
 }
 .navbar-links > ul {
@@ -225,6 +227,7 @@ a {
 .location:hover,
 .rules:hover {
   color: #f89a20;
+  transition: 200ms ease-in-out;
 }
 .shop,
 .information,
@@ -237,6 +240,7 @@ a {
   gap: 0.2rem;
   cursor: pointer;
   color: #5f5f5f;
+  transition: 200ms ease-in-out;
 }
 .number-text {
   line-break: anywhere;
@@ -255,16 +259,6 @@ a {
   cursor: pointer;
   display: none;
 }
-.wishlist {
-  display: flex;
-  justify-items: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.wishlist:hover {
-  color: #ff731d;
-}
 
 .navbar-search .search-btn {
   background-color: #fff;
@@ -281,7 +275,7 @@ a {
   align-items: center;
   gap: 0.2rem;
   width: 100%;
-
+  transition: 200ms ease-in-out;
   border: 2px solid #f89a20;
 }
 
@@ -302,17 +296,11 @@ a {
 .shopping-cart-btn:hover,
 .mobile-search-btn:hover,
 .nav-btn:hover,
-.search-btn:hover,
-.wishlist-btn:hover {
+.search-btn:hover {
   color: #f89a20;
+  transition: 200ms ease-in-out;
 }
-/* .shopping-cart > svg:hover,
-.toggle-nav > svg:hover,
-.wishlist > svg:hover,
-.mobile-search > svg:hover {
-  color: #ff731d;
-  cursor: pointer;
-} */
+
 .cart-and-wishlist .mobile-search {
   display: none;
 }
@@ -335,16 +323,16 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
 }
 .contact {
-  flex: 1;
   display: flex;
   flex-direction: column;
 
   align-items: center;
-  width: 100%;
-  margin-top: 0.6rem;
-  margin-bottom: 0.6rem;
+  /* width: 100%; */
+  /* margin-top: 0.6rem;
+  margin-bottom: 0.6rem; */
 }
 .footer-info {
   width: 100%;
@@ -362,7 +350,7 @@ a {
 .toggle-nav .nav-btn {
   background-color: #fff;
 }
-.footer-address,
+
 .footer-number,
 .footer-sale-email,
 .footer-info-email {
@@ -376,6 +364,15 @@ a {
   color: #5f5f5f;
   border-radius: 5px;
   cursor: pointer;
+  transition: 200ms ease-in;
+}
+
+.footer-number:hover,
+.footer-sale-email:hover,
+.footer-info-email:hover {
+  background-color: #f89a20;
+  color: #fff;
+  transition: 200ms ease-in;
 }
 .small-text-2 {
   margin-top: 0.6rem;
@@ -400,7 +397,7 @@ a {
 }
 .contact-info-header {
   font-size: 25px;
-  margin: 2rem 0 2rem 0;
+  /* margin: 2rem 0 2rem 0; */
   color: #5f5f5f;
   text-align: center;
 }
@@ -415,21 +412,36 @@ a {
 }
 
 .single-partner {
-  width: 30%;
+  width: 20rem;
+  height: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .amazon {
-  width: 25%;
+  width: 16rem;
 }
-.partners {
-  flex: 1;
+
+/* .partners {
   display: flex;
   width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 0.6rem;
-  margin-bottom: 0.6rem;
+  /* height: 100%; */
+/* margin-top: 0.6rem;
+}
+  margin-bottom: 0.6rem; */
+
+.single-partner-wrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* height: 100%; */
+  /* margin-top: 0.6rem;
+  margin-bottom: 0.6rem; */
 }
 .partners-heading {
   font-size: 25px;
@@ -441,6 +453,13 @@ a {
   padding: 1.5rem;
   font-size: 25px;
   background-color: #256d85;
+}
+
+.footer-information {
+  width: 100%;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 .contact,
 .partners,
@@ -469,8 +488,62 @@ a {
 }
 .chakra-modal__body {
   font-size: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.chakra-modal__footer {
+  border-top: 1px solid #5f5f5f70;
+}
+.menu-container {
+  height: 100%;
+}
+.menu-home-link,
+.menu-shop-link,
+.menu-orders-link,
+.menu-about-link,
+.menu-account-link {
+  border-bottom: 1px solid #5f5f5f70;
+}
+.menu-home-link > li:hover,
+.menu-shop-link > li:hover,
+.menu-orders-link > li:hover,
+.menu-about-link > li:hover,
+.menu-account-link > li:hover {
+  color: #f89a20;
+  cursor: pointer;
+}
+.menu-home-link > li,
+.menu-shop-link > li,
+.menu-orders-link > li,
+.menu-about-link > li,
+.menu-account-link > li {
+  padding: 1rem;
+}
+.menu-container ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  list-style-type: none;
 }
 /*Laptops/Monitors in range of 900px - 1200px */
+@media (min-width: 1024px) and (max-width: 1569px) {
+  .footer-information .footer-info {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  .footer-address,
+  .footer-number,
+  .footer-sale-email,
+  .footer-info-email {
+    width: 100%;
+    margin-bottom: 0.6rem;
+    padding: 0.6rem;
+  }
+}
 @media (min-width: 1025px) and (max-width: 1200px) {
   .info-line {
     display: none;
@@ -507,6 +580,14 @@ a {
 
   .partners-heading {
     font-size: 20px;
+  }
+
+  .single-partner {
+    width: 18rem;
+  }
+
+  .amazon {
+    width: 14rem;
   }
 }
 
@@ -571,6 +652,15 @@ a {
   .footer-sale-email,
   .footer-info-email {
     width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.6rem;
+  }
+  .single-partner {
+    width: 16rem;
+  }
+
+  .amazon {
+    width: 12rem;
   }
 }
 /*Bigger phone and tablet/smaller laptop screens*/
@@ -612,6 +702,7 @@ a {
 
   .contact-info-header {
     font-size: 20px;
+    margin-top: 1rem;
   }
   .small-text {
     font-size: 16px;
@@ -626,7 +717,7 @@ a {
 
   .partners-heading {
     font-size: 20px;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
   .footer-address,
   .footer-number,
@@ -643,6 +734,14 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .single-partner {
+    width: 16rem;
+  }
+
+  .amazon {
+    width: 12rem;
   }
 }
 /*small screens*/
@@ -689,7 +788,7 @@ a {
     font-size: 11px;
   }
 
-  contact {
+  .contact {
     padding: 0.2rem;
   }
   .footer-logo {
@@ -698,6 +797,7 @@ a {
 
   .contact-info-header {
     font-size: 20px;
+    margin-top: 1rem;
   }
   .small-text {
     font-size: 16px;
@@ -714,7 +814,7 @@ a {
     font-size: 20px;
     margin-top: 2rem;
   }
-  .footer-address,
+
   .footer-number,
   .footer-sale-email,
   .footer-info-email {
@@ -728,5 +828,12 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  .single-partner {
+    width: 14rem;
+  }
+
+  .amazon {
+    width: 10rem;
   }
 }

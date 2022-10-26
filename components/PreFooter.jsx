@@ -46,11 +46,13 @@ function PreFooter() {
         </div>
         <div className="partners">
           <h3 className="partners-heading">Partneri</h3>
-          <div className="single-partner">
-            <Image src={partner} />
-          </div>
-          <div className="single-partner amazon">
-            <Image src={amazon} />
+          <div className="single-partner-wrapper">
+            <div className="single-partner">
+              <Image src={partner} />
+            </div>
+            <div className="single-partner amazon">
+              <Image src={amazon} />
+            </div>
           </div>
         </div>
       </div>
