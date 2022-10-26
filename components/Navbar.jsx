@@ -42,7 +42,24 @@ function Navbar() {
 
         <div className="navbar-search">
           <input type={"text"} placeholder="Pretraži proizvode..." />
-          <Button type="button" className="search-btn">
+          <Button
+            m={0}
+            p={0}
+            top={0}
+            right={"0.9px"}
+            borderLeft={"1px solid"}
+            borderColor={"#f89a20"}
+            borderRadius={25}
+            backgroundColor={"transparent"}
+            height={9}
+            width={9}
+            type="button"
+            className="search-btn"
+            _hover={{
+              backgroundColor: "#f89a20",
+              color: "#fff",
+            }}
+          >
             <Icon as={FaSearch} />
           </Button>
         </div>
@@ -52,6 +69,10 @@ function Navbar() {
               onClick={() => updateMobile()}
               type="button"
               className="nav-btn"
+              _hover={{
+                backgroundColor: "#f89a20",
+                color: "#fff",
+              }}
             >
               <Icon as={FaList} />
             </Button>
@@ -61,12 +82,23 @@ function Navbar() {
               onClick={() => updateMobileSearch()}
               type="button"
               className="mobile-search-btn"
+              _hover={{
+                backgroundColor: "#f89a20",
+                color: "#fff",
+              }}
             >
               <Icon as={FaSearch} />
             </Button>
           </div>
           <div className="shopping-cart">
-            <Button type="button" className="shopping-cart-btn">
+            <Button
+              _hover={{
+                backgroundColor: "#f89a20",
+                color: "#fff",
+              }}
+              type="button"
+              className="shopping-cart-btn"
+            >
               <Icon as={FaShoppingCart} />
               <p>0.00KM</p>
             </Button>
