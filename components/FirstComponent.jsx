@@ -33,7 +33,7 @@ const FirstComponent = () => {
           <Link href="/login">
             <div className="shop">
               <Icon w={"15px"} as={FaLock} />
-              <h5>Login</h5>
+              <h5>Prijavi se</h5>
             </div>
           </Link>
           <Link href="/shop">

@@ -1,11 +1,11 @@
 import React from "react";
-import MobileMenu from "./MobileMenu";
+import SponsoredProducts from "./SponsoredProducts";
 
 function Home() {
   return (
-    <div className="home">
-      <div className="categories-container">HOME PAGE</div>
-    </div>
+    <>
+      <SponsoredProducts />
+    </>
   );
 }
 
