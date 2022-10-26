@@ -61,7 +61,7 @@ function MobileMenu() {
           </DrawerBody>
 
           <DrawerFooter justifyContent={"space-between"}>
-            <Link href={"/login"}>
+            <Link href={"/login"} passHref>
               <Button
                 _hover={{ backgroundColor: "#f89a20", color: "#fff" }}
                 color={"#5f5f5f"}
