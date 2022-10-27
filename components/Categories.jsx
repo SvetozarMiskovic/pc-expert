@@ -25,7 +25,7 @@ function Categories() {
           <ul>
             {arr.map(item => {
               return (
-                <div className="single-category">
+                <div key={item} className="single-category">
                   <CategoriesPopover>
                     <div>{item}</div>
                   </CategoriesPopover>
