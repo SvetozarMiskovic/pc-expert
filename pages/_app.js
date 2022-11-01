@@ -32,18 +32,22 @@ function MyApp({ Component, pageProps }) {
           </ChakraProvider>
         </GlobalContext>
       ) : (
-        <ThreeCircles
-          height="100"
-          width="100"
-          color="#4fa94d"
-          wrapperStyle={{}}
-          wrapperClass="loading-screen"
-          visible={true}
-          ariaLabel="three-circles-rotating"
-          outerCircleColor="#007FFF "
-          innerCircleColor="#4CBB17"
-          middleCircleColor="#f89a20"
-        />
+        <div className="loading-screen">
+          <h3 style={{ color: "f89a20" }}>
+            <span style={{ color: "#007FFF" }}>PC</span> Expert
+          </h3>
+          <ThreeCircles
+            height="100"
+            width="100"
+            color="#4fa94d"
+            wrapperStyle={{}}
+            visible={true}
+            ariaLabel="three-circles-rotating"
+            outerCircleColor="#007FFF"
+            innerCircleColor="#4CBB17"
+            middleCircleColor="#f89a20"
+          />
+        </div>
       )}
     </>
   );
