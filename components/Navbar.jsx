@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useRef } from "react";
-import logo from "../assets/T1.png";
+
 import { Icon } from "@chakra-ui/icons";
 import { Button } from "@chakra-ui/react";
 import { FaList, FaSearch, FaShoppingCart, FaHeart } from "react-icons/fa";
@@ -18,7 +18,13 @@ function Navbar() {
         <div className="logo-link-div">
           <Link href="/" passHref className="logo-link">
             <a>
-              <Image className="logo-image" href="/" src={logo} />
+              <Image
+                width={300}
+                height={300}
+                className="logo-image"
+                href="/"
+                src="/T1.png"
+              />
             </a>
           </Link>
         </div>

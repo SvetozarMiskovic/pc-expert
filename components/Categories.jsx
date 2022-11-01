@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaThList } from "react-icons/fa";
 import { Icon } from "@chakra-ui/icons";
-import CategoriesPopover from "./CategoriesPopover";
-import Link from "next/link";
+import { LinkBox, LinkOverlay } from "@chakra-ui/react";
+
 const arr = [
   "Laptopi",
   "Monitori",
@@ -14,6 +14,7 @@ const arr = [
   "Mining",
 ];
 function Categories() {
+  const [isHidden, setIsHidden] = useState(true);
   return (
     <div className="categories-wrapper">
       <div className="categories-header">
@@ -23,15 +24,61 @@ function Categories() {
       <div className="categories-body">
         <div className="categories-list">
           <ul>
-            {arr.map(item => {
-              return (
-                <div key={item} className="single-category">
-                  <CategoriesPopover>
-                    <div>{item}</div>
-                  </CategoriesPopover>
-                </div>
-              );
-            })}
+            <div className="single-category">
+              <LinkBox>
+                <LinkOverlay href="laptopi">Laptopi</LinkOverlay>
+              </LinkBox>
+            </div>
+            <div className="single-category">
+              <LinkBox>
+                <LinkOverlay href="monitori">Monitori</LinkOverlay>
+              </LinkBox>
+            </div>
+            <div className="single-category">
+              <LinkBox>
+                <LinkOverlay href="racunari">Racunari i komponente</LinkOverlay>
+              </LinkBox>
+            </div>
+            <div className="single-category">
+              <LinkBox>
+                <LinkOverlay href="televizori">Televizori</LinkOverlay>
+              </LinkBox>
+            </div>
+            <div className="single-category">
+              <LinkBox>
+                <LinkOverlay href="telefoni">Telefoni</LinkOverlay>
+              </LinkBox>
+            </div>
+            <div className="single-category">
+              <LinkBox>
+                <LinkOverlay href="printeri_i_skeneri">
+                  Printeri i skeneri
+                </LinkOverlay>
+              </LinkBox>
+              <h2
+                onMouseEnter={() => {
+                  setIsHidden(false);
+                }}
+                onMouseLeave={() => {
+                  setIsHidden(true);
+                }}
+              >
+                {">"}
+              </h2>
+              {!isHidden ? "STARIMOJ" : null}
+            </div>
+            <div className="single-category">
+              <LinkBox>
+                <LinkOverlay href="mrezna_oprema">
+                  Mrezna oprema i kamere
+                </LinkOverlay>
+              </LinkBox>
+            </div>
+            <div className="single-category">
+              <LinkBox>
+                <LinkOverlay href="mining">Mining</LinkOverlay>
+              </LinkBox>
+            </div>
             {/* <div className="single-category">
               <CategoriesPopover>
                 <div>Laptopi</div>

@@ -1,17 +1,31 @@
 import React from "react";
-import { FaTruck, FaTag, FaCreditCard, FaHandshake } from "react-icons/fa";
+import {
+  FaTruck,
+  FaTag,
+  FaCreditCard,
+  FaHandshake,
+  FaMoneyBillWave,
+  FaTools,
+} from "react-icons/fa";
 import { Icon } from "@chakra-ui/icons";
 
-function FeatureList() {
+function FeatureList({ klasa }) {
   return (
-    <div className="feature-wrapper">
+    <div
+      className={
+        klasa === "mobile"
+          ? "feature-wrapper mobile"
+          : "feature-wrapper desktop"
+      }
+    >
       <div className="features">
         <div className="feature">
           <div className="left-part">
             <Icon as={FaTruck} />
           </div>
           <div className="middle-part">
-            <p>Brza dostava u cijeloj BIH</p>
+            <h6>Euroexpress 24h</h6>
+            <p>dostava unutar BIH</p>
           </div>
         </div>
         <div className="feature">
@@ -19,7 +33,8 @@ function FeatureList() {
             <Icon as={FaTag} />
           </div>
           <div className="middle-part">
-            <p>Samo najbolji brendovi</p>
+            <h6>Brendovi</h6>
+            <p>samo najbolji</p>
           </div>
         </div>
         <div className="feature">
@@ -27,7 +42,8 @@ function FeatureList() {
             <Icon as={FaCreditCard} />
           </div>
           <div className="middle-part">
-            <p>Siguran sistem plaćanja</p>
+            <h6>Placanje</h6>
+            <p>sigurno i brzo</p>
           </div>
         </div>
         <div className="feature">
@@ -35,7 +51,26 @@ function FeatureList() {
             <Icon as={FaHandshake} />
           </div>
           <div className="middle-part">
-            <p>Plaćanje artikla pouzećem</p>
+            <h6>Garancija</h6>
+            <p>na sve uredjaje</p>
+          </div>
+        </div>
+        <div className="feature">
+          <div className="left-part">
+            <Icon as={FaMoneyBillWave} />
+          </div>
+          <div className="middle-part">
+            <h6>Vracamo novac</h6>
+            <p>ukoliko niste zadovoljni</p>
+          </div>
+        </div>
+        <div className="feature">
+          <div className="left-part">
+            <Icon as={FaTools} />
+          </div>
+          <div className="middle-part">
+            <h6>Servisiranje uredjaja</h6>
+            <p>za sve kupce</p>
           </div>
         </div>
       </div>

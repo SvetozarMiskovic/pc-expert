@@ -1,4 +1,5 @@
 import React from "react";
+import FeatureList from "./FeatureList";
 import FifthProductLine from "./FifthProductLine";
 import FirstProductLine from "./FirstProductLine";
 import FourthProductLine from "./FourthProductLine";
@@ -11,6 +12,7 @@ function Home() {
     <>
       {/* <SponsoredProducts /> */}
       <SponsoredProducts />
+      <FeatureList klasa="mobile" />
       <FirstProductLine />
       <SecondProductLine />
       <ThirdProductLine />
