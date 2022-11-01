@@ -12,6 +12,3 @@ model Kategorije {
   ime String? @db.VarChar(40)
 }
 
-model Podkategorije {
-  
-}
