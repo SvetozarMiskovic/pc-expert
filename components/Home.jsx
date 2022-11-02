@@ -11,8 +11,8 @@ function Home() {
   return (
     <>
       {/* <SponsoredProducts /> */}
-      <SponsoredProducts />
       <FeatureList klasa="mobile" />
+      <SponsoredProducts />
       <FirstProductLine />
       <SecondProductLine />
       <ThirdProductLine />
