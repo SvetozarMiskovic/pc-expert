@@ -52,10 +52,10 @@ function Navbar() {
             m={0}
             p={0}
             top={0}
-            right={"0.9px"}
+            right={0.5}
             borderLeft={"1px solid"}
             borderColor={"#f89a20"}
-            borderRadius={25}
+            borderRadius={30}
             backgroundColor={"transparent"}
             height={9}
             width={9}
