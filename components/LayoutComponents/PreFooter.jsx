@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 
-import partner from "../public/Prointer.png";
-import amazon from "../public/amazon-logo-transparent.png";
+import partner from "../../public/Prointer.png";
+import amazon from "../../public/amazon-logo-transparent.png";
 import { PhoneIcon, EmailIcon, Icon } from "@chakra-ui/icons";
 import {
   FaInfoCircle,

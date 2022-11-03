@@ -15,12 +15,22 @@ function SponsArticle() {
       >
         <div className="item">
           JEDAN
-          <div style={{ width: "100%", height: "300px" }}>
-            <img src="/second-image.jpg" />
+          <div className="img-container">
+            <Image layout="fill" src={"/mouse-image.jpg"} />
           </div>
         </div>
-        <div>DVA</div>
-        <div>TRi</div>
+
+        <div className="item">
+          <div className="img-container">
+            <Image layout="fill" src={"/second-image.jpg"} />
+          </div>
+        </div>
+
+        <div className="item">
+          <div className="img-container">
+            <Image layout="fill" src={"/T1.png"} />
+          </div>
+        </div>
       </Carousel>
     </div>
   );

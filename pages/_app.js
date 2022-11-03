@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 
-import Layout from "../components/Layout";
+import Layout from "../components/LayoutComponents/Layout";
 import { ChakraProvider } from "@chakra-ui/react";
 import GlobalContext from "../context/GlobalContext";
 import { useEffect, useState } from "react";

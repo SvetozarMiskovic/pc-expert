@@ -9,7 +9,7 @@ import {
   DrawerCloseButton,
   Button,
 } from "@chakra-ui/react";
-import { useGlobalContext } from "../context/GlobalContext";
+import { useGlobalContext } from "../../context/GlobalContext";
 import Link from "next/link";
 
 function MobileMenu() {

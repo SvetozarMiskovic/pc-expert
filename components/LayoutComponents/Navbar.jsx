@@ -5,8 +5,8 @@ import React, { useRef } from "react";
 import { Icon } from "@chakra-ui/icons";
 import { Button } from "@chakra-ui/react";
 import { FaList, FaSearch, FaShoppingCart, FaHeart } from "react-icons/fa";
-import MobileMenu from "./MobileMenu";
-import { useGlobalContext } from "../context/GlobalContext";
+import MobileMenu from "../MobileComponents/MobileMenu";
+import { useGlobalContext } from "../../context/GlobalContext";
 
 function Navbar() {
   const { updateMobile, updateMobileSearch } = useGlobalContext();

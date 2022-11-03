@@ -4,8 +4,8 @@ import Footer from "./Footer";
 import FirstComponent from "./FirstComponent";
 import Navbar from "./Navbar";
 import PreFooter from "./PreFooter";
-import MobileMenu from "./MobileMenu";
-import MobileSearch from "./MobileSearch";
+import MobileMenu from "../MobileComponents/MobileMenu";
+import MobileSearch from "../MobileComponents/MobileSearch";
 
 const Layout = ({ children }) => {
   return (

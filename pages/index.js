@@ -1,4 +1,4 @@
-import Home from "../components/Home";
+import Home from "../components/LayoutComponents/Home";
 
 export default function LandingPage({ res }) {
   return (
