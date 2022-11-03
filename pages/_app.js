@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }) {
         </GlobalContext>
       ) : (
         <div className="loading-screen">
-          <h3 style={{ color: "f89a20" }}>
+          <h3 style={{ color: "#4CBB17" }}>
             <span style={{ color: "#007FFF" }}>PC</span> Expert
           </h3>
           <ThreeCircles
