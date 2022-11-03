@@ -1028,7 +1028,7 @@ a {
 /*small screens*/
 @media (min-width: 0px) and (max-width: 499px) {
   .container {
-    margin: 0 0.5rem 0 0.5rem;
+    margin: 0;
   }
   .mobile {
     display: block;
