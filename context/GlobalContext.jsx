@@ -1,4 +1,3 @@
-import { useDisclosure } from "@chakra-ui/react";
 import React, { createContext, useContext, useState } from "react";
 
 const Context = createContext();
@@ -7,6 +6,20 @@ function GlobalContextProvider({ children }) {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [mobileSearch, setMobileSearch] = useState(false);
   const [popover, setPopover] = useState(false);
+  const [subCategory, setSubCategory] = useState("");
+  const [openSub, setOpenSub] = useState(false);
+
+  const updateSubCategory = val => {
+    setSubCategory(val);
+  };
+
+  const openSubMenu = () => {
+    setOpenSub(true);
+  };
+
+  const closeSubMenu = () => {
+    setOpenSub(false);
+  };
 
   const updatePopover = () => {
     setPopover(prevState => !prevState);
@@ -29,6 +42,11 @@ function GlobalContextProvider({ children }) {
         updateMobileSearch,
         popover,
         updatePopover,
+        openSub,
+        openSubMenu,
+        closeSubMenu,
+        subCategory,
+        updateSubCategory,
       }}
     >
       {children}

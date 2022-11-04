@@ -1,12 +1,12 @@
-first load animacija pri requestu
-sivkasta boja za tekst, bez boje samo prelaz za first component
-lokacija ne treba, shop - o nama - pravila koristenja, 
-svjetlija boja bijela, bez plavih tih, sivkasta boja teksta, 
-nijansa veci tekst prva linija
-input bijeli i border narandzasti, shop oner boja narandzastu
+!first load animacija pri requestu!
+!sivkasta boja za tekst, bez boje samo prelaz za first component!
+!lokacija ne treba, shop - o nama - pravila koristenja,! 
+!svjetlija boja bijela, bez plavih tih, sivkasta boja teksta, !
+!nijansa veci tekst prva linija!
+!input bijeli i border narandzasti, shop oner boja narandzastu!
 icone u kategorije, 
-!izbaci informacije,
-kategorije sa submenu,
+!izbaci informacije!,
+!kategorije sa submenu!,
 !narandzasta boja generalno za okvire, promjeni,
 
 Lato font cekiraj
@@ -22,7 +22,7 @@ Placanje i narudzbom i karticom
 primjenu kupona
 filtracija produkata
 multi-view
-izbaci wishlist!
+!izbaci wishlist!
 garancija ispod produkata u shopu
 
 poredaj po cijeni manjoj, vecoj
@@ -31,7 +31,7 @@ bread crumbs
 
 
 
-Prilikom ulaska na sajt poželjno bi bilo da bude animacija kao na ovom sajtu: http://deltapcshop.com/ - samo da bude narandžaste boje
+!Prilikom ulaska na sajt poželjno bi bilo da bude animacija kao na ovom sajtu: http://deltapcshop.com/ - samo da bude narandžaste boje
 
 !Kao na https://shop.oner.ba/ sajtu, neka bude bez ovih pozadinskih boja kao što je trenutno tamno plava, neka bude bijela boja a boja slova neka bude siva odnosno kao na ovom sajtu. 
 !Ako negdje baš treba pozadinska boja da se nešto istakne onda neka to bude kao kod njih na dnu stranice gdje piše "© PCONER - Sva prava zadržana." kao neka nijansa sive skoro neprimjetne boje.!! 

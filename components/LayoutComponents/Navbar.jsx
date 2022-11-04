@@ -19,6 +19,7 @@ function Navbar() {
           <Link href="/" passHref className="logo-link">
             <a>
               <Image
+                priority
                 width={300}
                 height={300}
                 className="logo-image"
