@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { FaThList } from "react-icons/fa";
 import { Icon } from "@chakra-ui/icons";
-import { LinkBox, LinkOverlay, Link } from "@chakra-ui/react";
+import { LinkBox, LinkOverlay } from "@chakra-ui/react";
+import Link from "next/link";
 import { useGlobalContext } from "../../context/GlobalContext";
 
 function Categories() {
@@ -172,21 +173,15 @@ function Categories() {
                   </p>
                 </LinkOverlay>
               </LinkBox>
-              {/* <div className="sub-categories">
-                <div
-                  onMouseEnter={() => {
-                    setIsMining(true);
-                  }}
-                  onMouseLeave={() => {
-                    setIsMining(false);
-                  }}
-                >
-                  <h1>Kateogirija</h1>
-                  <p>nesto ispisano ovde</p>
-                </div>
-              </div> */}
             </div>
           </ul>
+        </div>
+        <div className="action-link">
+          <LinkBox>
+            <LinkOverlay href="akcija">
+              <h3>AKCIJA</h3>
+            </LinkOverlay>
+          </LinkBox>
         </div>
       </div>
     </div>

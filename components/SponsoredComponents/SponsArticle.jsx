@@ -5,9 +5,15 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import Link from "next/link";
 
-function SponsArticle() {
+function SponsArticle({ klasa }) {
   return (
-    <div className="article-wrapper">
+    <div
+      className={
+        klasa === "mobile"
+          ? "article-wrapper mobile"
+          : "article-wrapper desktop"
+      }
+    >
       <Carousel
         showStatus={false}
         dynamicHeight={false}
@@ -23,7 +29,7 @@ function SponsArticle() {
             </div>
           </div>
           <div className="img-container">
-            <Image layout="fill" priority src={"/mouse-image.jpg"} />
+            <Image layout="fill" priority={true} src={"/mouse-image.jpg"} />
           </div>
         </div>
 
@@ -36,7 +42,7 @@ function SponsArticle() {
             </div>
           </div>
           <div className="img-container">
-            <Image layout="fill" src={"/second-image.jpg"} />
+            <Image layout="fill" src={"/second-image.jpg"} priority={true} />
           </div>
         </div>
 
@@ -49,7 +55,7 @@ function SponsArticle() {
             </div>
           </div>
           <div className="img-container">
-            <Image layout="fill" src={"/T1.png"} />
+            <Image layout="fill" src={"/T1.png"} priority={true} />
           </div>
         </div>
       </Carousel>
