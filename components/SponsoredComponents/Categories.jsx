@@ -68,7 +68,7 @@ function Categories() {
             >
               <LinkBox className="link-box">
                 <LinkOverlay className="link-overlay" href="racunari">
-                  <p>Racunari i komponente</p>
+                  <p>Računari</p>
                   <p
                     className={
                       subCategory === "computer" ? "desktop" : "hidden"
@@ -120,16 +120,18 @@ function Categories() {
             <div
               onMouseOver={() => {
                 openSubMenu();
-                updateSubCategory("printer");
+                updateSubCategory("components");
               }}
               onMouseLeave={() => closeSubMenu()}
               className="single-category"
             >
               <LinkBox className="link-box">
-                <LinkOverlay className="link-overlay" href="printeri_i_skeneri">
-                  <p>Printeri i skeneri</p>
+                <LinkOverlay className="link-overlay" href="komponente">
+                  <p>Racunarske komponente</p>
                   <p
-                    className={subCategory === "printer" ? "desktop" : "hidden"}
+                    className={
+                      subCategory === "components" ? "desktop" : "hidden"
+                    }
                   >
                     {">"}
                   </p>
@@ -139,16 +141,18 @@ function Categories() {
             <div
               onMouseOver={() => {
                 openSubMenu();
-                updateSubCategory("network");
+                updateSubCategory("perifery");
               }}
               onMouseLeave={() => closeSubMenu()}
               className="single-category"
             >
               <LinkBox className="link-box">
-                <LinkOverlay className="link-overlay" href="mrezna_oprema">
-                  <p>Mrezna oprema i kamere</p>
+                <LinkOverlay className="link-overlay" href="periferija">
+                  <p>Racunarska periferija</p>
                   <p
-                    className={subCategory === "network" ? "desktop" : "hidden"}
+                    className={
+                      subCategory === "perifery" ? "desktop" : "hidden"
+                    }
                   >
                     {">"}
                   </p>

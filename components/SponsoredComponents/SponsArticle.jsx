@@ -19,6 +19,8 @@ function SponsArticle({ klasa }) {
         dynamicHeight={false}
         showThumbs={false}
         className="carousel"
+        autoPlay={true}
+        infiniteLoop={true}
       >
         <div className="item">
           <div className="content-container">
@@ -55,7 +57,11 @@ function SponsArticle({ klasa }) {
             </div>
           </div>
           <div className="img-container">
-            <Image layout="fill" src={"/T1.png"} priority={true} />
+            <Image
+              layout="fill"
+              src={"/1200x600-Spons-Image.jpg"}
+              priority={true}
+            />
           </div>
         </div>
       </Carousel>

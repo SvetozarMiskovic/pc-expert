@@ -11,6 +11,7 @@ function Home() {
       <FeatureList klasa="mobile" />
       <SponsArticle klasa="mobile" />
       <SponsoredProducts />
+
       <QuickMenu />
     </>
   );

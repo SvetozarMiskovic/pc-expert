@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Divider } from "@chakra-ui/react";
 
 export const generateSubMenu = subCategory => {
   switch (subCategory) {
@@ -7,6 +8,7 @@ export const generateSubMenu = subCategory => {
         <div className="categories-menu">
           <div className="single-subcategory">
             <h3>Proizvođač</h3>
+            <Divider />
             <ul>
               <div className="value">
                 <h5>Acer</h5>
@@ -22,26 +24,6 @@ export const generateSubMenu = subCategory => {
               </div>
             </ul>
           </div>
-          <div className="single-subcategory">
-            <h3>Veličina ekrana</h3>
-            <ul>
-              <div className="value">
-                <h5>14 inch</h5>
-              </div>
-              <div className="value">
-                <h5>15 inch</h5>
-              </div>
-              <div className="value">
-                <h5>16 inch</h5>
-              </div>
-              <div className="value">
-                <h5>17 inch</h5>
-              </div>
-              <div className="value">
-                <h5>19 inch</h5>
-              </div>
-            </ul>
-          </div>
         </div>
       );
     }
@@ -51,6 +33,7 @@ export const generateSubMenu = subCategory => {
         <div className="categories-menu">
           <div className="single-subcategory">
             <h3>Proizvođač</h3>
+            <Divider />
             <ul>
               <div className="value">
                 <h5>Acer</h5>
@@ -68,6 +51,7 @@ export const generateSubMenu = subCategory => {
           </div>
           <div className="single-subcategory">
             <h3>Veličina ekrana</h3>
+            <Divider />
             <ul>
               <div className="value">
                 <h5>21 inch</h5>
@@ -90,33 +74,17 @@ export const generateSubMenu = subCategory => {
       return (
         <div className="categories-menu">
           <div className="single-subcategory">
-            <h3>Racunarske komponente</h3>
+            <h3>Kategorije</h3>
+            <Divider />
             <ul>
               <div className="value">
-                <h5>Procesori</h5>
+                <h5>Gaming računari</h5>
               </div>
               <div className="value">
-                <h5>Graficke kartice</h5>
+                <h5>Office računari</h5>
               </div>
               <div className="value">
-                <h5>Memorija</h5>
-              </div>
-              <div className="value">
-                <h5>Hard diskovi/SSD</h5>
-              </div>
-            </ul>
-          </div>
-          <div className="single-subcategory">
-            <h3>Racunarska perferija</h3>
-            <ul>
-              <div className="value">
-                <h5>Miševi</h5>
-              </div>
-              <div className="value">
-                <h5>Tastature</h5>
-              </div>
-              <div className="value">
-                <h5>Slušalice</h5>
+                <h5>Školski računari</h5>
               </div>
             </ul>
           </div>
@@ -128,6 +96,7 @@ export const generateSubMenu = subCategory => {
         <div className="categories-menu">
           <div className="single-subcategory">
             <h3>Proizvođač</h3>
+            <Divider />
             <ul>
               <div className="value">
                 <h5>Tesla</h5>
@@ -145,6 +114,7 @@ export const generateSubMenu = subCategory => {
           </div>
           <div className="single-subcategory">
             <h3>Veličina ekrana</h3>
+            <Divider />
             <ul>
               <div className="value">
                 <h5>32 inch</h5>
@@ -168,6 +138,7 @@ export const generateSubMenu = subCategory => {
         <div className="categories-menu">
           <div className="single-subcategory">
             <h3>Proizvođač</h3>
+            <Divider />
             <ul>
               <div className="value">
                 <h5>Xioami</h5>
@@ -183,76 +154,54 @@ export const generateSubMenu = subCategory => {
               </div>
             </ul>
           </div>
+        </div>
+      );
+    }
+    case "components": {
+      return (
+        <div className="categories-menu">
           <div className="single-subcategory">
-            <h3>Veličina ekrana</h3>
+            <h3>Kategorije</h3>
+            <Divider />
             <ul>
               <div className="value">
-                <h5>4 inch</h5>
+                <h5>Procesori</h5>
               </div>
               <div className="value">
-                <h5>5 inch</h5>
+                <h5>Hard diskovi</h5>
               </div>
               <div className="value">
-                <h5>6 inch</h5>
+                <h5>Memorija</h5>
               </div>
               <div className="value">
-                <h5>7 inch</h5>
+                <h5>Matične ploče</h5>
+              </div>
+              <div className="value">
+                <h5>Kućišta</h5>
               </div>
             </ul>
           </div>
         </div>
       );
     }
-    case "printer": {
+    case "perifery": {
       return (
         <div className="categories-menu">
           <div className="single-subcategory">
-            <h3>Vrsta printera</h3>
-            <ul>
-              <div className="value">
-                <h5>Laseri</h5>
-              </div>
-              <div className="value">
-                <h5>Skeneri</h5>
-              </div>
-              <div className="value">
-                <h5>Ploteri</h5>
-              </div>
-              <div className="value">
-                <h5>Matični</h5>
-              </div>
-              <div className="value">
-                <h5>Ink Jet</h5>
-              </div>
-            </ul>
-          </div>
-          <div className="single-subcategory">
-            <h3>Proizvođač</h3>
+            <h3>Kategorije</h3>
+            <Divider />
             <div className="value">
-              <h5>HP</h5>
+              <h5>Miševi</h5>
             </div>
             <div className="value">
-              <h5>Canon</h5>
+              <h5>Tastature</h5>
             </div>
             <div className="value">
-              <h5>Xerox</h5>
+              <h5>Slušalice</h5>
             </div>
             <div className="value">
-              <h5>Brother</h5>
+              <h5>Zvučnici</h5>
             </div>
-            <div className="value">
-              <h5>Epson</h5>
-            </div>
-          </div>
-        </div>
-      );
-    }
-    case "network": {
-      return (
-        <div className="categories-menu">
-          <div className="single-subcategory">
-            <h3>Mrezna oprema i kamere</h3>
-            <p>Vidi sve</p>
           </div>
         </div>
       );
@@ -262,10 +211,12 @@ export const generateSubMenu = subCategory => {
         <div className="categories-menu">
           <div className="single-subcategory">
             <h3>Mining rigovi</h3>
+            <Divider />
             <p>Vidi sve</p>
           </div>
           <div className="single-subcategory">
             <h3>Mining oprema</h3>
+            <Divider />
             <p>Vidi sve</p>
           </div>
         </div>
