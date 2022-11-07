@@ -13,7 +13,7 @@ import {
 function PreFooter() {
   return (
     <div className="pre-footer">
-      <div className=" pre-footer-child">
+      <div className=" pre-footer-child container">
         <div className="contact">
           <div className="footer-logo">
             <Image width={100} height={100} src="/T1.png" />

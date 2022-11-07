@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
         <MobileSearch />
         <MobileMenu />
       </header>
-      <main className="container main-container">{children}</main>
+      <main>{children}</main>
       <footer>
         <PreFooter />
         <Footer />
