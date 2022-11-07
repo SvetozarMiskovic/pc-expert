@@ -42,7 +42,7 @@ function FeatureList({ klasa }) {
             <Icon as={FaCreditCard} />
           </div>
           <div className="middle-part">
-            <h6>Placanje</h6>
+            <h6>Plaćanje</h6>
             <p>sigurno i brzo</p>
           </div>
         </div>
@@ -52,7 +52,7 @@ function FeatureList({ klasa }) {
           </div>
           <div className="middle-part">
             <h6>Garancija</h6>
-            <p>na sve uredjaje</p>
+            <p>na sve uređaje</p>
           </div>
         </div>
         <div className="feature">
@@ -60,7 +60,7 @@ function FeatureList({ klasa }) {
             <Icon as={FaMoneyBillWave} />
           </div>
           <div className="middle-part">
-            <h6>Vracamo novac</h6>
+            <h6>Vraćamo novac</h6>
             <p>ukoliko niste zadovoljni</p>
           </div>
         </div>
@@ -69,7 +69,7 @@ function FeatureList({ klasa }) {
             <Icon as={FaTools} />
           </div>
           <div className="middle-part">
-            <h6>Servisiranje uredjaja</h6>
+            <h6>Servisiranje uređaja</h6>
             <p>za sve kupce</p>
           </div>
         </div>

@@ -127,7 +127,7 @@ function Categories() {
             >
               <LinkBox className="link-box">
                 <LinkOverlay className="link-overlay" href="komponente">
-                  <p>Racunarske komponente</p>
+                  <p>Računarske komponente</p>
                   <p
                     className={
                       subCategory === "components" ? "desktop" : "hidden"
@@ -148,7 +148,7 @@ function Categories() {
             >
               <LinkBox className="link-box">
                 <LinkOverlay className="link-overlay" href="periferija">
-                  <p>Racunarska periferija</p>
+                  <p>Računarska periferija</p>
                   <p
                     className={
                       subCategory === "perifery" ? "desktop" : "hidden"

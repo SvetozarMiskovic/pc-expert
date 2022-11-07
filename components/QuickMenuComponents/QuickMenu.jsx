@@ -28,7 +28,7 @@ function QuickMenu() {
             <Image width={150} height={150} src={"/PC.png"} />
           </div>
           <div className="menu-text">
-            <h4>Racunari</h4>
+            <h4>Računari</h4>
           </div>
         </div>
         <div className="single-menu">

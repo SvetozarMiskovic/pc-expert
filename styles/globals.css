@@ -305,6 +305,14 @@ main {
   border: 2px solid #f89a20; */
   position: absolute;
   height: 100%;
+  width: 75px;
+  right: 0;
+  border-radius: 0;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background-color: #f89a20;
+  color: #fff;
+  font-size: 21px;
 }
 
 .shopping-cart-btn,
@@ -335,10 +343,12 @@ main {
   background-color: #fff;
 }
 
+.navbar-search .search-btn:hover {
+  background-color: #da8921;
+}
 .shopping-cart-btn:hover,
 .mobile-search-btn:hover,
-.nav-btn:hover,
-.search-btn:hover {
+.nav-btn:hover {
   color: #f89a20;
   transition: 200ms ease-in-out;
 }
