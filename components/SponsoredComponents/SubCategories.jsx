@@ -3,7 +3,7 @@ import { useGlobalContext } from "../../context/GlobalContext";
 import { generateSubMenu } from "../../utils/generateSubMenu";
 
 function SubCategories() {
-  const { openSub, closeSubMenu, subCategory, openSubMenu } =
+  const { openSub, closeSubMenu, subCategory, openSubMenu, updateSubCategory } =
     useGlobalContext();
 
   return (
@@ -13,6 +13,7 @@ function SubCategories() {
       }}
       onMouseLeave={() => {
         closeSubMenu();
+        updateSubCategory("");
       }}
       className={
         !openSub ? "categories-menu-wrapper" : "categories-menu-wrapper desktop"

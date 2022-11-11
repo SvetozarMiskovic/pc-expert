@@ -2,10 +2,11 @@ import React from "react";
 import Head from "next/head";
 import Footer from "./Footer";
 import FirstComponent from "./FirstComponent";
-import Navbar from "./Navbar";
+
 import PreFooter from "./PreFooter";
 import MobileMenu from "../MobileComponents/MobileMenu";
 import MobileSearch from "../MobileComponents/MobileSearch";
+import NavbarComponent from "./NavbarComponent";
 
 const Layout = ({ children }) => {
   return (
@@ -15,7 +16,7 @@ const Layout = ({ children }) => {
       </Head>
       <header>
         <FirstComponent />
-        <Navbar />
+        <NavbarComponent />
         <MobileSearch />
         <MobileMenu />
       </header>

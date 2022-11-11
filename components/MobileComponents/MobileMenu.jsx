@@ -13,7 +13,7 @@ import { useGlobalContext } from "../../context/GlobalContext";
 import Link from "next/link";
 
 function MobileMenu() {
-  const { mobileMenu, updateMobile } = useGlobalContext();
+  const { mobileMenu, updateMobile, isLogged } = useGlobalContext();
   return (
     <div className="drawer">
       <Drawer
@@ -48,7 +48,7 @@ function MobileMenu() {
 
                 <div className="menu-about-link">
                   <Link href="/about">
-                    <li onClick={() => updateMobile()}>O NAMA</li>
+                    <li onClick={() => updateMobile()}>NAŠA PRIČA</li>
                   </Link>
                 </div>
                 <div className="menu-account-link">
@@ -56,23 +56,45 @@ function MobileMenu() {
                     <li onClick={() => updateMobile()}>NALOG</li>
                   </Link>
                 </div>
+                <div className="menu-rules-link">
+                  <Link href="/rules">
+                    <li onClick={() => updateMobile()}>
+                      INSTRUKCIJE I PRAVILA KORIŠTENJA
+                    </li>
+                  </Link>
+                </div>
               </ul>
             </div>
           </DrawerBody>
 
           <DrawerFooter justifyContent={"space-between"}>
-            <Link href={"/login"} passHref>
-              <Button
-                _hover={{ backgroundColor: "#f89a20", color: "#fff" }}
-                color={"#5f5f5f"}
-                border={"1px solid"}
-                borderColor={"#f89a20"}
-                variant="outline"
-                onClick={() => updateMobile()}
-              >
-                Prijavi se
-              </Button>
-            </Link>
+            {!isLogged ? (
+              <Link href={"/login"} passHref>
+                <Button
+                  _hover={{ backgroundColor: "#f89a20", color: "#fff" }}
+                  color={"#5f5f5f"}
+                  border={"1px solid"}
+                  borderColor={"#f89a20"}
+                  variant="outline"
+                  onClick={() => updateMobile()}
+                >
+                  Prijavi se
+                </Button>
+              </Link>
+            ) : (
+              <Link href={"/logout"} passHref>
+                <Button
+                  _hover={{ backgroundColor: "#f89a20", color: "#fff" }}
+                  color={"#5f5f5f"}
+                  border={"1px solid"}
+                  borderColor={"#f89a20"}
+                  variant="outline"
+                  onClick={() => updateMobile()}
+                >
+                  Odjavi se
+                </Button>
+              </Link>
+            )}
             <Button
               _hover={{ backgroundColor: "#f89a20", color: "#fff" }}
               color={"#5f5f5f"}

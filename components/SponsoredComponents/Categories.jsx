@@ -5,12 +5,18 @@ import { LinkBox, LinkOverlay } from "@chakra-ui/react";
 import Link from "next/link";
 import { useGlobalContext } from "../../context/GlobalContext";
 
-function Categories() {
+function Categories({ klasa }) {
   const { openSubMenu, closeSubMenu, updateSubCategory, subCategory } =
     useGlobalContext();
 
   return (
-    <div className="categories-wrapper">
+    <div
+      className={
+        klasa === "mobile"
+          ? "categories-wrapper mobile"
+          : "categories-wrapper desktop"
+      }
+    >
       <div className="categories-header">
         <Icon as={FaThList} />
         <h3>Kategorije</h3>

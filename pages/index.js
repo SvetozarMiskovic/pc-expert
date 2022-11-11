@@ -3,9 +3,7 @@ import Home from "../components/LayoutComponents/Home";
 export default function LandingPage({ res }) {
   return (
     <div className="homepage">
-      <div className="container main-container ">
-        <Home />
-      </div>
+      <Home />
     </div>
   );
 }

@@ -12,3 +12,11 @@ model Kategorije {
   ime String? @db.VarChar(40)
 }
 
+model Korisnici {
+  ID Int @id @default(autoincrement())
+  name String? @db.VarChar(40)
+  lastName String? @db.VarChar(40)
+  role String? @db.VarChar(40)
+  email String? @db.VarChar(40)
+  password String? @db.VarChar(255)
+}

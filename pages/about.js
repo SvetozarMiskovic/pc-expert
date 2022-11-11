@@ -1,3 +1,12 @@
-export default function Information() {
-  return <h1>Information page</h1>;
+import React from "react";
+import OurStoryComponent from "../components/OurStoryComponents/OurStoryComponent";
+
+function About() {
+  return (
+    <div className="our-story-page">
+      <OurStoryComponent />
+    </div>
+  );
 }
+
+export default About;

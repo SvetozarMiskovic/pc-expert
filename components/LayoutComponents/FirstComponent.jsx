@@ -1,5 +1,6 @@
 import React from "react";
 import { PhoneIcon, EmailIcon, Icon } from "@chakra-ui/icons";
+import { signIn, signOut } from "next-auth/react";
 import {
   FaShoppingBasket,
   FaInfoCircle,
@@ -7,12 +8,17 @@ import {
   FaUserAlt,
   FaUser,
   FaLock,
+  FaLockOpen,
+  FaDoorClosed,
+  FaPowerOff,
 } from "react-icons/fa";
 import Link from "next/link";
+import { useGlobalContext } from "../../context/GlobalContext";
 
 // import Image from "next/image";
 // import logo from "../assets/T1.png";
 const FirstComponent = () => {
+  const { isLogged, updateLoggedIn } = useGlobalContext();
   return (
     <div className="first-component">
       <div className="container info-line">
@@ -30,12 +36,40 @@ const FirstComponent = () => {
           </div>
         </div>
         <div className="right-side">
-          <Link href="/login">
+          <Link href="/register">
             <div className="shop">
-              <Icon w={"15px"} as={FaLock} />
-              <h5>Prijavi se</h5>
+              <Icon w={"15px"} as={FaPowerOff} />
+              <h5>Registracija</h5>
             </div>
           </Link>
+          {!isLogged ? (
+            // href="/login"
+            <Link href={"/api/auth/signin"}>
+              <div
+                onClick={() => {
+                  signIn();
+                  updateLoggedIn();
+                }}
+                className="shop"
+              >
+                <Icon w={"15px"} as={FaLock} />
+                <h5>Prijava</h5>
+              </div>
+            </Link>
+          ) : (
+            <Link href={"/api/auth/signout"}>
+              <div
+                onClick={() => {
+                  signOut();
+                  updateLoggedIn();
+                }}
+                className="shop"
+              >
+                <Icon w={"15px"} as={FaLockOpen} />
+                <h5>Odjavi se</h5>
+              </div>
+            </Link>
+          )}
           <Link href="/shop">
             <div className="shop">
               <Icon w={"15px"} as={FaShoppingBasket} />
@@ -45,13 +79,13 @@ const FirstComponent = () => {
           <Link href="/about">
             <div className="information">
               <Icon w={"15px"} as={FaInfoCircle} />
-              <h5>O nama</h5>
+              <h5>Naša priča</h5>
             </div>
           </Link>
           <Link href="/rules">
             <div className="rules">
               <Icon w={"15px"} as={FaUserAlt} />
-              <h5>Pravila korištenja</h5>
+              <h5>Instrukcije i pravila korištenja</h5>
             </div>
           </Link>
         </div>

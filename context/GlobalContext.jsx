@@ -8,6 +8,11 @@ function GlobalContextProvider({ children }) {
   const [popover, setPopover] = useState(false);
   const [subCategory, setSubCategory] = useState("");
   const [openSub, setOpenSub] = useState(false);
+  const [isLogged, setIsLogged] = useState(false);
+
+  const updateLoggedIn = () => {
+    setIsLogged(prevState => !prevState);
+  };
 
   const updateSubCategory = val => {
     setSubCategory(val);
@@ -47,6 +52,8 @@ function GlobalContextProvider({ children }) {
         closeSubMenu,
         subCategory,
         updateSubCategory,
+        updateLoggedIn,
+        isLogged,
       }}
     >
       {children}
