@@ -1684,16 +1684,7 @@ input[type="submit"]:hover {
     justify-content: flex-end;
     gap: 0.4rem;
   }
-  .mobile-cart-btn {
-    display: flex;
-    flex-direction: column;
-  }
-  .mobile-auth > button,
-  .mobile-toggle-nav > button,
-  .mobile-search > button,
-  .mobile-cart > button {
-    width: 50px;
-  }
+
   /* .mobile-auth .mobile-auth-btn > svg,
   .mobile-toggle-nav .nav-btn > svg,
   .mobile-search .mobile-search-btn > svg,
@@ -1832,5 +1823,18 @@ input[type="submit"]:hover {
 
   .amazon {
     width: 10rem;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+  .mobile-cart-btn {
+    display: flex;
+    flex-direction: column;
+  }
+  .mobile-auth > button,
+  .mobile-toggle-nav > button,
+  .mobile-search > button,
+  .mobile-cart > button {
+    width: 50px;
   }
 }

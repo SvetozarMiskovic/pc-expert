@@ -9,7 +9,7 @@ function QuickMenu() {
       <div className="quick-menu">
         <div className="single-menu">
           <div className="menu-img-container">
-            <Image width={150} height={150} src={"/laptop.image"} />
+            <Image width={150} height={150} src={"/laptop.png"} />
           </div>
           <div className="menu-text">
             <h4>Laptopi</h4>
