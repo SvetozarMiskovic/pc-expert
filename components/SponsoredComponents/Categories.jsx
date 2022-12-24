@@ -38,7 +38,9 @@ function Categories({ klasa }) {
                 <LinkOverlay className="link-overlay" href="laptopi">
                   <p>Laptopi</p>
                   <p
-                    className={subCategory === "laptop" ? "desktop" : "hidden"}
+                    className={
+                      subCategory === "laptop" ? "arrow desktop" : "hidden"
+                    }
                   >
                     {">"}
                   </p>
@@ -57,7 +59,9 @@ function Categories({ klasa }) {
                 <LinkOverlay className="link-overlay" href="monitori">
                   <p>Monitori</p>
                   <p
-                    className={subCategory === "monitor" ? "desktop" : "hidden"}
+                    className={
+                      subCategory === "monitor" ? "arrow desktop" : "hidden"
+                    }
                   >
                     {">"}
                   </p>
@@ -77,7 +81,7 @@ function Categories({ klasa }) {
                   <p>Računari</p>
                   <p
                     className={
-                      subCategory === "computer" ? "desktop" : "hidden"
+                      subCategory === "computer" ? "arrow desktop" : "hidden"
                     }
                   >
                     {">"}
@@ -98,7 +102,7 @@ function Categories({ klasa }) {
                   <p>Televizori</p>
                   <p
                     className={
-                      subCategory === "television" ? "desktop" : "hidden"
+                      subCategory === "television" ? "arrow desktop" : "hidden"
                     }
                   >
                     {">"}
@@ -117,7 +121,11 @@ function Categories({ klasa }) {
               <LinkBox className="link-box">
                 <LinkOverlay className="link-overlay" href="telefoni">
                   <p>Telefoni</p>
-                  <p className={subCategory === "phone" ? "desktop" : "hidden"}>
+                  <p
+                    className={
+                      subCategory === "phone" ? "arrow desktop" : "hidden"
+                    }
+                  >
                     {">"}
                   </p>
                 </LinkOverlay>
@@ -136,7 +144,7 @@ function Categories({ klasa }) {
                   <p>Računarske komponente</p>
                   <p
                     className={
-                      subCategory === "components" ? "desktop" : "hidden"
+                      subCategory === "components" ? "arrow desktop" : "hidden"
                     }
                   >
                     {">"}
@@ -157,7 +165,7 @@ function Categories({ klasa }) {
                   <p>Računarska periferija</p>
                   <p
                     className={
-                      subCategory === "perifery" ? "desktop" : "hidden"
+                      subCategory === "perifery" ? "arrow desktop" : "hidden"
                     }
                   >
                     {">"}
@@ -177,7 +185,9 @@ function Categories({ klasa }) {
                 <LinkOverlay className="link-overlay" href="mining">
                   <p>Mining</p>
                   <p
-                    className={subCategory === "mining" ? "desktop" : "hidden"}
+                    className={
+                      subCategory === "mining" ? "arrow desktop" : "hidden"
+                    }
                   >
                     {">"}
                   </p>

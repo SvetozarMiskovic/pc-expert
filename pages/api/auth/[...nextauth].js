@@ -1,23 +1,11 @@
 import NextAuth from "next-auth";
-import CredentialProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 
 const authOptions = {
-  session: {
-    strategy: "jwt",
-  },
   providers: [
-    CredentialProvider({
-      type: "credentials",
-      credentials: { email: "admin", password: "admin" },
-      authorize(credentials, req) {
-        const { email, password } = credentials;
-
-        if (email !== "admin" && password !== "admin") {
-          return null;
-        }
-
-        return "signovan";
-      },
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
 };

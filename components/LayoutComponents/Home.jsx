@@ -1,4 +1,5 @@
 import React from "react";
+import CartComponent from "../CartComponents/CartComponent";
 import QuickMenu from "../QuickMenuComponents/QuickMenu";
 import Categories from "../SponsoredComponents/Categories";
 import FeatureList from "../SponsoredComponents/FeatureList";

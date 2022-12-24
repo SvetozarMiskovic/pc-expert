@@ -3,13 +3,19 @@ import Link from "next/link";
 import React from "react";
 
 import { Icon } from "@chakra-ui/icons";
-import { Button, LinkBox, LinkOverlay } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { FaLock, FaLockOpen, FaSearch, FaShoppingCart } from "react-icons/fa";
 
 import { useGlobalContext } from "../../context/GlobalContext";
 
 function Navbar() {
-  const { updateMobileSearch, updateLoggedIn, isLogged } = useGlobalContext();
+  const {
+    updateMobileSearch,
+    updateLoggedIn,
+    isLogged,
+    toggleCart,
+    totalPrice,
+  } = useGlobalContext();
   return (
     <div className="navbar desktop container">
       <div className="navbar-logo">
@@ -132,6 +138,7 @@ function Navbar() {
           _active={{
             backgroundColor: "#f89a20",
           }}
+          onClick={() => toggleCart()}
           color="#5f5f5f"
           border="1px solid #f89a20"
           background="transparent"
@@ -139,7 +146,7 @@ function Navbar() {
           className="shopping-cart-btn"
         >
           <Icon as={FaShoppingCart} />
-          <p>0.00KM</p>
+          <p>{totalPrice} KM</p>
         </Button>
       </div>
     </div>
