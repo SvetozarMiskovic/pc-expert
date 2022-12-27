@@ -1,56 +1,58 @@
-import "../styles/globals.css";
+import '../styles/globals.css'
 
-import Layout from "../components/LayoutComponents/Layout";
-import { ChakraProvider } from "@chakra-ui/react";
-import GlobalContext from "../context/GlobalContext";
-import { useEffect, useState } from "react";
-import { ThreeCircles } from "react-loader-spinner";
+import Layout from '../components/LayoutComponents/Layout'
+import { ChakraProvider } from '@chakra-ui/react'
+import GlobalContext from '../context/GlobalContext'
+import { useEffect, useState } from 'react'
+import { ThreeCircles } from 'react-loader-spinner'
+import { useRouter } from 'next/router'
+import BreadCrumb from '../components/BreadCrumbComponents/BreadCrumb'
 
 function MyApp({ Component, pageProps }) {
-  const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true)
 
-  const updateLoading = () => {
-    const t = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    const updateLoading = () => {
+        const t = setTimeout(() => {
+            setLoading(false)
+        }, 1000)
 
-    return () => clearTimeout(t);
-  };
+        return () => clearTimeout(t)
+    }
 
-  useEffect(() => {
-    updateLoading();
-  }, []);
+    useEffect(() => {
+        updateLoading()
+    }, [])
 
-  return (
-    <>
-      {!loading ? (
-        <GlobalContext>
-          <ChakraProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </ChakraProvider>
-        </GlobalContext>
-      ) : (
-        <div className="loading-screen">
-          <h3 style={{ color: "#4CBB17" }}>
-            <span style={{ color: "#007FFF" }}>PC</span> Expert
-          </h3>
-          <ThreeCircles
-            height="100"
-            width="100"
-            color="#4fa94d"
-            wrapperStyle={{}}
-            visible={true}
-            ariaLabel="three-circles-rotating"
-            outerCircleColor="#007FFF"
-            innerCircleColor="#4CBB17"
-            middleCircleColor="#f89a20"
-          />
-        </div>
-      )}
-    </>
-  );
+    return (
+        <>
+            {!loading ? (
+                <GlobalContext>
+                    <ChakraProvider>
+                        <Layout>
+                            <Component {...pageProps} />
+                        </Layout>
+                    </ChakraProvider>
+                </GlobalContext>
+            ) : (
+                <div className="loading-screen">
+                    <h3 style={{ color: '#4CBB17' }}>
+                        <span style={{ color: '#007FFF' }}>PC</span> Expert
+                    </h3>
+                    <ThreeCircles
+                        height="100"
+                        width="100"
+                        color="#4fa94d"
+                        wrapperStyle={{}}
+                        visible={true}
+                        ariaLabel="three-circles-rotating"
+                        outerCircleColor="#007FFF"
+                        innerCircleColor="#4CBB17"
+                        middleCircleColor="#f89a20"
+                    />
+                </div>
+            )}
+        </>
+    )
 }
 
-export default MyApp;
+export default MyApp
