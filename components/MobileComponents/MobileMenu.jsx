@@ -1,116 +1,138 @@
-import React from "react";
+import React from 'react'
 import {
-  Drawer,
-  DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  Button,
-} from "@chakra-ui/react";
-import { useGlobalContext } from "../../context/GlobalContext";
-import Link from "next/link";
+    Drawer,
+    DrawerBody,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerOverlay,
+    DrawerContent,
+    DrawerCloseButton,
+    Button,
+} from '@chakra-ui/react'
+import { useGlobalContext } from '../../context/GlobalContext'
+import Link from 'next/link'
 
 function MobileMenu() {
-  const { mobileMenu, updateMobile, isLogged } = useGlobalContext();
-  return (
-    <div className="drawer">
-      <Drawer
-        isOpen={mobileMenu}
-        onClose={() => updateMobile()}
-        placement="right"
-      >
-        <DrawerOverlay />
-        <DrawerContent fontFamily={"Dosis, sans-serif"}>
-          <DrawerCloseButton color="#5f5f5f" onClose={() => updateMobile()} />
-          <DrawerHeader color={"#f89a20"}>PC Expert</DrawerHeader>
-
-          <DrawerBody padding={0}>
-            <div className="menu-container">
-              <ul>
-                <div className="menu-home-link">
-                  <Link href="/">
-                    <li onClick={() => updateMobile()}>POČETNA</li>
-                  </Link>
-                </div>
-                <div className="menu-shop-link">
-                  <Link href="/shop">
-                    <li onClick={() => updateMobile()}>SHOP</li>
-                  </Link>
-                </div>
-
-                <div className="menu-orders-link">
-                  <Link href="/orders">
-                    <li onClick={() => updateMobile()}>NARUDŽBE</li>
-                  </Link>
-                </div>
-
-                <div className="menu-about-link">
-                  <Link href="/about">
-                    <li onClick={() => updateMobile()}>NAŠA PRIČA</li>
-                  </Link>
-                </div>
-                <div className="menu-account-link">
-                  <Link href="/account">
-                    <li onClick={() => updateMobile()}>NALOG</li>
-                  </Link>
-                </div>
-                <div className="menu-rules-link">
-                  <Link href="/rules">
-                    <li onClick={() => updateMobile()}>
-                      INSTRUKCIJE I PRAVILA KORIŠTENJA
-                    </li>
-                  </Link>
-                </div>
-              </ul>
-            </div>
-          </DrawerBody>
-
-          <DrawerFooter justifyContent={"space-between"}>
-            {!isLogged ? (
-              <Link href={"/login"} passHref>
-                <Button
-                  _hover={{ backgroundColor: "#f89a20", color: "#fff" }}
-                  color={"#5f5f5f"}
-                  border={"1px solid"}
-                  borderColor={"#f89a20"}
-                  variant="outline"
-                  onClick={() => updateMobile()}
-                >
-                  Prijavi se
-                </Button>
-              </Link>
-            ) : (
-              <Link href={"/logout"} passHref>
-                <Button
-                  _hover={{ backgroundColor: "#f89a20", color: "#fff" }}
-                  color={"#5f5f5f"}
-                  border={"1px solid"}
-                  borderColor={"#f89a20"}
-                  variant="outline"
-                  onClick={() => updateMobile()}
-                >
-                  Odjavi se
-                </Button>
-              </Link>
-            )}
-            <Button
-              _hover={{ backgroundColor: "#f89a20", color: "#fff" }}
-              color={"#5f5f5f"}
-              border={"1px solid"}
-              borderColor={"#f89a20"}
-              variant="outline"
-              mr={3}
-              onClick={() => updateMobile()}
+    const { mobileMenu, updateMobile, isLogged } = useGlobalContext()
+    return (
+        <div className="drawer">
+            <Drawer
+                isOpen={mobileMenu}
+                onClose={() => updateMobile()}
+                placement="right"
             >
-              Zatvori
-            </Button>
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer>
-    </div>
-  );
+                <DrawerOverlay />
+                <DrawerContent fontFamily={'Dosis, sans-serif'}>
+                    <DrawerCloseButton
+                        color="#5f5f5f"
+                        onClose={() => updateMobile()}
+                    />
+                    <DrawerHeader color={'#f89a20'}>PC Expert</DrawerHeader>
+
+                    <DrawerBody padding={0}>
+                        <div className="menu-container">
+                            <ul>
+                                <div className="menu-home-link">
+                                    <Link href="/">
+                                        <li onClick={() => updateMobile()}>
+                                            POČETNA
+                                        </li>
+                                    </Link>
+                                </div>
+                                <div className="menu-shop-link">
+                                    <Link href="/shop">
+                                        <li onClick={() => updateMobile()}>
+                                            SHOP
+                                        </li>
+                                    </Link>
+                                </div>
+
+                                <div className="menu-orders-link">
+                                    <Link href="/narudzbe">
+                                        <li onClick={() => updateMobile()}>
+                                            NARUDŽBE
+                                        </li>
+                                    </Link>
+                                </div>
+
+                                <div className="menu-about-link">
+                                    <Link href="/opis">
+                                        <li onClick={() => updateMobile()}>
+                                            NAŠA PRIČA
+                                        </li>
+                                    </Link>
+                                </div>
+                                <div className="menu-account-link">
+                                    <Link href="/nalog">
+                                        <li onClick={() => updateMobile()}>
+                                            NALOG
+                                        </li>
+                                    </Link>
+                                </div>
+                                <div className="menu-rules-link">
+                                    <Link href="/pravila">
+                                        <li onClick={() => updateMobile()}>
+                                            INSTRUKCIJE I PRAVILA KORIŠTENJA
+                                        </li>
+                                    </Link>
+                                </div>
+                            </ul>
+                        </div>
+                    </DrawerBody>
+
+                    <DrawerFooter justifyContent={'space-between'}>
+                        {!isLogged ? (
+                            <Link href={'/login'} passHref>
+                                <Button
+                                    _hover={{
+                                        backgroundColor: '#f89a20',
+                                        color: '#fff',
+                                    }}
+                                    color={'#5f5f5f'}
+                                    border={'1px solid'}
+                                    borderColor={'#f89a20'}
+                                    variant="outline"
+                                    onClick={() => updateMobile()}
+                                >
+                                    Prijavi se
+                                </Button>
+                            </Link>
+                        ) : (
+                            <Link href={'/logout'} passHref>
+                                <Button
+                                    _hover={{
+                                        backgroundColor: '#f89a20',
+                                        color: '#fff',
+                                    }}
+                                    color={'#5f5f5f'}
+                                    border={'1px solid'}
+                                    borderColor={'#f89a20'}
+                                    variant="outline"
+                                    onClick={() => updateMobile()}
+                                >
+                                    Odjavi se
+                                </Button>
+                            </Link>
+                        )}
+                        <Button
+                            _hover={{
+                                backgroundColor: '#f89a20',
+                                color: '#fff',
+                            }}
+                            color={'#5f5f5f'}
+                            border={'1px solid'}
+                            borderColor={'#f89a20'}
+                            variant="outline"
+                            mr={3}
+                            onClick={() => updateMobile()}
+                        >
+                            Zatvori
+                        </Button>
+                    </DrawerFooter>
+                </DrawerContent>
+            </Drawer>
+        </div>
+    )
 }
 
-export default MobileMenu;
+export default MobileMenu
