@@ -1,4 +1,4 @@
-import { Divider } from '@chakra-ui/react'
+import { Divider, Text } from '@chakra-ui/react'
 import Image from 'next/image'
 import React from 'react'
 import SingleComputer from './SingleComputer'
@@ -10,6 +10,16 @@ function ComputerOffer() {
                 <Image layout="fill" src={'/racunarizonera.png'} />
             </div>
             <div className="computer-products">
+                <Text
+                    textAlign={'center'}
+                    paddingTop={'0.4rem'}
+                    paddingBottom={'0.4rem'}
+                    fontSize={'2xl'}
+                    color={'#f89a20'}
+                    className="small-title"
+                >
+                    Ponuda racunara
+                </Text>
                 <div className="computer-products-1">
                     <SingleComputer
                         price={'900,00 KM'}
@@ -36,7 +46,14 @@ function ComputerOffer() {
                         src={'/air.jpeg'}
                         name={'Macbook Air M1'}
                     />
+                    <SingleComputer
+                        price={'2000,00 KM'}
+                        src={'/air.jpeg'}
+                        name={'Macbook Air M1'}
+                        klasa="mobile"
+                    />
                 </div>
+                <Divider />
                 <div className="computer-products-2">
                     <SingleComputer
                         price={'2000,00 KM'}
@@ -62,6 +79,12 @@ function ComputerOffer() {
                         price={'2000,00 KM'}
                         src={'/air.jpeg'}
                         name={'Macbook Air M1'}
+                    />
+                    <SingleComputer
+                        price={'2000,00 KM'}
+                        src={'/air.jpeg'}
+                        name={'Macbook Air M1'}
+                        klasa="mobile"
                     />
                 </div>
             </div>

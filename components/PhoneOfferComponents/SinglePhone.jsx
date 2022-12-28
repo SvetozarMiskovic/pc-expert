@@ -3,19 +3,23 @@ import { FaShoppingCart } from 'react-icons/fa'
 import Image from 'next/image'
 import React from 'react'
 
-function SinglePhone({ src, price, name }) {
+function SinglePhone({ src, price, name, klasa }) {
     return (
-        <div className="single-phone-holder">
+        <div
+            className={
+                klasa ? 'single-phone-holder mobile' : 'single-phone-holder'
+            }
+        >
             <div className="single-phone-header">
-                <Text fontSize={'xl'} color={'#f89a20'}>
+                <Text fontSize={'lg'} color={'#f89a20'}>
                     {name}
                 </Text>
             </div>
             <div className="single-phone-image">
-                <Image width={125} height={125} src={src} />
+                <Image width={100} height={100} src={src} />
             </div>
             <div className="single-phone-price">
-                <Text fontSize={'xl'} textAlign="center" color={'#f89a20'}>
+                <Text fontSize={'lg'} textAlign="center" color={'#f89a20'}>
                     {price}
                 </Text>
                 <Button

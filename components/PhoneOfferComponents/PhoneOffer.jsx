@@ -1,4 +1,4 @@
-import { Button, Icon } from '@chakra-ui/react'
+import { Button, Divider, Icon, Text } from '@chakra-ui/react'
 import { FaShoppingCart } from 'react-icons/fa'
 import Image from 'next/image'
 import React from 'react'
@@ -11,6 +11,16 @@ function PhoneOffer() {
                 <Image layout="fill" src={'/telefonizonera.png'} />
             </div>
             <div className="phone-products">
+                <Text
+                    textAlign={'center'}
+                    paddingTop={'0.4rem'}
+                    paddingBottom={'0.4rem'}
+                    fontSize={'2xl'}
+                    color={'#f89a20'}
+                    className={'small-title'}
+                >
+                    Ponuda telefona
+                </Text>
                 <div className="phone-products-1">
                     <SinglePhone
                         src={'/pocox3.jpeg'}
@@ -37,7 +47,14 @@ function PhoneOffer() {
                         price={'450,00KM'}
                         name={'Alcatel One Note'}
                     />
+                    <SinglePhone
+                        src={'/alcatel.jpeg'}
+                        price={'450,00KM'}
+                        name={'Alcatel One Note'}
+                        klasa="mobile"
+                    />
                 </div>
+                <Divider />
                 <div className="phone-products-2">
                     <SinglePhone
                         src={'/a50.webp'}
@@ -63,6 +80,12 @@ function PhoneOffer() {
                         src={'/a50.webp'}
                         price={'600,00KM'}
                         name={'Samsung A50'}
+                    />
+                    <SinglePhone
+                        src={'/a50.webp'}
+                        price={'600,00KM'}
+                        name={'Samsung A50'}
+                        klasa={'mobile'}
                     />
                 </div>
             </div>
