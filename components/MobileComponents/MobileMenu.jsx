@@ -46,7 +46,13 @@ function MobileMenu() {
                                         </li>
                                     </Link>
                                 </div>
-
+                                <div className="menu-account-link">
+                                    <Link href="/nalog">
+                                        <li onClick={() => updateMobile()}>
+                                            NALOG
+                                        </li>
+                                    </Link>
+                                </div>
                                 <div className="menu-orders-link">
                                     <Link href="/narudzbe">
                                         <li onClick={() => updateMobile()}>
@@ -62,13 +68,7 @@ function MobileMenu() {
                                         </li>
                                     </Link>
                                 </div>
-                                <div className="menu-account-link">
-                                    <Link href="/nalog">
-                                        <li onClick={() => updateMobile()}>
-                                            NALOG
-                                        </li>
-                                    </Link>
-                                </div>
+
                                 <div className="menu-rules-link">
                                     <Link href="/pravila">
                                         <li onClick={() => updateMobile()}>

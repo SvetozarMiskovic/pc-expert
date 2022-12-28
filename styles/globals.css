@@ -321,6 +321,7 @@ main {
     font-style: italic;
     font-size: 17px;
     /* background-color: #256d85; */
+    padding-left: 0.4rem;
     /* border-bottom: 1px fit-content solid red; */
 }
 .last-breadcrumb {
