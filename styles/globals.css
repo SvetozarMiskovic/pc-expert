@@ -235,9 +235,9 @@ main {
     flex-direction: column;
     justify-content: space-between;
     flex: 3;
-    border-top: 1px solid #5f5f5f50;
+    border-top: 1px solid #5f5f5f80;
     /* gap: 1rem; */
-    border-bottom: 1px solid #5f5f5f50;
+    border-bottom: 1px solid #5f5f5f80;
 }
 
 .small-title {
@@ -322,6 +322,7 @@ main {
     font-size: 17px;
     /* background-color: #256d85; */
     padding-left: 0.4rem;
+    /* position: absolute; */
     /* border-bottom: 1px fit-content solid red; */
 }
 .last-breadcrumb {
@@ -1094,6 +1095,56 @@ input[type='submit']:hover {
     flex-direction: column;
 }
 
+.orders-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.orders-component {
+    max-width: 1440px;
+    width: 100%;
+}
+.orders-tabs {
+    margin-top: 2rem;
+}
+.name-part {
+    grid-area: name;
+    /* width: 20px;
+    height: 10px; */
+}
+.email-part {
+    grid-area: email;
+}
+.address-part {
+    grid-area: address;
+}
+.number-part {
+    grid-area: number;
+}
+.short-desc-part {
+    grid-area: short-desc;
+}
+.detail-desc-part {
+    grid-area: detail-desc;
+}
+.order-submit {
+    width: 100%;
+}
+.order-form > form {
+    gap: 1rem;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    /* grid-template-areas:
+        'name detail-desc'
+        'email detail-desc'
+        'short-desc detail-desc'
+        'address detail-desc'
+        'number number'
+        'button button'; */
+}
 .instruction-wrapper,
 .usage-wrapper,
 .our-story-wrapper {

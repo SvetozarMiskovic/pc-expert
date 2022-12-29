@@ -3,7 +3,7 @@ import Orders from './Orders'
 
 function OrdersComponent() {
     return (
-        <div className="orders-wrapper container">
+        <div className="orders-wrapper">
             <Orders />
         </div>
     )
