@@ -1109,6 +1109,7 @@ input[type='submit']:hover {
 .orders-tabs {
     margin-top: 2rem;
 }
+
 .name-part {
     grid-area: name;
     /* width: 20px;
@@ -1132,7 +1133,8 @@ input[type='submit']:hover {
 .order-submit {
     width: 100%;
 }
-.order-form > form {
+.order-form > form,
+.query-form > form {
     gap: 1rem;
     display: flex;
     width: 100%;

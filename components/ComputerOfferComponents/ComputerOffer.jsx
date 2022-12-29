@@ -14,7 +14,7 @@ function ComputerOffer() {
                     textAlign={'center'}
                     paddingTop={'0.4rem'}
                     paddingBottom={'0.4rem'}
-                    fontSize={'2xl'}
+                    fontSize={'4xl'}
                     color={'#f89a20'}
                     className="small-title"
                 >

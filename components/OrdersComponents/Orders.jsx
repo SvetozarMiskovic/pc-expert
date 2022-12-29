@@ -24,6 +24,15 @@ function Orders() {
                 Narudzbe i upiti
             </Text>
             <Divider borderColor={'#f89a20'} />
+            <Text
+                fontSize={'md'}
+                color={'#f89a20'}
+                textAlign="center"
+                fontStyle={'italic'}
+                marginTop={'0.4rem'}
+            >
+                Narucite odredjeni artikl ili posaljite upit i informisite se!
+            </Text>
             <div className="orders-tabs">
                 <Tabs isFitted>
                     <TabList>
