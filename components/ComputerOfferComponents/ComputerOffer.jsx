@@ -7,7 +7,11 @@ function ComputerOffer() {
     return (
         <div className="computer-offer-component">
             <div className="computer-commercial">
-                <Image layout="fill" src={'/racunarizonera.png'} />
+                <Image
+                    layout="fill"
+                    src={'/racunarizonera.png'}
+                    alt="reklama"
+                />
             </div>
             <div className="computer-products">
                 <Text

@@ -18,7 +18,7 @@ function SingleComputer({ name, price, src, klasa }) {
                 </Text>
             </div>
             <div className="single-computer-image">
-                <Image width={100} height={100} src={src} />
+                <Image width={100} height={100} src={src} alt="proizvod" />
             </div>
             <div className="single-computer-price">
                 <Text fontSize={'xl'} textAlign="center" color={'#f89a20'}>
