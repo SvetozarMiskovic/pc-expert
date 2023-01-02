@@ -26,6 +26,7 @@ function Navbar() {
                             height={100}
                             className={'logo-img'}
                             src={'/T1.png'}
+                            alt="logo"
                         />
                     </a>
                 </Link>
