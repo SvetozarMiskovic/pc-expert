@@ -20,7 +20,7 @@ function Account() {
             >
                 Nalog
             </Text>
-            <Divider marginBottom="0.8rem" borderColor={'#f89a20'} />
+            <Divider borderColor={'#f89a20'} />
             <div className="account-body">
                 <div className="account-body-features">
                     <Avatar size={'2xl'} src="/sveto.jpeg" />
@@ -53,7 +53,7 @@ function Account() {
                 </div>
                 <div className="account-body-info">
                     <FormControl className="single-account-item">
-                        <FormLabel color={'#f89a20'} fontStyle="italic">
+                        <FormLabel color={'#5f5f5f'} fontStyle="italic">
                             Ime i prezime
                         </FormLabel>
                         <Input
@@ -65,7 +65,7 @@ function Account() {
                         />
                     </FormControl>
                     <FormControl className="single-account-item">
-                        <FormLabel color={'#f89a20'} fontStyle="italic">
+                        <FormLabel color={'#5f5f5f'} fontStyle="italic">
                             Email
                         </FormLabel>
                         <Input
@@ -76,7 +76,7 @@ function Account() {
                         />
                     </FormControl>
                     <FormControl className="single-account-item">
-                        <FormLabel color={'#f89a20'} fontStyle="italic">
+                        <FormLabel color={'#5f5f5f'} fontStyle="italic">
                             Broj telefona
                         </FormLabel>
                         <Input
@@ -87,7 +87,7 @@ function Account() {
                         />
                     </FormControl>
                     <FormControl className="single-account-item">
-                        <FormLabel color={'#f89a20'} fontStyle="italic">
+                        <FormLabel color={'#5f5f5f'} fontStyle="italic">
                             Adresa
                         </FormLabel>
                         <Input
@@ -98,7 +98,7 @@ function Account() {
                         />
                     </FormControl>
                     <FormControl className="single-account-item">
-                        <FormLabel color={'#f89a20'} fontStyle="italic">
+                        <FormLabel color={'#5f5f5f'} fontStyle="italic">
                             Ulica
                         </FormLabel>
                         <Input
@@ -109,7 +109,7 @@ function Account() {
                         />
                     </FormControl>
                     <FormControl className="single-account-item">
-                        <FormLabel color={'#f89a20'} fontStyle="italic">
+                        <FormLabel color={'#5f5f5f'} fontStyle="italic">
                             Grad
                         </FormLabel>
                         <Input
@@ -120,7 +120,7 @@ function Account() {
                         />
                     </FormControl>
                     <FormControl className="single-account-item">
-                        <FormLabel color={'#f89a20'} fontStyle="italic">
+                        <FormLabel color={'#5f5f5f'} fontStyle="italic">
                             Postanski broj
                         </FormLabel>
                         <Input

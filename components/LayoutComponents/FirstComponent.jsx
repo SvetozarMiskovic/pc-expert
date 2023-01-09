@@ -1,6 +1,6 @@
 import React from 'react'
 import { PhoneIcon, EmailIcon, Icon } from '@chakra-ui/icons'
-import { signIn, signOut } from 'next-auth/react'
+
 import {
     FaShoppingBasket,
     FaInfoCircle,
@@ -47,10 +47,9 @@ const FirstComponent = () => {
                     </Link>
                     {!isLogged ? (
                         // href="/login"
-                        <Link href={'/api/auth/signin'}>
+                        <Link href={'/prijava'}>
                             <div
                                 onClick={() => {
-                                    signIn()
                                     updateLoggedIn()
                                 }}
                                 className="shop"
@@ -60,10 +59,9 @@ const FirstComponent = () => {
                             </div>
                         </Link>
                     ) : (
-                        <Link href={'/api/auth/signout'}>
+                        <Link href={'/odjava'}>
                             <div
                                 onClick={() => {
-                                    signOut()
                                     updateLoggedIn()
                                 }}
                                 className="shop"

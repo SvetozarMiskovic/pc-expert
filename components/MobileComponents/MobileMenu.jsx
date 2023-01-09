@@ -80,9 +80,13 @@ function MobileMenu() {
                         </div>
                     </DrawerBody>
 
-                    <DrawerFooter justifyContent={'space-between'}>
+                    <DrawerFooter
+                        display={'flex'}
+                        justifyContent={'space-between'}
+                        gap={'0.8rem'}
+                    >
                         {!isLogged ? (
-                            <Link href={'/login'} passHref>
+                            <Link href={'/prijava'} passHref>
                                 <Button
                                     _hover={{
                                         backgroundColor: '#f89a20',
@@ -98,7 +102,7 @@ function MobileMenu() {
                                 </Button>
                             </Link>
                         ) : (
-                            <Link href={'/logout'} passHref>
+                            <Link href={'/odjava'} passHref>
                                 <Button
                                     _hover={{
                                         backgroundColor: '#f89a20',
@@ -114,6 +118,21 @@ function MobileMenu() {
                                 </Button>
                             </Link>
                         )}
+                        <Link href={'/registracija'}>
+                            <Button
+                                _hover={{
+                                    backgroundColor: '#f89a20',
+                                    color: '#fff',
+                                }}
+                                color={'#5f5f5f'}
+                                border={'1px solid'}
+                                borderColor={'#f89a20'}
+                                variant="outline"
+                                onClick={() => updateMobile()}
+                            >
+                                Registracija
+                            </Button>
+                        </Link>
                         <Button
                             _hover={{
                                 backgroundColor: '#f89a20',
@@ -123,7 +142,6 @@ function MobileMenu() {
                             border={'1px solid'}
                             borderColor={'#f89a20'}
                             variant="outline"
-                            mr={3}
                             onClick={() => updateMobile()}
                         >
                             Zatvori

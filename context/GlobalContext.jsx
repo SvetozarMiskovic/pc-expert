@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import React, { createContext, useContext, useEffect, useState } from 'react'
+import { ToastContainer } from 'react-toastify'
 
 const Context = createContext()
 
@@ -127,6 +128,12 @@ function GlobalContextProvider({ children }) {
                 bc,
             }}
         >
+            <ToastContainer
+                autoClose={4000}
+                progressStyle={{ background: '#f89a20' }}
+                style={{ fontSize: '0.9rem' }}
+                newestOnTop={true}
+            />
             {children}
         </Context.Provider>
     )

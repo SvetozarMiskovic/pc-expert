@@ -1,10 +1,11 @@
 import '../styles/globals.css'
-
+import 'react-toastify/dist/ReactToastify.css'
 import Layout from '../components/LayoutComponents/Layout'
 import { ChakraProvider } from '@chakra-ui/react'
 import GlobalContext from '../context/GlobalContext'
 import { useEffect, useState } from 'react'
 import { ThreeCircles } from 'react-loader-spinner'
+import { ToastContainer } from 'react-toastify'
 import { useRouter } from 'next/router'
 import BreadCrumb from '../components/BreadCrumbComponents/BreadCrumb'
 

@@ -1,13 +1,15 @@
 import React from 'react'
-import { Divider } from '@chakra-ui/react'
+import { Divider, Text } from '@chakra-ui/react'
 
 function OurStory() {
     return (
         <div className="our-story-component">
             <div className="our-story-header">
-                <h2>Naša priča</h2>
+                <Text color="#f89a20" fontSize={'2xl'}>
+                    Naša priča
+                </Text>
                 <Divider borderColor={'#f89a20'} />
-                <p>Upoznajte se sa nama!</p>
+                <Text fontSize="md">Upoznajte se sa nama!</Text>
             </div>
             <div className="our-story-body">
                 <ul>

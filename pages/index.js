@@ -1,19 +1,27 @@
-import Home from "../components/LayoutComponents/Home";
+import Home from '../components/LayoutComponents/Home'
+import { db } from '../util/db.server'
 
-export default function LandingPage({ res }) {
-  return (
-    <div className="homepage">
-      <Home />
-    </div>
-  );
+// console.log(prisma)
+export default function LandingPage({ strasno, res }) {
+    // console.log(prisma, req)
+    console.log(strasno, res)
+    return (
+        <div className="homepage">
+            <Home />
+        </div>
+    )
 }
 
-// export async function getServerSideProps() {
-//   const res = await db.kategorije.findMany();
+export async function getServerSideProps(req) {
+    // console.log(prisma)
+    const res = await db.korisnici.findMany()
 
-//   return {
-//     props: {
-//       res,
-//     },
-//   };
-// }
+    // console.log('REQUEST' + `${req}`, 'PRISMA' + prisma)
+
+    return {
+        props: {
+            strasno: 'sveto',
+            res,
+        },
+    }
+}

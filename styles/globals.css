@@ -947,147 +947,52 @@ main {
     gap: 2rem;
 }
 
-.login-wrapper,
-.register-wrapper {
-    display: flex;
-
-    justify-content: center;
-}
-
-.login-component,
-.register-component {
-    background-color: rgba(221, 221, 221, 0.37);
-    display: flex;
-    border: 1px solid #f89a20;
-    border-radius: 5px;
-    justify-content: center;
-    width: 500px;
-    max-height: 700px;
-    flex-direction: column;
-    border: 1px solid #f89a20;
-}
-
-.register-component {
-    max-height: fit-content;
-}
-
-.login-component form,
-.register-component form {
-    padding: 2rem;
-
-    text-align: start;
-    display: flex;
-    flex-direction: column;
-    /* align-items: space-between;
-  justify-content: space-between; */
+.login-wrapper {
     width: 100%;
-    gap: 0.7rem;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.register-content a,
-.login-content a {
-    color: #fff;
+.login-component {
+    max-width: 1440px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-component > form {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    box-shadow: 0 0 6px 0 rgb(1 1 1 / 30%);
+    padding: 1rem;
+    border-radius: 5px;
+    max-width: 900px;
+    width: 100%;
+}
+.login-header,
+.register-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+}
+.login-reg-section {
+    display: flex;
+    text-align: center;
+}
+
+.login-reg-link {
+    color: #f89a20;
     text-decoration: underline;
 }
-
-.register-content a:hover,
-.login-content a:hover {
-    color: #5f5f5f;
-}
-
-.login-header-component,
-.register-header-component {
-    background-color: #f89a20;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0.7rem;
-}
-
-.login-header-component .login-header-content,
-.register-header-component .register-header-content {
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #fff;
-    padding-top: 0.9rem;
-    padding-bottom: 0.9rem;
-}
-
-.login-header-component h3,
-.register-header-component h3 {
-    font-size: 23px;
-    text-align: center;
-    color: #fff;
-    padding-bottom: 1rem;
-}
-
-.login-header-component p,
-.register-header-component p {
-    font-style: italic;
-    color: #fff;
-    text-align: center;
-    font-size: 17px;
-}
-
-.logout-wrapper {
+.header-image {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    align-items: center;
 }
-.login-component form input[type='email'],
-.login-component form input[type='password'],
-.register-component input[type='email'],
-.register-component input[type='password'],
-.register-component input[type='text'],
-.register-component input[type='number'] {
-    width: 100%;
-    height: 2rem;
-    font-size: 18px;
-    border: 1px solid #f89a20;
-    color: #5f5f5f;
-    outline: none;
-    border-radius: 5px;
-    padding-left: 0.5rem;
-}
-
-.register-section,
-.login-section {
-    border-top: 1px solid #f89a20;
-    padding: 0.2rem;
-    display: flex;
-    font-size: 20px;
-    justify-content: center;
-    font-style: italic;
-    background-color: #f89a20;
-    color: #fff;
-}
-input[type='submit'] {
-    cursor: pointer;
-    transition: 200ms ease-in;
-    padding-left: 0;
-    margin-top: 1.3rem;
-    height: 2rem;
-    width: 100%;
-    font-size: 18px;
-    border: 1px solid #f89a20;
-    border-radius: 5px;
-    color: #5f5f5f;
-}
-input[type='submit']:hover {
-    background-color: #f89a20;
-    color: #fff;
-    transition: 200ms ease-in;
-}
-.login-component form > label,
-.register-component form > label {
-    color: #f89a20;
-
-    width: 100%;
-    font-size: 20px;
-}
-
 .rules-component-wrapper {
     width: 100%;
 
@@ -1095,6 +1000,71 @@ input[type='submit']:hover {
     flex-direction: column;
 }
 
+.register-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-component {
+    max-width: 1440px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.register-name {
+    grid-area: regname;
+}
+.register-email {
+    grid-area: regemail;
+}
+.register-pw {
+    grid-area: regpw;
+}
+.register-cpw {
+    grid-area: regcpw;
+}
+.register-address {
+    grid-area: regaddress;
+}
+.register-street {
+    grid-area: regstreet;
+}
+.register-city {
+    grid-area: regcity;
+}
+.register-pn {
+    grid-area: regpn;
+}
+.register-phn {
+    grid-area: regphn;
+}
+.register-submit {
+    grid-area: regsubmit;
+}
+
+.register-component > form {
+    margin-top: 2rem;
+
+    box-shadow: 0 0 6px 0 rgb(1 1 1 / 30%);
+    padding: 1rem;
+    border-radius: 5px;
+
+    width: 100%;
+}
+
+.register-grid {
+    margin-top: 2rem;
+    display: grid;
+    gap: 0.9rem;
+    grid-template-areas:
+        'regname regemail regphn'
+        'regaddress regcity regstreet'
+        'regpn regpw regcpw'
+        'regsubmit regsubmit regsubmit';
+}
 .orders-wrapper {
     width: 100%;
     display: flex;
@@ -1156,10 +1126,6 @@ input[type='submit']:hover {
     justify-content: center;
 }
 
-.our-story-header > p {
-    font-size: 18px;
-    /* color: #5f5f5f; */
-}
 .instruction-header,
 .usage-header,
 .our-story-header {
@@ -1168,7 +1134,7 @@ input[type='submit']:hover {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-size: 25px;
+    /* font-size: 25px; */
 
     color: #f89a20;
     font-style: italic;
@@ -1482,6 +1448,7 @@ input[type='submit']:hover {
     width: 100%;
 }
 .account-body {
+    margin-top: 2rem;
     box-shadow: 0 0 6px 0 rgb(1 1 1 / 30%);
     border-radius: 0.3rem;
     display: flex;
@@ -1811,6 +1778,20 @@ input[type='submit']:hover {
 }
 /*Bigger phone and tablet/smaller laptop screens*/
 @media (min-width: 500px) and (max-width: 768px) {
+    .register-submit {
+        width: 100%;
+    }
+    .register-grid {
+        /* grid-template-areas:
+            'regname regemail'
+            'regaddress regphn'
+            'regcity regstreet'
+            'regcpw regpw'
+            'regpn egsubmit'; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     .account-body-info {
         display: flex;
         flex-direction: column;
@@ -1974,6 +1955,20 @@ input[type='submit']:hover {
 }
 /*small screens*/
 @media (min-width: 0px) and (max-width: 499px) {
+    .register-grid {
+        /* grid-template-areas:
+            'regname regemail'
+            'regaddress regphn'
+            'regcity regstreet'
+            'regcpw regpw'
+            'regpn egsubmit'; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .register-submit {
+        width: 100%;
+    }
     .account-body-info {
         display: flex;
         flex-direction: column;
