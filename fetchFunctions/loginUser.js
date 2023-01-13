@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const loginUser = async data => {
-  const url = "https://pc-expert.vercel.app:3000/api/login";
+  const url = "https://pc-expert.vercel.app/api/login";
 
   const result = await axios.post(url, data);
 
