@@ -31,7 +31,7 @@ function BreadCrumb() {
     const breadcrumbs = generateCrumbs(router.asPath);
 
     updateBreadCrumbs(breadcrumbs);
-  }, [router.asPath, updateBreadCrumbs]);
+  }, [router.asPath]);
 
   return (
     <Breadcrumb className="breadcrumb-component">
