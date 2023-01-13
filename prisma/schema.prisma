@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model korisnici {
+  id             Int     @id @unique(map: "id_UNIQUE") @default(autoincrement())
+  ime_i_prezime  String? @db.VarChar(45)
+  email          String? @unique(map: "email_UNIQUE") @db.VarChar(45)
+  broj_telefona  Int?
+  postanski_broj Int?
+  adresa         String? @db.VarChar(45)
+  ulica          String? @db.VarChar(45)
+  lozinka        String? @db.VarChar(90)
+  grad           String? @db.VarChar(45)
+}

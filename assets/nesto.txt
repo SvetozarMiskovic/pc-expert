@@ -1,0 +1,47 @@
+!first load animacija pri requestu!
+!sivkasta boja za tekst, bez boje samo prelaz za first component!
+!lokacija ne treba, shop - o nama - pravila koristenja,! 
+!svjetlija boja bijela, bez plavih tih, sivkasta boja teksta, !
+!nijansa veci tekst prva linija!
+!input bijeli i border narandzasti, shop oner boja narandzastu!
+icone u kategorije, 
+!izbaci informacije!,
+!kategorije sa submenu!,
+!narandzasta boja generalno za okvire, promjeni,
+
+Lato font cekiraj
+Dosis font cekiraj
+dosis light 
+
+!kategorije: laptopi, monitori, racunari i komponente, televizori, telefoni, printeri i skeneri, mrezna oprema i kamere, mining
+media linkovi
+
+!Partneri promjeni ime, i Amazon!
+!Izbrizi Celinac!
+Placanje i narudzbom i karticom
+primjenu kupona
+filtracija produkata
+multi-view
+!izbaci wishlist!
+garancija ispod produkata u shopu
+
+poredaj po cijeni manjoj, vecoj
+recommended 
+bread crumbs
+
+
+
+!Prilikom ulaska na sajt poželjno bi bilo da bude animacija kao na ovom sajtu: http://deltapcshop.com/ - samo da bude narandžaste boje
+
+!Kao na https://shop.oner.ba/ sajtu, neka bude bez ovih pozadinskih boja kao što je trenutno tamno plava, neka bude bijela boja a boja slova neka bude siva odnosno kao na ovom sajtu. 
+!Ako negdje baš treba pozadinska boja da se nešto istakne onda neka to bude kao kod njih na dnu stranice gdje piše "© PCONER - Sva prava zadržana." kao neka nijansa sive skoro neprimjetne boje.!! 
+ 
+!Ovo gdje piše lokacija gore lijevo neka tu bude "Pravila korištenja".
+
+!Font mi je dobar ovaj gore gdje piše "Pozovite na broj +38765318132", ali ovaj gdje su veća slova kao kod "SHOP" taj mi se ne sviđa i tu promjeni font neka bude  
+
+!Probaj da sve bude ispisano sa dodatnim karakterima poput "č,ć itd.." npr. - početna stranica a ne pocetna stranica. 
+
+!Na sajtu mora postojati sekcija "O nama" gdje ću ti ja poslati tekst koji se treba dodati.
+
+Dark/white teme za pozadinu.
