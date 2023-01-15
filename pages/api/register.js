@@ -1,4 +1,4 @@
-import { db } from "../../utils/prismaClient";
+import { db } from "../../config/prismaClient";
 import { hash, compare } from "bcrypt";
 
 export default async function handler(req, res) {

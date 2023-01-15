@@ -1082,26 +1082,6 @@ main {
   margin-top: 2rem;
 }
 
-.name-part {
-  grid-area: name;
-  /* width: 20px;
-    height: 10px; */
-}
-.email-part {
-  grid-area: email;
-}
-.address-part {
-  grid-area: address;
-}
-.number-part {
-  grid-area: number;
-}
-.short-desc-part {
-  grid-area: short-desc;
-}
-.detail-desc-part {
-  grid-area: detail-desc;
-}
 .order-submit {
   width: 100%;
 }

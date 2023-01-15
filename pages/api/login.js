@@ -1,7 +1,7 @@
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import cookie from "cookie";
-import { db } from "../../utils/prismaClient";
+import { db } from "../../config/prismaClient";
 
 export default async function handler(req, res) {
   const data = req.body;

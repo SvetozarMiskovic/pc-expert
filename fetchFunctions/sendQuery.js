@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const registerUser = async data => {
-  const url = "https://pc-expert.vercel.app/api/register";
-  const urlDev = "http://localhost:3000/api/register";
+export const sendQuery = async data => {
+  const url = "https://pc-expert.vercel.app/api/upit";
+  const urlDev = "http://localhost:3000/api/upit";
 
   const result =
     process.env.NODE_ENV === "development"

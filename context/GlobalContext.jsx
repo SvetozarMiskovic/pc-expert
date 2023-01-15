@@ -126,7 +126,6 @@ function GlobalContextProvider({ children }) {
         progressStyle={{ background: "#f89a20" }}
         style={{ fontSize: "0.9rem" }}
         newestOnTop={true}
-        pauseOnHover={false}
       />
       {children}
     </Context.Provider>
