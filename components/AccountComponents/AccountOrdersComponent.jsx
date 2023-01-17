@@ -1,5 +1,16 @@
 import React from "react";
-import { Text, Icon } from "@chakra-ui/react";
+import {
+  Text,
+  Icon,
+  Table,
+  TableContainer,
+  TableCaption,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+} from "@chakra-ui/react";
 import { FaBoxes } from "react-icons/fa";
 function AccountOrdersComponent() {
   return (
@@ -15,7 +26,28 @@ function AccountOrdersComponent() {
           <Text fontSize={"sm"}>Prikaz podataka o narudžbama</Text>
         </div>
         <div className="account-showcase-body">
-            
+          <TableContainer>
+            <Table variant="striped" colorScheme={"brand"}>
+              <Thead>
+                <Tr>
+                  <Th>ID</Th>
+                  <Th>Datum narudzbe</Th>
+                  <Th>Datum isporuke</Th>
+                  <Th>Poslano</Th>
+                  <Th>Cijena narudžbe</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                <Tr>
+                  <Th>12345</Th>
+                  <Th>17.01.2023</Th>
+                  <Th>18.01.2023</Th>
+                  <Th>Da</Th>
+                  <Th>2000 KM</Th>
+                </Tr>
+              </Tbody>
+            </Table>
+          </TableContainer>
         </div>
       </div>
     </div>

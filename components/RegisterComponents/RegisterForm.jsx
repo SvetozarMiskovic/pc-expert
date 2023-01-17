@@ -75,7 +75,7 @@ function RegisterForm() {
           streetRef,
           cityRef,
           postalRef,
-          pwRef, 
+          pwRef,
           cpwRef
         );
       }
@@ -116,12 +116,11 @@ function RegisterForm() {
               type="text"
             />
           </FormControl>
-          <FormControl className="register-email">
+          <FormControl className="register-email" isRequired>
             <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
               E-mail
             </FormLabel>
             <Input
-              isRequired
               ref={emailRef}
               color="#5f5f5f"
               autoComplete={"off"}
@@ -219,13 +218,12 @@ function RegisterForm() {
               type="number"
             />
           </FormControl>
-          <FormControl className="register-pw">
+          <FormControl className="register-pw" isRequired>
             <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
               Lozinka
             </FormLabel>
             <InputGroup>
               <Input
-                isRequired
                 ref={pwRef}
                 color="#5f5f5f"
                 autoComplete={"off"}
@@ -253,13 +251,12 @@ function RegisterForm() {
               </InputRightElement>
             </InputGroup>
           </FormControl>
-          <FormControl className="register-cpw">
+          <FormControl className="register-cpw" isRequired>
             <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
               Potvrdi lozinku
             </FormLabel>
             <InputGroup>
               <Input
-                isRequired
                 ref={cpwRef}
                 color="#5f5f5f"
                 autoComplete={"off"}

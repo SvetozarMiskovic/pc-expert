@@ -83,12 +83,11 @@ function LoginForm() {
             PC <span style={{ color: "#4CBB17" }}>Expert</span>
           </Text> */}
         </div>
-        <FormControl width={"25rem"}>
+        <FormControl width={"25rem"} isRequired>
           <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
             E-mail
           </FormLabel>
           <Input
-            isRequired
             outline={"no-outline"}
             ref={emailRef}
             color="#5f5f5f"
@@ -102,7 +101,7 @@ function LoginForm() {
             type={"email"}
           />
         </FormControl>
-        <FormControl width={"25rem"}>
+        <FormControl width={"25rem"} isRequired>
           <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
             Lozinka
           </FormLabel>
@@ -110,7 +109,6 @@ function LoginForm() {
             <Input
               backgroundColor="#fff"
               borderRadius={"15rem"}
-              isRequired
               ref={pwRef}
               color="#5f5f5f"
               autoComplete={"off"}

@@ -5,7 +5,7 @@ import {
   FaShoppingBasket,
   FaInfoCircle,
   FaLocationArrow,
-  FaUserAlt,
+  FaUserShield,
   FaUser,
   FaLock,
   FaLockOpen,
@@ -72,7 +72,7 @@ const FirstComponent = () => {
           </Link>
           <Link href="/pravila" passHref legacyBehavior>
             <div className="rules">
-              <Icon w={"15px"} as={FaUserAlt} />
+              <Icon w={"15px"} as={FaUserShield} />
               <h5>Instrukcije i pravila korištenja</h5>
             </div>
           </Link>

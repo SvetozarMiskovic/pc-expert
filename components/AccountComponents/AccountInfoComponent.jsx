@@ -95,8 +95,12 @@ function AccountComponent() {
                   alt="avatar"
                 />
               </div>
-              <Text fontSize={"md"}>Svetozar Miskovic</Text>
-              <Text fontSize={"xs"}>tosve214@gmail.com</Text>
+              <Text fontSize={"lg"} color={"#5f5f5f"} fontWeight="bold">
+                Svetozar Miskovic
+              </Text>
+              <Text fontSize={"md"} color={"#5f5f5f"}>
+                tosve214@gmail.com
+              </Text>
             </div>
           </div>
         </div>
