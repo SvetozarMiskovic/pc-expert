@@ -43,10 +43,10 @@ function Navbar() {
           </li>
 
           <li>
-            <Link href="/nalog">KORISNČKI NALOG</Link>
+            <Link href="/nalog/info">KORISNČKI RAČUN</Link>
           </li>
           <li>
-            <Link href="/narudzbe">NARUDŽBE</Link>
+            <Link href="/nalog/narudzbe">NARUDŽBE</Link>
           </li>
 
           <li className="laptop">

@@ -40,12 +40,12 @@ function MobileMenu() {
                   </Link>
                 </div>
                 <div className="menu-account-link">
-                  <Link href="/nalog" passHref legacyBehavior>
-                    <li onClick={() => updateMobile()}>NALOG</li>
+                  <Link href="/nalog/info" passHref legacyBehavior>
+                    <li onClick={() => updateMobile()}>KORISNIČKI RAČUN</li>
                   </Link>
                 </div>
                 <div className="menu-orders-link">
-                  <Link href="/narudzbe" passHref legacyBehavior>
+                  <Link href="/nalog/narudzbe" passHref legacyBehavior>
                     <li onClick={() => updateMobile()}>NARUDŽBE</li>
                   </Link>
                 </div>
