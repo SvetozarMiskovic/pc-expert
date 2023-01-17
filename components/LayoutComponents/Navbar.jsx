@@ -9,6 +9,7 @@ import NextLink from "next/link";
 import { useGlobalContext } from "../../context/GlobalContext";
 import { useAuthContext } from "../../context/AuthContext";
 import { useRouter } from "next/router";
+import MenuComp from "../SponsoredComponents/MenuComp";
 
 function Navbar() {
   const {
@@ -20,7 +21,7 @@ function Navbar() {
   const { isLoged } = useAuthContext();
   const router = useRouter();
   return (
-    <div className="navbar desktop container">
+    <div className="navbar desktop">
       <div className="navbar-logo">
         <Link href="/" passHref legacyBehavior>
           <Image
@@ -32,17 +33,22 @@ function Navbar() {
           />
         </Link>
       </div>
+      <div className="navbar-products">
+        <MenuComp />
+      </div>
       <div className="navbar-links">
         <ul>
           <li>
             <Link href="/shop">SHOP</Link>
           </li>
+
+          <li>
+            <Link href="/nalog">KORISNČKI NALOG</Link>
+          </li>
           <li>
             <Link href="/narudzbe">NARUDŽBE</Link>
           </li>
-          <li>
-            <Link href="/nalog">NALOG</Link>
-          </li>
+
           <li className="laptop">
             <Link href="/opis">NAŠA PRIČA</Link>
           </li>

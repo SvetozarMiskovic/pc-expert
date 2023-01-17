@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { loginUser } from "../../fetchFunctions/loginUser";
 import {
   FormControl,
@@ -72,67 +73,52 @@ function LoginForm() {
 
   return (
     <div className="login-component">
-      <Text
-        fontStyle={"italic"}
-        textAlign={"center"}
-        color={"#f89a20"}
-        fontSize={"2xl"}
-      >
-        Prijava
-      </Text>
-      <Divider borderColor={"#f89a20"} />
-
       <form onSubmit={handleSubmit}>
         <div className="login-header">
-          {/* <div className="header-image">
-                        <Image width={200} height={200} src="/T1.png" />
-                    </div> */}
-          <Text color="#f89a20" fontSize="3xl">
-            Prijavite se na svoj nalog
-          </Text>
-          <Divider marginTop="1rem" marginBottom="1rem" borderColor="#f89a20" />
-          <Text
-            fontSize={"lg"}
-            color={"#5f5f5f"}
-            fontStyle={"italic"}
-            textDecoration="underline"
-          >
-            Registracijom i prijavom ostvarujete ubrzavanje procesa naplate
-            prilikom zavrsetka kupovine, uvid u prethodne narudzbe i mnoge
-            druge...
-          </Text>
-          <Divider marginTop="1rem" borderColor="#f89a20" />
+          <div className="header-image">
+            <Image width={150} height={150} src="/T1.png" alt="logo" />
+          </div>
+
+          {/* <Text color="#007FFF" fontSize="5xl" fontWeight={"bold"}>
+            PC <span style={{ color: "#4CBB17" }}>Expert</span>
+          </Text> */}
         </div>
-        <FormControl>
+        <FormControl width={"25rem"}>
           <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
             E-mail
           </FormLabel>
           <Input
             isRequired
+            outline={"no-outline"}
             ref={emailRef}
             color="#5f5f5f"
             autoComplete={"off"}
             outlineColor={"transparent"}
-            _hover={{ borderColor: "#f89a20" }}
-            _focusVisible={{ borderColor: "#f89a20" }}
-            borderColor={"#f89a20"}
+            _hover={{ outline: "no-outline" }}
+            _focusVisible={{ outline: "no-outline" }}
+            // borderColor={"#f89a20"}
+            borderRadius={"15rem"}
+            backgroundColor="#fff"
             type={"email"}
           />
         </FormControl>
-        <FormControl>
+        <FormControl width={"25rem"}>
           <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
             Lozinka
           </FormLabel>
           <InputGroup>
             <Input
+              backgroundColor="#fff"
+              borderRadius={"15rem"}
               isRequired
               ref={pwRef}
               color="#5f5f5f"
               autoComplete={"off"}
               outlineColor={"transparent"}
-              _hover={{ borderColor: "#f89a20" }}
-              _focusVisible={{ borderColor: "#f89a20" }}
-              borderColor={"#f89a20"}
+              outline={"no-outline"}
+              _hover={{ outline: "no-outline" }}
+              _focusVisible={{ outline: "no-outline" }}
+              // borderColor={"#f89a20"}
               type={showPw ? "text" : "password"}
             />
             <InputRightElement>
@@ -151,37 +137,46 @@ function LoginForm() {
             </InputRightElement>
           </InputGroup>
         </FormControl>
-        <FormControl width={"100%"} display="flex" justifyContent={"center"}>
-          <Button
-            width={"25rem"}
-            _hover={{
-              backgroundColor: "#f89a2099",
-            }}
-            _active={{
-              backgroundColor: "#f89a20",
-            }}
-            backgroundColor={"#f89a20"}
-            color={"#fff"}
-            type={"submit"}
-            isLoading={loading}
-          >
-            Prijavi se
-          </Button>
-        </FormControl>
         <FormControl
           width={"100%"}
           display="flex"
-          flexDir={"column"}
-          alignItems="center"
+          gap={"1rem"}
+          justifyContent={"center"}
         >
-          <div className="login-reg-section">
-            <Text fontStyle={"italic"} color={"#5f5f5f"} fontSize={"lg"}>
-              Nemate nalog?{" "}
-              <span className="login-reg-link">
-                <Link href="registracija">Registrujte se!</Link>
-              </span>
-            </Text>
-          </div>
+          <Button
+            width={"12rem"}
+            _hover={{
+              backgroundColor: "#4CBB1799",
+            }}
+            _active={{
+              backgroundColor: "#4CBB17",
+            }}
+            backgroundColor={"#4CBB17"}
+            color={"#fff"}
+            type={"submit"}
+            isLoading={loading}
+            borderRadius={"15rem"}
+          >
+            Prijavi se
+          </Button>
+          <Button
+            width={"12rem"}
+            borderRadius={"15rem"}
+            _hover={{
+              backgroundColor: "#007FFF99",
+            }}
+            _active={{
+              backgroundColor: "#007FFF",
+            }}
+            onClick={() => {
+              router.push("/registracija");
+            }}
+            backgroundColor={"#007FFF"}
+            color={"#fff"}
+            type={"button"}
+          >
+            Registruj se
+          </Button>
         </FormControl>
       </form>
     </div>

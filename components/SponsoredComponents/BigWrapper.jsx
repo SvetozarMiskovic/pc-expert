@@ -1,12 +1,12 @@
 import React from "react";
 import FeatureList from "./FeatureList";
-import SponsArticle from "./SponsArticle";
+import QuickMenu from "../QuickMenuComponents/QuickMenu";
 
 function BigWrapper() {
   return (
     <div className="big-wrapper">
       <FeatureList />
-      <SponsArticle />
+      <QuickMenu />
     </div>
   );
 }

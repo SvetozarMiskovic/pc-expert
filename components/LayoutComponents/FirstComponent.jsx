@@ -22,7 +22,7 @@ const FirstComponent = () => {
   const { isLoged, updateLoged } = useAuthContext();
   return (
     <div className="first-component">
-      <div className="container info-line">
+      <div className="info-line">
         <div className="left-side">
           <div className="phone-number">
             <PhoneIcon />

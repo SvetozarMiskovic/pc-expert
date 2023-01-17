@@ -19,24 +19,25 @@ export async function getServerSideProps(context) {
   if (token) {
     const isGood = verify(token, process.env.JWT_SECRET);
 
-    const dbResult = await db.korisnici.findMany({
+    const dbResult = await db.korisnici.findFirst({
       where: {
         id: isGood.sub,
       },
     });
 
     const userObj = dbResult[0];
-    delete userObj.lozinka;
+    userObj ? delete userObj.lozinka : null;
 
     return {
       props: {
         userObj,
       },
     };
+  } else {
+    return {
+      props: {
+        userObj: {},
+      },
+    };
   }
-  return {
-    props: {
-      userObj: {},
-    },
-  };
 }

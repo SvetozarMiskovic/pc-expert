@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import uniqid from "uniqid";
+import Image from "next/image";
 import Link from "next/link";
 import { registerUser } from "../../fetchFunctions/registerUser";
 import { toast } from "react-toastify";
@@ -15,7 +16,11 @@ import {
   InputGroup,
 } from "@chakra-ui/react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useRouter } from "next/router";
+import { resetRegisterForm } from "../../utils/resetRegisterForm";
 function RegisterForm() {
+  const router = useRouter();
+
   const [loading, setLoading] = useState(false);
 
   const [showPw, setShowPW] = useState(false);
@@ -62,6 +67,17 @@ function RegisterForm() {
           progressStyle: { background: "#4CBB17" },
         });
         setLoading(prevState => !prevState);
+        resetRegisterForm(
+          nameRef,
+          emailRef,
+          numberRef,
+          addressRef,
+          streetRef,
+          cityRef,
+          postalRef,
+          pwRef, 
+          cpwRef
+        );
       }
     } else {
       toast("Lozinke se ne podudaraju! Pokusajte ponovo.", {
@@ -73,31 +89,14 @@ function RegisterForm() {
 
   return (
     <div className="register-component">
-      <Text fontSize={"2xl"} color={"#f89a20"} fontStyle={"italic"}>
-        Registracija
-      </Text>
-      <Divider borderColor={"#f89a20"} />
-
       <form onSubmit={handleSubmit}>
         <div className="register-header">
-          {/* <div className="header-image">
-                        <Image width={200} height={200} src="/T1.png" />
-                    </div> */}
-          <Text color="#f89a20" fontSize="3xl">
+          <div className="header-image">
+            <Image width={150} height={150} src="/T1.png" alt="logo" />
+          </div>
+          {/* <Text color="#f89a20" fontSize="3xl">
             Registrujte novi nalog
-          </Text>
-          <Divider marginTop="1rem" marginBottom="1rem" borderColor="#f89a20" />
-          <Text
-            fontSize={"lg"}
-            color={"#5f5f5f"}
-            fontStyle={"italic"}
-            textDecoration="underline"
-          >
-            Registracijom i prijavom ostvarujete ubrzavanje procesa naplate
-            prilikom zavrsetka kupovine, uvid u prethodne narudzbe i mnoge
-            druge...
-          </Text>
-          <Divider marginTop="1rem" borderColor="#f89a20" />
+          </Text> */}
         </div>
         <div className="register-grid">
           <FormControl className="register-name">
@@ -109,9 +108,11 @@ function RegisterForm() {
               color="#5f5f5f"
               autoComplete={"off"}
               outlineColor={"transparent"}
-              _hover={{ borderColor: "#f89a20" }}
-              _focusVisible={{ borderColor: "#f89a20" }}
-              borderColor={"#f89a20"}
+              outline={"no-outline"}
+              _hover={{ outline: "no-outline" }}
+              _focusVisible={{ outline: "no-outline" }}
+              backgroundColor="#fff"
+              borderRadius={"15rem"}
               type="text"
             />
           </FormControl>
@@ -125,9 +126,11 @@ function RegisterForm() {
               color="#5f5f5f"
               autoComplete={"off"}
               outlineColor={"transparent"}
-              _hover={{ borderColor: "#f89a20" }}
-              _focusVisible={{ borderColor: "#f89a20" }}
-              borderColor={"#f89a20"}
+              outline={"no-outline"}
+              _hover={{ outline: "no-outline" }}
+              _focusVisible={{ outline: "no-outline" }}
+              backgroundColor="#fff"
+              borderRadius={"15rem"}
               type="email"
             />
           </FormControl>
@@ -140,9 +143,11 @@ function RegisterForm() {
               color="#5f5f5f"
               autoComplete={"off"}
               outlineColor={"transparent"}
-              _hover={{ borderColor: "#f89a20" }}
-              _focusVisible={{ borderColor: "#f89a20" }}
-              borderColor={"#f89a20"}
+              outline={"no-outline"}
+              _hover={{ outline: "no-outline" }}
+              _focusVisible={{ outline: "no-outline" }}
+              backgroundColor="#fff"
+              borderRadius={"15rem"}
               type="text"
             />
           </FormControl>
@@ -155,9 +160,11 @@ function RegisterForm() {
               color="#5f5f5f"
               autoComplete={"off"}
               outlineColor={"transparent"}
-              _hover={{ borderColor: "#f89a20" }}
-              _focusVisible={{ borderColor: "#f89a20" }}
-              borderColor={"#f89a20"}
+              outline={"no-outline"}
+              _hover={{ outline: "no-outline" }}
+              _focusVisible={{ outline: "no-outline" }}
+              backgroundColor="#fff"
+              borderRadius={"15rem"}
               type="text"
             />
           </FormControl>
@@ -170,9 +177,11 @@ function RegisterForm() {
               color="#5f5f5f"
               autoComplete={"off"}
               outlineColor={"transparent"}
-              _hover={{ borderColor: "#f89a20" }}
-              _focusVisible={{ borderColor: "#f89a20" }}
-              borderColor={"#f89a20"}
+              outline={"no-outline"}
+              _hover={{ outline: "no-outline" }}
+              _focusVisible={{ outline: "no-outline" }}
+              backgroundColor="#fff"
+              borderRadius={"15rem"}
               type="text"
             />
           </FormControl>
@@ -185,9 +194,11 @@ function RegisterForm() {
               color="#5f5f5f"
               autoComplete={"off"}
               outlineColor={"transparent"}
-              _hover={{ borderColor: "#f89a20" }}
-              _focusVisible={{ borderColor: "#f89a20" }}
-              borderColor={"#f89a20"}
+              outline={"no-outline"}
+              _hover={{ outline: "no-outline" }}
+              _focusVisible={{ outline: "no-outline" }}
+              backgroundColor="#fff"
+              borderRadius={"15rem"}
               type="number"
             />
           </FormControl>
@@ -200,9 +211,11 @@ function RegisterForm() {
               color="#5f5f5f"
               autoComplete={"off"}
               outlineColor={"transparent"}
-              _hover={{ borderColor: "#f89a20" }}
-              _focusVisible={{ borderColor: "#f89a20" }}
-              borderColor={"#f89a20"}
+              outline={"no-outline"}
+              _hover={{ outline: "no-outline" }}
+              _focusVisible={{ outline: "no-outline" }}
+              backgroundColor="#fff"
+              borderRadius={"15rem"}
               type="number"
             />
           </FormControl>
@@ -217,10 +230,12 @@ function RegisterForm() {
                 color="#5f5f5f"
                 autoComplete={"off"}
                 outlineColor={"transparent"}
-                _hover={{ borderColor: "#f89a20" }}
-                _focusVisible={{ borderColor: "#f89a20" }}
-                borderColor={"#f89a20"}
+                outline={"no-outline"}
+                _hover={{ outline: "no-outline" }}
+                _focusVisible={{ outline: "no-outline" }}
                 type={showPw ? "text" : "password"}
+                backgroundColor="#fff"
+                borderRadius={"15rem"}
               />
               <InputRightElement>
                 <Button
@@ -249,9 +264,11 @@ function RegisterForm() {
                 color="#5f5f5f"
                 autoComplete={"off"}
                 outlineColor={"transparent"}
-                _hover={{ borderColor: "#f89a20" }}
-                _focusVisible={{ borderColor: "#f89a20" }}
-                borderColor={"#f89a20"}
+                outline={"no-outline"}
+                _hover={{ outline: "no-outline" }}
+                _focusVisible={{ outline: "no-outline" }}
+                backgroundColor="#fff"
+                borderRadius={"15rem"}
                 type={showCPw ? "text" : "password"}
               />
               <InputRightElement>
@@ -270,14 +287,18 @@ function RegisterForm() {
               </InputRightElement>
             </InputGroup>
           </FormControl>
+        </div>
+        <div className="register-buttons">
           <Button
             _hover={{
-              backgroundColor: "#f89a2099",
+              backgroundColor: "#4CBB1799",
             }}
             _active={{
-              backgroundColor: "#f89a20",
+              backgroundColor: "#4CBB17",
             }}
-            backgroundColor={"#f89a20"}
+            borderRadius={"12rem"}
+            backgroundColor={"#4CBB17"}
+            width={"50%"}
             color={"#fff"}
             className="register-submit"
             type="submit"
@@ -286,27 +307,27 @@ function RegisterForm() {
           >
             Registruj se
           </Button>
+          <Button
+            _hover={{
+              backgroundColor: "#007FFF99",
+            }}
+            _active={{
+              backgroundColor: "#007FFF",
+            }}
+            backgroundColor={"#007FFF"}
+            borderRadius={"12rem"}
+            width={"50%"}
+            color={"#fff"}
+            className="register-submit"
+            type="button"
+            onClick={() => {
+              router.push("/prijava");
+            }}
+            loadingText={"Obradjujem zahtjev..."}
+          >
+            Prijavi se
+          </Button>
         </div>
-        <FormControl
-          width={"100%"}
-          display="flex"
-          flexDir={"column"}
-          alignItems="center"
-        >
-          <div className="login-reg-section">
-            <Text
-              fontStyle={"italic"}
-              color={"#5f5f5f"}
-              fontSize={"lg"}
-              marginTop={"1rem"}
-            >
-              Imate nalog?{" "}
-              <span className="login-reg-link">
-                <Link href="prijava">Prijavite se!</Link>
-              </span>
-            </Text>
-          </div>
-        </FormControl>
       </form>
     </div>
   );
