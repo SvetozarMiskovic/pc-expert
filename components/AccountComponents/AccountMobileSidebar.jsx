@@ -24,21 +24,23 @@ function AccountMobileSidebar() {
   };
   return (
     <div className="account-mobile-sidebar-wrapper">
-      <Button
-        className="account-mobile-sidebar-button"
-        position={"absolute"}
-        top={0}
-        left={"-1"}
-        width={"fit-content"}
-        height={"50px"}
-        ref={btnRef}
-        _hover={{ backgroundColor: "#f89a20" }}
-        backgroundColor={"#f89a20"}
-        color={"#fff"}
-        onClick={() => updateDrawerState()}
-      >
-        Korisnički meni
-      </Button>
+      {isLoged && (
+        <Button
+          className="account-mobile-sidebar-button"
+          position={"absolute"}
+          top={0}
+          left={"-1"}
+          width={"fit-content"}
+          height={"50px"}
+          ref={btnRef}
+          _hover={{ backgroundColor: "#f89a20" }}
+          backgroundColor={"#f89a20"}
+          color={"#fff"}
+          onClick={() => updateDrawerState()}
+        >
+          Korisnički meni
+        </Button>
+      )}
       <Drawer
         isOpen={isOpen}
         placement="left"
