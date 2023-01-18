@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { getUser } from "../../fetchFunctions/getUser";
 import {
   Text,
   Icon,
@@ -13,17 +14,33 @@ import {
 } from "@chakra-ui/react";
 import { FaBoxes } from "react-icons/fa";
 function AccountOrdersComponent() {
+  const [user, setUser] = useState({});
+
+  const updateUser = obj => {
+    setUser(obj);
+  };
+
+  useEffect(() => {
+    getUser().then(res => updateUser(res.data));
+  }, []);
+
+  if (!user.id)
+    return (
+      <Text fontSize={"3xl"} color={"#5f5f5f"} fontStyle={"italic"}>
+        {user?.message}
+      </Text>
+    );
   return (
     <div className="account-showcase-wrapper">
       <div className="account-showcase-component">
         <div className="account-showcase-header">
           <div className="account-showcase-header-title">
             <Icon as={FaBoxes} fontSize={"4xl"} color={"#f89a20"} />
-            <Text fontSize={"3xl"} color={"#5f5f5f"}>
+            <Text fontSize={"3xl"} color={"#5f5f5f"} fontWeight={"bold"}>
               Narudžbe
             </Text>
           </div>
-          <Text fontSize={"sm"}>Prikaz podataka o narudžbama</Text>
+          <Text fontSize={"md"}>Prikaz podataka o narudžbama</Text>
         </div>
         <div className="account-showcase-body">
           <TableContainer overflow={"auto"} width={"100%"}>
@@ -32,7 +49,6 @@ function AccountOrdersComponent() {
               // layout={"fixed"}
               variant="striped"
               colorScheme={"brand"}
-              wordWrap={"break-word"}
             >
               <Thead>
                 <Tr>

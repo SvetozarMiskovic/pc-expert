@@ -100,10 +100,8 @@ function RegisterForm() {
         </div>
         <div className="register-grid">
           <FormControl className="register-name">
-            <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
-              Ime i prezime
-            </FormLabel>
             <Input
+              placeholder="Ime i prezime"
               ref={nameRef}
               color="#5f5f5f"
               autoComplete={"off"}
@@ -117,10 +115,8 @@ function RegisterForm() {
             />
           </FormControl>
           <FormControl className="register-email" isRequired>
-            <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
-              E-mail
-            </FormLabel>
             <Input
+              placeholder="E-mail"
               ref={emailRef}
               color="#5f5f5f"
               autoComplete={"off"}
@@ -134,10 +130,8 @@ function RegisterForm() {
             />
           </FormControl>
           <FormControl className="register-address">
-            <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
-              Adresa
-            </FormLabel>
             <Input
+              placeholder="Adresa"
               ref={addressRef}
               color="#5f5f5f"
               autoComplete={"off"}
@@ -151,10 +145,8 @@ function RegisterForm() {
             />
           </FormControl>
           <FormControl className="register-street">
-            <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
-              Ulica
-            </FormLabel>
             <Input
+              placeholder="Ulica"
               ref={streetRef}
               color="#5f5f5f"
               autoComplete={"off"}
@@ -168,10 +160,8 @@ function RegisterForm() {
             />
           </FormControl>
           <FormControl className="register-city">
-            <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
-              Grad
-            </FormLabel>
             <Input
+              placeholder="Grad"
               ref={cityRef}
               color="#5f5f5f"
               autoComplete={"off"}
@@ -185,10 +175,8 @@ function RegisterForm() {
             />
           </FormControl>
           <FormControl className="register-pn">
-            <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
-              Postanski broj
-            </FormLabel>
             <Input
+              placeholder="Postanski broj"
               ref={postalRef}
               color="#5f5f5f"
               autoComplete={"off"}
@@ -202,10 +190,8 @@ function RegisterForm() {
             />
           </FormControl>
           <FormControl className="register-phn">
-            <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
-              Broj telefona
-            </FormLabel>
             <Input
+              placeholder="Broj telefona"
               ref={numberRef}
               color="#5f5f5f"
               autoComplete={"off"}
@@ -219,11 +205,9 @@ function RegisterForm() {
             />
           </FormControl>
           <FormControl className="register-pw" isRequired>
-            <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
-              Lozinka
-            </FormLabel>
             <InputGroup>
               <Input
+                placeholder="Lozinka"
                 ref={pwRef}
                 color="#5f5f5f"
                 autoComplete={"off"}
@@ -252,11 +236,9 @@ function RegisterForm() {
             </InputGroup>
           </FormControl>
           <FormControl className="register-cpw" isRequired>
-            <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
-              Potvrdi lozinku
-            </FormLabel>
             <InputGroup>
               <Input
+                placeholder="Potvrdi lozinku"
                 ref={cpwRef}
                 color="#5f5f5f"
                 autoComplete={"off"}

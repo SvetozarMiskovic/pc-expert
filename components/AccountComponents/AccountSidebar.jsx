@@ -33,14 +33,16 @@ function AccountSidebar() {
             </Text>
           )}
           {isLoged && (
-            <Text
-              color={"#5f5f5f"}
-              cursor="pointer"
-              className="account-sidebar-link"
-              fontSize="sm"
-            >
-              Promjeni lozinku
-            </Text>
+            <Link href="/nalog/resetpw">
+              <Text
+                color={"#5f5f5f"}
+                cursor="pointer"
+                className="account-sidebar-link"
+                fontSize="sm"
+              >
+                Promjeni lozinku
+              </Text>
+            </Link>
           )}
           {isLoged && (
             <Text

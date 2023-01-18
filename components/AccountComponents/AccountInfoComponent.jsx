@@ -1,10 +1,30 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, Icon, Avatar } from "@chakra-ui/react";
 import { FaUserCheck } from "react-icons/fa";
 import Image from "next/image";
+
+import axios from "axios";
+import { getUser } from "../../fetchFunctions/getUser";
+
 function AccountComponent() {
+  const [user, setUser] = useState({});
+
+  const updateUser = obj => {
+    setUser(obj);
+  };
+
+  useEffect(() => {
+    getUser().then(res => updateUser(res.data));
+  }, []);
+
+  if (!user.id)
+    return (
+      <Text fontSize={"3xl"} color={"#5f5f5f"} fontStyle={"italic"}>
+        {user?.message}
+      </Text>
+    );
   return (
     <div className="account-showcase-wrapper">
       <div className="account-showcase-component">
@@ -24,7 +44,7 @@ function AccountComponent() {
                 Ime i prezime
               </Text>
               <Text color={"#5f5f5f"} fontSize={"md"} fontWeight="bold">
-                Svetozar Miskovic
+                {user?.ime_i_prezime}
               </Text>
             </div>
             <div className="account-showcase-body-single">
@@ -32,7 +52,7 @@ function AccountComponent() {
                 Email
               </Text>
               <Text color={"#5f5f5f"} fontSize={"md"} fontWeight="bold">
-                tosve214@gmail.com
+                {user?.email}
               </Text>
             </div>
             <div className="account-showcase-body-single">
@@ -40,7 +60,7 @@ function AccountComponent() {
                 Adresa
               </Text>
               <Text color={"#5f5f5f"} fontSize={"md"} fontWeight="bold">
-                Karanovac bb
+                {user?.adresa}
               </Text>
             </div>
             <div className="account-showcase-body-single">
@@ -48,7 +68,7 @@ function AccountComponent() {
                 Ulica
               </Text>
               <Text color={"#5f5f5f"} fontSize={"md"} fontWeight="bold">
-                Voje i Gorana Kajkuta
+                {user?.ulica}
               </Text>
             </div>
             <div className="account-showcase-body-single">
@@ -56,7 +76,7 @@ function AccountComponent() {
                 Grad
               </Text>
               <Text color={"#5f5f5f"} fontSize={"md"} fontWeight="bold">
-                Banja Luka
+                {user?.grad}
               </Text>
             </div>
             <div className="account-showcase-body-single">
@@ -64,7 +84,7 @@ function AccountComponent() {
                 Postanski broj
               </Text>
               <Text color={"#5f5f5f"} fontSize={"md"} fontWeight="bold">
-                78000
+                {user?.postanski_broj}
               </Text>
             </div>
             <div className="account-showcase-body-single">
@@ -72,15 +92,7 @@ function AccountComponent() {
                 Broj Telefona
               </Text>
               <Text color={"#5f5f5f"} fontSize={"md"} fontWeight="bold">
-                063791630
-              </Text>
-            </div>
-            <div className="account-showcase-body-single">
-              <Text color={"#5f5f5f"} fontSize={"lg"}>
-                Ime i prezime
-              </Text>
-              <Text color={"#5f5f5f"} fontSize={"md"} fontWeight="bold">
-                Svetozar Miskovic
+                {"+387" + user?.broj_telefona}
               </Text>
             </div>
           </div>

@@ -13,7 +13,7 @@ import {
   Divider,
   Text,
 } from "@chakra-ui/react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaLock } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useAuthContext } from "../../context/AuthContext";
 import { useRouter } from "next/router";
@@ -85,10 +85,8 @@ function LoginForm() {
         </div>
         <div className="login-body">
           <FormControl isRequired>
-            <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
-              E-mail
-            </FormLabel>
             <Input
+              placeholder={"E-mail"}
               outline={"no-outline"}
               ref={emailRef}
               color="#5f5f5f"
@@ -104,9 +102,6 @@ function LoginForm() {
             />
           </FormControl>
           <FormControl isRequired>
-            <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
-              Lozinka
-            </FormLabel>
             <InputGroup>
               <Input
                 width={"100%"}
@@ -119,6 +114,7 @@ function LoginForm() {
                 outline={"no-outline"}
                 _hover={{ outline: "no-outline" }}
                 _focusVisible={{ outline: "no-outline" }}
+                placeholder={"Lozinka"}
                 // borderColor={"#f89a20"}
                 type={showPw ? "text" : "password"}
               />
@@ -139,6 +135,24 @@ function LoginForm() {
             </InputGroup>
           </FormControl>
         </div>
+
+        <Link href="/resetpw">
+          <Text
+            display={"flex"}
+            justifyContent={"center"}
+            alignItems={"center"}
+            gap={"0.3rem"}
+            _hover={{
+              textDecoration: "underline",
+            }}
+            fontSize={"sm"}
+            fontWeight={"bold"}
+            fontStyle={"italic"}
+            color={"#5f5f5f"}
+          >
+            Zaboravio sam lozinku <Icon as={FaLock} />
+          </Text>
+        </Link>
         <FormControl
           width={"100%"}
           display="flex"
