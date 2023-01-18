@@ -21,6 +21,10 @@ import {
   Icon,
   Fade,
   Button,
+  ScaleFade,
+  Slide,
+  SlideFade,
+  Collapse,
 } from "@chakra-ui/react";
 function NewCategories() {
   const [isOpen, setIsOpen] = useState(false);
@@ -170,7 +174,7 @@ function NewCategories() {
             <Text fontSize={"md"}>Mining </Text>
           </Tab>
         </TabList>
-        <Fade in={isOpen}>
+        <Collapse in={isOpen} animateOpacity>
           <TabPanels display={isOpen ? "block" : "none"}>
             <TabPanel>
               <Text fontSize={"2xl"}>Proizvođač</Text>
@@ -226,7 +230,7 @@ function NewCategories() {
               <p>Mining</p>
             </TabPanel>
           </TabPanels>
-        </Fade>
+        </Collapse>
       </Tabs>
     </div>
   );
