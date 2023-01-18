@@ -174,7 +174,7 @@ function NewCategories() {
             <Text fontSize={"md"}>Mining </Text>
           </Tab>
         </TabList>
-        <Collapse in={isOpen} animateOpacity>
+        <Collapse in={isOpen} animateOpacity endingHeight={"200px"}>
           <TabPanels display={isOpen ? "block" : "none"}>
             <TabPanel>
               <Text fontSize={"2xl"}>Proizvođač</Text>
