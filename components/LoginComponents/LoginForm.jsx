@@ -83,58 +83,62 @@ function LoginForm() {
             PC <span style={{ color: "#4CBB17" }}>Expert</span>
           </Text> */}
         </div>
-        <FormControl width={"25rem"} isRequired>
-          <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
-            E-mail
-          </FormLabel>
-          <Input
-            outline={"no-outline"}
-            ref={emailRef}
-            color="#5f5f5f"
-            autoComplete={"off"}
-            outlineColor={"transparent"}
-            _hover={{ outline: "no-outline" }}
-            _focusVisible={{ outline: "no-outline" }}
-            // borderColor={"#f89a20"}
-            borderRadius={"15rem"}
-            backgroundColor="#fff"
-            type={"email"}
-          />
-        </FormControl>
-        <FormControl width={"25rem"} isRequired>
-          <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
-            Lozinka
-          </FormLabel>
-          <InputGroup>
+        <div className="login-body">
+          <FormControl isRequired>
+            <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
+              E-mail
+            </FormLabel>
             <Input
-              backgroundColor="#fff"
-              borderRadius={"15rem"}
-              ref={pwRef}
+              outline={"no-outline"}
+              ref={emailRef}
               color="#5f5f5f"
               autoComplete={"off"}
               outlineColor={"transparent"}
-              outline={"no-outline"}
               _hover={{ outline: "no-outline" }}
               _focusVisible={{ outline: "no-outline" }}
               // borderColor={"#f89a20"}
-              type={showPw ? "text" : "password"}
+              borderRadius={"15rem"}
+              backgroundColor="#fff"
+              type={"email"}
+              width={"100%"}
             />
-            <InputRightElement>
-              <Button
-                background={"transparent"}
-                _hover={{ background: "transparent" }}
-                _active={{ background: "transparent" }}
-                onClick={() => setShowPW(!showPw)}
-              >
-                {showPw ? (
-                  <Icon color={"#5f5f5f"} as={FaEyeSlash} />
-                ) : (
-                  <Icon color={"#5f5f5f"} as={FaEye} />
-                )}
-              </Button>
-            </InputRightElement>
-          </InputGroup>
-        </FormControl>
+          </FormControl>
+          <FormControl isRequired>
+            <FormLabel fontSize={"lg"} color={"#5f5f5f"}>
+              Lozinka
+            </FormLabel>
+            <InputGroup>
+              <Input
+                width={"100%"}
+                backgroundColor="#fff"
+                borderRadius={"15rem"}
+                ref={pwRef}
+                color="#5f5f5f"
+                autoComplete={"off"}
+                outlineColor={"transparent"}
+                outline={"no-outline"}
+                _hover={{ outline: "no-outline" }}
+                _focusVisible={{ outline: "no-outline" }}
+                // borderColor={"#f89a20"}
+                type={showPw ? "text" : "password"}
+              />
+              <InputRightElement>
+                <Button
+                  background={"transparent"}
+                  _hover={{ background: "transparent" }}
+                  _active={{ background: "transparent" }}
+                  onClick={() => setShowPW(!showPw)}
+                >
+                  {showPw ? (
+                    <Icon color={"#5f5f5f"} as={FaEyeSlash} />
+                  ) : (
+                    <Icon color={"#5f5f5f"} as={FaEye} />
+                  )}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+          </FormControl>
+        </div>
         <FormControl
           width={"100%"}
           display="flex"

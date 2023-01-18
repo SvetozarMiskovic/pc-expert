@@ -26,8 +26,14 @@ function AccountOrdersComponent() {
           <Text fontSize={"sm"}>Prikaz podataka o narudžbama</Text>
         </div>
         <div className="account-showcase-body">
-          <TableContainer>
-            <Table variant="striped" colorScheme={"brand"}>
+          <TableContainer overflow={"auto"} width={"100%"}>
+            <Table
+              overflowX={"auto"}
+              // layout={"fixed"}
+              variant="striped"
+              colorScheme={"brand"}
+              wordWrap={"break-word"}
+            >
               <Thead>
                 <Tr>
                   <Th>ID</Th>

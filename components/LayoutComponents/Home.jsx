@@ -15,7 +15,7 @@ function Home() {
       {/* <FeatureList klasa="mobile" /> */}
 
       <SponsoredProducts />
-      <Categories klasa="mobile" />
+      {/* <Categories klasa="mobile" /> */}
 
       <ComputerOfferComponent />
       <PhoneOfferComponent />

@@ -1,14 +1,9 @@
 import React from "react";
-import FeatureList from "./FeatureList";
+
 import QuickMenu from "../QuickMenuComponents/QuickMenu";
 
 function BigWrapper() {
-  return (
-    <div className="big-wrapper">
-      <FeatureList />
-      <QuickMenu />
-    </div>
-  );
+  return <div className="big-wrapper"></div>;
 }
 
 export default BigWrapper;

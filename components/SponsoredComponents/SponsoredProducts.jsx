@@ -1,14 +1,17 @@
 import React from "react";
-import BigWrapper from "./BigWrapper";
-import Categories from "./Categories";
-import SubCategories from "./SubCategories";
+import NewCategories from "./NewCategories";
+import FeatureList from "./FeatureList";
+import QuickMenu from "../QuickMenuComponents/QuickMenu";
 
 function SponsoredProducts() {
   return (
     <div className="spons-container">
-      <SubCategories />
-      <Categories />
-      <BigWrapper />
+      {/* <SubCategories /> */}
+      {/* <Categories /> */}
+      {/* <BigWrapper /> */}
+      <FeatureList />
+      <QuickMenu />
+      <NewCategories />
     </div>
   );
 }

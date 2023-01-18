@@ -9,7 +9,6 @@ import NextLink from "next/link";
 import { useGlobalContext } from "../../context/GlobalContext";
 import { useAuthContext } from "../../context/AuthContext";
 import { useRouter } from "next/router";
-import MenuComp from "../SponsoredComponents/MenuComp";
 
 function Navbar() {
   const {
@@ -33,9 +32,7 @@ function Navbar() {
           />
         </Link>
       </div>
-      <div className="navbar-products">
-        <MenuComp />
-      </div>
+
       <div className="navbar-links">
         <ul>
           <li>

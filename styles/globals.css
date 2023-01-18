@@ -867,41 +867,50 @@ main {
   border-bottom-right-radius: 5px;
 }
 .feature-wrapper {
-  /* grid-area: feature; */
   width: 100%;
-  height: 100px;
 
+  /* min-height: 100px; */
+  /* height: 100%; */
+  padding-top: 2rem;
   color: #5f5f5f;
-  /* height: fit-content;
-  top: 0;
-  left: 0;
-  position: absolute; */
 }
 
 .features {
-  display: flex;
-  height: 100%;
   width: 100%;
-  background-color: white;
+  /* height: 100%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+}
+.feature {
+  width: 100%;
+  height: 75px;
+  background-color: #fff;
+  border-radius: 10px;
+  /* padding: 0.5rem; */
   border: 1px solid #f89a20;
-  border-radius: 2rem;
-
-  /* border: 1px solid black; */
-  /* gap: 1rem; */
-  /* flex-wrap: wrap; */
-}
-
-.feature:last-child {
-  border-right: none;
-}
-.feature .middle-part > h6 {
-  font-weight: bold;
-}
-
-.feature .middle-part {
   display: flex;
   flex-direction: column;
-  word-wrap: break-word;
+  justify-content: center;
+  align-items: center;
+  /* box-shadow: 0 0 6px 0 rgb(1 1 1 / 30%); */
+}
+
+.feature-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 0.6rem;
+}
+.feature-body {
+  width: 100%;
+  /* height: 100%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .first-product-container,
 .second-product-container,
@@ -930,19 +939,6 @@ main {
   font-weight: bolder;
   margin: 0;
 }
-.feature {
-  padding: 0.4rem;
-  border-right: 1px solid #f89a20;
-  align-self: flex-start;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  gap: 0.6rem;
-  justify-content: center;
-  align-items: center;
-  /* font-size: 18px; */
-  text-align: center;
-}
 
 .article-wrapper {
   /* grid-area: article; */
@@ -970,6 +966,14 @@ main {
   gap: 2rem;
 }
 
+.login-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 25rem;
+  justify-content: center;
+  align-items: center;
+}
 .login-wrapper {
   width: 100%;
   display: flex;
@@ -1008,15 +1012,7 @@ main {
   position: relative;
   text-align: center;
 }
-.login-reg-section {
-  display: flex;
-  text-align: center;
-}
 
-.login-reg-link {
-  color: #f89a20;
-  text-decoration: underline;
-}
 .header-image {
   display: flex;
   justify-content: center;
@@ -1042,6 +1038,7 @@ main {
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -1059,6 +1056,7 @@ main {
 .register-grid {
   margin-top: 2rem;
   display: grid;
+  width: 100%;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.9rem;
 }
@@ -1294,6 +1292,7 @@ main {
 } */
 .spons-container {
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   gap: 2rem;
@@ -1463,6 +1462,11 @@ main {
   flex-direction: column;
   gap: 1.5rem;
 }
+
+.account-showcase-body-single {
+  width: 100%;
+}
+
 .logout-component {
   max-width: 1440px;
   width: 100%;
@@ -1525,6 +1529,7 @@ main {
 .account-info-page,
 .account-orders-page,
 .orders-page,
+.login-page,
 .shop-page .logout-page {
   background-color: rgb(238, 238, 238);
   width: 100%;
@@ -1562,6 +1567,13 @@ main {
 }
 /*Laptops/Monitors in range of 900px - 1200px */
 @media (min-width: 1024px) and (max-width: 2000px) {
+  .account-sidebar-wrapper {
+    padding-left: 1rem;
+  }
+
+  .account-showcase-body {
+    padding: 1rem;
+  }
   .home-wrapper {
     margin: 2rem;
   }
@@ -1583,15 +1595,23 @@ main {
   }
 }
 @media (min-width: 1024px) and (max-width: 1200px) {
+  .account-sidebar-wrapper {
+    padding-left: 1rem;
+  }
+
+  .account-showcase-body {
+    padding: 1rem;
+  }
   .single-menu {
     max-width: 23.5%;
+    width: 100%;
   }
   .single-phone-holder,
   .single-computer-holder {
     width: 100%;
   }
   .feature-wrapper {
-    height: fit-content;
+    /* height: fit-content; */
   }
   .navbar-search {
     display: none;
@@ -1615,9 +1635,9 @@ main {
     height: 1.5rem;
   }
 
-  .feature {
+  /* .feature {
     height: 100%;
-  }
+  } */
   .info-line {
     display: none;
   }
@@ -1662,10 +1682,24 @@ main {
   .amazon {
     width: 14rem;
   }
+  .home-wrapper {
+    margin: 2rem;
+  }
 }
 
 /*Laptops/Phones/Tables in range of 720px to 900px*/
 @media screen and (min-width: 769px) and (max-width: 1023px) {
+  .account-sidebar-wrapper {
+    padding-left: 1rem;
+  }
+  .account-showcase-body {
+    padding: 1rem;
+  }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
   .quick-menu {
     display: flex;
     /* flex-direction: column; */
@@ -1706,15 +1740,15 @@ main {
   .container {
     margin: 0 2rem 0 2rem;
   }
-  .feature-wrapper {
+  /* .feature-wrapper {
     height: 100px;
     width: 100%;
     position: relative;
     font-size: 15px;
     display: flex;
-  }
+  } */
 
-  .feature {
+  /* .feature {
     min-height: 100%;
     width: 100%;
     position: relative;
@@ -1722,7 +1756,7 @@ main {
   .features {
     height: 100%;
     min-width: 100%;
-  }
+  } */
   .navbar-search {
     display: none;
   }
@@ -1822,12 +1856,38 @@ main {
   .spons-container {
     flex-direction: column;
   }
+  .home-wrapper {
+    margin: 2rem;
+  }
 }
 /*Bigger phone and tablet/smaller laptop screens*/
 @media (min-width: 500px) and (max-width: 768px) {
+  .account-showcase-body {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+  }
+  .account-showcase-body-image {
+    width: 100%;
+  }
+  .account-showcase-body-info {
+    width: 100%;
+  }
+  .account-sidebar-wrapper {
+    padding-left: 1rem;
+  }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
   .quick-menu {
-    display: flex;
-    /* flex-direction: column; */
+    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .single-menu {
     max-width: 100%;
   }
   .register-submit {
@@ -1874,9 +1934,9 @@ main {
   .arrow {
     display: none;
   }
-  .categories-menu-wrapper {
+  /* .categories-menu-wrapper {
     display: none;
-  }
+  } */
   .instruction-body ul,
   .usage-body ul,
   .our-story-body ul {
@@ -1893,7 +1953,7 @@ main {
   .carousel {
     min-height: 300px;
   }
-  .feature {
+  /* .feature {
     height: 100%;
     width: fit-content;
   }
@@ -1901,8 +1961,8 @@ main {
     width: 100%;
     height: 100%;
     /* overflow-x: scroll; */
-    overflow-y: hidden;
-  }
+  /*overflow-y: hidden;
+  } */
   .mobile {
     display: flex;
     overflow-x: none;
@@ -1910,12 +1970,12 @@ main {
   .desktop {
     display: none;
   }
-  .feature-wrapper {
+  /* .feature-wrapper {
     font-size: 12px;
     overflow-x: auto;
     height: 100px;
     width: 100%;
-  }
+  } */
 
   .spons-container {
     flex-direction: column;
@@ -2009,8 +2069,44 @@ main {
 }
 /*small screens*/
 @media (min-width: 0px) and (max-width: 499px) {
+  .account-showcase-header-title {
+    flex-direction: column;
+    align-items: flex-start;
+    /* padding: 0.5rem; */
+  }
+  .account-showcase-body {
+    flex-direction: column;
+    padding-right: 0.5rem;
+    gap: 2rem;
+  }
+  .account-showcase-body-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .account-sidebar-wrapper {
+    padding-left: 0.5rem;
+  }
+
+  .account-showcase-body-image {
+    width: 100%;
+  }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
   .home-wrapper {
     margin: 2rem;
+  }
+
+  .quick-menu {
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+
+  .single-menu {
+    max-width: 100%;
   }
   .register-grid {
     /* grid-template-areas:
@@ -2096,17 +2192,19 @@ main {
   .desktop {
     display: none;
   }
-  .feature-wrapper {
+  /* .feature-wrapper {
     font-size: 12px;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    height: 100px;
+    /* overflow-x: scroll;
+    overflow-y: hidden; */
+  /*height: 100px;
     word-wrap: normal;
+  }*/
+
+  /*
+  .features {
   }
   .feature {
-    width: fit-content;
-    height: 100%;
-  }
+  } */
   .spons-container {
     flex-direction: column;
   }
@@ -2216,7 +2314,7 @@ main {
   .mobile-cart > button {
     width: 50px;
   }
-  .home-wrapper {
+  /* .home-wrapper {
     margin: 2rem;
-  }
+  } */
 }
