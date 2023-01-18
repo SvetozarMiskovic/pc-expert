@@ -10,7 +10,6 @@ import { getUser } from "../../fetchFunctions/getUser";
 
 function AccountComponent() {
   const [user, setUser] = useState({});
-  const [loading, setLoading] = useState(false);
 
   const updateUser = obj => {
     setUser(obj);
@@ -21,10 +20,8 @@ function AccountComponent() {
   };
 
   useEffect(() => {
-    updateLoading();
     getUser().then(res => {
       updateUser(res.data);
-      updateLoading();
     });
   }, []);
 
@@ -33,17 +30,6 @@ function AccountComponent() {
       <Text fontSize={"3xl"} color={"#5f5f5f"} fontStyle={"italic"}>
         {user?.message}
       </Text>
-    );
-  if (loading)
-    return (
-      <MutatingDots
-        width={"100"}
-        height={"100"}
-        visible={true}
-        secondaryColor={"#f89a20"}
-        alignItems={"center"}
-        color="#5f5f5f"
-      />
     );
 
   return (
