@@ -11,19 +11,18 @@ function Logout() {
   const router = useRouter();
 
   useEffect(() => {
-    const t = setTimeout(async () => {
+    const fetchData = async () => {
       const res = await logoutUser();
-
       updateLoged(false);
       updateLogedUser(undefined);
       toast(res.data?.message, {
         progressStyle: { background: "#4CBB17" },
       });
       router.push("/");
-      return;
-    }, 1500);
-    return () => clearTimeout(t);
-  }, [updateLoged, updateLogedUser, router]);
+    };
+
+    fetchData();
+  }, []);
   return (
     <div className="logout-component">
       <ThreeCircles
