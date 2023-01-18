@@ -4,19 +4,28 @@ import React, { useEffect, useState } from "react";
 import { Text, Icon, Avatar } from "@chakra-ui/react";
 import { FaUserCheck } from "react-icons/fa";
 import Image from "next/image";
-
+import { MutatingDots } from "react-loader-spinner";
 import axios from "axios";
 import { getUser } from "../../fetchFunctions/getUser";
 
 function AccountComponent() {
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const updateUser = obj => {
     setUser(obj);
   };
 
+  const updateLoading = () => {
+    setLoading(prevState => !prevState);
+  };
+
   useEffect(() => {
-    getUser().then(res => updateUser(res.data));
+    updateLoading();
+    getUser().then(res => {
+      updateUser(res.data);
+      updateLoading();
+    });
   }, []);
 
   if (!user.id)
@@ -25,6 +34,18 @@ function AccountComponent() {
         {user?.message}
       </Text>
     );
+  if (loading)
+    return (
+      <MutatingDots
+        width={"100"}
+        height={"100"}
+        visible={true}
+        secondaryColor={"#f89a20"}
+        alignItems={"center"}
+        color="#5f5f5f"
+      />
+    );
+
   return (
     <div className="account-showcase-wrapper">
       <div className="account-showcase-component">
