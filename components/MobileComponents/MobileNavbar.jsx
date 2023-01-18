@@ -21,7 +21,6 @@ function MobileNavbar() {
     <div className="mobile-navbar mobile container">
       <div className="mobile-navbar-logo">
         <Link href="/">
-
           <Image
             width={100}
             height={100}
@@ -29,7 +28,6 @@ function MobileNavbar() {
             src={"/T1.png"}
             alt="logo"
           />
-
         </Link>
       </div>
       <div className="mobile-cart">
@@ -67,35 +65,37 @@ function MobileNavbar() {
         </div>
         <div className="mobile-auth mobile">
           {!isLoged ? (
-            <Button
-              type="button"
-              className="mobile-auth-btn"
-              color="#5f5f5f"
-              _hover={{
-                backgroundColor: "#f89a20",
-                color: "#fff",
-              }}
-              background="transparent"
-              border="1px solid #f89a20"
-              onClick={() => router.push("/prijava")}
-            >
-              <Icon as={FaLock} />
-            </Button>
+            <Link href={"/prijava"}>
+              <Button
+                type="button"
+                className="mobile-auth-btn"
+                color="#5f5f5f"
+                _hover={{
+                  backgroundColor: "#f89a20",
+                  color: "#fff",
+                }}
+                background="transparent"
+                border="1px solid #f89a20"
+              >
+                <Icon as={FaLock} />
+              </Button>
+            </Link>
           ) : (
-            <Button
-              type="button"
-              className="mobile-auth-btn"
-              _hover={{
-                backgroundColor: "#f89a20",
-                color: "#fff",
-              }}
-              color="#5f5f5f"
-              border="1px solid #f89a20"
-              background="transparent"
-              onClick={() => router.push("/odjava")}
-            >
-              <Icon as={FaLockOpen} />
-            </Button>
+            <Link href={"/odjava"}>
+              <Button
+                type="button"
+                className="mobile-auth-btn"
+                _hover={{
+                  backgroundColor: "#f89a20",
+                  color: "#fff",
+                }}
+                color="#5f5f5f"
+                border="1px solid #f89a20"
+                background="transparent"
+              >
+                <Icon as={FaLockOpen} />
+              </Button>
+            </Link>
           )}
         </div>
         <Button
