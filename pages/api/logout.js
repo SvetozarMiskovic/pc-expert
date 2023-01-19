@@ -1,7 +1,7 @@
 import cookie from "cookie";
 
 export default function handler(req, res) {
-  if (req.method === "GET") {
+  if (req.method === "POST") {
     const token = req.cookies?.authToken;
     res.setHeader(
       "Set-Cookie",
