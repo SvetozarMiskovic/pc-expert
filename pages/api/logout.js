@@ -10,6 +10,7 @@ export default function handler(req, res) {
         sameSite: "strict",
         maxAge: 0,
         path: "/",
+        expires: new Date(0),
       })
     );
     res.send({ message: "Odjavljeni ste sa naloga!" });
