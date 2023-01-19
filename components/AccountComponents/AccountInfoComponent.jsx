@@ -9,7 +9,7 @@ import axios from "axios";
 import { getUser } from "../../fetchFunctions/getUser";
 
 function AccountComponent() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
 
   const updateUser = obj => {
     setUser(obj);
@@ -25,7 +25,7 @@ function AccountComponent() {
     });
   }, []);
 
-  if (!user.id)
+  if (!user?.id)
     return (
       <Text fontSize={"3xl"} color={"#5f5f5f"} fontStyle={"italic"}>
         {user?.message}

@@ -15,7 +15,7 @@ const AuthContextProvider = ({ children }) => {
       setLogedUser(res.data?.userId);
     };
     checkLoginUser();
-  }, [isLoged, logedUser]);
+  }, []);
 
   const updateLoged = val => {
     setIsLoged(val);
