@@ -2,7 +2,7 @@ import React from "react";
 import ShopCategory from "../../../components/ShopComponents/ShopCategory";
 import ShopLayout from "../../../components/ShopComponents/ShopLayout";
 
-import { db } from "../../../config/prismaClient";
+// import { db } from "../../../config/prismaClient";
 
 function Category({ cat, data }) {
   return (
