@@ -5,8 +5,6 @@ import ShopLayout from "../../../components/ShopComponents/ShopLayout";
 import { db } from "../../../config/prismaClient";
 
 function Category({ cat, data }) {
-  console.log(cat, data);
-
   return (
     <div className="category-page">
       <ShopLayout>
