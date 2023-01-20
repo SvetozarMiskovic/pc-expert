@@ -18,12 +18,12 @@ function Category({ cat, data }) {
 
 export default Category;
 
-export async function getServerSideProps(context) {
-  const rez = await db.laptopi.findMany();
-  return {
-    props: {
-      cat: context.query.category,
-      data: rez,
-    },
-  };
-}
+// export async function getServerSideProps(context) {
+//   const rez = await db.laptopi.findMany();
+//   return {
+//     props: {
+//       cat: context.query.category,
+//       data: rez,
+//     },
+//   };
+// }
