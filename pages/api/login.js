@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     if (!!value) {
       const isGood = await compare(data.lozinka, value.lozinka);
 
-      const payload = { sub: value.id };
+      const payload = { sub: value.id, role: value.role };
       const jwt = sign(payload, process.env.JWT_SECRET);
 
       delete value.lozinka;

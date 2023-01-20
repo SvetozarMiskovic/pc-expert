@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 
   if (jwt) {
     const isValid = verify(jwt, process.env.JWT_SECRET);
-    console.log(isValid);
+
     if (!!isValid) {
       const userObj = await db.korisnici.findFirst({
         where: {

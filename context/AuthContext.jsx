@@ -6,6 +6,7 @@ const AuthContext = createContext();
 const AuthContextProvider = ({ children }) => {
   const [isLoged, setIsLoged] = useState(false);
   const [logedUser, setLogedUser] = useState();
+  const [role, setRole] = useState();
 
   useEffect(() => {
     const checkLoginUser = async () => {
@@ -13,6 +14,7 @@ const AuthContextProvider = ({ children }) => {
 
       setIsLoged(!!res.data?.isValid);
       setLogedUser(res.data?.userId);
+      setRole(res.data?.role);
     };
     checkLoginUser();
   }, []);

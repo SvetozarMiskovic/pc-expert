@@ -51,6 +51,7 @@ function RegisterForm() {
       ulica: streetRef.current.value,
       postanski_broj: postalRef.current.value,
       lozinka: pwRef.current.value,
+      role: "customer",
     };
 
     if (payload.lozinka === cpwRef.current.value && payload.email) {

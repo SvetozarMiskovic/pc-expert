@@ -16,14 +16,8 @@ import {
   Tab,
   TabPanels,
   TabPanel,
-  Divider,
   Text,
   Icon,
-  Fade,
-  Button,
-  ScaleFade,
-  Slide,
-  SlideFade,
   Collapse,
 } from "@chakra-ui/react";
 function NewCategories() {

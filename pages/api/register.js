@@ -21,14 +21,15 @@ export default async function handler(req, res) {
     } else {
       const user = await db.korisnici.create({
         data: {
-          ime_i_prezime: dataGiven.ime_i_prezime,
-          email: dataGiven.email,
-          broj_telefona: Number(dataGiven.broj_telefona),
-          adresa: dataGiven.adresa,
-          grad: dataGiven.grad,
-          ulica: dataGiven.ulica,
-          postanski_broj: Number(dataGiven.postanski_broj),
-          lozinka: dataGiven.lozinka,
+          ime_i_prezime: dataGiven?.ime_i_prezime,
+          email: dataGiven?.email,
+          broj_telefona: Number(dataGiven?.broj_telefona),
+          adresa: dataGiven?.adresa,
+          grad: dataGiven?.grad,
+          ulica: dataGiven?.ulica,
+          postanski_broj: Number(dataGiven?.postanski_broj),
+          lozinka: dataGiven?.lozinka,
+          role: dataGiven?.role,
         },
       });
 

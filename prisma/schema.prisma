@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      =  env("DATABASE_URL_DEV")
+  url      = env("DATABASE_URL_DEV")
 }
 
 model korisnici {
@@ -17,4 +17,24 @@ model korisnici {
   ulica          String? @db.VarChar(45)
   lozinka        String? @db.VarChar(90)
   grad           String? @db.VarChar(45)
+  role           String? @db.VarChar(45)
+}
+
+model laptopi {
+  id              Int     @id @unique(map: "idlaptopi_UNIQUE")
+  proizvodjac     String? @db.VarChar(255)
+  model           String? @db.VarChar(255)
+  procesor        String? @db.VarChar(255)
+  ram             String? @db.VarChar(45)
+  garancija       String? @db.VarChar(45)
+  hard_disk       String? @db.VarChar(100)
+  cijena          String? @db.VarChar(45)
+  graficka        String? @db.VarChar(45)
+  tip_procesora   String? @db.VarChar(45)
+  os              String? @db.VarChar(45)
+  boja            String? @db.VarChar(45)
+  tip_hard_diska  String? @db.VarChar(45)
+  tip_ram         String? @db.VarChar(45)
+  velicina_ekrana String? @db.VarChar(45)
+  detalji         String? @db.VarChar(255)
 }
