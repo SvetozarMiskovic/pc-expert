@@ -53,6 +53,10 @@ function ShopHeaderBar() {
           border={"none"}
           variant={"filled"}
           width={75}
+          backgroundColor={"#fff"}
+          _active={{ backgroundColor: "#fff" }}
+          _focus={{ backgroundColor: "#fff" }}
+          _hover={{ backgroundColor: "#f89a20" }}
         >
           <option value={8}>8</option>
           <option value={16}>16</option>
@@ -71,6 +75,10 @@ function ShopHeaderBar() {
           border={"none"}
           variant={"filled"}
           width={220}
+          backgroundColor={"#fff"}
+          _active={{ backgroundColor: "#fff" }}
+          _focus={{ backgroundColor: "#fff" }}
+          _hover={{ backgroundColor: "#f89a20" }}
         >
           <option value={"min-cijena"}>Cijena: Prema najmanjoj</option>
           <option value={"max-cijena"}>Cijena: Prema najvecoj</option>
