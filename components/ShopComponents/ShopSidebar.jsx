@@ -159,9 +159,7 @@ function ShopSidebar() {
             </div>
           </div>
         </div>
-        <div className="shop-single-menu">
-          {generateSidebarFilters(activeCategory)}
-        </div>
+        {generateSidebarFilters(activeCategory)}
       </div>
     </div>
   );

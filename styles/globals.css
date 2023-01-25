@@ -1621,8 +1621,8 @@ main {
   justify-content: space-between;
   gap: 0.5rem;
 }
-.shop-category-body {
-}
+/* .shop-category-body {
+} */
 .shop-category-header-view {
   display: flex;
   justify-content: center;
