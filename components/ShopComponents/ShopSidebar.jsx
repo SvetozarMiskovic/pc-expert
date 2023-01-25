@@ -159,7 +159,7 @@ function ShopSidebar() {
             </div>
           </div>
         </div>
-        {generateSidebarFilters(activeCategory)}
+        {!!activeCategory && generateSidebarFilters(activeCategory)}
       </div>
     </div>
   );
