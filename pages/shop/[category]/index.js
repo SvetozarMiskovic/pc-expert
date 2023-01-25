@@ -2,26 +2,33 @@ import React from "react";
 import ShopCategory from "../../../components/ShopComponents/ShopCategory";
 import ShopLayout from "../../../components/ShopComponents/ShopLayout";
 
-// import { db } from "../../../config/prismaClient";
+import { db } from "../../../config/prismaClient";
+
+import { whatToFetch } from "../../../helpers/whatToFetch";
+import ShopContextProvider from "../../../context/ShopContext";
 
 function Category({ cat, data }) {
+  console.log(data);
   return (
-    <div className="category-page">
-      <ShopLayout>
-        <ShopCategory />
-      </ShopLayout>
-    </div>
+    <ShopContextProvider>
+      <div className="category-page">
+        <ShopLayout category={cat}>
+          <ShopCategory />
+        </ShopLayout>
+      </div>
+    </ShopContextProvider>
   );
 }
 
 export default Category;
 
-// export async function getServerSideProps(context) {
-//   const rez = await db.laptopi.findMany();
-//   return {
-//     props: {
-//       cat: context.query.category,
-//       data: rez,
-//     },
-//   };
-// }
+export async function getServerSideProps(context) {
+  const rez = await whatToFetch(context.query.category, db);
+
+  return {
+    props: {
+      cat: context.query.category,
+      data: !!rez && rez,
+    },
+  };
+}

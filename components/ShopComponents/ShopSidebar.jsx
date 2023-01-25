@@ -21,9 +21,10 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useShopContext } from "../../context/ShopContext";
+import { generateSidebarFilters } from "../../helpers/generateSidebarFilters";
 function ShopSidebar() {
   const router = useRouter();
-  const { ime } = useShopContext();
+  const { activeCategory } = useShopContext();
 
   const [isOpen, setIsOpen] = useState(() => {
     return router.asPath !== "/shop" ? true : false;
@@ -40,7 +41,6 @@ function ShopSidebar() {
 
   const updatePriceRange = price => {
     setPriceRange(price);
-    console.log(price);
   };
 
   const onToggle = () => {
@@ -159,39 +159,9 @@ function ShopSidebar() {
             </div>
           </div>
         </div>
-        <Collapse in={isOpen}>
-          <div className="shop-single-menu">
-            <div className="shop-single-menu-header">
-              <Text fontSize={"xl"} color={"#5f5f5f"} fontWeight="bold">
-                CIJENA
-              </Text>
-            </div>
-            <div className="shop-single-menu-body">
-              <RangeSlider
-                max={3000}
-                min={0}
-                aria-label={["min", "max"]}
-                defaultValue={[1, 3000]}
-                onChangeEnd={updatePriceRange}
-                colorScheme={"orange"}
-              >
-                <RangeSliderTrack>
-                  <RangeSliderFilledTrack />
-                </RangeSliderTrack>
-                <RangeSliderThumb index={0} />
-                <RangeSliderThumb index={1} />
-              </RangeSlider>
-              <div className="price-range">
-                <Text fontSize={"lg"} color={"#5f5f5f"} fontWeight={"bold"}>
-                  {priceRange?.[0]}
-                </Text>
-                <Text fontSize={"lg"} color={"#5f5f5f"} fontWeight={"bold"}>
-                  {priceRange?.[1]}
-                </Text>
-              </div>
-            </div>
-          </div>
-        </Collapse>
+        <div className="shop-single-menu">
+          {generateSidebarFilters(activeCategory)}
+        </div>
       </div>
     </div>
   );

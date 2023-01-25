@@ -5,7 +5,7 @@ function ShopCategory({}) {
   return (
     <div className="shop-category-wrapper">
       <div className="shop-category-container">
-        <div className="shop-category-body"></div>
+        <div className="shop-category-body">ASA</div>
       </div>
     </div>
   );

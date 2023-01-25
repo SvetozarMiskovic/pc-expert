@@ -1553,9 +1553,9 @@ main {
   width: 100%;
 }
 .shop-sidebar-wrapper {
-  max-width: 300px;
+  max-width: 320px;
   width: 100%;
-
+  height: 100%;
   padding: 0.5rem;
 }
 

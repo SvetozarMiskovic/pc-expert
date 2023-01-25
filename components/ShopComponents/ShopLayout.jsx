@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ShopSidebar from "./ShopSidebar";
-import ShopContextProvider from "../../context/ShopContext";
+import { useShopContext } from "../../context/ShopContext";
 import ShopHeaderBar from "./ShopHeaderBar";
 
-function ShopLayout({ children }) {
+function ShopLayout({ children, category }) {
+  const { updateActiveCategory } = useShopContext();
+  useEffect(() => {
+    updateActiveCategory(category);
+  }, [category]);
+
   return (
     <div className="shop-layout-wrapper">
-      <ShopContextProvider>
-        <ShopSidebar />
+      <ShopSidebar />
 
-        <div className="shop-layout-filter-wrapper">
-          <ShopHeaderBar />
-          {children}
-        </div>
-      </ShopContextProvider>
+      <div className="shop-layout-filter-wrapper">
+        <ShopHeaderBar />
+        {children}
+      </div>
     </div>
   );
 }

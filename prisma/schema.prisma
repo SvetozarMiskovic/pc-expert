@@ -8,11 +8,12 @@ datasource db {
 }
 
 model komponente {
-  id        String  @id @unique(map: "id_UNIQUE") @db.VarChar(100)
-  cijena    String? @db.VarChar(100)
-  garancija String? @db.VarChar(100)
-  vrsta     String? @db.VarChar(100)
-  detalji   String? @db.VarChar(255)
+  id          String  @id @unique(map: "id_UNIQUE") @db.VarChar(100)
+  cijena      String? @db.VarChar(100)
+  garancija   String? @db.VarChar(100)
+  vrsta       String? @db.VarChar(100)
+  detalji     String? @db.VarChar(255)
+  proizvodjac String? @db.VarChar(100)
 }
 
 model korisnici {
@@ -50,17 +51,14 @@ model laptopi {
   webcam           String? @db.VarChar(100)
   mikrofon         String? @db.VarChar(100)
   usb_portovi      String? @db.VarChar(100)
+  model_procesora  String? @db.VarChar(100)
 }
 
 model mining {
-  id               String  @id @unique(map: "id_UNIQUE") @db.VarChar(100)
-  proizvodjac      String? @db.VarChar(100)
-  model            String? @db.VarChar(100)
-  cijena           String? @db.VarChar(100)
-  garancija        String? @db.VarChar(100)
-  broj_grafickih   String? @db.VarChar(100)
-  modeli_grafickih String? @db.VarChar(100)
-  detalji          String? @db.VarChar(255)
+  id        String  @id @unique(map: "id_UNIQUE") @db.VarChar(100)
+  cijena    String? @db.VarChar(100)
+  garancija String? @db.VarChar(100)
+  detalji   String? @db.VarChar(100)
 }
 
 model monitori {
@@ -74,7 +72,7 @@ model monitori {
   dvi             String? @db.VarChar(100)
   display         String? @db.VarChar(100)
   boja            String? @db.VarChar(100)
-  ekran           String? @db.VarChar(100)
+  tip_ekrana      String? @db.VarChar(100)
   refresh_rate    String? @db.VarChar(100)
   garancija       String? @db.VarChar(100)
   cijena          String? @db.VarChar(100)
@@ -108,6 +106,8 @@ model racunari {
   hard_disk         String? @db.VarChar(100)
   os                String? @db.VarChar(100)
   memorija_graficke String? @db.VarChar(100)
+  model_procesora   String? @db.VarChar(100)
+  model_graficke    String? @db.VarChar(100)
 }
 
 model telefoni {
@@ -139,7 +139,7 @@ model televizori {
   model           String? @db.VarChar(100)
   proizvodjac     String? @db.VarChar(100)
   velicina_ekrana String? @db.VarChar(100)
-  ekran           String? @db.VarChar(100)
+  tip_ekrana      String? @db.VarChar(100)
   rezolucija      String? @db.VarChar(100)
   smart           String? @db.VarChar(100)
   lan             String? @db.VarChar(100)
