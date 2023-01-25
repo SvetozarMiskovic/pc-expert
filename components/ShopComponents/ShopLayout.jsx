@@ -7,7 +7,7 @@ function ShopLayout({ children, category }) {
   const { updateActiveCategory } = useShopContext();
   useEffect(() => {
     updateActiveCategory(category);
-  }, [category]);
+  }, [category, updateActiveCategory]);
 
   return (
     <div className="shop-layout-wrapper">

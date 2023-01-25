@@ -7,7 +7,7 @@ export const loginUser = async data => {
   const result =
     process.env.NODE_ENV === "development"
       ? await axios.post(urlDev, data)
-      : await axios.post(url, data);
+      : await axios.post(urlDev, data);
 
   return result;
 };

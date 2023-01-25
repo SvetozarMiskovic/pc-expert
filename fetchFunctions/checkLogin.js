@@ -7,7 +7,7 @@ export const checkLogin = async () => {
   const result =
     process.env.NODE_ENV === "development"
       ? await axios(urlDev)
-      : await axios(url);
+      : await axios(urlDev);
 
   return result;
 };
