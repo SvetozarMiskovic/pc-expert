@@ -4,8 +4,7 @@ import { whatToFetch } from "../../helpers/whatToFetch";
 import { db } from "../../config/prismaClient";
 import ShopContextProvider from "../../context/ShopContext";
 
-export default function Shop({ rez }) {
-  console.log(rez);
+export default function Shop() {
   return (
     <ShopContextProvider>
       <div className="shop-page">
@@ -17,12 +16,12 @@ export default function Shop({ rez }) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const rez = await whatToFetch(context.query, db);
-  // console.log(context.query);
-  return {
-    props: {
-      rez: !!rez && null,
-    },
-  };
-}
+// export async function getServerSideProps(context) {
+//   const rez = await whatToFetch(context.query, db);
+//   // console.log(context.query);
+//   return {
+//     props: {
+//       rez: !!rez && null,
+//     },
+//   };
+// }

@@ -1,12 +1,5 @@
 export const whatToFetch = async (category, db) => {
   switch (category) {
-    // console.log(category)
-
-    case {}: {
-      console.log("iz wat to fecha" + category);
-      let arr = [];
-      return category;
-    }
     case "laptopi": {
       const res = await db.laptopi.findMany();
       return res;
