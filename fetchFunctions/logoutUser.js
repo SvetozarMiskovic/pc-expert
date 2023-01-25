@@ -7,7 +7,7 @@ export const logoutUser = async () => {
   const result =
     process.env.NODE_ENV === "development"
       ? await axios.post(urlDev)
-      : await axios.post(urlDev);
+      : await axios.post(url);
 
   return result;
 };

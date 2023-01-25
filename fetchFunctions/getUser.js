@@ -7,7 +7,7 @@ export const getUser = async () => {
   const result =
     process.env.NODE_ENV === "development"
       ? await axios(urlDev)
-      : await axios(urlDev);
+      : await axios(url);
 
   return result;
 };
