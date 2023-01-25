@@ -24,6 +24,7 @@ import InternaMemorija from "../components/ShopComponents/ShopSidebarMenus/Inter
 import RezolucijaGlavne from "../components/ShopComponents/ShopSidebarMenus/RezolucijaGlavne";
 import BT from "../components/ShopComponents/ShopSidebarMenus/BT";
 import Vrsta from "../components/ShopComponents/ShopSidebarMenus/Vrsta";
+import KapacitetBaterije from "../components/ShopComponents/ShopSidebarMenus/KapacitetBaterije";
 
 export const generateSidebarFilters = category => {
   console.log("iz generate sidebar" + category);
@@ -102,9 +103,11 @@ export const generateSidebarFilters = category => {
           <Procesor />
           <BrojJezgara />
           <BrzinaProcesora />
+          <KapacitetBaterije />
           <RamMemorija />
           <InternaMemorija />
           <RezolucijaGlavne />
+
           <BT />
           <Garancija />
         </>
