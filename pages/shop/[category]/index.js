@@ -25,10 +25,12 @@ export default Category;
 export async function getServerSideProps(context) {
   const rez = await whatToFetch(context.query.category, db);
 
-  return {
-    props: {
-      cat: context.query.category,
-      data: !!rez && rez,
-    },
-  };
+  if (rez) {
+    return {
+      props: {
+        cat: context.query.category,
+        data: !!rez && rez,
+      },
+    };
+  }
 }
