@@ -1,5 +1,8 @@
 export const whatToFetch = async (category, db) => {
   switch (category) {
+    case "": {
+      const res = await db.televizori.findMany();
+    }
     case "laptopi": {
       const res = await db.laptopi.findMany();
       return res;

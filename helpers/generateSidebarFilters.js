@@ -107,7 +107,6 @@ export const generateSidebarFilters = category => {
           <RamMemorija />
           <InternaMemorija />
           <RezolucijaGlavne />
-
           <BT />
           <Garancija />
         </>
