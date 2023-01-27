@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React from "react";
-import { Text, Button, Divider } from "@chakra-ui/react";
+import { Text, Button, Divider, Icon } from "@chakra-ui/react";
 import { useCounter } from "@chakra-ui/counter";
 import { useShopContext } from "../../context/ShopContext";
-
+import { FaCartPlus } from "react-icons/fa";
 function ShopCategoryItem({ dataCategory, dataAll }) {
   const counter = useCounter({
     max: 20,
@@ -41,7 +41,7 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
             {!dataCategory.model ? dataCategory.detalji : dataCategory.model}
           </Text>
           {/* Naslov proizvoda */}
-          <div>
+          <div className="shop-category-item-specs">
             {/* Specifikacije ako ih ima */}
             <Text color={"#5f5f5f"}>{dataCategory.velicina_ekrana}</Text>
             <Text color={"#5f5f5f"}>{dataCategory?.tip_procesora}</Text>
@@ -54,6 +54,8 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
         <div className="shop-category-item-options">
           <div className="shop-category-item-options-counter">
             <Button
+              width="35px"
+              height="35px"
               _hover={{
                 backgroundColor: "#f89a20",
                 color: "#fff",
@@ -69,6 +71,8 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
               {counter.value}
             </Text>
             <Button
+              width="35px"
+              height="35px"
               _hover={{
                 backgroundColor: "#f89a20",
                 color: "#fff",
@@ -81,18 +85,21 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
               +
             </Button>
           </div>
-          <Button
-            backgroundColor={"#eaedf1"}
-            _hover={{
-              backgroundColor: "#f89a20",
-              color: "#fff",
-            }}
-            color={"#5f5f5f"}
-            width={"100%"}
-            borderRadius={"5rem"}
-          >
-            Dodaj
-          </Button>
+          <div className="shop-category-item-cart">
+            <Button
+              width="35px"
+              height="35px"
+              backgroundColor={"#eaedf1"}
+              _hover={{
+                backgroundColor: "#f89a20",
+                color: "#fff",
+              }}
+              color={"#5f5f5f"}
+              borderRadius={"5rem"}
+            >
+              <Icon as={FaCartPlus} />
+            </Button>
+          </div>
         </div>
         <div className="shop-category-item-product-waranty">
           <Text fontSize="md">GARANCIJA: {dataCategory.garancija}</Text>
@@ -142,6 +149,8 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
                 backgroundColor: "#f89a20",
                 color: "#fff",
               }}
+              width="35px"
+              height="35px"
               color={"#5f5f5f"}
               borderRadius={"10rem"}
               backgroundColor={"#eaedf1"}
@@ -149,10 +158,12 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
             >
               -
             </Button>
-            <Text fontSize={"md"} color="#5f5f5f" fontWeight="bold">
+            <Text fontSize={"sm"} color="#5f5f5f" fontWeight="bold">
               {counter.value}
             </Text>
             <Button
+              width="35px"
+              height="35px"
               _hover={{
                 backgroundColor: "#f89a20",
                 color: "#fff",
@@ -165,18 +176,21 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
               +
             </Button>
           </div>
-          <Button
-            backgroundColor={"#eaedf1"}
-            _hover={{
-              backgroundColor: "#f89a20",
-              color: "#fff",
-            }}
-            color={"#5f5f5f"}
-            width={"100%"}
-            borderRadius={"5rem"}
-          >
-            Dodaj
-          </Button>
+          <div className="shop-category-item-cart">
+            <Button
+              width="45px"
+              height="45px"
+              backgroundColor={"#eaedf1"}
+              _hover={{
+                backgroundColor: "#f89a20",
+                color: "#fff",
+              }}
+              color={"#5f5f5f"}
+              borderRadius={"5rem"}
+            >
+              <Icon as={FaCartPlus} />
+            </Button>
+          </div>
         </div>
         <div className="shop-category-item-product-waranty">
           <Text fontSize="md">GARANCIJA: {dataAll.garancija}</Text>
