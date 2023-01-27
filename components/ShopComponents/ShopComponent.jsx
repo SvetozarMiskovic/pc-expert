@@ -2,10 +2,10 @@ import React from "react";
 import { useShopContext } from "../../context/ShopContext";
 import Shop from "./Shop";
 
-function ShopComponent() {
+function ShopComponent({ category, data }) {
   return (
     <div className="shop-component-wrapper">
-      <Shop />
+      <Shop category={category} data={data} />
     </div>
   );
 }

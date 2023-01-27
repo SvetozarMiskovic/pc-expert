@@ -1,7 +1,27 @@
 export const whatToFetch = async (category, db) => {
   switch (category) {
-    case "": {
-      const res = await db.televizori.findMany();
+    case undefined: {
+      const laptopi = await db.laptopi.findMany();
+      const monitori = await db.monitori.findMany();
+      const tv = await db.televizori.findMany();
+      const telefoni = await db.telefoni.findMany();
+      const racunari = await db.racunari.findMany();
+      const periferija = await db.periferija.findMany();
+      const komponente = await db.komponente.findMany();
+      const mining = await db.mining.findMany();
+
+      const res = [
+        ...laptopi,
+        ...monitori,
+        ...tv,
+        ...telefoni,
+        ...racunari,
+        ...periferija,
+        ...komponente,
+        ...mining,
+      ];
+
+      return res;
     }
     case "laptopi": {
       const res = await db.laptopi.findMany();

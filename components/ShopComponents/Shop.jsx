@@ -1,97 +1,24 @@
 import { Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
+import { useShopContext } from "../../context/ShopContext";
+import ShopCategoryItem from "./ShopCategoryItem";
 
-function Shop() {
+function Shop({ category, data }) {
+  const {
+    updateActiveCategory,
+    updateAllCategoryProducts,
+    allCategoryProducts,
+  } = useShopContext();
+
+  useEffect(() => {
+    updateAllCategoryProducts(data);
+    updateActiveCategory(category);
+  }, [category]);
   return (
-    <div className="shop-component">
-      <div className="shop-single-menu">
-        <div className="shop-single-menu-header">
-          <Text fontSize={"xl"} color={"#5f5f5f"} fontWeight="bold">
-            SVE KATEGORIJE
-          </Text>
-        </div>
-        <div className="shop-single-menu-body"></div>
-      </div>
-      <div className="shop-single-menu">
-        <div className="shop-single-menu-header">
-          <Text fontSize={"xl"} color={"#5f5f5f"} fontWeight="bold">
-            SVE KATEGORIJE
-          </Text>
-        </div>
-        <div className="shop-single-menu-body"></div>
-      </div>
-      <div className="shop-single-menu">
-        <div className="shop-single-menu-header">
-          <Text fontSize={"xl"} color={"#5f5f5f"} fontWeight="bold">
-            SVE KATEGORIJE
-          </Text>
-        </div>
-        <div className="shop-single-menu-body"></div>
-      </div>
-      <div className="shop-single-menu">
-        <div className="shop-single-menu-header">
-          <Text fontSize={"xl"} color={"#5f5f5f"} fontWeight="bold">
-            SVE KATEGORIJE
-          </Text>
-        </div>
-        <div className="shop-single-menu-body"></div>
-      </div>
-      <div className="shop-single-menu">
-        <div className="shop-single-menu-header">
-          <Text fontSize={"xl"} color={"#5f5f5f"} fontWeight="bold">
-            SVE KATEGORIJE
-          </Text>
-        </div>
-        <div className="shop-single-menu-body"></div>
-      </div>
-      <div className="shop-single-menu">
-        <div className="shop-single-menu-header">
-          <Text fontSize={"xl"} color={"#5f5f5f"} fontWeight="bold">
-            SVE KATEGORIJE
-          </Text>
-        </div>
-        <div className="shop-single-menu-body"></div>
-      </div>
-      <div className="shop-single-menu">
-        <div className="shop-single-menu-header">
-          <Text fontSize={"xl"} color={"#5f5f5f"} fontWeight="bold">
-            SVE KATEGORIJE
-          </Text>
-        </div>
-        <div className="shop-single-menu-body"></div>
-      </div>
-      <div className="shop-single-menu">
-        <div className="shop-single-menu-header">
-          <Text fontSize={"xl"} color={"#5f5f5f"} fontWeight="bold">
-            SVE KATEGORIJE
-          </Text>
-        </div>
-        <div className="shop-single-menu-body"></div>
-      </div>
-      <div className="shop-single-menu">
-        <div className="shop-single-menu-header">
-          <Text fontSize={"xl"} color={"#5f5f5f"} fontWeight="bold">
-            SVE KATEGORIJE
-          </Text>
-        </div>
-        <div className="shop-single-menu-body"></div>
-      </div>
-      <div className="shop-single-menu">
-        <div className="shop-single-menu-header">
-          <Text fontSize={"xl"} color={"#5f5f5f"} fontWeight="bold">
-            SVE KATEGORIJE
-          </Text>
-        </div>
-        <div className="shop-single-menu-body"></div>
-      </div>
-      <div className="shop-single-menu">
-        <div className="shop-single-menu-header">
-          <Text fontSize={"xl"} color={"#5f5f5f"} fontWeight="bold">
-            SVE KATEGORIJE
-          </Text>
-        </div>
-        <div className="shop-single-menu-body"></div>
-      </div>
+    <div className="shop-component-container">
+      {allCategoryProducts?.map(item => {
+        return <ShopCategoryItem key={item.id} dataAll={item} />;
+      })}
     </div>
   );
 }

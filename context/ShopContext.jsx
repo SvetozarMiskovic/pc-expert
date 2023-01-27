@@ -1,10 +1,27 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const ShopContext = createContext();
 
 const ShopContextProvider = ({ children }) => {
+  const router = useRouter();
+
   const [activeCategory, setActiveCategory] = useState("");
-  const [activeView, setActiveView] = useState("list");
+  const [activeView, setActiveView] = useState("grid");
+  const [categoryProducts, setCategoryProducts] = useState([]);
+  const [allCategoryProducts, setAllCategoryProducts] = useState([]);
+
+  const updateCategoryProducts = data => {
+    setCategoryProducts(() => {
+      return [...data];
+    });
+  };
+
+  const updateAllCategoryProducts = data => {
+    setAllCategoryProducts(() => {
+      return [...data];
+    });
+  };
 
   const updateActiveView = view => {
     setActiveView(view);
@@ -21,6 +38,10 @@ const ShopContextProvider = ({ children }) => {
         updateActiveCategory,
         activeView,
         updateActiveView,
+        updateCategoryProducts,
+        updateAllCategoryProducts,
+        categoryProducts,
+        allCategoryProducts,
       }}
     >
       {children}
