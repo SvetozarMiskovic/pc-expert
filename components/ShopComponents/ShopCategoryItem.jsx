@@ -13,13 +13,9 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
   });
 
   function truncate(str, length) {
-    if (str) {
-      if (str.length > length) {
-        return str.slice(0, length) + "...";
-      } else return str;
-    } else {
-      return "Nema naslova";
-    }
+    if (str.length > length) {
+      return str.slice(0, length) + "...";
+    } else return str;
   }
 
   // console.log(typeof counter.value);
