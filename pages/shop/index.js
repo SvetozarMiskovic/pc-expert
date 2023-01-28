@@ -9,7 +9,7 @@ export default function Shop({ category, data }) {
   return (
     <ShopContextProvider>
       <div className="shop-page">
-        <ShopLayout>
+        <ShopLayout data={data}>
           <ShopComponent data={data} category={category} />
         </ShopLayout>
       </div>

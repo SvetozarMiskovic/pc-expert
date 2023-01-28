@@ -22,13 +22,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useShopContext } from "../../context/ShopContext";
 import { generateSidebarFilters } from "../../helpers/generateSidebarFilters";
-function ShopSidebar() {
+function ShopSidebar({ data }) {
   const router = useRouter();
   const { activeCategory } = useShopContext();
-
-  const [isOpen, setIsOpen] = useState(() => {
-    return router.asPath !== "/shop" ? true : false;
-  });
 
   const [priceRange, setPriceRange] = useState([0, 3000]);
   const [isAllCat, setIsAllCat] = useState(() => {
@@ -41,10 +37,6 @@ function ShopSidebar() {
 
   const updatePriceRange = price => {
     setPriceRange(price);
-  };
-
-  const onToggle = () => {
-    setIsOpen(prevState => !prevState);
   };
 
   return (
@@ -169,7 +161,7 @@ function ShopSidebar() {
             </div>
           </div>
         </div>
-        {!!activeCategory && generateSidebarFilters(activeCategory)}
+        {!!activeCategory && generateSidebarFilters(activeCategory, data)}
       </div>
     </div>
   );

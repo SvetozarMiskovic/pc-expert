@@ -1549,7 +1549,7 @@ main {
 
 .shop-single-menu-header {
   cursor: pointer;
-  padding: 0.4rem;
+  padding: 0.5rem;
   background-color: #eaedf1;
   border-radius: 6rem;
   display: flex;
@@ -1700,10 +1700,12 @@ main {
   border-radius: 5rem;
   padding: 0.5rem;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   gap: 0.2rem;
 }
-
+.shop-category-item-cart {
+  width: 100%;
+}
 .shop-category-item-options-counter {
   /* width: 100%; */
   display: flex;
@@ -1718,9 +1720,11 @@ main {
   /* display: flex;
   flex-direction: column;
   justify-content: space-between; */
+  width: 100%;
 }
 
 .shop-category-item-product-info-title {
+  max-width: 250px;
   height: 5rem;
   overflow: hidden;
 }

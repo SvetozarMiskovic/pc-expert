@@ -13,9 +13,13 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
   });
 
   function truncate(str, length) {
-    if (str?.length > length) {
-      return str.slice(0, length) + "...";
-    } else return str;
+    if (str) {
+      if (str.length > length) {
+        return str.slice(0, length) + "...";
+      } else return str;
+    } else {
+      return "Nema naslova";
+    }
   }
 
   // console.log(typeof counter.value);
@@ -41,9 +45,7 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
           {/* ID proizvoda */}
           <div className="shop-category-item-product-info-title">
             <Text height={"100%"} color={"#0c0c0d"} fontSize={"lg"}>
-              {!dataCategory.model
-                ? truncate(dataCategory.detalji, 75)
-                : truncate(dataCategory.model, 75)}
+              {truncate(dataCategory.naslov, 80)}
             </Text>
           </div>
           {/* Naslov proizvoda */}
@@ -105,8 +107,7 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
           </div>
           <div className="shop-category-item-cart">
             <Button
-              width="35px"
-              height="35px"
+              width={"100%"}
               backgroundColor={"#eaedf1"}
               _hover={{
                 backgroundColor: "#4cbb17",
@@ -146,9 +147,7 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
           {/* ID proizvoda */}
           <div className="shop-category-item-product-info-title">
             <Text color={"#0c0c0d"} fontSize={"lg"}>
-              {!dataAll.model
-                ? truncate(dataAll.detalji, 75)
-                : truncate(dataAll.model, 75)}
+              {truncate(dataAll.naslov, 80)}
             </Text>
           </div>
           {/* Naslov proizvoda */}
@@ -209,8 +208,7 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
           </div>
           <div className="shop-category-item-cart">
             <Button
-              width="45px"
-              height="45px"
+              width={"100%"}
               backgroundColor={"#eaedf1"}
               _hover={{
                 backgroundColor: "#4cbb17",

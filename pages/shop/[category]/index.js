@@ -12,7 +12,7 @@ function Category({ cat, data }) {
   return (
     <ShopContextProvider>
       <div className="category-page">
-        <ShopLayout>
+        <ShopLayout data={data}>
           <ShopCategory category={cat} data={data} />
         </ShopLayout>
       </div>

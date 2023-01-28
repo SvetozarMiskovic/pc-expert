@@ -3,10 +3,10 @@ import ShopSidebar from "./ShopSidebar";
 
 import ShopHeaderBar from "./ShopHeaderBar";
 
-function ShopLayout({ children }) {
+function ShopLayout({ children, data }) {
   return (
     <div className="shop-layout-wrapper">
-      <ShopSidebar />
+      <ShopSidebar data={data} />
 
       <div className="shop-layout-filter-wrapper">
         <ShopHeaderBar />
