@@ -6,11 +6,17 @@ import { useShopContext } from "../../context/ShopContext";
 import { FaCartPlus } from "react-icons/fa";
 function ShopCategoryItem({ dataCategory, dataAll }) {
   const counter = useCounter({
-    max: 20,
+    max: 50,
     min: 1,
     step: 1,
     defaultValue: 1,
   });
+
+  function truncate(str, length) {
+    if (str?.length > length) {
+      return str.slice(0, length) + "...";
+    } else return str;
+  }
 
   // console.log(typeof counter.value);
   // console.log(!!dataCategory, dataAll);
@@ -29,26 +35,38 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
           </div>
         </div>
         <div className="shop-category-item-product-info">
-          <Text fontSize={"md"}>ID: {dataCategory.id}</Text>{" "}
+          <Text fontSize={"md"} color={"#5f5f5f"}>
+            {dataCategory.id}
+          </Text>
           {/* ID proizvoda */}
-          {/* <Divider borderColor={"#5f5f5f"} /> */}
-          <Text
-            height={"100%"}
-            color={"#5f5f5f"}
-            fontSize={"lg"}
-            fontWeight={"bold"}
-          >
-            {!dataCategory.model ? dataCategory.detalji : dataCategory.model}
-          </Text>
-          {/* Naslov proizvoda */}
-          <div className="shop-category-item-specs">
-            {/* Specifikacije ako ih ima */}
-            <Text color={"#5f5f5f"}>{dataCategory.velicina_ekrana}</Text>
-            <Text color={"#5f5f5f"}>{dataCategory?.tip_procesora}</Text>
+          <div className="shop-category-item-product-info-title">
+            <Text height={"100%"} color={"#0c0c0d"} fontSize={"lg"}>
+              {!dataCategory.model
+                ? truncate(dataCategory.detalji, 75)
+                : truncate(dataCategory.model, 75)}
+            </Text>
           </div>
-          <Text fontSize={"3xl"} textColor={"#f89a20"}>
-            Cijena: {dataCategory.cijena}
-          </Text>
+          {/* Naslov proizvoda */}
+
+          <div className="shop-category-item-product-info-price">
+            <Text
+              textAlign={"center"}
+              fontSize={"4xl"}
+              fontWeight={"bold"}
+              textColor={"#0c0c0d"}
+            >
+              {dataCategory.cijena}
+            </Text>
+            <Text
+              width={"100%"}
+              alignSelf={"flex-start"}
+              justifySelf={"flex-start"}
+              fontSize={"md"}
+              fontWeight="bold"
+            >
+              KM
+            </Text>
+          </div>
           {/* Cijena proizvoda */}
         </div>
         <div className="shop-category-item-options">
@@ -57,28 +75,28 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
               width="35px"
               height="35px"
               _hover={{
-                backgroundColor: "#f89a20",
+                backgroundColor: "#4cbb17",
                 color: "#fff",
               }}
-              color={"#5f5f5f"}
+              color={"#0c0c0d"}
               borderRadius={"10rem"}
               backgroundColor={"#eaedf1"}
               onClick={() => counter.decrement()}
             >
               -
             </Button>
-            <Text fontSize={"md"} color="#5f5f5f" fontWeight="bold">
+            <Text fontSize={"md"} color={"#0c0c0d"} fontWeight="bold">
               {counter.value}
             </Text>
             <Button
               width="35px"
               height="35px"
               _hover={{
-                backgroundColor: "#f89a20",
+                backgroundColor: "#4cbb17",
                 color: "#fff",
               }}
               backgroundColor={"#eaedf1"}
-              color={"#5f5f5f"}
+              color={"#0c0c0d"}
               borderRadius={"10rem"}
               onClick={() => counter.increment()}
             >
@@ -91,11 +109,12 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
               height="35px"
               backgroundColor={"#eaedf1"}
               _hover={{
-                backgroundColor: "#f89a20",
+                backgroundColor: "#4cbb17",
                 color: "#fff",
               }}
-              color={"#5f5f5f"}
+              color={"#0c0c0d"}
               borderRadius={"5rem"}
+              onClick={() => console.log(counter.value)}
             >
               <Icon as={FaCartPlus} />
             </Button>
@@ -121,55 +140,67 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
           </div>
         </div>
         <div className="shop-category-item-product-info">
-          <Text fontSize={"md"}>ID: {dataAll.id}</Text> {/* ID proizvoda */}
-          {/* <Divider borderColor={"#5f5f5f"} /> */}
-          <Text
-            height={"100%"}
-            color={"#5f5f5f"}
-            fontSize={"lg"}
-            fontWeight={"bold"}
-          >
-            {!dataAll.model ? dataAll.detalji : dataAll.model}
-          </Text>
-          {/* Naslov proizvoda */}
-          <div>
-            {/* Specifikacije ako ih ima */}
-            <Text color={"#5f5f5f"}>{dataAll.velicina_ekrana}</Text>
-            <Text color={"#5f5f5f"}>{dataAll?.tip_procesora}</Text>
+          <Text fontSize={"md"} color={"#5f5f5f"}>
+            {dataAll.id}
+          </Text>{" "}
+          {/* ID proizvoda */}
+          <div className="shop-category-item-product-info-title">
+            <Text color={"#0c0c0d"} fontSize={"lg"}>
+              {!dataAll.model
+                ? truncate(dataAll.detalji, 75)
+                : truncate(dataAll.model, 75)}
+            </Text>
           </div>
-          <Text fontSize={"3xl"} textColor={"#f89a20"}>
-            Cijena: {dataAll.cijena}
-          </Text>
+          {/* Naslov proizvoda */}
+          <div className="shop-category-item-product-info-price">
+            <Text
+              textAlign={"center"}
+              fontSize={"4xl"}
+              fontWeight={"bold"}
+              textColor={"#0c0c0d"}
+            >
+              {dataAll.cijena}
+            </Text>
+            <Text
+              width={"100%"}
+              alignSelf={"flex-start"}
+              justifySelf={"flex-start"}
+              fontSize={"md"}
+              fontWeight="bold"
+            >
+              KM
+            </Text>
+          </div>
           {/* Cijena proizvoda */}
         </div>
         <div className="shop-category-item-options">
           <div className="shop-category-item-options-counter">
             <Button
               _hover={{
-                backgroundColor: "#f89a20",
+                backgroundColor: "#4cbb17",
                 color: "#fff",
               }}
               width="35px"
               height="35px"
-              color={"#5f5f5f"}
+              color={"#0c0c0d"}
               borderRadius={"10rem"}
               backgroundColor={"#eaedf1"}
               onClick={() => counter.decrement()}
             >
               -
             </Button>
-            <Text fontSize={"sm"} color="#5f5f5f" fontWeight="bold">
+            <Text fontSize={"sm"} color={"#0c0c0d"} fontWeight="bold">
               {counter.value}
             </Text>
             <Button
               width="35px"
               height="35px"
               _hover={{
-                backgroundColor: "#f89a20",
+                backgroundColor: "#4cbb17",
                 color: "#fff",
               }}
               backgroundColor={"#eaedf1"}
-              color={"#5f5f5f"}
+              color={"#0c0c0d"}
               borderRadius={"10rem"}
               onClick={() => counter.increment()}
             >
@@ -182,11 +213,12 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
               height="45px"
               backgroundColor={"#eaedf1"}
               _hover={{
-                backgroundColor: "#f89a20",
+                backgroundColor: "#4cbb17",
                 color: "#fff",
               }}
-              color={"#5f5f5f"}
+              color={"#0c0c0d"}
               borderRadius={"5rem"}
+              onClick={() => console.log(counter.value)}
             >
               <Icon as={FaCartPlus} />
             </Button>

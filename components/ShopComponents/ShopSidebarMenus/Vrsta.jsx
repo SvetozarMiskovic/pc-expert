@@ -4,8 +4,13 @@ function Vrsta() {
   return (
     <div className="shop-single-menu">
       <div className="shop-single-menu-header">
-        <Text fontSize={"xl"} color={"#5f5f5f"} fontWeight="bold">
-          VRSTA
+        <Text
+          fontSize={"lg"}
+          color={"#0c0c0d"}
+          paddingLeft={"0.4rem"}
+          fontWeight="bold"
+        >
+          Vrsta
         </Text>
       </div>
       <div className="shop-single-menu-body"></div>

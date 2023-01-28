@@ -11,40 +11,8 @@ function ShopHeaderBar() {
 
   return (
     <div className="shop-category-header">
-      <div className="shop-category-header-view">
-        <div
-          onClick={() => updateActiveView("list")}
-          className={
-            activeView === "list"
-              ? "shop-category-header-view-option-active"
-              : "shop-category-header-view-option"
-          }
-        >
-          <Icon as={BsListUl} fontSize={"3xl"} color={"#5f5f5f"} />
-        </div>
-        <div
-          onClick={() => updateActiveView("flex")}
-          className={
-            activeView === "flex"
-              ? "shop-category-header-view-option-active"
-              : "shop-category-header-view-option"
-          }
-        >
-          <Icon as={BsFillGrid3X2GapFill} fontSize={"3xl"} color={"#5f5f5f"} />
-        </div>
-        <div
-          onClick={() => updateActiveView("grid")}
-          className={
-            activeView === "grid"
-              ? "shop-category-header-view-option-active"
-              : "shop-category-header-view-option"
-          }
-        >
-          <Icon as={BsFillGrid3X3GapFill} fontSize={"3xl"} color={"#5f5f5f"} />
-        </div>
-      </div>
       <div className="shop-category-header-count">
-        <Text fontSize={"lg"} display={"inline"}>
+        <Text fontSize={"lg"} display={"inline"} color={"#0c0c0d"}>
           Stavki po stranici:
         </Text>
         <Select
@@ -53,10 +21,11 @@ function ShopHeaderBar() {
           border={"none"}
           variant={"filled"}
           width={75}
-          backgroundColor={"#fff"}
-          _active={{ backgroundColor: "#fff" }}
-          _focus={{ backgroundColor: "#fff" }}
-          _hover={{ backgroundColor: "#f89a20" }}
+          backgroundColor={"#eaedf1"}
+          _active={{ backgroundColor: "#eaedf1" }}
+          _focus={{ backgroundColor: "#eaedf1" }}
+          _hover={{ backgroundColor: "#eaedf1" }}
+          color={"#0c0c0d"}
         >
           <option value={8}>8</option>
           <option value={16}>16</option>
@@ -66,7 +35,7 @@ function ShopHeaderBar() {
         </Select>
       </div>
       <div className="shop-category-header-sort">
-        <Text fontSize={"lg"} display={"inline"}>
+        <Text fontSize={"lg"} color={"#0c0c0d"} display={"inline"}>
           Sortiraj:
         </Text>
         <Select
@@ -75,19 +44,26 @@ function ShopHeaderBar() {
           border={"none"}
           variant={"filled"}
           width={220}
-          backgroundColor={"#fff"}
-          _active={{ backgroundColor: "#fff" }}
-          _focus={{ backgroundColor: "#fff" }}
-          _hover={{ backgroundColor: "#f89a20" }}
+          backgroundColor={"#eaedf1"}
+          _active={{ backgroundColor: "#eaedf1" }}
+          _focus={{ backgroundColor: "#eaedf1" }}
+          _hover={{ backgroundColor: "#eaedf1" }}
+          color={"#0c0c0d"}
         >
           <option value={"min-cijena"}>Cijena: Prema najmanjoj</option>
           <option value={"max-cijena"}>Cijena: Prema najvecoj</option>
         </Select>
       </div>
       <div className="shop-category-header-count-view">
-        <Text fontSize={"lg"}>1-8 </Text>
-        <Text fontSize={"lg"}>od</Text>
-        <Text fontSize={"lg"}>74</Text>
+        <Text fontSize={"lg"} color={"#0c0c0d"}>
+          1-8{" "}
+        </Text>
+        <Text fontSize={"lg"} color={"#0c0c0d"}>
+          od
+        </Text>
+        <Text fontSize={"lg"} color={"#0c0c0d"}>
+          74
+        </Text>
       </div>
     </div>
   );

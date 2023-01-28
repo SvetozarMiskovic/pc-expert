@@ -4,8 +4,13 @@ function BrzinaProcesora() {
   return (
     <div className="shop-single-menu">
       <div className="shop-single-menu-header">
-        <Text fontSize={"xl"} color={"#5f5f5f"} fontWeight="bold">
-          BRZINA PROCESORA
+        <Text
+          paddingLeft={"0.4rem"}
+          fontSize={"lg"}
+          color={"#0c0c0d"}
+          fontWeight="bold"
+        >
+          Brzina procesora
         </Text>
       </div>
       <div className="shop-single-menu-body"></div>

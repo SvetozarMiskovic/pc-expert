@@ -55,72 +55,77 @@ function ShopSidebar() {
             className="shop-single-menu-header"
             onClick={router.asPath === "/shop" ? null : updateAllCat}
           >
-            <Text fontSize={"xl"} color={"#5f5f5f"} fontWeight="bold">
-              SVE KATEGORIJE
+            <Text
+              fontSize={"lg"}
+              paddingLeft={"0.4rem"}
+              color={"#0c0c0d"}
+              fontWeight="bold"
+            >
+              Sve kategorije
             </Text>
           </div>
           <Collapse in={isAllCat}>
             <div className="shop-single-menu-body">
               <Link href={"/shop/laptopi"}>
                 <div className="shop-menu-link">
-                  <Icon color={"#5f5f5f"} as={FaLaptop} fontSize={"xl"} />
-                  <Text color={"#5f5f5f"} fontSize={"xl"}>
+                  <Icon color={"#0c0c0d"} as={FaLaptop} fontSize={"xl"} />
+                  <Text color={"#0c0c0d"} fontSize={"lg"}>
                     Laptopi
                   </Text>
                 </div>
               </Link>
               <Link href={"/shop/monitori"}>
                 <div className="shop-menu-link">
-                  <Icon color={"#5f5f5f"} as={FaDesktop} fontSize={"xl"} />
-                  <Text color={"#5f5f5f"} fontSize={"xl"}>
+                  <Icon color={"#0c0c0d"} as={FaDesktop} fontSize={"xl"} />
+                  <Text color={"#0c0c0d"} fontSize={"lg"}>
                     Monitori
                   </Text>
                 </div>
               </Link>
               <Link href={"/shop/tv"}>
                 <div className="shop-menu-link">
-                  <Icon color={"#5f5f5f"} as={FaTv} fontSize={"xl"} />
-                  <Text color={"#5f5f5f"} fontSize={"xl"}>
+                  <Icon color={"#0c0c0d"} as={FaTv} fontSize={"xl"} />
+                  <Text color={"#0c0c0d"} fontSize={"lg"}>
                     Televizori
                   </Text>
                 </div>
               </Link>
               <Link href={"/shop/racunari"}>
                 <div className="shop-menu-link">
-                  <Icon color={"#5f5f5f"} as={FaWindows} fontSize={"xl"} />
-                  <Text color={"#5f5f5f"} fontSize={"xl"}>
+                  <Icon color={"#0c0c0d"} as={FaWindows} fontSize={"xl"} />
+                  <Text color={"#0c0c0d"} fontSize={"lg"}>
                     Računari
                   </Text>
                 </div>
               </Link>
               <Link href={"/shop/telefoni"}>
                 <div className="shop-menu-link">
-                  <Icon color={"#5f5f5f"} as={FaMobileAlt} fontSize={"xl"} />
-                  <Text color={"#5f5f5f"} fontSize={"xl"}>
+                  <Icon color={"#0c0c0d"} as={FaMobileAlt} fontSize={"xl"} />
+                  <Text color={"#0c0c0d"} fontSize={"lg"}>
                     Telefoni
                   </Text>
                 </div>
               </Link>
               <Link href={"/shop/periferija"}>
                 <div className="shop-menu-link">
-                  <Icon color={"#5f5f5f"} as={FaKeyboard} fontSize={"xl"} />
-                  <Text color={"#5f5f5f"} fontSize={"xl"}>
+                  <Icon color={"#0c0c0d"} as={FaKeyboard} fontSize={"xl"} />
+                  <Text color={"#0c0c0d"} fontSize={"lg"}>
                     Računarska periferija
                   </Text>
                 </div>
               </Link>
               <Link href={"/shop/komponente"}>
                 <div className="shop-menu-link">
-                  <Icon color={"#5f5f5f"} as={FaMemory} fontSize={"xl"} />
-                  <Text color={"#5f5f5f"} fontSize={"xl"}>
+                  <Icon color={"#0c0c0d"} as={FaMemory} fontSize={"xl"} />
+                  <Text color={"#0c0c0d"} fontSize={"lg"}>
                     Računarske komponente
                   </Text>
                 </div>
               </Link>
               <Link href={"/shop/mining"}>
                 <div className="shop-menu-link">
-                  <Icon color={"#5f5f5f"} as={FaBitcoin} fontSize={"xl"} />
-                  <Text color={"#5f5f5f"} fontSize={"xl"}>
+                  <Icon color={"#0c0c0d"} as={FaBitcoin} fontSize={"xl"} />
+                  <Text color={"#0c0c0d"} fontSize={"lg"}>
                     Mining
                   </Text>
                 </div>
@@ -130,8 +135,13 @@ function ShopSidebar() {
         </div>
         <div className="shop-single-menu">
           <div className="shop-single-menu-header">
-            <Text fontSize={"xl"} color={"#5f5f5f"} fontWeight="bold">
-              CIJENA
+            <Text
+              paddingLeft={"0.4rem"}
+              fontSize={"lg"}
+              color={"#0c0c0d"}
+              fontWeight="bold"
+            >
+              Cijena
             </Text>
           </div>
           <div className="shop-single-menu-body">
@@ -141,19 +151,19 @@ function ShopSidebar() {
               aria-label={["min", "max"]}
               defaultValue={[1, 3000]}
               onChangeEnd={updatePriceRange}
-              colorScheme={"orange"}
+              // colorScheme={"green"}
             >
               <RangeSliderTrack>
-                <RangeSliderFilledTrack />
+                <RangeSliderFilledTrack bg={"#4CBB17"} />
               </RangeSliderTrack>
               <RangeSliderThumb index={0} />
               <RangeSliderThumb index={1} />
             </RangeSlider>
             <div className="price-range">
-              <Text fontSize={"lg"} color={"#5f5f5f"} fontWeight={"bold"}>
+              <Text fontSize={"lg"} color={"#0c0c0d"} fontWeight={"bold"}>
                 {priceRange?.[0]}
               </Text>
-              <Text fontSize={"lg"} color={"#5f5f5f"} fontWeight={"bold"}>
+              <Text fontSize={"lg"} color={"#0c0c0d"} fontWeight={"bold"}>
                 {priceRange?.[1]}
               </Text>
             </div>

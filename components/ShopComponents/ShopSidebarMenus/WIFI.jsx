@@ -4,8 +4,13 @@ function WIFI() {
   return (
     <div className="shop-single-menu">
       <div className="shop-single-menu-header">
-        <Text fontSize={"xl"} color={"#5f5f5f"} fontWeight="bold">
-          WIFI
+        <Text
+          fontSize={"lg"}
+          paddingLeft={"0.4rem"}
+          color={"#0c0c0d"}
+          fontWeight="bold"
+        >
+          Wifi
         </Text>
       </div>
       <div className="shop-single-menu-body"></div>

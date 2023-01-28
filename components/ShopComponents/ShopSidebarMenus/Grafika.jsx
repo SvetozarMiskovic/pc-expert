@@ -5,8 +5,13 @@ function Grafika() {
   return (
     <div className="shop-single-menu">
       <div className="shop-single-menu-header">
-        <Text fontSize={"xl"} color={"#5f5f5f"} fontWeight="bold">
-          GRAFČKA KARTICA
+        <Text
+          paddingLeft={"0.4rem"}
+          fontSize={"lg"}
+          color={"#0c0c0d"}
+          fontWeight="bold"
+        >
+          Grafička kartica
         </Text>
       </div>
       <div className="shop-single-menu-body"></div>
