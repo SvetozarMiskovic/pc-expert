@@ -15,10 +15,11 @@ export function middleware(req) {
       ? NextResponse.redirect("http://localhost:3000/nalog/info")
       : NextResponse.redirect("https://pc-expert.vercel.app/nalog/info");
   } else if (path === "/registracija") {
-    if (token)
+    if (token) {
       return process.env.NODE_ENV === "development"
         ? NextResponse.redirect("http://localhost:3000/")
         : NextResponse.redirect("https://pc-expert.vercel.app/");
+    } else return;
   }
 }
 
