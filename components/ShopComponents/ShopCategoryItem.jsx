@@ -12,10 +12,12 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
     defaultValue: 1,
   });
 
-  function truncate(str, length) {
-    if (str.length > length) {
-      return str.slice(0, length) + "...";
-    } else return str;
+  function truncate(str, max) {
+    const val = str ? str.toString() : "Nema naslova";
+
+    if (val.length > max) {
+      return val.slice(0, max) + "...";
+    } else return val;
   }
 
   // console.log(typeof counter.value);
