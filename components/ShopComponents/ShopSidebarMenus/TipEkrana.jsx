@@ -1,6 +1,9 @@
 import React from "react";
 import { Text } from "@chakra-ui/react";
+import { useShopContext } from "../../../context/ShopContext";
 function TipEkrana() {
+  const { tipEkrana } = useShopContext();
+
   return (
     <div className="shop-single-menu">
       <div className="shop-single-menu-header">
@@ -13,7 +16,12 @@ function TipEkrana() {
           Tip ekrana
         </Text>
       </div>
-      <div className="shop-single-menu-body"></div>
+      <div className="shop-single-menu-body">
+        {!!tipEkrana &&
+          tipEkrana?.map(b => {
+            return <h1 key={b}>{b}</h1>;
+          })}
+      </div>
     </div>
   );
 }

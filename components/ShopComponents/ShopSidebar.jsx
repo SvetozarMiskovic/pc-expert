@@ -39,6 +39,7 @@ function ShopSidebar({ data }) {
     setPriceRange(price);
   };
 
+  // console.log(data);
   return (
     <div className="shop-sidebar-wrapper">
       <div className="shop-sidebar-container">

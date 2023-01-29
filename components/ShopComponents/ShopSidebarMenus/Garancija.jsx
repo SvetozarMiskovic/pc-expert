@@ -1,7 +1,10 @@
 import React from "react";
 import { Text } from "@chakra-ui/react";
+import { useShopContext } from "../../../context/ShopContext";
 
 function Garancija() {
+  const { garancija } = useShopContext();
+
   return (
     <div className="shop-single-menu">
       <div className="shop-single-menu-header">
@@ -14,7 +17,12 @@ function Garancija() {
           Garancija
         </Text>
       </div>
-      <div className="shop-single-menu-body"></div>
+      <div className="shop-single-menu-body">
+        {!!garancija &&
+          garancija?.map(b => {
+            return <h1 key={b}>{b}</h1>;
+          })}
+      </div>
     </div>
   );
 }

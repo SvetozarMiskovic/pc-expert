@@ -39,7 +39,6 @@ model laptopi {
   garancija        String? @db.VarChar(100)
   hard_disk        String? @db.VarChar(100)
   cijena           String? @db.VarChar(100)
-  graficka         String? @db.VarChar(100)
   tip_procesora    String? @db.VarChar(100)
   os               String? @db.VarChar(100)
   boja             String? @db.VarChar(100)
@@ -54,6 +53,7 @@ model laptopi {
   webcam           String? @db.VarChar(100)
   model_procesora  String? @db.VarChar(100)
   naslov           String? @db.VarChar(255)
+  graficka_kartica String? @db.VarChar(100)
 }
 
 model mining {
@@ -107,13 +107,13 @@ model racunari {
   graficka_kartica  String? @db.VarChar(100)
   ram               String? @db.VarChar(100)
   tip_ram           String? @db.VarChar(100)
-  tip_hd            String? @db.VarChar(100)
   hard_disk         String? @db.VarChar(100)
   os                String? @db.VarChar(100)
   memorija_graficke String? @db.VarChar(100)
   model_graficke    String? @db.VarChar(100)
   model_procesora   String? @db.VarChar(100)
   naslov            String? @db.VarChar(255)
+  tip_hard_diska    String? @db.VarChar(100)
 }
 
 model telefoni {

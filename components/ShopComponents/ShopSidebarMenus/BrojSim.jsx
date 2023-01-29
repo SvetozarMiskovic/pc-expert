@@ -1,6 +1,9 @@
 import React from "react";
 import { Text } from "@chakra-ui/react";
+import { useShopContext } from "../../../context/ShopContext";
 function BrojSim() {
+  const { brojSim } = useShopContext();
+
   return (
     <div className="shop-single-menu">
       <div className="shop-single-menu-header">
@@ -13,7 +16,12 @@ function BrojSim() {
           Broj SIM slotova
         </Text>
       </div>
-      <div className="shop-single-menu-body"></div>
+      <div className="shop-single-menu-body">
+        {!!brojSim &&
+          brojSim?.map(b => {
+            return <h1 key={b}>{b}</h1>;
+          })}
+      </div>
     </div>
   );
 }

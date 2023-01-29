@@ -8,7 +8,7 @@ import { whatToFetch } from "../../../helpers/whatToFetch";
 import ShopContextProvider from "../../../context/ShopContext";
 
 function Category({ cat, data }) {
-  console.log(`Iz category shopa:`, data);
+  // console.log(`Iz category shopa:`, data);
   return (
     <ShopContextProvider>
       <div className="category-page">

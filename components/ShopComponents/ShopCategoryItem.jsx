@@ -20,8 +20,6 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
     } else return val;
   }
 
-  // console.log(typeof counter.value);
-  // console.log(!!dataCategory, dataAll);
   return !!dataCategory ? (
     <div className="shop-category-item-wrapper">
       <div className="shop-category-item-container">

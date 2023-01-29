@@ -5,7 +5,7 @@ import { db } from "../../config/prismaClient";
 import ShopContextProvider from "../../context/ShopContext";
 
 export default function Shop({ category, data }) {
-  console.log(`Iz sveg shopa:`, data);
+  // console.log(`Iz sveg shopa:`, data);
   return (
     <ShopContextProvider>
       <div className="shop-page">
