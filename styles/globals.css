@@ -1560,8 +1560,41 @@ main {
 .shop-single-menu-body {
   padding: 1rem;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
+.shop-single-menu-filter {
+  padding-left: 0.6rem;
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  cursor: pointer;
+}
+.shop-single-menu-filter-checkbox {
+  transition: 200ms ease-out;
+}
+.shop-single-menu-filter-checkbox:hover {
+  transition: 200ms ease-in;
+  background-color: #eaedf1;
+}
+
+.shop-single-menu-filter-checkbox-active {
+  background-color: #4cbb17;
+}
+
+.checkbox {
+  border: 2px solid #eaedf1;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  padding: 0.7rem;
+  align-items: center;
+}
 .shop-menu-link {
   display: flex;
   justify-content: flex-start;

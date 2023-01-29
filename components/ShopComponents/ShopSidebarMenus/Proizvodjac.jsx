@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Text } from "@chakra-ui/react";
 import { useShopContext } from "../../../context/ShopContext";
-import { Collapse, Radio } from "@chakra-ui/react";
+import { Collapse } from "@chakra-ui/react";
+import ShopSingleFilter from "../ShopSingleFilter";
 
 function Proizvodjac() {
   const { proizvodjac } = useShopContext();
@@ -28,13 +29,10 @@ function Proizvodjac() {
       </div>
       <Collapse in={open}>
         <div className="shop-single-menu-body">
-          {proizvodjac?.map(p => {
-            return (
-              <Radio key={p} color={"#0c0c0d"} rounded="lg" textColor={"red"}>
-                {p}
-              </Radio>
-            );
-          })}
+          {!!proizvodjac &&
+            proizvodjac?.map(p => {
+              return <ShopSingleFilter key={p} data={p} />;
+            })}
         </div>
       </Collapse>
     </div>

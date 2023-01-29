@@ -1,13 +1,21 @@
-import React from "react";
-import { Text } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Text, Collapse } from "@chakra-ui/react";
 import { useShopContext } from "../../../context/ShopContext";
+import ShopSingleFilter from "../ShopSingleFilter";
 
 function VelicinaHDD() {
   const { hdd } = useShopContext();
+  const [open, setOpen] = useState(true);
 
+  const updateCollapseState = () => {
+    setOpen(prevState => !prevState);
+  };
   return (
     <div className="shop-single-menu">
-      <div className="shop-single-menu-header">
+      <div
+        className="shop-single-menu-header"
+        onClick={() => updateCollapseState()}
+      >
         <Text
           paddingLeft={"0.4rem"}
           fontSize={"lg"}
@@ -17,12 +25,14 @@ function VelicinaHDD() {
           Veličina HDD
         </Text>
       </div>
-      <div className="shop-single-menu-body">
-        {!!hdd &&
-          hdd?.map(b => {
-            return <h1 key={b}>{b}</h1>;
-          })}
-      </div>
+      <Collapse in={open}>
+        <div className="shop-single-menu-body">
+          {!!hdd &&
+            hdd?.map(p => {
+              return <ShopSingleFilter key={p} data={p} />;
+            })}
+        </div>
+      </Collapse>
     </div>
   );
 }

@@ -1,9 +1,20 @@
-import React from "react";
-import { Text } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { Text, Collapse, Icon } from "@chakra-ui/react";
+import { useShopContext } from "../../../context/ShopContext";
+import { FaCheck } from "react-icons/fa";
 function MemorijaGraficke() {
+  const [open, setOpen] = useState(true);
+  const [checked, setChecked] = useState(false);
+
+  const updateCollapseState = () => {
+    setOpen(prevState => !prevState);
+  };
   return (
     <div className="shop-single-menu">
-      <div className="shop-single-menu-header">
+      <div
+        className="shop-single-menu-header"
+        onClick={() => updateCollapseState()}
+      >
         <Text
           paddingLeft={"0.4rem"}
           fontSize={"lg"}
