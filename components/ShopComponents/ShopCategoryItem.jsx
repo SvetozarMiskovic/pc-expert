@@ -107,7 +107,7 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
 
             <div className="shop-category-item-options-counter-input">
               <input
-                onBlur={() => {
+                onBlur={e => {
                   if (e.target.value === "") setCounter(1);
                 }}
                 max={50}
