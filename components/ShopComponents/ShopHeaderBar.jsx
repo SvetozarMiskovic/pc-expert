@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import {
   BsFillGrid3X3GapFill,
   BsFillGrid3X2GapFill,
@@ -7,7 +7,13 @@ import {
 import { Icon, Text, Select } from "@chakra-ui/react";
 import { useShopContext } from "../../context/ShopContext";
 function ShopHeaderBar() {
-  const { activeView, updateActiveView } = useShopContext();
+  const { activeView, updateActiveView, productsCount } = useShopContext();
+
+  const [itemCount, setItemCount] = useState(8);
+
+  const updateItemCount = e => {
+    setItemCount(e.target.value);
+  };
 
   return (
     <div className="shop-category-header">
@@ -26,6 +32,7 @@ function ShopHeaderBar() {
           _focus={{ backgroundColor: "#eaedf1" }}
           _hover={{ backgroundColor: "#eaedf1" }}
           color={"#0c0c0d"}
+          onChange={updateItemCount}
         >
           <option value={8}>8</option>
           <option value={16}>16</option>
@@ -56,13 +63,15 @@ function ShopHeaderBar() {
       </div>
       <div className="shop-category-header-count-view">
         <Text fontSize={"lg"} color={"#0c0c0d"}>
-          1-8{" "}
+          {itemCount > productsCount
+            ? `1 - ${productsCount}`
+            : `1 - ${itemCount}`}
         </Text>
         <Text fontSize={"lg"} color={"#0c0c0d"}>
           od
         </Text>
         <Text fontSize={"lg"} color={"#0c0c0d"}>
-          74
+          {productsCount}
         </Text>
       </div>
     </div>

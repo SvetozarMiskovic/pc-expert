@@ -34,6 +34,7 @@ function ShopCategory({ category, data }) {
     updateBaterija,
     updateInterna,
     updateGlavnaKamera,
+    updateProductsCount,
   } = useShopContext();
 
   useEffect(() => {
@@ -237,6 +238,8 @@ function ShopCategory({ category, data }) {
       updateRezolucija(rezolucije);
       updateGarancija(garancije);
       updateOs(os);
+
+      updateProductsCount(data?.length);
     };
 
     updateFilters();

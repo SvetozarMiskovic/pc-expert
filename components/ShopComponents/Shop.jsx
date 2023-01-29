@@ -8,11 +8,14 @@ function Shop({ category, data }) {
     updateActiveCategory,
     updateAllCategoryProducts,
     allCategoryProducts,
+    updateProductsCount,
   } = useShopContext();
 
   useEffect(() => {
     updateAllCategoryProducts(data);
     updateActiveCategory(category);
+
+    updateProductsCount(data?.length);
   }, [category]);
   return (
     <div className="shop-component-container">

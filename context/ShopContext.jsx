@@ -35,6 +35,8 @@ const ShopContextProvider = ({ children }) => {
   const [bt, setBt] = useState([]);
   const [vrsta, setVrsta] = useState([]);
 
+  const [productsCount, setProductsCount] = useState(0);
+
   const updateBoje = arr => {
     setBoje(() => {
       return arr;
@@ -213,6 +215,9 @@ const ShopContextProvider = ({ children }) => {
     setActiveCategory(cat);
   };
 
+  const updateProductsCount = num => {
+    setProductsCount(num);
+  };
   return (
     <ShopContext.Provider
       value={{
@@ -276,6 +281,8 @@ const ShopContextProvider = ({ children }) => {
         updateBaterija,
         interna,
         updateInterna,
+        updateProductsCount,
+        productsCount,
       }}
     >
       {children}

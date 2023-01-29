@@ -29,7 +29,7 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
   const onChange = e => {
     setCounter(prevState => {
       if (prevState > 50 || parseInt(e.target.value) > 50) return 50;
-
+      if (parseInt(e.target.value) === 0) return 1;
       return parseInt(e.target.value);
     });
   };
@@ -56,10 +56,6 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
           </div>
         </div>
         <div className="shop-category-item-product-info">
-          <Text fontSize={"md"} color={"#5f5f5f"}>
-            {dataCategory.id}
-          </Text>
-          {/* ID proizvoda */}
           <div className="shop-category-item-product-info-title">
             <Text height={"100%"} color={"#0c0c0d"} fontSize={"lg"}>
               {truncate(dataCategory.naslov, 80)}
@@ -144,7 +140,7 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
               }}
               color={"#0c0c0d"}
               borderRadius={"5rem"}
-              onClick={() => console.log(counter)}
+              onClick={() => console.log(counter, dataCategory)}
             >
               <Icon as={FaCartPlus} />
             </Button>
@@ -170,10 +166,6 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
           </div>
         </div>
         <div className="shop-category-item-product-info">
-          <Text fontSize={"md"} color={"#5f5f5f"}>
-            {dataAll.id}
-          </Text>
-          {/* ID proizvoda */}
           <div className="shop-category-item-product-info-title">
             <Text color={"#0c0c0d"} fontSize={"lg"}>
               {truncate(dataAll.naslov, 80)}
@@ -260,7 +252,7 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
               }}
               color={"#0c0c0d"}
               borderRadius={"5rem"}
-              onClick={() => console.log(counter)}
+              onClick={() => console.log(counter, dataAll)}
             >
               <Icon as={FaCartPlus} />
             </Button>

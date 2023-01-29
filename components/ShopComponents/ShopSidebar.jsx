@@ -27,10 +27,14 @@ function ShopSidebar({ data }) {
   const { activeCategory } = useShopContext();
 
   const [priceRange, setPriceRange] = useState([0, 3000]);
+  const [isPrice, setIsPrice] = useState(true);
   const [isAllCat, setIsAllCat] = useState(() => {
     return router.asPath === "/shop" ? true : false;
   });
 
+  const updateIsPrice = () => {
+    setIsPrice(prevState => !prevState);
+  };
   const updateAllCat = () => {
     setIsAllCat(prevState => !prevState);
   };
@@ -127,7 +131,10 @@ function ShopSidebar({ data }) {
           </Collapse>
         </div>
         <div className="shop-single-menu">
-          <div className="shop-single-menu-header">
+          <div
+            className="shop-single-menu-header"
+            onClick={router.asPath === "/shop" ? null : updateIsPrice}
+          >
             <Text
               paddingLeft={"0.4rem"}
               fontSize={"lg"}
@@ -137,30 +144,32 @@ function ShopSidebar({ data }) {
               Cijena
             </Text>
           </div>
-          <div className="shop-single-menu-body">
-            <RangeSlider
-              max={3000}
-              min={0}
-              aria-label={["min", "max"]}
-              defaultValue={[1, 3000]}
-              onChangeEnd={updatePriceRange}
-              // colorScheme={"green"}
-            >
-              <RangeSliderTrack>
-                <RangeSliderFilledTrack bg={"#4CBB17"} />
-              </RangeSliderTrack>
-              <RangeSliderThumb bg={"#eaedf1"} index={0} />
-              <RangeSliderThumb bg={"#eaedf1"} index={1} />
-            </RangeSlider>
-            <div className="price-range">
-              <Text fontSize={"lg"} color={"#0c0c0d"} fontWeight={"bold"}>
-                {priceRange?.[0]}
-              </Text>
-              <Text fontSize={"lg"} color={"#0c0c0d"} fontWeight={"bold"}>
-                {priceRange?.[1]}
-              </Text>
+          <Collapse in={isPrice}>
+            <div className="shop-single-menu-body">
+              <RangeSlider
+                max={3000}
+                min={0}
+                aria-label={["min", "max"]}
+                defaultValue={[1, 3000]}
+                onChangeEnd={updatePriceRange}
+                // colorScheme={"green"}
+              >
+                <RangeSliderTrack>
+                  <RangeSliderFilledTrack bg={"#4CBB17"} />
+                </RangeSliderTrack>
+                <RangeSliderThumb bg={"#eaedf1"} index={0} />
+                <RangeSliderThumb bg={"#eaedf1"} index={1} />
+              </RangeSlider>
+              <div className="price-range">
+                <Text fontSize={"lg"} color={"#0c0c0d"} fontWeight={"bold"}>
+                  {priceRange?.[0]}
+                </Text>
+                <Text fontSize={"lg"} color={"#0c0c0d"} fontWeight={"bold"}>
+                  {priceRange?.[1]}
+                </Text>
+              </div>
             </div>
-          </div>
+          </Collapse>
         </div>
         {!!activeCategory && generateSidebarFilters(activeCategory, data)}
       </div>
