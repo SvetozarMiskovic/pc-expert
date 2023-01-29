@@ -1,17 +1,38 @@
 import Image from "next/image";
-import React from "react";
-import { Text, Button, Divider, Icon } from "@chakra-ui/react";
-import { useCounter } from "@chakra-ui/counter";
-import { useShopContext } from "../../context/ShopContext";
+import React, { useState } from "react";
+import {
+  Text,
+  Button,
+  Icon,
+  NumberInput,
+  NumberInputField,
+} from "@chakra-ui/react";
+
 import { FaCartPlus } from "react-icons/fa";
 function ShopCategoryItem({ dataCategory, dataAll }) {
-  const counter = useCounter({
-    max: 50,
-    min: 1,
-    step: 1,
-    defaultValue: 1,
-  });
+  const [counter, setCounter] = useState(1);
+  const maxCounter = 50;
 
+  const increment = () => {
+    setCounter(prevState => {
+      if (prevState >= 50) return 50;
+      return prevState + 1;
+    });
+  };
+  const decrement = () => {
+    setCounter(prevState => {
+      if (prevState === 1) return 1;
+      return prevState - 1;
+    });
+  };
+
+  const onChange = e => {
+    setCounter(prevState => {
+      if (prevState > 50 || parseInt(e.target.value) > 50) return 50;
+
+      return parseInt(e.target.value);
+    });
+  };
   function truncate(str, max) {
     const val = str ? str.toString() : "Nema naslova";
 
@@ -79,13 +100,25 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
               color={"#0c0c0d"}
               borderRadius={"10rem"}
               backgroundColor={"#eaedf1"}
-              onClick={() => counter.decrement()}
+              onClick={() => decrement()}
             >
               -
             </Button>
-            <Text fontSize={"md"} color={"#0c0c0d"} fontWeight="bold">
-              {counter.value}
-            </Text>
+
+            <div className="shop-category-item-options-counter-input">
+              <input
+                onBlur={() => {
+                  if (e.target.value === "") setCounter(1);
+                }}
+                max={50}
+                min={1}
+                value={counter}
+                onChange={e => {
+                  onChange(e);
+                }}
+                type="number"
+              />
+            </div>
             <Button
               width="35px"
               height="35px"
@@ -96,7 +129,7 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
               backgroundColor={"#eaedf1"}
               color={"#0c0c0d"}
               borderRadius={"10rem"}
-              onClick={() => counter.increment()}
+              onClick={() => increment()}
             >
               +
             </Button>
@@ -111,7 +144,7 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
               }}
               color={"#0c0c0d"}
               borderRadius={"5rem"}
-              onClick={() => console.log(counter.value)}
+              onClick={() => console.log(counter)}
             >
               <Icon as={FaCartPlus} />
             </Button>
@@ -139,7 +172,7 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
         <div className="shop-category-item-product-info">
           <Text fontSize={"md"} color={"#5f5f5f"}>
             {dataAll.id}
-          </Text>{" "}
+          </Text>
           {/* ID proizvoda */}
           <div className="shop-category-item-product-info-title">
             <Text color={"#0c0c0d"} fontSize={"lg"}>
@@ -171,22 +204,37 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
         <div className="shop-category-item-options">
           <div className="shop-category-item-options-counter">
             <Button
+              width="35px"
+              height="35px"
               _hover={{
                 backgroundColor: "#4cbb17",
                 color: "#fff",
               }}
-              width="35px"
-              height="35px"
               color={"#0c0c0d"}
               borderRadius={"10rem"}
               backgroundColor={"#eaedf1"}
-              onClick={() => counter.decrement()}
+              onClick={() => decrement()}
             >
               -
             </Button>
-            <Text fontSize={"sm"} color={"#0c0c0d"} fontWeight="bold">
+
+            <div className="shop-category-item-options-counter-input">
+              <input
+                onBlur={e => {
+                  if (e.target.value === "") setCounter(1);
+                }}
+                max={50}
+                min={1}
+                value={counter}
+                onChange={e => {
+                  onChange(e);
+                }}
+                type="number"
+              />
+            </div>
+            {/* <Text fontSize={"md"} color={"#0c0c0d"} fontWeight="bold">
               {counter.value}
-            </Text>
+            </Text> */}
             <Button
               width="35px"
               height="35px"
@@ -197,7 +245,7 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
               backgroundColor={"#eaedf1"}
               color={"#0c0c0d"}
               borderRadius={"10rem"}
-              onClick={() => counter.increment()}
+              onClick={() => increment()}
             >
               +
             </Button>
@@ -212,7 +260,7 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
               }}
               color={"#0c0c0d"}
               borderRadius={"5rem"}
-              onClick={() => console.log(counter.value)}
+              onClick={() => console.log(counter)}
             >
               <Icon as={FaCartPlus} />
             </Button>

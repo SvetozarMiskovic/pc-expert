@@ -1740,13 +1740,23 @@ main {
   width: 100%;
 }
 .shop-category-item-options-counter {
-  /* width: 100%; */
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 0.4rem;
   padding: 0.4rem;
   border-radius: 5rem;
   box-shadow: inset 2px 2px 5px 1px rgb(0 6 22 / 10%);
+}
+.shop-category-item-options-counter-input {
+  width: 2rem;
+}
+
+.shop-category-item-options-counter-input > input {
+  width: 100%;
+  text-align: center;
+  outline: none;
+  border: none;
 }
 
 .shop-category-item-product-info {

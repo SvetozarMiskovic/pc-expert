@@ -149,8 +149,8 @@ function ShopSidebar({ data }) {
               <RangeSliderTrack>
                 <RangeSliderFilledTrack bg={"#4CBB17"} />
               </RangeSliderTrack>
-              <RangeSliderThumb index={0} />
-              <RangeSliderThumb index={1} />
+              <RangeSliderThumb bg={"#eaedf1"} index={0} />
+              <RangeSliderThumb bg={"#eaedf1"} index={1} />
             </RangeSlider>
             <div className="price-range">
               <Text fontSize={"lg"} color={"#0c0c0d"} fontWeight={"bold"}>
