@@ -13,6 +13,7 @@ import {
   RangeSliderFilledTrack,
   RangeSliderThumb,
   DrawerCloseButton,
+  DrawerHeader,
 } from "@chakra-ui/react";
 import { FaFilter } from "react-icons/fa";
 import { useShopContext } from "../../context/ShopContext";
@@ -77,8 +78,17 @@ function ShopMobileSidebar() {
         finalFocusRef={btnRef}
       >
         <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton background={"transparent"} />
+        <DrawerContent width={"100%"}>
+          <DrawerHeader
+            padding={"0.4rem"}
+            width="100%"
+            display={"flex"}
+            gap="1rem"
+            position={"relative"}
+          >
+            <DrawerCloseButton position={"relative"} top={0} right={0} />
+            <Text>Zatvori filtere</Text>
+          </DrawerHeader>
           <DrawerBody
             display={"flex"}
             flexDirection={"column"}
