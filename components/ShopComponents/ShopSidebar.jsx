@@ -171,7 +171,7 @@ function ShopSidebar({ data }) {
             </div>
           </Collapse>
         </div>
-        {!!activeCategory && generateSidebarFilters(activeCategory, data)}
+        {!!activeCategory && generateSidebarFilters(activeCategory)}
       </div>
     </div>
   );

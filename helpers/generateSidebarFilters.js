@@ -26,14 +26,14 @@ import BT from "../components/ShopComponents/ShopSidebarMenus/BT";
 import Vrsta from "../components/ShopComponents/ShopSidebarMenus/Vrsta";
 import KapacitetBaterije from "../components/ShopComponents/ShopSidebarMenus/KapacitetBaterije";
 
-export const generateSidebarFilters = (category, data) => {
-  console.log("Iz generate", data);
+export const generateSidebarFilters = category => {
+  console.log("Iz generate");
 
   switch (category) {
     case "laptopi": {
       return (
         <>
-          <Boja data={data} />
+          <Boja />
           <Proizvodjac />
           <VelicinaEkrana />
           <Procesor />

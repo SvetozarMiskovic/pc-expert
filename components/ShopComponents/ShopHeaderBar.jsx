@@ -6,6 +6,7 @@ import {
 } from "react-icons/bs";
 import { Icon, Text, Select } from "@chakra-ui/react";
 import { useShopContext } from "../../context/ShopContext";
+import ShopMobileSidebar from "./ShopMobileSidebar";
 function ShopHeaderBar() {
   const { activeView, updateActiveView, productsCount } = useShopContext();
 
@@ -17,6 +18,8 @@ function ShopHeaderBar() {
 
   return (
     <div className="shop-category-header">
+      <ShopMobileSidebar />
+
       <div className="shop-category-header-count">
         <Text fontSize={"lg"} display={"inline"} color={"#0c0c0d"}>
           Stavki po stranici:

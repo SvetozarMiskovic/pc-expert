@@ -3,7 +3,7 @@ import { Text, Collapse } from "@chakra-ui/react";
 import { useShopContext } from "../../../context/ShopContext";
 import ShopSingleFilter from "../ShopSingleFilter";
 
-function Boja({ data }) {
+function Boja() {
   const [open, setOpen] = useState(true);
 
   const updateCollapseState = () => {
@@ -11,6 +11,7 @@ function Boja({ data }) {
   };
 
   const { boje } = useShopContext();
+
   return (
     <div className="shop-single-menu">
       <div
