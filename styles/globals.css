@@ -2399,12 +2399,20 @@ main {
   .shop-sidebar-wrapper {
     display: none;
   }
+
+  .shop-mobile-sidebar-wrapper {
+    display: block;
+  }
   .shop-category-item-wrapper {
     flex: 0 0 100%;
   }
+  .shop-category-header {
+    flex-direction: column;
+  }
+
   .shop-category-header-sort {
-    /* flex-direction: column;
-    align-items: flex-start; */
+    /* flex-direction: column; */
+    justify-content: flex-start;
   }
 
   .shop-category-header-count-view {

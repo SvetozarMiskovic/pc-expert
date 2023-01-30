@@ -12,6 +12,7 @@ import {
   RangeSliderTrack,
   RangeSliderFilledTrack,
   RangeSliderThumb,
+  DrawerCloseButton,
 } from "@chakra-ui/react";
 import { FaFilter } from "react-icons/fa";
 import { useShopContext } from "../../context/ShopContext";
@@ -77,6 +78,7 @@ function ShopMobileSidebar() {
       >
         <DrawerOverlay />
         <DrawerContent>
+          <DrawerCloseButton background={"transparent"} />
           <DrawerBody
             display={"flex"}
             flexDirection={"column"}
