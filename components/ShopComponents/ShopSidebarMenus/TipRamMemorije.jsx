@@ -29,7 +29,9 @@ function TipRamMemorije() {
         <div className="shop-single-menu-body">
           {!!tipRam &&
             tipRam?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter key={p} data={p} filterProperty={"tip_ram"} />
+              );
             })}
         </div>
       </Collapse>

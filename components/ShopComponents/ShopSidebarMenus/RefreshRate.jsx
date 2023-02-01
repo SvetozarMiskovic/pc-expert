@@ -30,7 +30,7 @@ function RefreshRate() {
         <div className="shop-single-menu-body">
           {!!refRate &&
             refRate?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return <ShopSingleFilter key={p} data={p} filterProperty={"refresh_rate"}/>;
             })}
         </div>
       </Collapse>

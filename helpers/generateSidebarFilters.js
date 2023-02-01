@@ -27,8 +27,6 @@ import Vrsta from "../components/ShopComponents/ShopSidebarMenus/Vrsta";
 import KapacitetBaterije from "../components/ShopComponents/ShopSidebarMenus/KapacitetBaterije";
 
 export const generateSidebarFilters = category => {
-  console.log("Iz generate");
-
   switch (category) {
     case "laptopi": {
       return (

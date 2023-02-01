@@ -29,7 +29,13 @@ function VelicinaEkrana() {
         <div className="shop-single-menu-body">
           {!!velicinaEkrana &&
             velicinaEkrana?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter
+                  key={p}
+                  data={p}
+                  filterProperty={"velicina_ekrana"}
+                />
+              );
             })}
         </div>
       </Collapse>

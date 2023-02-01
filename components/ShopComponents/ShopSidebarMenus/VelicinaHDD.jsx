@@ -29,7 +29,13 @@ function VelicinaHDD() {
         <div className="shop-single-menu-body">
           {!!hdd &&
             hdd?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter
+                  key={p}
+                  data={p}
+                  filterProperty={"hard_disk"}
+                />
+              );
             })}
         </div>
       </Collapse>

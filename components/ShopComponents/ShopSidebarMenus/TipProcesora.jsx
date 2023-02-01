@@ -29,7 +29,13 @@ function TipProcesora() {
         <div className="shop-single-menu-body">
           {!!tipProcesora &&
             tipProcesora?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter
+                  key={p}
+                  data={p}
+                  filterProperty={"tip_procesora"}
+                />
+              );
             })}
         </div>
       </Collapse>

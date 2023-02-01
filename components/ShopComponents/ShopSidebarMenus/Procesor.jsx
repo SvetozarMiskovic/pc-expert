@@ -30,7 +30,13 @@ function Procesor() {
         <div className="shop-single-menu-body">
           {!!procesor &&
             procesor?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter
+                  key={p}
+                  data={p}
+                  filterProperty={"procesor"}
+                />
+              );
             })}
         </div>
       </Collapse>

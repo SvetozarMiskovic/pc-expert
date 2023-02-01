@@ -31,7 +31,9 @@ function Proizvodjac() {
         <div className="shop-single-menu-body">
           {!!proizvodjac &&
             proizvodjac?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter key={p} data={p} filterProperty={"proizvodjac"} />
+              );
             })}
         </div>
       </Collapse>

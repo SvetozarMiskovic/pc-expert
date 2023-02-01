@@ -29,7 +29,9 @@ function WIFI() {
         <div className="shop-single-menu-body">
           {!!wifi &&
             wifi?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter key={p} data={p} filterProperty={"wifi"} />
+              );
             })}
         </div>
       </Collapse>

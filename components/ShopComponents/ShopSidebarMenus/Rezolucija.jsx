@@ -30,7 +30,13 @@ function Rezolucija() {
         <div className="shop-single-menu-body">
           {!!rezolucija &&
             rezolucija?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter
+                  key={p}
+                  data={p}
+                  filterProperty={"rezolucija"}
+                />
+              );
             })}
         </div>
       </Collapse>

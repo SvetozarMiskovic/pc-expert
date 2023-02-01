@@ -29,7 +29,9 @@ function BT() {
         <div className="shop-single-menu-body">
           {!!bt &&
             bt?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter key={p} data={p} filterProperty={"bt"} />
+              );
             })}
         </div>
       </Collapse>

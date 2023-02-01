@@ -30,7 +30,13 @@ function KapacitetBaterije() {
         <div className="shop-single-menu-body">
           {!!baterija &&
             baterija?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter
+                  key={p}
+                  data={p}
+                  filterProperty={"baterija"}
+                />
+              );
             })}
         </div>
       </Collapse>

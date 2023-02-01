@@ -29,7 +29,9 @@ function Vrsta() {
         <div className="shop-single-menu-body">
           {!!vrsta &&
             vrsta?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter key={p} data={p} filterProperty={"vrsta"} />
+              );
             })}
         </div>
       </Collapse>

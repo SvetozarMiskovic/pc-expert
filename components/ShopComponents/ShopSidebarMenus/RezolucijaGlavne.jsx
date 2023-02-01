@@ -29,7 +29,9 @@ function RezolucijaGlavne() {
         <div className="shop-single-menu-body">
           {!!glavnaKamera &&
             glavnaKamera?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter key={p} data={p} filterProperty={"rezolucija_glavne_kamere"} />
+              );
             })}
         </div>
       </Collapse>

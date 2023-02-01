@@ -29,7 +29,13 @@ function TipEkrana() {
         <div className="shop-single-menu-body">
           {!!tipEkrana &&
             tipEkrana?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter
+                  key={p}
+                  data={p}
+                  filterProperty={"tip_ekrana"}
+                />
+              );
             })}
         </div>
       </Collapse>

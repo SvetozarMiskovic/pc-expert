@@ -1,8 +1,7 @@
 import React from "react";
 import ShopSidebar from "./ShopSidebar";
-
 import ShopHeaderBar from "./ShopHeaderBar";
-import ShopMobileSidebar from "./ShopMobileSidebar";
+import ShopActiveFilters from "./ShopActiveFilters";
 
 function ShopLayout({ children, data }) {
   return (
@@ -10,6 +9,7 @@ function ShopLayout({ children, data }) {
       <ShopSidebar />
       <div className="shop-layout-filter-wrapper">
         <ShopHeaderBar />
+        <ShopActiveFilters />
         {children}
       </div>
     </div>

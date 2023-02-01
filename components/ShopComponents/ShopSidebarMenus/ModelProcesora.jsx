@@ -29,7 +29,13 @@ function ModelProcesora() {
         <div className="shop-single-menu-body">
           {!!modelProcesora &&
             modelProcesora?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter
+                  key={p}
+                  data={p}
+                  filterProperty={"model_procesora"}
+                />
+              );
             })}
         </div>
       </Collapse>

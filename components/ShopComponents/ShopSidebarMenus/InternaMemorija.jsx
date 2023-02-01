@@ -30,7 +30,13 @@ function InternaMemorija() {
         <div className="shop-single-menu-body">
           {!!interna &&
             interna?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter
+                  key={p}
+                  data={p}
+                  filterProperty={"interna_memorija"}
+                />
+              );
             })}
         </div>
       </Collapse>

@@ -29,7 +29,9 @@ function VGA() {
         <div className="shop-single-menu-body">
           {!!vga &&
             vga?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter key={p} data={p} filterProperty={"vga"} />
+              );
             })}
         </div>
       </Collapse>

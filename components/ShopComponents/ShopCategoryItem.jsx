@@ -57,7 +57,7 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
         </div>
         <div className="shop-category-item-product-info">
           <div className="shop-category-item-product-info-title">
-            <Text height={"100%"} color={"#0c0c0d"} fontSize={"lg"}>
+            <Text fontWeight="bold" color={"#0c0c0d"} fontSize={"lg"}>
               {truncate(dataCategory.naslov, 80)}
             </Text>
           </div>
@@ -167,7 +167,7 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
         </div>
         <div className="shop-category-item-product-info">
           <div className="shop-category-item-product-info-title">
-            <Text color={"#0c0c0d"} fontSize={"lg"}>
+            <Text color={"#0c0c0d"} fontWeight="bold" fontSize={"lg"}>
               {truncate(dataAll.naslov, 80)}
             </Text>
           </div>

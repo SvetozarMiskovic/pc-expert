@@ -30,7 +30,9 @@ function OS() {
         <div className="shop-single-menu-body">
           {!!os &&
             os?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter key={p} data={p} filterProperty={"os"} />
+              );
             })}
         </div>
       </Collapse>

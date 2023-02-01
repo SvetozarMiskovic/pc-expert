@@ -30,7 +30,13 @@ function Grafika() {
         <div className="shop-single-menu-body">
           {!!graficka &&
             graficka?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter
+                  key={p}
+                  data={p}
+                  filterProperty={"graficka_kartica"}
+                />
+              );
             })}
         </div>
       </Collapse>

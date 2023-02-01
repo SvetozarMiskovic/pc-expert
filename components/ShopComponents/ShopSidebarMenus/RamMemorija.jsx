@@ -30,7 +30,9 @@ function RamMemorija() {
         <div className="shop-single-menu-body">
           {!!ram &&
             ram?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter key={p} data={p} filterProperty={"ram"} />
+              );
             })}
         </div>
       </Collapse>

@@ -30,7 +30,13 @@ function Garancija() {
         <div className="shop-single-menu-body">
           {!!garancija &&
             garancija?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter
+                  key={p}
+                  data={p}
+                  filterProperty={"garancija"}
+                />
+              );
             })}
         </div>
       </Collapse>

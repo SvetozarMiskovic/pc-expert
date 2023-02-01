@@ -22,15 +22,23 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useShopContext } from "../../context/ShopContext";
 import { generateSidebarFilters } from "../../helpers/generateSidebarFilters";
+
 function ShopSidebar({ data }) {
   const router = useRouter();
-  const { activeCategory } = useShopContext();
+  const { activeCategory, updateActiveFilters } = useShopContext();
 
   const [priceRange, setPriceRange] = useState([0, 3000]);
   const [isPrice, setIsPrice] = useState(true);
   const [isAllCat, setIsAllCat] = useState(() => {
     return router.asPath === "/shop" ? true : false;
   });
+
+  // useEffect(() => {
+  //   const res = generateActiveFilter("Cijena", priceRange);
+
+  //   updateActiveFilters(res);
+  //   // console.log(res);
+  // }, [priceRange]);
 
   const updateIsPrice = () => {
     setIsPrice(prevState => !prevState);

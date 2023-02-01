@@ -29,7 +29,7 @@ function SMART() {
         <div className="shop-single-menu-body">
           {!!smart &&
             smart?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return <ShopSingleFilter key={p} data={p} filterProperty={"smart"}/>;
             })}
         </div>
       </Collapse>

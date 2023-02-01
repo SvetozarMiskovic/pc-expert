@@ -31,7 +31,13 @@ function BrojJezgara() {
         <div className="shop-single-menu-body">
           {!!jezgra &&
             jezgra?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter
+                  key={p}
+                  data={p}
+                  filterProperty={"broj_jezgara"}
+                />
+              );
             })}
         </div>
       </Collapse>

@@ -31,7 +31,9 @@ function Boja() {
         <div className="shop-single-menu-body">
           {!!boje &&
             boje?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter key={p} data={p} filterProperty={"boja"} />
+              );
             })}
         </div>
       </Collapse>

@@ -4,9 +4,11 @@ const ShopContext = createContext();
 
 const ShopContextProvider = ({ children }) => {
   const [activeCategory, setActiveCategory] = useState("");
+  const [activeFilters, setActiveFilters] = useState([]);
 
   const [categoryProducts, setCategoryProducts] = useState([]);
   const [allCategoryProducts, setAllCategoryProducts] = useState([]);
+
   const [boje, setBoje] = useState([]);
   const [proizvodjac, setProizvodjac] = useState([]);
   const [velicinaEkrana, setVelicinaEkrana] = useState([]);
@@ -37,6 +39,7 @@ const ShopContextProvider = ({ children }) => {
 
   const [productsCount, setProductsCount] = useState(0);
 
+  // Sidebar filter setters
   const updateBoje = arr => {
     setBoje(() => {
       return arr;
@@ -218,6 +221,132 @@ const ShopContextProvider = ({ children }) => {
   const updateProductsCount = num => {
     setProductsCount(num);
   };
+
+  // Sidebar active filter setters
+
+  const updateActiveFilters = ({ data, filterProperty }) => {
+    const filterObject = {
+      filterProperty: filterProperty,
+      filterValues: [data],
+    };
+
+    setActiveFilters(prevState => {
+      const doesExist = prevState.filter(
+        ps => ps.filterProperty === filterProperty
+      )?.["0"];
+
+      if (!doesExist) return [...prevState, filterObject];
+      const newValues = doesExist?.filterValues.concat(
+        filterObject.filterValues
+      );
+
+      // console.log(doesExist.filterValues);
+
+      doesExist.filterValues = [...new Set(newValues)];
+      const withoutFilter = prevState.filter(
+        ps => ps.filterProperty !== filterProperty
+      );
+
+      const final = withoutFilter.concat(doesExist);
+
+      return [...final];
+    });
+  };
+
+  const clearActiveFilters = () => {
+    setActiveFilters([]);
+  };
+
+  const removeActiveFilter = (filterProperty, filterValue) => {
+    // const filterObject = {
+    //   filterProperty: filterProperty,
+    //   filterValues: [filterValues],
+    // };
+    console.log(filterProperty, filterValue);
+
+    setActiveFilters(prevState => {
+      const isSingle = prevState.filter(
+        ps => ps.filterProperty === filterProperty
+      )["0"];
+      const values = isSingle?.filterValues;
+
+      console.log("Na pocetku", isSingle, values);
+
+      const newValues = isSingle?.filterValues.filter(f => f !== filterValue);
+      const newObj = Object.assign(isSingle);
+      newObj.filterValues = newValues;
+
+      const withoutFilter = prevState.filter(
+        ps => ps.filterProperty !== filterProperty
+      );
+
+      const final = withoutFilter.concat(newObj);
+
+      console.log(newValues, isSingle, newObj, withoutFilter);
+
+      if (isSingle.filterValues.length === 0) return [...withoutFilter];
+      return [...final];
+      // if (values?.length === 1) {
+      //   const newState = prevState.filter(
+      //     ps => ps.filterProperty !== filterProperty
+      //   );
+      //   return [...newState];
+      // } else {
+      //   const obj = isSingle;
+
+      //   const newValues = values.filter(v => v !== filterValue);
+      //   obj.filterValues = [...new Set(newValues)];
+      //   const withoutFilter = prevState.filter(
+      //     ps => ps.filterProperty !== filterProperty
+      //   );
+
+      //   console.log(
+      //     "trenutni values",
+      //     isSingle,
+      //     "novi values",
+      //     newValues,
+      //     obj,
+      //     withoutFilter
+      //   );
+
+      //   const final = withoutFilter.concat(obj);
+      //   console.log("FINALNO", final);
+      //   return [...final];
+      // }
+    });
+    // setActiveFilters(prevState => {
+    //   const doesExist = prevState.filter(
+    //     ps => ps.filterProperty === filterProperty
+    //   )?.["0"];
+
+    //   if (!doesExist) return [...prevState, filterObject];
+    //   const newValues = doesExist?.filterValues.concat(
+    //     filterObject.filterValues
+    //   );
+
+    //   console.log(doesExist.filterValues);
+
+    //   doesExist.filterValues = [...new Set(newValues)];
+    //   const withoutBoje = prevState.filter(
+    //     ps => ps.filterProperty !== filterProperty
+    //   );
+
+    //   const final = withoutBoje.concat(doesExist);
+
+    //   return [...final];
+    // });
+  };
+
+  // const filterItems = (record = "boja") => {
+  //   // const filtered = categoryProducts.map(obj => Object.values(obj));
+  //   // const filtered = categoryProducts.filter((value, index, array) => {
+  //   //   return value[record].includes("Zelena");
+  //   // });
+  //   // const second = filtered.filter(fi => fi.includes("Zelena"));
+  //   // console.log(filtered);
+  // };
+
+  // filterItems();
   return (
     <ShopContext.Provider
       value={{
@@ -283,6 +412,10 @@ const ShopContextProvider = ({ children }) => {
         updateInterna,
         updateProductsCount,
         productsCount,
+        updateActiveFilters,
+        clearActiveFilters,
+        removeActiveFilter,
+        activeFilters,
       }}
     >
       {children}

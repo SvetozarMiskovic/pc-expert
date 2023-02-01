@@ -53,7 +53,7 @@ function ShopHeaderBar() {
           outline={"none"}
           border={"none"}
           variant={"filled"}
-          width={220}
+          // width={220}
           backgroundColor={"#eaedf1"}
           _active={{ backgroundColor: "#eaedf1" }}
           _focus={{ backgroundColor: "#eaedf1" }}

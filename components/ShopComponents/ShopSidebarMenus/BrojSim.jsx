@@ -29,7 +29,13 @@ function BrojSim() {
         <div className="shop-single-menu-body">
           {!!brojSim &&
             brojSim?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter
+                  key={p}
+                  data={p}
+                  filterProperty={"broj_sim"}
+                />
+              );
             })}
         </div>
       </Collapse>

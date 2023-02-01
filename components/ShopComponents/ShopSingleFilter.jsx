@@ -1,13 +1,32 @@
-import React, { useState } from "react";
-import { Icon, Text } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { filter, Icon, Text } from "@chakra-ui/react";
 import { FaCheck } from "react-icons/fa";
 
-function ShopSingleFilter({ data }) {
-  const [checked, setChecked] = useState(false);
+import { useShopContext } from "../../context/ShopContext";
+
+function ShopSingleFilter({ data, filterProperty }) {
+  const [checked, setChecked] = useState();
+  const { activeFilters, updateActiveFilters, removeActiveFilter } =
+    useShopContext();
+
+  useEffect(() => {
+    const filtered = activeFilters.filter(
+      af => af.filterProperty === filterProperty
+    );
+    const newObj = filtered["0"]?.filterValues;
+    setChecked(newObj?.includes(data));
+  }, [activeFilters]);
+
   return (
     <div
       className="shop-single-menu-filter"
-      onClick={() => setChecked(!checked)}
+      onClick={() => {
+        console.log();
+        setChecked(!checked);
+        !checked
+          ? updateActiveFilters({ data, filterProperty })
+          : removeActiveFilter(filterProperty, data);
+      }}
     >
       <div
         className={

@@ -29,7 +29,13 @@ function BrzinaProcesora() {
         <div className="shop-single-menu-body">
           {!!brzinaProcesora &&
             brzinaProcesora?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter
+                  key={p}
+                  data={p}
+                  filterProperty={"brzina_procesora"}
+                />
+              );
             })}
         </div>
       </Collapse>

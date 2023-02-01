@@ -29,7 +29,13 @@ function TipHDD() {
         <div className="shop-single-menu-body">
           {!!tipHdd &&
             tipHdd?.map(p => {
-              return <ShopSingleFilter key={p} data={p} />;
+              return (
+                <ShopSingleFilter
+                  key={p}
+                  data={p}
+                  filterProperty={"tip_hard_diska"}
+                />
+              );
             })}
         </div>
       </Collapse>
