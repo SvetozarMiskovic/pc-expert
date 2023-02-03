@@ -43,8 +43,12 @@ const ShopContextProvider = ({ children }) => {
 
   useEffect(() => {
     filterItems(activeFilters);
+    setCurrentPage(1);
   }, [activeFilters]);
 
+  useEffect(() => {
+    setActiveFilters([]);
+  }, [activeCategory]);
   // Sidebar filter setters
   const updateBoje = arr => {
     setBoje(() => {
@@ -64,6 +68,7 @@ const ShopContextProvider = ({ children }) => {
   };
 
   const updatePageSize = page => {
+    setCurrentPage(1);
     setPageSize(Number(page.target.value));
   };
 

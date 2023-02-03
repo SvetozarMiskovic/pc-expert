@@ -9,7 +9,6 @@ function ShopCategory({ category, data }) {
   const {
     updateActiveCategory,
     updateCategoryProducts,
-    categoryProducts,
     updateBoje,
     updateProizvodjac,
     updateVelicinaEkrana,
