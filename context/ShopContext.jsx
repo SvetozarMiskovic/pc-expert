@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const ShopContext = createContext();
 
@@ -8,6 +8,7 @@ const ShopContextProvider = ({ children }) => {
 
   const [categoryProducts, setCategoryProducts] = useState([]);
   const [allCategoryProducts, setAllCategoryProducts] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
 
   const [boje, setBoje] = useState([]);
   const [proizvodjac, setProizvodjac] = useState([]);
@@ -37,13 +38,33 @@ const ShopContextProvider = ({ children }) => {
   const [bt, setBt] = useState([]);
   const [vrsta, setVrsta] = useState([]);
 
-  const [productsCount, setProductsCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(8);
+
+  useEffect(() => {
+    filterItems(activeFilters);
+  }, [activeFilters]);
 
   // Sidebar filter setters
   const updateBoje = arr => {
     setBoje(() => {
       return arr;
     });
+  };
+  const onPageChange = page => {
+    setCurrentPage(page);
+  };
+
+  const nextPage = page => {
+    setCurrentPage(Number(page) + 1);
+  };
+
+  const prevPage = page => {
+    setCurrentPage(Number(page) - 1);
+  };
+
+  const updatePageSize = page => {
+    setPageSize(Number(page.target.value));
   };
 
   const updateProizvodjac = arr => {
@@ -218,10 +239,6 @@ const ShopContextProvider = ({ children }) => {
     setActiveCategory(cat);
   };
 
-  const updateProductsCount = num => {
-    setProductsCount(num);
-  };
-
   // Sidebar active filter setters
 
   const updateActiveFilters = ({ data, filterProperty }) => {
@@ -258,19 +275,11 @@ const ShopContextProvider = ({ children }) => {
   };
 
   const removeActiveFilter = (filterProperty, filterValue) => {
-    // const filterObject = {
-    //   filterProperty: filterProperty,
-    //   filterValues: [filterValues],
-    // };
-    console.log(filterProperty, filterValue);
-
     setActiveFilters(prevState => {
       const isSingle = prevState.filter(
         ps => ps.filterProperty === filterProperty
       )["0"];
       const values = isSingle?.filterValues;
-
-      console.log("Na pocetku", isSingle, values);
 
       const newValues = isSingle?.filterValues.filter(f => f !== filterValue);
       const newObj = Object.assign(isSingle);
@@ -282,71 +291,49 @@ const ShopContextProvider = ({ children }) => {
 
       const final = withoutFilter.concat(newObj);
 
-      console.log(newValues, isSingle, newObj, withoutFilter);
-
       if (isSingle.filterValues.length === 0) return [...withoutFilter];
       return [...final];
-      // if (values?.length === 1) {
-      //   const newState = prevState.filter(
-      //     ps => ps.filterProperty !== filterProperty
-      //   );
-      //   return [...newState];
-      // } else {
-      //   const obj = isSingle;
-
-      //   const newValues = values.filter(v => v !== filterValue);
-      //   obj.filterValues = [...new Set(newValues)];
-      //   const withoutFilter = prevState.filter(
-      //     ps => ps.filterProperty !== filterProperty
-      //   );
-
-      //   console.log(
-      //     "trenutni values",
-      //     isSingle,
-      //     "novi values",
-      //     newValues,
-      //     obj,
-      //     withoutFilter
-      //   );
-
-      //   const final = withoutFilter.concat(obj);
-      //   console.log("FINALNO", final);
-      //   return [...final];
-      // }
     });
-    // setActiveFilters(prevState => {
-    //   const doesExist = prevState.filter(
-    //     ps => ps.filterProperty === filterProperty
-    //   )?.["0"];
+  };
 
-    //   if (!doesExist) return [...prevState, filterObject];
-    //   const newValues = doesExist?.filterValues.concat(
-    //     filterObject.filterValues
-    //   );
+  const filterItems = filters => {
+    // filters.length > 0 && console.log(filters);
 
-    //   console.log(doesExist.filterValues);
+    console.log(filters);
 
-    //   doesExist.filterValues = [...new Set(newValues)];
-    //   const withoutBoje = prevState.filter(
-    //     ps => ps.filterProperty !== filterProperty
-    //   );
+    const items = categoryProducts.filter(el => {
+      return filters?.some(f => {
+        return f?.filterValues.some(
+          fv => fv.toLowerCase() === el[f.filterProperty].toLowerCase()
+        );
+      });
+    });
 
-    //   const final = withoutBoje.concat(doesExist);
+    setFilteredItems(items);
+    // const singleItem = categoryProducts.filter(el => {
+    //   return el[filterProperty].toLowerCase() === filterValue.toLowerCase();
+    // });
+
+    // setFilteredItems(prevState => {
+    //   const final = [...new Set(prevState.concat(singleItem))];
+    //   console.log(prevState, singleItem);
 
     //   return [...final];
     // });
   };
 
-  // const filterItems = (record = "boja") => {
-  //   // const filtered = categoryProducts.map(obj => Object.values(obj));
-  //   // const filtered = categoryProducts.filter((value, index, array) => {
-  //   //   return value[record].includes("Zelena");
-  //   // });
-  //   // const second = filtered.filter(fi => fi.includes("Zelena"));
-  //   // console.log(filtered);
-  // };
+  const removeFilterItem = (filterProperty, filterValue) => {
+    const singleItem = categoryProducts.filter(el => {
+      return el[filterProperty].toLowerCase() !== filterValue.toLowerCase();
+    });
 
-  // filterItems();
+    setFilteredItems(prevState => {
+      const final = [...new Set(prevState.concat(singleItem))];
+      console.log(prevState, singleItem);
+
+      return [...final];
+    });
+  };
   return (
     <ShopContext.Provider
       value={{
@@ -410,12 +397,20 @@ const ShopContextProvider = ({ children }) => {
         updateBaterija,
         interna,
         updateInterna,
-        updateProductsCount,
-        productsCount,
+
         updateActiveFilters,
         clearActiveFilters,
         removeActiveFilter,
         activeFilters,
+        filterItems,
+        filteredItems,
+        removeFilterItem,
+        onPageChange,
+        currentPage,
+        pageSize,
+        updatePageSize,
+        nextPage,
+        prevPage,
       }}
     >
       {children}

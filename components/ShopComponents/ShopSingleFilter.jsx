@@ -6,15 +6,23 @@ import { useShopContext } from "../../context/ShopContext";
 
 function ShopSingleFilter({ data, filterProperty }) {
   const [checked, setChecked] = useState();
-  const { activeFilters, updateActiveFilters, removeActiveFilter } =
-    useShopContext();
+  const {
+    activeFilters,
+    updateActiveFilters,
+    removeActiveFilter,
+    filterItems,
+    removeFilterItem,
+  } = useShopContext();
 
   useEffect(() => {
-    const filtered = activeFilters.filter(
-      af => af.filterProperty === filterProperty
-    );
-    const newObj = filtered["0"]?.filterValues;
-    setChecked(newObj?.includes(data));
+    const checkboxChecker = () => {
+      const filtered = activeFilters?.filter(
+        af => af.filterProperty === filterProperty
+      );
+      const newObj = filtered["0"]?.filterValues;
+      setChecked(newObj?.includes(data));
+    };
+    checkboxChecker();
   }, [activeFilters]);
 
   return (

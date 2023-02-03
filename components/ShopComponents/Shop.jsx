@@ -1,7 +1,10 @@
 import { Text } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+
+import React, { useEffect, useState } from "react";
 import { useShopContext } from "../../context/ShopContext";
+import { paginate } from "../../helpers/paginate";
 import ShopCategoryItem from "./ShopCategoryItem";
+import ShopPagination from "./ShopPagination";
 
 function Shop({ category, data }) {
   const {
@@ -9,20 +12,37 @@ function Shop({ category, data }) {
     updateAllCategoryProducts,
     allCategoryProducts,
     updateProductsCount,
+    handlePageChange,
+    nextPage,
+    prevPage,
+    currentPage,
+    pageSize,
+    onPageChange,
   } = useShopContext();
 
   useEffect(() => {
     updateAllCategoryProducts(data);
     updateActiveCategory(category);
-
-    updateProductsCount(data?.length);
   }, [category]);
+
+  const paginatedPosts = paginate(data, currentPage, pageSize);
+
   return (
-    <div className="shop-component-container">
-      {allCategoryProducts?.map(item => {
-        return <ShopCategoryItem key={item.id} dataAll={item} />;
-      })}
-    </div>
+    <>
+      <div className="shop-component-container">
+        {paginatedPosts?.map(item => {
+          return <ShopCategoryItem key={item.id} dataAll={item} />;
+        })}
+      </div>
+      <ShopPagination
+        items={data.length} // 100
+        currentPage={currentPage} // 1
+        pageSize={pageSize} // 10
+        onPageChange={onPageChange}
+        nextPage={nextPage}
+        prevPage={prevPage}
+      />
+    </>
   );
 }
 

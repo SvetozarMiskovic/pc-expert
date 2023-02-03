@@ -8,14 +8,47 @@ import { Icon, Text, Select } from "@chakra-ui/react";
 import { useShopContext } from "../../context/ShopContext";
 import ShopMobileSidebar from "./ShopMobileSidebar";
 function ShopHeaderBar() {
-  const { activeView, updateActiveView, productsCount } = useShopContext();
+  const {
+    activeView,
+    updateActiveView,
+    pageSize,
+    updatePageSize,
+    categoryProducts,
+    filteredItems,
+    allCategoryProducts,
+    currentPage,
+  } = useShopContext();
 
-  const [itemCount, setItemCount] = useState(8);
-
-  const updateItemCount = e => {
-    setItemCount(e.target.value);
+  const calculateFirst = () => {
+    if (currentPage === 1) return 1;
+    return pageSize * currentPage - pageSize;
   };
 
+  const calculateSecond = () => {
+    if (categoryProducts?.length > 0) {
+      if (pageSize * currentPage > categoryProducts?.length) {
+        return categoryProducts?.length;
+      } else {
+        return pageSize * currentPage;
+      }
+    } else if (allCategoryProducts?.length > 0) {
+      if (pageSize * currentPage > allCategoryProducts?.length) {
+        return allCategoryProducts?.length;
+      } else {
+        return pageSize * currentPage;
+      }
+    }
+  };
+
+  const calculateTotalItems = () => {
+    if (categoryProducts?.length > 0) return categoryProducts?.length;
+    if (allCategoryProducts?.length > 0) return allCategoryProducts?.length;
+    if ((filteredItems?.length > 0) & (allCategoryProducts?.length > 0))
+      return filteredItems?.length;
+
+    if ((filteredItems?.length > 0) & (categoryProducts?.length > 0))
+      return filteredItems?.length;
+  };
   return (
     <div className="shop-category-header">
       <ShopMobileSidebar />
@@ -35,7 +68,7 @@ function ShopHeaderBar() {
           _focus={{ backgroundColor: "#eaedf1" }}
           _hover={{ backgroundColor: "#eaedf1" }}
           color={"#0c0c0d"}
-          onChange={updateItemCount}
+          onChange={updatePageSize}
         >
           <option value={8}>8</option>
           <option value={16}>16</option>
@@ -66,15 +99,18 @@ function ShopHeaderBar() {
       </div>
       <div className="shop-category-header-count-view">
         <Text fontSize={"lg"} color={"#0c0c0d"}>
-          {itemCount > productsCount
-            ? `1 - ${productsCount}`
-            : `1 - ${itemCount}`}
+          {`${calculateFirst()} - ${calculateSecond()}`}
         </Text>
         <Text fontSize={"lg"} color={"#0c0c0d"}>
           od
         </Text>
         <Text fontSize={"lg"} color={"#0c0c0d"}>
-          {productsCount}
+          {/* {calculateTotalItems()} */}
+          {filteredItems?.length > 0
+            ? filteredItems?.length
+            : categoryProducts?.length > 0
+            ? categoryProducts?.length
+            : allCategoryProducts?.length}
         </Text>
       </div>
     </div>

@@ -23,7 +23,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       cat: !context.query.category && null,
-      data: !!rez && rez,
+      data: !!rez ? rez : [],
     },
   };
 }
