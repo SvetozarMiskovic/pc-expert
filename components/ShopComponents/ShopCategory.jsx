@@ -36,7 +36,6 @@ function ShopCategory({ category, data }) {
     updateBaterija,
     updateInterna,
     updateGlavnaKamera,
-
     filteredItems,
     currentPage,
     pageSize,

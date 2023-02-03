@@ -25,15 +25,21 @@ function ShopHeaderBar() {
   };
 
   const calculateSecond = () => {
-    if (categoryProducts?.length > 0) {
-      if (pageSize * currentPage > categoryProducts?.length) {
-        return categoryProducts?.length;
+    if (filteredItems?.length > 0) {
+      if (pageSize * currentPage > filteredItems?.length) {
+        return filteredItems?.length;
       } else {
         return pageSize * currentPage;
       }
     } else if (allCategoryProducts?.length > 0) {
       if (pageSize * currentPage > allCategoryProducts?.length) {
         return allCategoryProducts?.length;
+      } else {
+        return pageSize * currentPage;
+      }
+    } else {
+      if (pageSize * currentPage > categoryProducts?.length) {
+        return categoryProducts?.length;
       } else {
         return pageSize * currentPage;
       }
