@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 function ShopPagination({
   items,
@@ -12,7 +12,6 @@ function ShopPagination({
 
   if (pagesCount === 1) return null;
   const pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
-  console.log(pages);
 
   return (
     <nav className="shop-pagination-wrapper">
@@ -22,6 +21,7 @@ function ShopPagination({
             if (currentPage > 1) prevPage(Number(currentPage));
           }}
           className={"page-button"}
+          href="#"
         >
           Prethodna
         </a>
@@ -43,6 +43,7 @@ function ShopPagination({
             if (currentPage !== pagesCount) nextPage(Number(currentPage));
           }}
           className={"page-button"}
+          href="#"
         >
           Sledeca
         </a>

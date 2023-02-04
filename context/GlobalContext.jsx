@@ -11,10 +11,16 @@ function GlobalContextProvider({ children }) {
   const [subCategory, setSubCategory] = useState("");
   const [openSub, setOpenSub] = useState(false);
   const [isCart, setIsCart] = useState(false);
+  const [editProfile, setEditProfile] = useState(false);
 
   const [totalPrice, setTotalPrice] = useState("0,00");
   const [bc, setBc] = useState([]); // breadcrumbs
 
+  const updateEditProfile = () => {
+    setEditProfile(prevState => {
+      return !prevState;
+    });
+  };
   const updateBreadCrumbs = arrValue => {
     return setBc(arrValue);
   };
@@ -119,6 +125,8 @@ function GlobalContextProvider({ children }) {
         setItems,
         updateBreadCrumbs,
         bc,
+        editProfile,
+        updateEditProfile,
       }}
     >
       <ToastContainer

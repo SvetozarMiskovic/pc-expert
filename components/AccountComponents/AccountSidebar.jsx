@@ -2,14 +2,19 @@ import React from "react";
 import { Text } from "@chakra-ui/react";
 import Link from "next/link";
 import { useAuthContext } from "../../context/AuthContext";
+import { useGlobalContext } from "../../context/GlobalContext";
+import { useRouter } from "next/router";
 
 function AccountSidebar() {
   const { isLoged } = useAuthContext();
+  const { updateEditProfile } = useGlobalContext();
+  const router = useRouter();
+
   return (
     <div className="account-sidebar-wrapper">
       <div className="account-sidebar-container">
         <div className="account-sidebar-information">
-          <Text fontSize={"md"} fontWeight="bold" color={"#5f5f5f"}>
+          <Text fontSize={"lg"} fontWeight="bold" color={"#5f5f5f"}>
             Moj korisnički račun
           </Text>
           <Link
@@ -17,7 +22,7 @@ function AccountSidebar() {
             href={"/nalog/info"}
             color={"#5f5f5f"}
           >
-            <Text color={"#5f5f5f"} fontSize="sm">
+            <Text color={"#5f5f5f"} fontSize="md">
               Podaci o korisničkom računu
             </Text>
           </Link>
@@ -27,18 +32,21 @@ function AccountSidebar() {
               color={"#5f5f5f"}
               cursor="pointer"
               className="account-sidebar-link"
-              fontSize="sm"
+              fontSize="md"
+              onClick={() =>
+                router.asPath === "/nalog/info" && updateEditProfile()
+              }
             >
               Izmjeni podatke
             </Text>
           )}
           {isLoged && (
-            <Link href="/nalog/resetpw">
+            <Link href="/nalog/promjeniLozinku">
               <Text
                 color={"#5f5f5f"}
                 cursor="pointer"
                 className="account-sidebar-link"
-                fontSize="sm"
+                fontSize="md"
               >
                 Promjeni lozinku
               </Text>
@@ -49,19 +57,19 @@ function AccountSidebar() {
               color={"#5f5f5f"}
               cursor="pointer"
               className="account-sidebar-link"
-              fontSize="sm"
+              fontSize="md"
             >
               Promjeni sliku
             </Text>
           )}
         </div>
         <div className="account-sidebar-orders">
-          <Text fontSize={"md"} fontWeight="bold" color={"#5f5f5f"}>
+          <Text fontSize={"lg"} fontWeight="bold" color={"#5f5f5f"}>
             Narudžbe
           </Text>
 
           <Link href={"/nalog/narudzbe"} className="account-sidebar-link">
-            <Text fontSize="sm" color={"#5f5f5f"}>
+            <Text fontSize="md" color={"#5f5f5f"}>
               Moje narudžbe
             </Text>
           </Link>

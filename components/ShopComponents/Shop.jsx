@@ -25,12 +25,12 @@ function Shop({ category, data }) {
     updateActiveCategory(category);
   }, [category]);
 
-  const paginatedPosts = paginate(data, currentPage, pageSize);
+  const paginatedData = paginate(data, currentPage, pageSize);
 
   return (
     <>
       <div className="shop-component-container">
-        {paginatedPosts?.map(item => {
+        {paginatedData?.map(item => {
           return <ShopCategoryItem key={item.id} dataAll={item} />;
         })}
       </div>

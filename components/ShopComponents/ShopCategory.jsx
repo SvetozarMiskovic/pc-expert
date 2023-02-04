@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useShopContext } from "../../context/ShopContext";
 import ShopCategoryItem from "./ShopCategoryItem";
 import { paginate } from "../../helpers/paginate";
@@ -253,6 +253,7 @@ function ShopCategory({ category, data }) {
 
     updateFilters();
   }, [category]);
+
   const paginatedData = paginate(data, currentPage, pageSize);
   const paginatedFilters = paginate(filteredItems, currentPage, pageSize);
   return (

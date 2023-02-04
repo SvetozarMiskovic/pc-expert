@@ -14,10 +14,14 @@ import {
   Divider,
 } from "@chakra-ui/react";
 import { useAuthContext } from "../../context/AuthContext";
+import { useGlobalContext } from "../../context/GlobalContext";
+import { useRouter } from "next/router";
 function AccountMobileSidebar() {
   const { isLoged } = useAuthContext();
+  const { updateEditProfile } = useGlobalContext();
   const [isOpen, setIsOpen] = useState(false);
   const btnRef = React.useRef();
+  const router = useRouter();
 
   const updateDrawerState = () => {
     setIsOpen(prevstate => !prevstate);
@@ -64,6 +68,7 @@ function AccountMobileSidebar() {
                 className="account-mobile-sidebar-link"
                 href={"/nalog/info"}
                 color={"#5f5f5f"}
+                onClick={() => updateDrawerState()}
               >
                 <Text
                   color={"#5f5f5f"}
@@ -78,15 +83,21 @@ function AccountMobileSidebar() {
                 <Text
                   color={"#5f5f5f"}
                   cursor="pointer"
-                  className="account-mobile-sidebar-link"
+                  className="account-sidebar-link"
                   fontSize="md"
-                  _hover={{ textDecoration: "underline" }}
+                  onClick={() => {
+                    router.asPath === "/nalog/info" && updateEditProfile();
+                    updateDrawerState();
+                  }}
                 >
                   Izmjeni podatke
                 </Text>
               )}
               {isLoged && (
-                <Link href="/nalog/resetpw">
+                <Link
+                  href="/nalog/promjeniLozinku"
+                  onClick={() => updateDrawerState()}
+                >
                   <Text
                     color={"#5f5f5f"}
                     cursor="pointer"

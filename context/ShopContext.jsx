@@ -262,8 +262,6 @@ const ShopContextProvider = ({ children }) => {
         filterObject.filterValues
       );
 
-      // console.log(doesExist.filterValues);
-
       doesExist.filterValues = [...new Set(newValues)];
       const withoutFilter = prevState.filter(
         ps => ps.filterProperty !== filterProperty
@@ -302,10 +300,6 @@ const ShopContextProvider = ({ children }) => {
   };
 
   const filterItems = filters => {
-    // filters.length > 0 && console.log(filters);
-
-    console.log(filters);
-
     const items = categoryProducts.filter(el => {
       return filters?.some(f => {
         return f?.filterValues.some(
@@ -315,16 +309,6 @@ const ShopContextProvider = ({ children }) => {
     });
 
     setFilteredItems(items);
-    // const singleItem = categoryProducts.filter(el => {
-    //   return el[filterProperty].toLowerCase() === filterValue.toLowerCase();
-    // });
-
-    // setFilteredItems(prevState => {
-    //   const final = [...new Set(prevState.concat(singleItem))];
-    //   console.log(prevState, singleItem);
-
-    //   return [...final];
-    // });
   };
 
   const removeFilterItem = (filterProperty, filterValue) => {

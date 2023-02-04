@@ -136,7 +136,7 @@ function LoginForm() {
           </FormControl>
         </div>
 
-        <Link href="/resetpw">
+        <Link href="/zaboravljenaLozinka">
           <Text
             display={"flex"}
             justifyContent={"center"}
@@ -150,7 +150,7 @@ function LoginForm() {
             fontStyle={"italic"}
             color={"#5f5f5f"}
           >
-            Zaboravio sam lozinku <Icon as={FaLock} />
+            Zaboravio/la sam lozinku <Icon as={FaLock} />
           </Text>
         </Link>
         <FormControl

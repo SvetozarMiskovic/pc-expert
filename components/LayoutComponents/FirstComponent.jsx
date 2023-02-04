@@ -26,7 +26,7 @@ const FirstComponent = () => {
         <div className="left-side">
           <div className="phone-number">
             <PhoneIcon />
-            <h5 className="number-text">Pozovite info broj +38765318132</h5>
+            <h5 className="number-text">Pozovite info broj +38766777735</h5>
           </div>
           <div className="vl">|</div>
           <div className="email">
