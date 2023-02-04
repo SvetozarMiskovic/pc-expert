@@ -10,6 +10,7 @@ function AccountSidebar() {
   const { updateEditProfile } = useGlobalContext();
   const router = useRouter();
 
+  const glupost = [];
   return (
     <div className="account-sidebar-wrapper">
       <div className="account-sidebar-container">
