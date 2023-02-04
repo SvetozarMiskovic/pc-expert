@@ -22,6 +22,7 @@ function AccountComponent() {
   const newNumberRef = useRef();
   const newPostalRef = useRef();
   const { editProfile, updateEditProfile } = useGlobalContext();
+  const [loading, setLoading] = useState(false);
   const updateUser = obj => {
     setUser(obj);
   };
@@ -29,10 +30,6 @@ function AccountComponent() {
   function isEmptyOrSpaces(str) {
     return str === null || str.toString().match(/^ *$/) !== null;
   }
-
-  const updateLoading = () => {
-    setLoading(prevState => !prevState);
-  };
 
   useEffect(() => {
     getUser().then(res => {
@@ -285,6 +282,7 @@ function AccountComponent() {
                   color={"#fff"}
                   type={"submit"}
                   onClick={async () => {
+                    setLoading(true);
                     const payload = {
                       ime_i_prezime: newNameRef?.current.value
                         ? newNameRef?.current.value
@@ -321,6 +319,7 @@ function AccountComponent() {
                         },
                       });
                       updateEditProfile();
+                      setLoading(false);
                     } else {
                       const res = await updateProfile(payload);
                       if (res?.data?.msg) {
@@ -328,15 +327,18 @@ function AccountComponent() {
                           progressStyle: { background: "#4CBB17" },
                         });
                         updateEditProfile();
+                        setLoading(false);
                         router.reload();
                       } else {
                         toast(res?.data?.err, {
                           progressStyle: { background: "red" },
                         });
+                        setLoading(false);
                       }
                     }
                   }}
                   borderRadius={"15rem"}
+                  isLoading={loading}
                 >
                   Snimi izmjene
                 </Button>

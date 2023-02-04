@@ -19,7 +19,7 @@ function AccountNewPassword() {
   const [showOldPW, setShowOldPW] = useState(false);
   const [showNewPW, setShowNewPW] = useState(false);
   const [showCPW, setShowCPW] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async e => {
     e.preventDefault();
 
@@ -27,11 +27,12 @@ function AccountNewPassword() {
       oldPW: oldPwRef.current?.value,
       newPW: newPwRef.current?.value,
     };
-
+    setLoading(true);
     if (newPwRef.current?.value !== cpwRef.current?.value) {
       toast("Lozinke se ne poklapaju! Pokušajte ponovo", {
         progressStyle: { background: "red" },
       });
+      setLoading(false);
     } else {
       const res = await changePassword(payload);
       if (res?.data?.err) {
@@ -40,6 +41,7 @@ function AccountNewPassword() {
             background: "red",
           },
         });
+        setLoading(false);
       } else {
         toast(res?.data?.msg, {
           progressStyle: {
@@ -49,8 +51,8 @@ function AccountNewPassword() {
         newPwRef.current.value = "";
         oldPwRef.current.value = "";
         cpwRef.current.value = "";
+        setLoading(false);
       }
-      console.log(res);
     }
   };
   return (
@@ -170,7 +172,7 @@ function AccountNewPassword() {
               }}
               backgroundColor={"#4CBB17"}
               color={"#fff"}
-              //   isLoading={loading}
+              isLoading={loading}
               borderRadius={"15rem"}
               type="submit"
             >
