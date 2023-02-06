@@ -23,6 +23,7 @@ export const whatToFetch = async (category, db) => {
 
       return res;
     }
+
     case "laptopi": {
       const res = await db.laptopi.findMany();
       return res;

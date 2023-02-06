@@ -261,11 +261,23 @@ function ShopCategory({ category, data }) {
       <div className="shop-category-container">
         {filteredItems?.length < 1 &&
           paginatedData?.map(item => {
-            return <ShopCategoryItem key={item.id} dataCategory={item} />;
+            return (
+              <ShopCategoryItem
+                key={item.id}
+                dataCategory={item}
+                category={category}
+              />
+            );
           })}
         {filteredItems?.length > 0 &&
           paginatedFilters?.map(item => {
-            return <ShopCategoryItem key={item.id} dataCategory={item} />;
+            return (
+              <ShopCategoryItem
+                key={item.id}
+                dataCategory={item}
+                category={category}
+              />
+            );
           })}
       </div>
 

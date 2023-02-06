@@ -31,7 +31,13 @@ function Shop({ category, data }) {
     <>
       <div className="shop-component-container">
         {paginatedData?.map(item => {
-          return <ShopCategoryItem key={item.id} dataAll={item} />;
+          return (
+            <ShopCategoryItem
+              key={item.id}
+              dataAll={item}
+              category={category}
+            />
+          );
         })}
       </div>
       <ShopPagination

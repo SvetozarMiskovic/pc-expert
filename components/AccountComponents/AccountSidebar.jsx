@@ -53,16 +53,6 @@ function AccountSidebar() {
               </Text>
             </Link>
           )}
-          {isLoged && (
-            <Text
-              color={"#5f5f5f"}
-              cursor="pointer"
-              className="account-sidebar-link"
-              fontSize="md"
-            >
-              Promjeni sliku
-            </Text>
-          )}
         </div>
         <div className="account-sidebar-orders">
           <Text fontSize={"lg"} fontWeight="bold" color={"#5f5f5f"}>

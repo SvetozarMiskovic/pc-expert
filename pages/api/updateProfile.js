@@ -17,7 +17,7 @@ export default async function handler(req, res) {
       },
     });
 
-    if (updatedProfile) {
+    if (updatedProfile.id) {
       res.send({ msg: "Izmjene snimljene!" });
     } else {
       res.send({

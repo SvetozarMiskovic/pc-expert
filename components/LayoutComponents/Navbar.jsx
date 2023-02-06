@@ -3,8 +3,14 @@ import Link from "next/link";
 import React from "react";
 
 import { Icon } from "@chakra-ui/icons";
-import { Button } from "@chakra-ui/react";
-import { FaLock, FaLockOpen, FaSearch, FaShoppingCart } from "react-icons/fa";
+import { Button, IconButton, Text } from "@chakra-ui/react";
+import {
+  FaLock,
+  FaLockOpen,
+  FaSearch,
+  FaShoppingBasket,
+  FaShoppingCart,
+} from "react-icons/fa";
 import NextLink from "next/link";
 import { useGlobalContext } from "../../context/GlobalContext";
 import { useAuthContext } from "../../context/AuthContext";
@@ -135,24 +141,13 @@ function Navbar() {
             </Button>
           )}
         </div>
-        <Button
-          _hover={{
-            backgroundColor: "#f89a20",
-            color: "#fff",
-          }}
-          _active={{
-            backgroundColor: "#f89a20",
-          }}
-          onClick={() => toggleCart()}
-          color="#5f5f5f"
-          border="1px solid #f89a20"
-          background="transparent"
-          type="button"
-          className="shopping-cart-btn"
-        >
-          <Icon as={FaShoppingCart} />
-          <p>{totalPrice} KM</p>
-        </Button>
+        <div className="cart-button">
+          <Icon fontSize={"lg"} as={FaShoppingBasket} />
+          <Text display={"block"} fontSize={"md"}>
+            0.00 KM
+          </Text>
+          <div className="item-number">1</div>
+        </div>
       </div>
     </div>
   );

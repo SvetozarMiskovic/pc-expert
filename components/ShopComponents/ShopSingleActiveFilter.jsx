@@ -11,11 +11,15 @@ function ShopSingleActiveFilter({ data }) {
   function capitalizeFilterValue(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+
+  const removeSpace = string => {
+    return string.split("_").join(" ");
+  };
   return (
     <div className="shop-single-active-filter">
       <div className="shop-single-active-filter-label">
         <Text fontSize={"lg"}>
-          {capitalizeFirstLetter(data.filterProperty)}
+          {removeSpace(capitalizeFirstLetter(data.filterProperty))}
         </Text>
       </div>
       <div className="shop-single-active-filter-values">

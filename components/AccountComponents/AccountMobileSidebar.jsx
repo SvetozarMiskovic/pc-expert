@@ -109,17 +109,6 @@ function AccountMobileSidebar() {
                   </Text>
                 </Link>
               )}
-              {isLoged && (
-                <Text
-                  color={"#5f5f5f"}
-                  cursor="pointer"
-                  className="account-mobile-sidebar-link"
-                  fontSize="md"
-                  _hover={{ textDecoration: "underline" }}
-                >
-                  Promjeni sliku
-                </Text>
-              )}
             </div>
             <div className="account-mobile-sidebar-orders">
               <Text fontSize={"2xl"} fontWeight="bold" color={"#5f5f5f"}>

@@ -9,7 +9,8 @@ import {
 } from "@chakra-ui/react";
 
 import { FaCartPlus } from "react-icons/fa";
-function ShopCategoryItem({ dataCategory, dataAll }) {
+import Link from "next/link";
+function ShopCategoryItem({ dataCategory, dataAll, category }) {
   const [counter, setCounter] = useState(1);
   const maxCounter = 50;
 
@@ -57,9 +58,17 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
         </div>
         <div className="shop-category-item-product-info">
           <div className="shop-category-item-product-info-title">
-            <Text fontWeight="bold" color={"#0c0c0d"} fontSize={"lg"}>
-              {truncate(dataCategory.naslov, 80)}
-            </Text>
+            <Link href={`/${category}/${dataCategory?.id}`}>
+              <Text
+                _hover={{ color: "#4cbb17" }}
+                transition={"200ms ease-in"}
+                fontWeight="bold"
+                color={"#0c0c0d"}
+                fontSize={"lg"}
+              >
+                {truncate(dataCategory?.naslov, 80)}
+              </Text>
+            </Link>
           </div>
           {/* Naslov proizvoda */}
 
@@ -167,9 +176,17 @@ function ShopCategoryItem({ dataCategory, dataAll }) {
         </div>
         <div className="shop-category-item-product-info">
           <div className="shop-category-item-product-info-title">
-            <Text color={"#0c0c0d"} fontWeight="bold" fontSize={"lg"}>
-              {truncate(dataAll.naslov, 80)}
-            </Text>
+            <Link href={`/${category}/${dataAll?.id}`}>
+              <Text
+                color={"#0c0c0d"}
+                fontWeight="bold"
+                fontSize={"lg"}
+                _hover={{ color: "#4cbb17" }}
+                transition={"200ms ease-in"}
+              >
+                {truncate(dataAll.naslov, 80)}
+              </Text>
+            </Link>
           </div>
           {/* Naslov proizvoda */}
           <div className="shop-category-item-product-info-price">

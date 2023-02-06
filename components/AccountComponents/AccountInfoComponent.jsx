@@ -59,7 +59,7 @@ function AccountComponent() {
         <div className="account-showcase-body">
           <div className="account-showcase-body-info">
             <div className="account-showcase-body-single">
-              <Text color={"#5f5f5f"} fontSize={"lg"}>
+              <Text color={"#5f5f5f"} fontSize={"2xl"}>
                 Ime i prezime
               </Text>
               {editProfile ? (
@@ -75,21 +75,18 @@ function AccountComponent() {
                   borderRadius={"15rem"}
                   backgroundColor="#fff"
                   type="text"
-                  height={"1.5rem"}
-                  minWidth={"10.5rem"}
-                  maxWidth={"11.5rem"}
                   placeholder={user?.ime_i_prezime}
                 />
               ) : (
                 <>
-                  <Text color={"#5f5f5f"} fontSize={"md"} fontWeight="bold">
+                  <Text color={"#5f5f5f"} fontSize={"lg"} fontWeight="bold">
                     {user?.ime_i_prezime}
                   </Text>
                 </>
               )}
             </div>
             <div className="account-showcase-body-single">
-              <Text color={"#5f5f5f"} fontSize={"lg"}>
+              <Text color={"#5f5f5f"} fontSize={"2xl"}>
                 Email
               </Text>
               {/* {editProfile ? (
@@ -105,7 +102,7 @@ function AccountComponent() {
                   borderRadius={"15rem"}
                   backgroundColor="#fff"
                   type="text"
-                  height={"1.5rem"}
+                 
                   width={"10.5rem"}
                   placeholder={user?.email}
                 />
@@ -114,12 +111,12 @@ function AccountComponent() {
                  
                 </>
               )} */}
-              <Text color={"#5f5f5f"} fontSize={"md"} fontWeight="bold">
+              <Text color={"#5f5f5f"} fontSize={"lg"} fontWeight="bold">
                 {user?.email}
               </Text>
             </div>
             <div className="account-showcase-body-single">
-              <Text color={"#5f5f5f"} fontSize={"lg"}>
+              <Text color={"#5f5f5f"} fontSize={"2xl"}>
                 Adresa
               </Text>
               {editProfile ? (
@@ -135,21 +132,18 @@ function AccountComponent() {
                   borderRadius={"15rem"}
                   backgroundColor="#fff"
                   type="text"
-                  height={"1.5rem"}
-                  minWidth={"10.5rem"}
-                  maxWidth={"11.5rem"}
                   placeholder={user?.adresa}
                 />
               ) : (
                 <>
-                  <Text color={"#5f5f5f"} fontSize={"md"} fontWeight="bold">
+                  <Text color={"#5f5f5f"} fontSize={"lg"} fontWeight="bold">
                     {user?.adresa}
                   </Text>
                 </>
               )}
             </div>
             <div className="account-showcase-body-single">
-              <Text color={"#5f5f5f"} fontSize={"lg"}>
+              <Text color={"#5f5f5f"} fontSize={"2xl"}>
                 Ulica
               </Text>
               {editProfile ? (
@@ -165,22 +159,19 @@ function AccountComponent() {
                   borderRadius={"15rem"}
                   backgroundColor="#fff"
                   type="text"
-                  height={"1.5rem"}
-                  minWidth={"10.5rem"}
-                  maxWidth={"11.5rem"}
                   zIndex={"1"}
                   placeholder={user?.ulica}
                 />
               ) : (
                 <>
-                  <Text color={"#5f5f5f"} fontSize={"md"} fontWeight="bold">
+                  <Text color={"#5f5f5f"} fontSize={"lg"} fontWeight="bold">
                     {user?.ulica}
                   </Text>
                 </>
               )}
             </div>
             <div className="account-showcase-body-single">
-              <Text color={"#5f5f5f"} fontSize={"lg"}>
+              <Text color={"#5f5f5f"} fontSize={"2xl"}>
                 Grad
               </Text>
               {editProfile ? (
@@ -196,21 +187,18 @@ function AccountComponent() {
                   borderRadius={"15rem"}
                   backgroundColor="#fff"
                   type="text"
-                  height={"1.5rem"}
-                  minWidth={"10.5rem"}
-                  maxWidth={"11.5rem"}
                   placeholder={user?.grad}
                 />
               ) : (
                 <>
-                  <Text color={"#5f5f5f"} fontSize={"md"} fontWeight="bold">
+                  <Text color={"#5f5f5f"} fontSize={"lg"} fontWeight="bold">
                     {user?.grad}
                   </Text>
                 </>
               )}
             </div>
             <div className="account-showcase-body-single">
-              <Text color={"#5f5f5f"} fontSize={"lg"}>
+              <Text color={"#5f5f5f"} fontSize={"2xl"}>
                 Poštanski broj
               </Text>
               {editProfile ? (
@@ -226,21 +214,18 @@ function AccountComponent() {
                   borderRadius={"15rem"}
                   backgroundColor="#fff"
                   type="text"
-                  height={"1.5rem"}
-                  minWidth={"10.5rem"}
-                  maxWidth={"11.5rem"}
                   placeholder={user?.postanski_broj}
                 />
               ) : (
                 <>
-                  <Text color={"#5f5f5f"} fontSize={"md"} fontWeight="bold">
+                  <Text color={"#5f5f5f"} fontSize={"lg"} fontWeight="bold">
                     {user?.postanski_broj}
                   </Text>
                 </>
               )}
             </div>
             <div className="account-showcase-body-single">
-              <Text color={"#5f5f5f"} fontSize={"lg"}>
+              <Text color={"#5f5f5f"} fontSize={"2xl"}>
                 Broj Telefona
               </Text>
               {editProfile ? (
@@ -256,14 +241,11 @@ function AccountComponent() {
                   borderRadius={"15rem"}
                   backgroundColor="#fff"
                   type="number"
-                  height={"1.5rem"}
-                  minWidth={"10.5rem"}
-                  maxWidth={"11.5rem"}
                   placeholder={user?.broj_telefona}
                 />
               ) : (
                 <>
-                  <Text color={"#5f5f5f"} fontSize={"md"} fontWeight="bold">
+                  <Text color={"#5f5f5f"} fontSize={"lg"} fontWeight="bold">
                     {"+387" + user?.broj_telefona}
                   </Text>
                 </>
@@ -280,7 +262,14 @@ function AccountComponent() {
                   }}
                   backgroundColor={"#4CBB17"}
                   color={"#fff"}
+                  width="100%"
+                  // marginTop={"2.1rem"}
                   type={"submit"}
+                  display="flex"
+                  // alignContent={'flex-end'}
+                  justifySelf={"flex-end"}
+                  alignSelf={"flex-end"}
+                  // height={"100%"}
                   onClick={async () => {
                     setLoading(true);
                     const payload = {
@@ -343,25 +332,6 @@ function AccountComponent() {
                   Snimi izmjene
                 </Button>
               )}
-            </div>
-          </div>
-          <div className="account-showcase-body-image">
-            <div className="account-showbase-body-avatar">
-              <div className="account-showcase-avatar-holder">
-                <Image
-                  width={200}
-                  height={200}
-                  src="/sveto.jpeg"
-                  name="Ime i Prezime"
-                  alt="avatar"
-                />
-              </div>
-              <Text fontSize={"lg"} color={"#5f5f5f"} fontWeight="bold">
-                Svetozar Miskovic
-              </Text>
-              <Text fontSize={"md"} color={"#5f5f5f"}>
-                tosve214@gmail.com
-              </Text>
             </div>
           </div>
         </div>
