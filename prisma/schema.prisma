@@ -8,7 +8,7 @@ datasource db {
 }
 
 model komponente {
-  id          String  @id @unique(map: "id_UNIQUE") @db.VarChar(100)
+  id          String  @id @unique(map: "id_UNIQUE") @db.VarChar(255)
   cijena      String? @db.VarChar(100)
   garancija   String? @db.VarChar(100)
   vrsta       String? @db.VarChar(100)
@@ -31,7 +31,7 @@ model korisnici {
 }
 
 model laptopi {
-  id               Int     @id @unique(map: "idlaptopi_UNIQUE")
+  id               String  @id @unique(map: "idlaptopi_UNIQUE") @db.VarChar(255)
   proizvodjac      String? @db.VarChar(255)
   model            String? @db.VarChar(255)
   procesor         String? @db.VarChar(255)
@@ -57,7 +57,7 @@ model laptopi {
 }
 
 model mining {
-  id        String  @id @unique(map: "id_UNIQUE") @db.VarChar(100)
+  id        String  @id @unique(map: "id_UNIQUE") @db.VarChar(255)
   cijena    String? @db.VarChar(100)
   garancija String? @db.VarChar(100)
   detalji   String? @db.VarChar(100)
@@ -65,7 +65,7 @@ model mining {
 }
 
 model monitori {
-  id              String  @id @unique(map: "id_UNIQUE") @db.VarChar(100)
+  id              String  @id @unique(map: "id_UNIQUE") @db.VarChar(255)
   velicina_ekrana String? @db.VarChar(100)
   rezolucija      String? @db.VarChar(100)
   proizvodjac     String? @db.VarChar(100)
@@ -84,7 +84,7 @@ model monitori {
 }
 
 model periferija {
-  id          String  @id @unique(map: "id_UNIQUE") @db.VarChar(100)
+  id          String  @id @unique(map: "id_UNIQUE") @db.VarChar(255)
   vrsta       String? @db.VarChar(100)
   model       String? @db.VarChar(100)
   proizvodjac String? @db.VarChar(100)
@@ -95,7 +95,7 @@ model periferija {
 }
 
 model racunari {
-  id                String  @id @unique(map: "id_UNIQUE") @db.VarChar(100)
+  id                String  @id @unique(map: "id_UNIQUE") @db.VarChar(255)
   proizvodjac       String? @db.VarChar(100)
   cijena            String? @db.VarChar(100)
   garancija         String? @db.VarChar(100)
@@ -117,7 +117,7 @@ model racunari {
 }
 
 model telefoni {
-  id                        String  @id @unique(map: "id_UNIQUE") @db.VarChar(100)
+  id                        String  @id @unique(map: "id_UNIQUE") @db.VarChar(255)
   proizvodjac               String? @db.VarChar(100)
   cijena                    String? @db.VarChar(100)
   os                        String? @db.VarChar(100)
@@ -140,7 +140,7 @@ model telefoni {
 }
 
 model televizori {
-  id              String  @id @unique(map: "id_UNIQUE") @db.VarChar(100)
+  id              String  @id @unique(map: "id_UNIQUE") @db.VarChar(255)
   cijena          String? @db.VarChar(100)
   garancija       String? @db.VarChar(100)
   model           String? @db.VarChar(100)
