@@ -3,15 +3,12 @@ import NewCategories from "./NewCategories";
 import FeatureList from "./FeatureList";
 import QuickMenu from "../QuickMenuComponents/QuickMenu";
 
-function SponsoredProducts() {
+function SponsoredProducts({ data }) {
   return (
     <div className="spons-container">
-      {/* <SubCategories /> */}
-      {/* <Categories /> */}
-      {/* <BigWrapper /> */}
       <FeatureList />
       <QuickMenu />
-      <NewCategories />
+      <NewCategories data={data} />
     </div>
   );
 }

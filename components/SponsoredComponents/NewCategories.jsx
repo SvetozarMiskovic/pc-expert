@@ -20,17 +20,32 @@ import {
   Icon,
   Collapse,
 } from "@chakra-ui/react";
-function NewCategories() {
+import ShopCategoryItem from "../ShopComponents/ShopCategoryItem";
+function NewCategories({ data }) {
   const [isOpen, setIsOpen] = useState(false);
+
+  console.log(data);
+  function getMultipleRandom(arr, num) {
+    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+
+    return shuffled.slice(0, num);
+  }
 
   const onToggle = () => {
     setIsOpen(prevState => !prevState);
   };
+  const randomLaptops = getMultipleRandom(data?.laptopi, 4);
+  const randomMonitors = getMultipleRandom(data?.monitori, 4);
+  const randomTVs = getMultipleRandom(data?.televizori, 4);
+  const randomPhones = getMultipleRandom(data?.telefoni, 4);
+  const randomPerifery = getMultipleRandom(data?.periferija, 4);
+  const randomComponents = getMultipleRandom(data?.komponente, 4);
+  const randomComputers = getMultipleRandom(data?.racunari, 4);
+  const randomMining = getMultipleRandom(data?.mining, 4);
+  console.log(randomLaptops);
 
   return (
     <div className="new-categories-wrapper">
-      {/* <Button onClick={onToggle}>Click Me</Button> */}
-
       <Tabs
         variant="line"
         backgroundColor={"#fff"}
@@ -168,60 +183,115 @@ function NewCategories() {
             <Text fontSize={"md"}>Mining </Text>
           </Tab>
         </TabList>
-        <Collapse in={isOpen} animateOpacity endingHeight={"200px"}>
-          <TabPanels display={isOpen ? "block" : "none"}>
+        <Collapse in={isOpen} animateOpacity endingHeight={450}>
+          <TabPanels
+            display={isOpen ? "inline-block" : "none"}
+            overflowX={"auto"}
+            // margin="0.5rem"
+          >
             <TabPanel>
-              <Text fontSize={"2xl"}>Proizvođač</Text>
-              <ul>
-                <div className="value">
-                  <h5>Acer</h5>
-                </div>
-                <div className="value">
-                  <h5>Asus</h5>
-                </div>
-                <div className="value">
-                  <h5>Dell</h5>
-                </div>
-                <div className="value">
-                  <h5>Apple</h5>
-                </div>
-              </ul>
+              <div className="new-category-items">
+                {randomLaptops?.map(item => {
+                  return (
+                    <ShopCategoryItem
+                      key={item?.id}
+                      dataAll={item}
+                      category={"all"}
+                    />
+                  );
+                })}
+              </div>
             </TabPanel>
             <TabPanel>
-              <Text fontSize={"2xl"}>Proizvođač</Text>
-
-              <ul>
-                <div className="value">
-                  <h5>Acer</h5>
-                </div>
-                <div className="value">
-                  <h5>Asus</h5>
-                </div>
-                <div className="value">
-                  <h5>AOC</h5>
-                </div>
-                <div className="value">
-                  <h5>Dell</h5>
-                </div>
-              </ul>
+              <div className="new-category-items">
+                {randomMonitors?.map(item => {
+                  return (
+                    <ShopCategoryItem
+                      key={item?.id}
+                      dataAll={item}
+                      category={"all"}
+                    />
+                  );
+                })}
+              </div>
             </TabPanel>
             <TabPanel>
-              <p>Računari</p>
+              <div className="new-category-items">
+                {randomComputers?.map(item => {
+                  return (
+                    <ShopCategoryItem
+                      key={item?.id}
+                      dataAll={item}
+                      category={"all"}
+                    />
+                  );
+                })}
+              </div>
             </TabPanel>
             <TabPanel>
-              <p>Televizori</p>
+              <div className="new-category-items">
+                {randomTVs?.map(item => {
+                  return (
+                    <ShopCategoryItem
+                      key={item?.id}
+                      dataAll={item}
+                      category={"all"}
+                    />
+                  );
+                })}
+              </div>
             </TabPanel>
             <TabPanel>
-              <p>Telefoni</p>
+              <div className="new-category-items">
+                {randomPhones?.map(item => {
+                  return (
+                    <ShopCategoryItem
+                      key={item?.id}
+                      dataAll={item}
+                      category={"all"}
+                    />
+                  );
+                })}
+              </div>
             </TabPanel>
             <TabPanel>
-              <p>Računarske komponente</p>
+              <div className="new-category-items">
+                {randomComponents?.map(item => {
+                  return (
+                    <ShopCategoryItem
+                      key={item?.id}
+                      dataAll={item}
+                      category={"all"}
+                    />
+                  );
+                })}
+              </div>
             </TabPanel>
             <TabPanel>
-              <p>Računarska periferija</p>
+              <div className="new-category-items">
+                {randomPerifery?.map(item => {
+                  return (
+                    <ShopCategoryItem
+                      key={item?.id}
+                      dataAll={item}
+                      category={"all"}
+                    />
+                  );
+                })}
+              </div>
             </TabPanel>
             <TabPanel>
-              <p>Mining</p>
+              <div className="new-category-items">
+                {randomMining?.map(item => {
+                  return (
+                    <ShopCategoryItem
+                      key={item?.id}
+                      dataAll={item}
+                      category={"all"}
+                    />
+                  );
+                })}
+              </div>
             </TabPanel>
           </TabPanels>
         </Collapse>

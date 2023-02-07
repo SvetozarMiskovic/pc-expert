@@ -35,12 +35,14 @@ function AccountOrdersComponent() {
       <div className="account-showcase-component">
         <div className="account-showcase-header">
           <div className="account-showcase-header-title">
-            <Icon as={FaBoxes} fontSize={"4xl"} color={"#f89a20"} />
-            <Text fontSize={"3xl"} color={"#5f5f5f"} fontWeight={"bold"}>
-              Narudžbe
-            </Text>
+            <div>
+              <Icon as={FaBoxes} fontSize={"4xl"} color={"#f89a20"} />
+              <Text fontSize={"3xl"} color={"#0c0c0c"} fontWeight={"bold"}>
+                Narudžbe
+              </Text>
+            </div>
+            <Text fontSize={"md"}>Prikaz podataka o narudžbama</Text>
           </div>
-          <Text fontSize={"md"}>Prikaz podataka o narudžbama</Text>
         </div>
         <div className="account-showcase-body">
           <TableContainer overflow={"auto"} width={"100%"}>

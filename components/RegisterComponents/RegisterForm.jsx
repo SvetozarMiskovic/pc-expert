@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import uniqid from "uniqid";
+
 import Image from "next/image";
 import Link from "next/link";
 import { registerUser } from "../../fetchFunctions/registerUser";

@@ -10,7 +10,7 @@ function ShopLayout({ children, data }) {
   const startingRef = useRef();
 
   useEffect(() => {
-    startingRef.current.scrollIntoView();
+    startingRef?.current.scrollIntoView(true);
   }, [currentPage]);
 
   return (

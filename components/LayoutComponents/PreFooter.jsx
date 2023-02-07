@@ -40,7 +40,7 @@ function PreFooter() {
             </div>
             <div className="footer-number">
               <PhoneIcon />
-              <p>+38765318132</p>
+              <p>+387 66 777-735</p>
             </div>
           </div>
         </div>

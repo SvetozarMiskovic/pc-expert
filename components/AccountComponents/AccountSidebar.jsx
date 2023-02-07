@@ -15,7 +15,7 @@ function AccountSidebar() {
     <div className="account-sidebar-wrapper">
       <div className="account-sidebar-container">
         <div className="account-sidebar-information">
-          <Text fontSize={"lg"} fontWeight="bold" color={"#5f5f5f"}>
+          <Text fontSize={"lg"} fontWeight="bold" color={"#0c0c0c"}>
             Moj korisnički račun
           </Text>
           <Link
@@ -28,19 +28,6 @@ function AccountSidebar() {
             </Text>
           </Link>
 
-          {isLoged && (
-            <Text
-              color={"#5f5f5f"}
-              cursor="pointer"
-              className="account-sidebar-link"
-              fontSize="md"
-              onClick={() =>
-                router.asPath === "/nalog/info" && updateEditProfile()
-              }
-            >
-              Izmjeni podatke
-            </Text>
-          )}
           {isLoged && (
             <Link href="/nalog/promjeniLozinku">
               <Text
@@ -55,7 +42,7 @@ function AccountSidebar() {
           )}
         </div>
         <div className="account-sidebar-orders">
-          <Text fontSize={"lg"} fontWeight="bold" color={"#5f5f5f"}>
+          <Text fontSize={"lg"} fontWeight="bold" color={"#0c0c0c"}>
             Narudžbe
           </Text>
 

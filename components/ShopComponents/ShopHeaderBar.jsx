@@ -46,15 +46,6 @@ function ShopHeaderBar() {
     }
   };
 
-  const calculateTotalItems = () => {
-    if (categoryProducts?.length > 0) return categoryProducts?.length;
-    if (allCategoryProducts?.length > 0) return allCategoryProducts?.length;
-    if ((filteredItems?.length > 0) & (allCategoryProducts?.length > 0))
-      return filteredItems?.length;
-
-    if ((filteredItems?.length > 0) & (categoryProducts?.length > 0))
-      return filteredItems?.length;
-  };
   return (
     <div className="shop-category-header">
       <ShopMobileSidebar />

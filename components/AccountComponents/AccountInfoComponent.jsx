@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState, useRef } from "react";
 import { Text, Icon, Avatar, Input, Button } from "@chakra-ui/react";
-import { FaUserCheck } from "react-icons/fa";
+import { FaUserCheck, FaEdit } from "react-icons/fa";
 import Image from "next/image";
 import { MutatingDots } from "react-loader-spinner";
 import axios from "axios";
@@ -49,17 +49,34 @@ function AccountComponent() {
       <div className="account-showcase-component">
         <div className="account-showcase-header">
           <div className="account-showcase-header-title">
-            <Icon as={FaUserCheck} fontSize={"4xl"} color={"#f89a20"} />
-            <Text fontSize={"3xl"} color={"#5f5f5f"} fontWeight="bold">
-              Moj korisnički račun
-            </Text>
+            <div>
+              <Icon as={FaUserCheck} fontSize={"4xl"} color={"#f89a20"} />
+              <Text fontSize={"3xl"} color={"#0c0c0c"} fontWeight="bold">
+                Moj korisnički račun
+              </Text>
+            </div>
+            <Text fontSize={"md"}>Prikaz podataka o korisničkom računu</Text>
           </div>
-          <Text fontSize={"md"}>Prikaz podataka o korisničkom računu</Text>
+          <div className="account-showcase-header-edit-btn">
+            <button
+              className="edit-acc-btn btn"
+              onClick={() => updateEditProfile()}
+            >
+              <Icon fontSize={"2xl"} as={FaEdit} zIndex="1" />
+              <Text zIndex="1" fontSize={"xl"}>
+                {!editProfile ? "Uredi" : "Poništi"}
+              </Text>
+            </button>
+
+            {/* <Text  >
+              Uredi
+            </Text> */}
+          </div>
         </div>
         <div className="account-showcase-body">
           <div className="account-showcase-body-info">
             <div className="account-showcase-body-single">
-              <Text color={"#5f5f5f"} fontSize={"2xl"}>
+              <Text color={"#5f5f5f"} fontSize={"xl"}>
                 Ime i prezime
               </Text>
               {editProfile ? (
@@ -79,14 +96,14 @@ function AccountComponent() {
                 />
               ) : (
                 <>
-                  <Text color={"#5f5f5f"} fontSize={"lg"} fontWeight="bold">
+                  <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
                     {user?.ime_i_prezime}
                   </Text>
                 </>
               )}
             </div>
             <div className="account-showcase-body-single">
-              <Text color={"#5f5f5f"} fontSize={"2xl"}>
+              <Text color={"#5f5f5f"} fontSize={"xl"}>
                 Email
               </Text>
               {/* {editProfile ? (
@@ -111,19 +128,19 @@ function AccountComponent() {
                  
                 </>
               )} */}
-              <Text color={"#5f5f5f"} fontSize={"lg"} fontWeight="bold">
+              <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
                 {user?.email}
               </Text>
             </div>
             <div className="account-showcase-body-single">
-              <Text color={"#5f5f5f"} fontSize={"2xl"}>
+              <Text color={"#5f5f5f"} fontSize={"xl"}>
                 Adresa
               </Text>
               {editProfile ? (
                 <Input
                   outline={"no-outline"}
                   ref={newAddressRef}
-                  color="#5f5f5f"
+                  color="#0c0c0c"
                   autoComplete={"off"}
                   outlineColor={"transparent"}
                   _hover={{ outline: "no-outline" }}
@@ -136,14 +153,14 @@ function AccountComponent() {
                 />
               ) : (
                 <>
-                  <Text color={"#5f5f5f"} fontSize={"lg"} fontWeight="bold">
+                  <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
                     {user?.adresa}
                   </Text>
                 </>
               )}
             </div>
             <div className="account-showcase-body-single">
-              <Text color={"#5f5f5f"} fontSize={"2xl"}>
+              <Text color={"#5f5f5f"} fontSize={"xl"}>
                 Ulica
               </Text>
               {editProfile ? (
@@ -164,14 +181,14 @@ function AccountComponent() {
                 />
               ) : (
                 <>
-                  <Text color={"#5f5f5f"} fontSize={"lg"} fontWeight="bold">
+                  <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
                     {user?.ulica}
                   </Text>
                 </>
               )}
             </div>
             <div className="account-showcase-body-single">
-              <Text color={"#5f5f5f"} fontSize={"2xl"}>
+              <Text color={"#5f5f5f"} fontSize={"xl"}>
                 Grad
               </Text>
               {editProfile ? (
@@ -191,14 +208,14 @@ function AccountComponent() {
                 />
               ) : (
                 <>
-                  <Text color={"#5f5f5f"} fontSize={"lg"} fontWeight="bold">
+                  <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
                     {user?.grad}
                   </Text>
                 </>
               )}
             </div>
             <div className="account-showcase-body-single">
-              <Text color={"#5f5f5f"} fontSize={"2xl"}>
+              <Text color={"#5f5f5f"} fontSize={"xl"}>
                 Poštanski broj
               </Text>
               {editProfile ? (
@@ -218,14 +235,14 @@ function AccountComponent() {
                 />
               ) : (
                 <>
-                  <Text color={"#5f5f5f"} fontSize={"lg"} fontWeight="bold">
+                  <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
                     {user?.postanski_broj}
                   </Text>
                 </>
               )}
             </div>
             <div className="account-showcase-body-single">
-              <Text color={"#5f5f5f"} fontSize={"2xl"}>
+              <Text color={"#5f5f5f"} fontSize={"xl"}>
                 Broj Telefona
               </Text>
               {editProfile ? (
@@ -245,7 +262,7 @@ function AccountComponent() {
                 />
               ) : (
                 <>
-                  <Text color={"#5f5f5f"} fontSize={"lg"} fontWeight="bold">
+                  <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
                     {"+387" + user?.broj_telefona}
                   </Text>
                 </>

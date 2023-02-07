@@ -21,7 +21,7 @@ function Logout() {
       router.push("/");
       const t = setTimeout(() => {
         router.reload();
-      }, [1500]);
+      }, [800]);
       return () => clearTimeout(t);
     };
 

@@ -1,4 +1,4 @@
-import { Button, Icon } from "@chakra-ui/react";
+import { Button, Collapse, Icon, Text } from "@chakra-ui/react";
 import React from "react";
 import { useGlobalContext } from "../../context/GlobalContext";
 import {
@@ -7,14 +7,17 @@ import {
   FaLock,
   FaLockOpen,
   FaShoppingCart,
+  FaShoppingBasket,
 } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
 import { useAuthContext } from "../../context/AuthContext";
 import { useRouter } from "next/router";
+import CartComponent from "../CartComponents/CartComponent";
 
 function MobileNavbar() {
-  const { updateMobile, updateMobileSearch } = useGlobalContext();
+  const { updateMobile, updateMobileSearch, isCart, toggleCart } =
+    useGlobalContext();
   const { isLoged } = useAuthContext();
   const router = useRouter();
   return (
@@ -67,6 +70,7 @@ function MobileNavbar() {
           {!isLoged ? (
             <Link href={"/prijava"}>
               <Button
+                fontSize={"sm"}
                 type="button"
                 className="mobile-auth-btn"
                 color="#5f5f5f"
@@ -83,6 +87,7 @@ function MobileNavbar() {
           ) : (
             <Link href={"/odjava"}>
               <Button
+                fontSize={"sm"}
                 type="button"
                 className="mobile-auth-btn"
                 _hover={{
@@ -98,23 +103,19 @@ function MobileNavbar() {
             </Link>
           )}
         </div>
-        <Button
-          _hover={{
-            backgroundColor: "#f89a20",
-            color: "#fff",
-          }}
-          _active={{
-            backgroundColor: "#f89a20",
-          }}
-          color="#5f5f5f"
-          border="1px solid #f89a20"
-          background="transparent"
-          type="button"
-          className="mobile-cart-btn"
-        >
-          <Icon as={FaShoppingCart} />
-          <p>0.00KM</p>
-        </Button>
+        <div className="cart-button" onClick={() => toggleCart()}>
+          <div className="cart-button-text">
+            <Icon fontSize={"lg"} as={FaShoppingBasket} />
+            <Text display={"block"} fontSize={"md"}>
+              Korpa
+            </Text>
+          </div>
+
+          <div className="item-number">
+            <Text fontSize={"sm"}>1</Text>
+          </div>
+          <CartComponent isCart={isCart} />
+        </div>
       </div>
     </div>
   );

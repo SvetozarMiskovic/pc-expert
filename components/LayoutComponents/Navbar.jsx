@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 import { Icon } from "@chakra-ui/icons";
-import { Button, IconButton, Text } from "@chakra-ui/react";
+import { Button, Collapse, IconButton, Text } from "@chakra-ui/react";
 import {
   FaLock,
   FaLockOpen,
@@ -15,14 +15,11 @@ import NextLink from "next/link";
 import { useGlobalContext } from "../../context/GlobalContext";
 import { useAuthContext } from "../../context/AuthContext";
 import { useRouter } from "next/router";
+import CartComponent from "../CartComponents/CartComponent";
 
 function Navbar() {
-  const {
-    updateMobileSearch,
-
-    toggleCart,
-    totalPrice,
-  } = useGlobalContext();
+  const { updateMobileSearch, isCart, toggleCart, totalPrice } =
+    useGlobalContext();
   const { isLoged } = useAuthContext();
   const router = useRouter();
   return (
@@ -141,12 +138,17 @@ function Navbar() {
             </Button>
           )}
         </div>
-        <div className="cart-button">
-          <Icon fontSize={"lg"} as={FaShoppingBasket} />
-          <Text display={"block"} fontSize={"md"}>
-            0.00 KM
-          </Text>
-          <div className="item-number">1</div>
+        <div className="cart-button" onClick={() => toggleCart()}>
+          <div className="cart-button-text">
+            <Icon fontSize={"lg"} as={FaShoppingBasket} />
+            <Text display={"block"} fontSize={"md"}>
+              Korpa
+            </Text>
+          </div>
+          <div className="item-number">
+            <Text fontSize={"sm"}>1</Text>
+          </div>
+          <CartComponent isCart={isCart} />
         </div>
       </div>
     </div>

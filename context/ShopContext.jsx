@@ -41,6 +41,7 @@ const ShopContextProvider = ({ children }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(8);
 
+
   useEffect(() => {
     filterItems(activeFilters);
     setCurrentPage(1);

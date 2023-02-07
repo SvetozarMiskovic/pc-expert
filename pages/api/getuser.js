@@ -14,9 +14,13 @@ export default async function handler(req, res) {
         },
       });
 
-      delete userObj.lozinka;
+      if (userObj) {
+        delete userObj.lozinka;
 
-      res.json(userObj);
+        res.json(userObj);
+      } else {
+        res.json({ message: "Niste ulogovani!" });
+      }
     }
   } else {
     res.json({ message: "Niste ulogovani!" });

@@ -1,24 +1,13 @@
 import React from "react";
-
-import CartComponent from "../CartComponents/CartComponent";
-import ComputerOfferComponent from "../ComputerOfferComponents/ComputerOfferComponent";
-import PhoneOfferComponent from "../PhoneOfferComponents/PhoneOfferComponent";
-
-import Categories from "../SponsoredComponents/Categories";
-import FeatureList from "../SponsoredComponents/FeatureList";
+import RandomProductsComponent from "../RandomProducts/RandomProductsComponent";
 
 import SponsoredProducts from "../SponsoredComponents/SponsoredProducts";
 
-function Home() {
+function Home({ data }) {
   return (
     <div className="home-wrapper container">
-      {/* <FeatureList klasa="mobile" /> */}
-
-      <SponsoredProducts />
-      {/* <Categories klasa="mobile" /> */}
-
-      <ComputerOfferComponent />
-      <PhoneOfferComponent />
+      <SponsoredProducts data={data} />
+      <RandomProductsComponent data={data} />
     </div>
   );
 }

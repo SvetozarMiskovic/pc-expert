@@ -60,7 +60,7 @@ function AccountNewPassword() {
       <div className="account-new-password-header">
         <div className="account-new-password-title">
           <Icon as={FaUserLock} fontSize={"4xl"} color={"#f89a20"} />
-          <Text fontSize={"3xl"} color={"#5f5f5f"} fontWeight="bold">
+          <Text fontSize={"3xl"} color={"#0c0c0c"} fontWeight="bold">
             Promjenite lozinku
           </Text>
         </div>

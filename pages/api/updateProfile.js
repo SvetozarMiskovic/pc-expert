@@ -3,6 +3,7 @@ import { db } from "../../config/prismaClient";
 export default async function handler(req, res) {
   if (req.method === "POST") {
     const user = req.body;
+
     const updatedProfile = await db.korisnici.update({
       where: {
         email: user.email,

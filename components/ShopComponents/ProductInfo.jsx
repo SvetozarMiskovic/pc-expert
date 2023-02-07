@@ -1,8 +1,13 @@
 import { Button, Text, Icon } from "@chakra-ui/react";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaCartPlus } from "react-icons/fa";
 function ProductInfo({ data }) {
+  const startingRef = useRef();
+
+  useEffect(() => {
+    startingRef?.current.scrollIntoView(true);
+  }, []);
   const [counter, setCounter] = useState(1);
   const maxCounter = 50;
 
@@ -36,8 +41,9 @@ function ProductInfo({ data }) {
   function capitalizeFirstLetter(string) {
     return string?.charAt(0).toUpperCase() + string?.slice(1);
   }
+
   return (
-    <div className="product-info-component">
+    <div className="product-info-component" ref={startingRef}>
       <div className="product-info-component-main-part">
         <div className="product-info-component-main-image">
           <div className="product-info-component-main-image-holder">
@@ -478,7 +484,7 @@ function ProductInfo({ data }) {
                   (pr[0] !== "detalji")
                 )
                   return (
-                    <tr className="trow">
+                    <tr className="trow" key={pr[0]}>
                       <td className="left-table-side">
                         {removeSpace(capitalizeFirstLetter(pr[0]))}
                       </td>

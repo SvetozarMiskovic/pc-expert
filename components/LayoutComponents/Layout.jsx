@@ -8,6 +8,9 @@ import MobileMenu from "../MobileComponents/MobileMenu";
 import MobileSearch from "../MobileComponents/MobileSearch";
 import NavbarComponent from "./NavbarComponent";
 
+import { useGlobalContext } from "../../context/GlobalContext";
+import CartComponent from "../CartComponents/CartComponent";
+
 const Layout = ({ children }) => {
   return (
     <div className="layout">
