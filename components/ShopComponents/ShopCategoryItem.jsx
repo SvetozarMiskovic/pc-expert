@@ -52,7 +52,7 @@ function ShopCategoryItem({ dataCategory, dataAll, category }) {
               width={150}
               height={150}
               alt="product-image"
-              src={"/T1.png"}
+              src={"/static/T1.png"}
             />
           </div>
         </div>
@@ -170,7 +170,7 @@ function ShopCategoryItem({ dataCategory, dataAll, category }) {
               width={150}
               height={150}
               alt="product-image"
-              src={"/T1.png"}
+              src={"/static/T1.png"}
             />
           </div>
         </div>

@@ -20,7 +20,7 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image fill src={"/laptop.png"} alt="proizvod" />
+              <Image fill src={"/static/laptop.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
               <h4>Laptopi</h4>
@@ -40,7 +40,7 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image fill src={"/monitor.png"} alt="proizvod" />
+              <Image fill src={"/static/monitor.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
               <h4>Monitori</h4>
@@ -60,7 +60,7 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image fill src={"/pc.png"} alt="proizvod" />
+              <Image fill src={"/static/pc.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
               <h4>Računari</h4>
@@ -80,7 +80,7 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image fill src={"/tv.png"} alt="proizvod" />
+              <Image fill src={"/static/tv.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
               <h4>Televizori</h4>
@@ -100,7 +100,7 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image fill src={"/phone.png"} alt="proizvod" />
+              <Image fill src={"/static/phone.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
               <h4>Telefoni</h4>
@@ -120,7 +120,7 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image fill src={"/perifery.png"} alt="proizvod" />
+              <Image fill src={"/static/perifery.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
               <h4>Periferija</h4>
@@ -140,7 +140,7 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image fill src={"/components.png"} alt="proizvod" />
+              <Image fill src={"/static/components.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
               <h4>Komponente</h4>
@@ -160,7 +160,7 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image fill src={"/mining-rig.png"} alt="proizvod" />
+              <Image fill src={"/static/mining-rig.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
               <h4>Mining</h4>

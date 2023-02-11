@@ -7,7 +7,7 @@ function OurStory() {
     <div className="our-story-component">
       <div className="our-story-header">
         <div className="our-story-logo">
-          <Image width={150} height={150} src="/T1.png" alt="logo" />
+          <Image width={150} height={150} src="/static/T1.png" alt="logo" />
         </div>
         <Text fontSize={"4xl"} color={"#0c0c0c"} margin={"2rem 0"}>
           Naša priča

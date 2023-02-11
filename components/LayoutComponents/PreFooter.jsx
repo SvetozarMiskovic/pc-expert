@@ -1,8 +1,6 @@
 import React from "react";
 import Image from "next/image";
 
-import partner from "../../public/Prointer.png";
-import amazon from "../../public/amazon-logo-transparent.png";
 import { PhoneIcon, EmailIcon, Icon } from "@chakra-ui/icons";
 import {
   FaInfoCircle,
@@ -16,7 +14,7 @@ function PreFooter() {
       <div className=" pre-footer-child container">
         <div className="contact">
           <div className="footer-logo">
-            <Image width={100} height={100} src="/T1.png" alt="logo" />
+            <Image width={100} height={100} src="/static/T1.png" alt="logo" />
           </div>
           <div className="small-text">
             <p>Mladena Stojanovića br. 44</p>
@@ -48,10 +46,20 @@ function PreFooter() {
           <h3 className="partners-heading">Partneri</h3>
           <div className="single-partner-wrapper">
             <div className="single-partner">
-              <Image src={partner} alt="partner" />
+              <Image
+                width={300}
+                height={150}
+                src={"/static/Prointer.png"}
+                alt="partner"
+              />
             </div>
             <div className="single-partner amazon">
-              <Image src={amazon} alt="partner" />
+              <Image
+                width={300}
+                height={150}
+                src={"/static/amazon-logo-transparent.png"}
+                alt="partner"
+              />
             </div>
           </div>
         </div>

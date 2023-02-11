@@ -41,7 +41,7 @@ function ForgotPasswordForm() {
       <form onSubmit={handleSubmit}>
         <div className="forgot-pw-header">
           <div className="forgot-pw-image">
-            <Image width={150} height={150} src="/T1.png" alt="logo" />
+            <Image width={150} height={150} src="/static/T1.png" alt="logo" />
           </div>
         </div>
         <div className="forgot-pw-body">

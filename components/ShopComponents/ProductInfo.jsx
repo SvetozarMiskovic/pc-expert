@@ -47,7 +47,12 @@ function ProductInfo({ data }) {
       <div className="product-info-component-main-part">
         <div className="product-info-component-main-image">
           <div className="product-info-component-main-image-holder">
-            <Image width={250} height={250} src="/T1.png" alt="product-image" />
+            <Image
+              width={250}
+              height={250}
+              src="/static/T1.png"
+              alt="product-image"
+            />
           </div>
           <div className="product-info-component-small-image-holder"></div>
         </div>

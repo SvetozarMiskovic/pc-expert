@@ -30,7 +30,7 @@ function Navbar() {
             width={100}
             height={100}
             className={"logo-img"}
-            src={"/T1.png"}
+            src={"/static/T1.png"}
             alt="logo"
           />
         </Link>
