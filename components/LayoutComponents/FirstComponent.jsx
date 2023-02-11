@@ -33,50 +33,52 @@ const FirstComponent = () => {
           </div>
           <div className="vl">|</div>
           <div className="email">
-            <EmailIcon />
-            <h5>
+            <EmailIcon color={"#0c0c0c"} />
+            <Text color={"#0c0c0c"}>
               Pošaljite e-mail na info@pcexpert.ba ili prodaja@pcexpert.ba
-            </h5>
+            </Text>
           </div>
         </div>
         <div className="right-side">
           <Link href="/registracija" passHref legacyBehavior>
             <div className="shop">
-              <Icon w={"15px"} as={FaPowerOff} />
-              <h5>Registracija</h5>
+              <Icon w={"15px"} as={FaPowerOff} color={"#0c0c0c"} />
+              <Text color={"#0c0c0c"}>Registracija</Text>
             </div>
           </Link>
           {!isLoged ? (
             <Link href={"/prijava"} passHref legacyBehavior>
               <div className="shop">
-                <Icon w={"15px"} as={FaLock} />
-                <h5>Prijava</h5>
+                <Icon w={"15px"} as={FaLock} color={"#0c0c0c"} />
+                <Text color={"#0c0c0c"}>Prijava</Text>
               </div>
             </Link>
           ) : (
             <Link href={"/odjava"} passHref legacyBehavior>
               <div className="shop">
-                <Icon w={"15px"} as={FaLockOpen} />
-                <h5>Odjavi se</h5>
+                <Icon w={"15px"} as={FaLockOpen} color={"#0c0c0c"} />
+                <Text color={"#0c0c0c"}>Odjavi se</Text>
               </div>
             </Link>
           )}
           <Link href="/shop" passHref legacyBehavior>
             <div className="shop">
-              <Icon w={"15px"} as={FaShoppingBasket} />
-              <h5>Shop</h5>
+              <Icon w={"15px"} as={FaShoppingBasket} color={"#0c0c0c"} />
+              <Text color={"#0c0c0c"}>Shop</Text>
             </div>
           </Link>
           <Link href="/opis" passHref legacyBehavior>
             <div className="information">
-              <Icon w={"15px"} as={FaInfoCircle} />
-              <h5>Naša priča</h5>
+              <Icon w={"15px"} as={FaInfoCircle} color={"#0c0c0c"} />
+              <Text color={"#0c0c0c"}>Naša priča</Text>
             </div>
           </Link>
           <Link href="/pravila" passHref legacyBehavior>
             <div className="rules">
-              <Icon w={"15px"} as={FaUserShield} />
-              <h5>Instrukcije korištenja i pravila privatnosti</h5>
+              <Icon w={"15px"} as={FaUserShield} color={"#0c0c0c"} />
+              <Text color={"#0c0c0c"}>
+                Instrukcije korištenja i pravila privatnosti
+              </Text>
             </div>
           </Link>
         </div>

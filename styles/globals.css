@@ -231,7 +231,11 @@ main {
   max-width: 1440px;
   /* font-size: 14px; */
 }
-
+.our-story-logo-holder {
+  position: relative;
+  width: 125px;
+  height: 125px;
+}
 .phone-number {
   color: #5f5f5f;
   display: flex;

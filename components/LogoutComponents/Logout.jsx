@@ -19,10 +19,6 @@ function Logout() {
         progressStyle: { background: "#4CBB17" },
       });
       router.push("/");
-      const t = setTimeout(() => {
-        router.reload();
-      }, [800]);
-      return () => clearTimeout(t);
     };
 
     fetchData();

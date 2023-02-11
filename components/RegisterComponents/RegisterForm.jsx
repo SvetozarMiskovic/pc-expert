@@ -269,15 +269,16 @@ function RegisterForm() {
             </InputGroup>
           </FormControl>
           <FormControl>
-            <Checkbox
+            {/* <Checkbox
               // iconColor="green"
               size={"md"}
               onChange={e => setTerms(e.target.checked)}
               color={"#0c0c0c"}
+              value=''
             >
               Slažem se i prihvatam uslove korištenja propisane stranicom
               "Instrukcije korištenja i pravila privatnosti"
-            </Checkbox>
+            </Checkbox> */}
           </FormControl>
         </div>
         <div className="register-buttons">
