@@ -14,6 +14,7 @@ import {
   Icon,
   InputRightElement,
   InputGroup,
+  Checkbox,
 } from "@chakra-ui/react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useRouter } from "next/router";
@@ -22,7 +23,7 @@ function RegisterForm() {
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
-
+  const [terms, setTerms] = useState(false);
   const [showPw, setShowPW] = useState(false);
   const [showCPw, setShowCPW] = useState(false);
 
@@ -267,9 +268,21 @@ function RegisterForm() {
               </InputRightElement>
             </InputGroup>
           </FormControl>
+          <FormControl>
+            <Checkbox
+              // iconColor="green"
+              size={"md"}
+              onChange={e => setTerms(e.target.checked)}
+              color={"#0c0c0c"}
+            >
+              Slažem se i prihvatam uslove korištenja propisane stranicom
+              "Instrukcije korištenja i pravila privatnosti"
+            </Checkbox>
+          </FormControl>
         </div>
         <div className="register-buttons">
           <Button
+            isDisabled={!terms}
             _hover={{
               backgroundColor: "#4CBB1799",
             }}

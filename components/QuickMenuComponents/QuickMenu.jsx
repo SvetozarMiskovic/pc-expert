@@ -1,5 +1,5 @@
 import React from "react";
-import { Divider } from "@chakra-ui/react";
+import { Divider, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -23,7 +23,7 @@ function QuickMenu() {
               <Image fill src={"/static/laptop.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
-              <h4>Laptopi</h4>
+              <Text color={"#0c0c0c"}>Laptopi</Text>
             </div>
           </Link>
         </div>
@@ -43,7 +43,7 @@ function QuickMenu() {
               <Image fill src={"/static/monitor.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
-              <h4>Monitori</h4>
+              <Text color={"#0c0c0c"}>Monitori</Text>
             </div>
           </Link>
         </div>
@@ -63,7 +63,7 @@ function QuickMenu() {
               <Image fill src={"/static/pc.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
-              <h4>Računari</h4>
+              <Text color={"#0c0c0c"}>Računari</Text>
             </div>
           </Link>
         </div>
@@ -83,7 +83,7 @@ function QuickMenu() {
               <Image fill src={"/static/tv.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
-              <h4>Televizori</h4>
+              <Text color={"#0c0c0c"}>Televizori</Text>
             </div>
           </Link>
         </div>
@@ -103,7 +103,7 @@ function QuickMenu() {
               <Image fill src={"/static/phone.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
-              <h4>Telefoni</h4>
+              <Text color={"#0c0c0c"}>Telefoni</Text>
             </div>
           </Link>
         </div>
@@ -123,7 +123,7 @@ function QuickMenu() {
               <Image fill src={"/static/perifery.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
-              <h4>Periferija</h4>
+              <Text color={"#0c0c0c"}>Periferija</Text>
             </div>
           </Link>
         </div>
@@ -143,7 +143,7 @@ function QuickMenu() {
               <Image fill src={"/static/components.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
-              <h4>Komponente</h4>
+              <Text color={"#0c0c0c"}>Komponente</Text>
             </div>
           </Link>
         </div>
@@ -163,7 +163,7 @@ function QuickMenu() {
               <Image fill src={"/static/mining-rig.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
-              <h4>Mining</h4>
+              <Text color={"#0c0c0c"}>Mining</Text>
             </div>
           </Link>
         </div>

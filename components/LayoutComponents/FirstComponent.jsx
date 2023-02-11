@@ -15,6 +15,7 @@ import {
 import Link from "next/link";
 
 import { useAuthContext } from "../../context/AuthContext";
+import { Text } from "@chakra-ui/react";
 
 // import Image from "next/image";
 // import logo from "../assets/T1.png";
@@ -25,8 +26,10 @@ const FirstComponent = () => {
       <div className="info-line">
         <div className="left-side">
           <div className="phone-number">
-            <PhoneIcon />
-            <h5 className="number-text">Pozovite info broj +387 66 777-735</h5>
+            <PhoneIcon color={"#0c0c0c"} />
+            <Text color={"#0c0c0c"} className="number-text">
+              Pozovite info broj +387 66 777-735
+            </Text>
           </div>
           <div className="vl">|</div>
           <div className="email">
