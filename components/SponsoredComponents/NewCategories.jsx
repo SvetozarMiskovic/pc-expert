@@ -46,6 +46,9 @@ function NewCategories({ data }) {
 
   return (
     <div className="new-categories-wrapper">
+      <Text fontSize={"3xl"} textAlign="center" padding={"2rem 0"}>
+        Proizvodi na akciji
+      </Text>
       <Tabs
         variant="line"
         backgroundColor={"#fff"}

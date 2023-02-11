@@ -73,7 +73,7 @@ const FirstComponent = () => {
           <Link href="/pravila" passHref legacyBehavior>
             <div className="rules">
               <Icon w={"15px"} as={FaUserShield} />
-              <h5>Instrukcije i pravila korištenja</h5>
+              <h5>Instrukcije korištenja i pravila privatnosti</h5>
             </div>
           </Link>
         </div>

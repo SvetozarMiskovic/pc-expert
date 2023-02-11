@@ -157,7 +157,7 @@ function ProductInfo({ data }) {
             {data?.brzina_procesora && (
               <div className="single-info">
                 <Text fontWeight={"bold"} fontSize="lg">
-                  Model grafičke:
+                  Brzina procesora:
                 </Text>
                 <Text fontSize="md">
                   {capitalizeFirstLetter(data?.brzina_procesora)}

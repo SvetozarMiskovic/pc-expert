@@ -33,7 +33,7 @@ function RandomProducts({ data }) {
       <Text
         fontSize={"3xl"}
         textAlign="center"
-        padding={"2rem 0"}
+        paddingBottom={"2rem"}
         color="#0c0c0c"
       >
         Istaknuti proizvodi

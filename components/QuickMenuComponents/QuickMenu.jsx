@@ -20,12 +20,7 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image
-                width={125}
-                height={125}
-                src={"/laptop.png"}
-                alt="proizvod"
-              />
+              <Image fill src={"/laptop.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
               <h4>Laptopi</h4>
@@ -45,12 +40,7 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image
-                width={125}
-                height={125}
-                src={"/monitor.png"}
-                alt="proizvod"
-              />
+              <Image fill src={"/monitor.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
               <h4>Monitori</h4>
@@ -70,7 +60,7 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image width={125} height={125} src={"/PC.png"} alt="proizvod" />
+              <Image fill src={"/pc.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
               <h4>Računari</h4>
@@ -90,7 +80,7 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image width={125} height={125} src={"/TV.png"} alt="proizvod" />
+              <Image fill src={"/tv.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
               <h4>Televizori</h4>
@@ -110,12 +100,7 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image
-                width={125}
-                height={125}
-                src={"/phone.png"}
-                alt="proizvod"
-              />
+              <Image fill src={"/phone.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
               <h4>Telefoni</h4>
@@ -135,7 +120,7 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image width={125} height={125} src={"/KB.png"} alt="proizvod" />
+              <Image fill src={"/perifery.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
               <h4>Periferija</h4>
@@ -155,12 +140,7 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image
-                width={125}
-                height={125}
-                src={"/graphics.png"}
-                alt="proizvod"
-              />
+              <Image fill src={"/components.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
               <h4>Komponente</h4>
@@ -180,12 +160,7 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image
-                width={125}
-                height={125}
-                src={"/mine.png"}
-                alt="proizvod"
-              />
+              <Image fill src={"/mining-rig.png"} alt="proizvod" />
             </div>
             <div className="menu-text">
               <h4>Mining</h4>
