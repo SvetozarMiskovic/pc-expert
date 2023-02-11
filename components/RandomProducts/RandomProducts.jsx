@@ -8,7 +8,7 @@ function RandomProducts({ data }) {
 
     return shuffled.slice(0, num);
   }
-  const randomLaptops = getMultipleRandom(data?.laptopi, 7);
+  const randomLaptops = getMultipleRandom(data?.laptopi, 10);
   const randomMonitors = getMultipleRandom(data?.monitori, 2);
   const randomTVs = getMultipleRandom(data?.televizori, 2);
   const randomPhones = getMultipleRandom(data?.telefoni, 2);
@@ -33,7 +33,7 @@ function RandomProducts({ data }) {
       <Text
         fontSize={"3xl"}
         textAlign="center"
-        paddingBottom={"2rem"}
+        paddingBottom={"1rem"}
         color="#0c0c0c"
       >
         Istaknuti proizvodi

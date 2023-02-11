@@ -40,12 +40,12 @@ function MobileNavbar() {
             type="button"
             className="nav-btn"
             _hover={{
-              backgroundColor: "#f89a20",
+              backgroundColor: "#4cbb17",
               color: "#fff",
             }}
-            color="#5f5f5f"
+            color="#0c0c0c"
             background="transparent"
-            border="1px solid #f89a20"
+            border="1px solid #4cbb17"
           >
             <Icon as={FaList} />
           </Button>
@@ -56,12 +56,12 @@ function MobileNavbar() {
             type="button"
             className="mobile-search-btn"
             _hover={{
-              backgroundColor: "#f89a20",
+              backgroundColor: "#4cbb17",
               color: "#fff",
             }}
             background="transparent"
-            border={"1px solid #f89a20"}
-            color="#5f5f5f"
+            border={"1px solid #4cbb17"}
+            color="#0c0c0c"
           >
             <Icon as={FaSearch} />
           </Button>
@@ -73,13 +73,13 @@ function MobileNavbar() {
                 fontSize={"sm"}
                 type="button"
                 className="mobile-auth-btn"
-                color="#5f5f5f"
+                color="#0c0c0c"
                 _hover={{
-                  backgroundColor: "#f89a20",
+                  backgroundColor: "#4cbb17",
                   color: "#fff",
                 }}
                 background="transparent"
-                border="1px solid #f89a20"
+                border="1px solid #4cbb17"
               >
                 <Icon as={FaLock} />
               </Button>
@@ -91,11 +91,11 @@ function MobileNavbar() {
                 type="button"
                 className="mobile-auth-btn"
                 _hover={{
-                  backgroundColor: "#f89a20",
+                  backgroundColor: "#4cbb17",
                   color: "#fff",
                 }}
-                color="#5f5f5f"
-                border="1px solid #f89a20"
+                color="#0c0c0c"
+                border="1px solid #4cbb17"
                 background="transparent"
               >
                 <Icon as={FaLockOpen} />

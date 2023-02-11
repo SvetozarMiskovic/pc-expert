@@ -23,8 +23,8 @@ function MobileMenu() {
       >
         <DrawerOverlay />
         <DrawerContent fontFamily={"Dosis, sans-serif"}>
-          <DrawerCloseButton color="#5f5f5f" onClose={() => updateMobile()} />
-          <DrawerHeader color={"#f89a20"}>PC Expert</DrawerHeader>
+          <DrawerCloseButton color="#0c0c0c" onClose={() => updateMobile()} />
+          <DrawerHeader color={"#4cbb17"}>PC Expert</DrawerHeader>
 
           <DrawerBody padding={0}>
             <div className="menu-container">
@@ -76,12 +76,12 @@ function MobileMenu() {
               <Link href={"/prijava"} passHref legacyBehavior>
                 <Button
                   _hover={{
-                    backgroundColor: "#f89a20",
+                    backgroundColor: "#4cbb17",
                     color: "#fff",
                   }}
-                  color={"#5f5f5f"}
+                  color={"#0c0c0c"}
                   border={"1px solid"}
-                  borderColor={"#f89a20"}
+                  borderColor={"#4cbb17"}
                   variant="outline"
                   onClick={() => updateMobile()}
                 >
@@ -92,12 +92,12 @@ function MobileMenu() {
               <Link href={"/odjava"} passHref legacyBehavior>
                 <Button
                   _hover={{
-                    backgroundColor: "#f89a20",
+                    backgroundColor: "#4cbb17",
                     color: "#fff",
                   }}
-                  color={"#5f5f5f"}
+                  color={"#0c0c0c"}
                   border={"1px solid"}
-                  borderColor={"#f89a20"}
+                  borderColor={"#4cbb17"}
                   variant="outline"
                   onClick={() => updateMobile()}
                 >
@@ -108,12 +108,12 @@ function MobileMenu() {
             <Link href={"/registracija"} passHref legacyBehavior>
               <Button
                 _hover={{
-                  backgroundColor: "#f89a20",
+                  backgroundColor: "#4cbb17",
                   color: "#fff",
                 }}
-                color={"#5f5f5f"}
+                color={"#0c0c0c"}
                 border={"1px solid"}
-                borderColor={"#f89a20"}
+                borderColor={"#4cbb17"}
                 variant="outline"
                 onClick={() => updateMobile()}
               >
@@ -122,12 +122,12 @@ function MobileMenu() {
             </Link>
             <Button
               _hover={{
-                backgroundColor: "#f89a20",
+                backgroundColor: "#4cbb17",
                 color: "#fff",
               }}
-              color={"#5f5f5f"}
+              color={"#0c0c0c"}
               border={"1px solid"}
-              borderColor={"#f89a20"}
+              borderColor={"#4cbb17"}
               variant="outline"
               onClick={() => updateMobile()}
             >

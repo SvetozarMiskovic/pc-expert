@@ -65,12 +65,12 @@ function Navbar() {
           p={0}
           top={0}
           right={0}
-          borderLeft={"1px solid #f89a20"}
+          borderLeft={"1px solid #4cbb17"}
           borderTopRightRadius={25}
           borderBottomRightRadius={25}
           borderBottomLeftRadius={0}
           borderTopLeftRadius={0}
-          backgroundColor="#f89a20"
+          backgroundColor="#4cbb17"
           color="#fff"
           maxHeight={9}
           width={20}
@@ -78,10 +78,10 @@ function Navbar() {
           type="button"
           className="search-btn"
           _hover={{
-            backgroundColor: "#f89a20",
+            backgroundColor: "#4cbb17",
           }}
           _active={{
-            backgroundColor: "#f89a20",
+            backgroundColor: "#4cbb17",
           }}
         >
           <Icon as={FaSearch} />
@@ -95,12 +95,12 @@ function Navbar() {
             type="button"
             className="mobile-search-btn"
             _hover={{
-              backgroundColor: "#f89a20",
+              backgroundColor: "#4cbb17",
               color: "#fff",
             }}
             background="transparent"
-            border={"1px solid #f89a20"}
-            color="#5f5f5f"
+            border={"1px solid #4cbb17"}
+            color="#0c0c0c"
           >
             <Icon as={FaSearch} />
           </Button>
@@ -110,13 +110,13 @@ function Navbar() {
             <Button
               type="button"
               className="mobile-search-btn"
-              color="#5f5f5f"
+              color="#0c0c0c"
               _hover={{
-                backgroundColor: "#f89a20",
+                backgroundColor: "#4cbb17",
                 color: "#fff",
               }}
               background="transparent"
-              border="1px solid #f89a20"
+              border="1px solid #4cbb17"
               onClick={() => router.push("/prijava")}
             >
               <Icon as={FaLock} />
@@ -126,11 +126,11 @@ function Navbar() {
               type="button"
               className="mobile-search-btn"
               _hover={{
-                backgroundColor: "#f89a20",
+                backgroundColor: "#4cbb17",
                 color: "#fff",
               }}
-              color="#5f5f5f"
-              border="1px solid #f89a20"
+              color="#0c0c0c"
+              border="1px solid #4cbb17"
               background="transparent"
               onClick={() => router.push("/odjava")}
             >
