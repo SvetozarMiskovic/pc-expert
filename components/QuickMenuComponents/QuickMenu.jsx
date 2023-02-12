@@ -12,7 +12,7 @@ function QuickMenu() {
             href="/shop/laptopi"
             style={{
               width: "100%",
-              height: "100%",
+              // height: "250px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -32,7 +32,7 @@ function QuickMenu() {
             href="/shop/monitori"
             style={{
               width: "100%",
-              height: "100%",
+              // height: "250px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -52,7 +52,7 @@ function QuickMenu() {
             href="/shop/racunari"
             style={{
               width: "100%",
-              height: "100%",
+              // height: "250px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -72,7 +72,7 @@ function QuickMenu() {
             href="/shop/tv"
             style={{
               width: "100%",
-              height: "100%",
+              // height: "250px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -92,7 +92,7 @@ function QuickMenu() {
             href="/shop/telefoni"
             style={{
               width: "100%",
-              height: "100%",
+              // height: "250px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -112,7 +112,7 @@ function QuickMenu() {
             href="/shop/periferija"
             style={{
               width: "100%",
-              height: "100%",
+              // height: "250px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -132,7 +132,7 @@ function QuickMenu() {
             href="/shop/komponente"
             style={{
               width: "100%",
-              height: "100%",
+              // height: "250px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
@@ -152,7 +152,7 @@ function QuickMenu() {
             href="/shop/mining"
             style={{
               width: "100%",
-              height: "100%",
+              // height: "250px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",

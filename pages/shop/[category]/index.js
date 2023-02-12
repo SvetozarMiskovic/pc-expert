@@ -30,7 +30,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       cat: context.query.category,
-      data: !!rez ? rez : [],
+      data: !!rez ? JSON.parse(JSON.stringify(rez)) : [],
       currentPage: currentPage,
     },
   };

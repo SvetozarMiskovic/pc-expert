@@ -20,10 +20,17 @@ export default function Shop({ cat, data }) {
 export async function getServerSideProps(context) {
   const rez = await whatToFetch(context?.params?.category, db);
 
+  // const final = rez.map(item => {
+  //   item?.cijena = String(item?.cijena)
+  //   item?.akcija = String(item?.akcija)
+
+  //   return item
+  // });
+
   return {
     props: {
       cat: !context.query.category && "all",
-      data: !!rez ? rez : [],
+      data: !!rez ? JSON.parse(JSON.stringify(rez)) : [],
     },
   };
 }

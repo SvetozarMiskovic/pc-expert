@@ -40,7 +40,7 @@ function Logout() {
         PC <span style={{ color: "#007FFF" }}>Expert</span>
       </Text>
 
-      <Text fontSize={"2xl"} color={"#f89a20"}>
+      <Text fontSize={"2xl"} color={"#0c0c0c"}>
         Odjavljujem...
       </Text>
     </div>

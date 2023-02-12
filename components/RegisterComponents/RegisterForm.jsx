@@ -268,17 +268,20 @@ function RegisterForm() {
               </InputRightElement>
             </InputGroup>
           </FormControl>
-          <FormControl>
-            {/* <Checkbox
-              // iconColor="green"
-              size={"md"}
+          <FormControl
+            display={"flex"}
+            justifyContent="center"
+            alignItems={"center"}
+            gap={"0.4rem"}
+          >
+            <Checkbox
+              colorScheme={"green"}
+              size={"lg"}
               onChange={e => setTerms(e.target.checked)}
-              color={"#0c0c0c"}
-              value=''
-            >
-              Slažem se i prihvatam uslove korištenja propisane stranicom
-              "Instrukcije korištenja i pravila privatnosti"
-            </Checkbox> */}
+            />
+            <FormLabel color={"#4CBB17"}>
+              Upoznat/a sam i slažem se sa pravilima privatnosti.
+            </FormLabel>
           </FormControl>
         </div>
         <div className="register-buttons">

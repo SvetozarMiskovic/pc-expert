@@ -10,6 +10,7 @@ import { getUser } from "../../fetchFunctions/getUser";
 import { useGlobalContext } from "../../context/GlobalContext";
 import { updateProfile } from "../../fetchFunctions/updateProfile";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 
 function AccountComponent() {
   const [user, setUser] = useState();
@@ -80,25 +81,37 @@ function AccountComponent() {
                 Ime i prezime
               </Text>
               {editProfile ? (
-                <Input
-                  outline={"no-outline"}
-                  ref={newNameRef}
-                  color="#5f5f5f"
-                  autoComplete={"off"}
-                  outlineColor={"transparent"}
-                  _hover={{ outline: "no-outline" }}
-                  _focusVisible={{ outline: "no-outline" }}
-                  // borderColor={"#f89a20"}
-                  borderRadius={"15rem"}
-                  backgroundColor="#fff"
-                  type="text"
-                  placeholder={user?.ime_i_prezime}
-                />
+                <motion.div
+                  className="motion-div"
+                  initial={{ x: "-50%", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                >
+                  <Input
+                    outline={"no-outline"}
+                    ref={newNameRef}
+                    color="#5f5f5f"
+                    autoComplete={"off"}
+                    outlineColor={"transparent"}
+                    _hover={{ outline: "no-outline" }}
+                    _focusVisible={{ outline: "no-outline" }}
+                    // borderColor={"#f89a20"}
+                    borderRadius={"15rem"}
+                    backgroundColor="#fff"
+                    type="text"
+                    placeholder={user?.ime_i_prezime}
+                  />
+                </motion.div>
               ) : (
                 <>
-                  <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
-                    {user?.ime_i_prezime}
-                  </Text>
+                  <motion.div
+                    className="motion-div"
+                    initial={{ x: "-50%", opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                  >
+                    <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
+                      {user?.ime_i_prezime}
+                    </Text>
+                  </motion.div>
                 </>
               )}
             </div>
@@ -128,34 +141,52 @@ function AccountComponent() {
                  
                 </>
               )} */}
-              <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
-                {user?.email}
-              </Text>
+              <motion.div
+                className="motion-div"
+                initial={{ x: "-50%", opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+              >
+                <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
+                  {user?.email}
+                </Text>
+              </motion.div>
             </div>
             <div className="account-showcase-body-single">
               <Text color={"#5f5f5f"} fontSize={"xl"}>
                 Adresa
               </Text>
               {editProfile ? (
-                <Input
-                  outline={"no-outline"}
-                  ref={newAddressRef}
-                  color="#0c0c0c"
-                  autoComplete={"off"}
-                  outlineColor={"transparent"}
-                  _hover={{ outline: "no-outline" }}
-                  _focusVisible={{ outline: "no-outline" }}
-                  // borderColor={"#f89a20"}
-                  borderRadius={"15rem"}
-                  backgroundColor="#fff"
-                  type="text"
-                  placeholder={user?.adresa}
-                />
+                <motion.div
+                  className="motion-div"
+                  initial={{ x: "-50%", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                >
+                  <Input
+                    outline={"no-outline"}
+                    ref={newAddressRef}
+                    color="#0c0c0c"
+                    autoComplete={"off"}
+                    outlineColor={"transparent"}
+                    _hover={{ outline: "no-outline" }}
+                    _focusVisible={{ outline: "no-outline" }}
+                    // borderColor={"#f89a20"}
+                    borderRadius={"15rem"}
+                    backgroundColor="#fff"
+                    type="text"
+                    placeholder={user?.adresa}
+                  />
+                </motion.div>
               ) : (
                 <>
-                  <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
-                    {user?.adresa}
-                  </Text>
+                  <motion.div
+                    className="motion-div"
+                    initial={{ x: "-50%", opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                  >
+                    <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
+                      {user?.adresa}
+                    </Text>
+                  </motion.div>
                 </>
               )}
             </div>
@@ -164,26 +195,38 @@ function AccountComponent() {
                 Ulica
               </Text>
               {editProfile ? (
-                <Input
-                  outline={"no-outline"}
-                  ref={newStreetRef}
-                  color="#5f5f5f"
-                  autoComplete={"off"}
-                  outlineColor={"transparent"}
-                  _hover={{ outline: "no-outline" }}
-                  _focusVisible={{ outline: "no-outline" }}
-                  // borderColor={"#f89a20"}
-                  borderRadius={"15rem"}
-                  backgroundColor="#fff"
-                  type="text"
-                  zIndex={"1"}
-                  placeholder={user?.ulica}
-                />
+                <motion.div
+                  className="motion-div"
+                  initial={{ x: "-50%", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                >
+                  <Input
+                    outline={"no-outline"}
+                    ref={newStreetRef}
+                    color="#5f5f5f"
+                    autoComplete={"off"}
+                    outlineColor={"transparent"}
+                    _hover={{ outline: "no-outline" }}
+                    _focusVisible={{ outline: "no-outline" }}
+                    // borderColor={"#f89a20"}
+                    borderRadius={"15rem"}
+                    backgroundColor="#fff"
+                    type="text"
+                    zIndex={"1"}
+                    placeholder={user?.ulica}
+                  />
+                </motion.div>
               ) : (
                 <>
-                  <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
-                    {user?.ulica}
-                  </Text>
+                  <motion.div
+                    className="motion-div"
+                    initial={{ x: "-50%", opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                  >
+                    <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
+                      {user?.ulica}
+                    </Text>
+                  </motion.div>
                 </>
               )}
             </div>
@@ -192,25 +235,37 @@ function AccountComponent() {
                 Grad
               </Text>
               {editProfile ? (
-                <Input
-                  outline={"no-outline"}
-                  ref={newCityRef}
-                  color="#5f5f5f"
-                  autoComplete={"off"}
-                  outlineColor={"transparent"}
-                  _hover={{ outline: "no-outline" }}
-                  _focusVisible={{ outline: "no-outline" }}
-                  // borderColor={"#f89a20"}
-                  borderRadius={"15rem"}
-                  backgroundColor="#fff"
-                  type="text"
-                  placeholder={user?.grad}
-                />
+                <motion.div
+                  className="motion-div"
+                  initial={{ x: "-50%", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                >
+                  <Input
+                    outline={"no-outline"}
+                    ref={newCityRef}
+                    color="#5f5f5f"
+                    autoComplete={"off"}
+                    outlineColor={"transparent"}
+                    _hover={{ outline: "no-outline" }}
+                    _focusVisible={{ outline: "no-outline" }}
+                    // borderColor={"#f89a20"}
+                    borderRadius={"15rem"}
+                    backgroundColor="#fff"
+                    type="text"
+                    placeholder={user?.grad}
+                  />
+                </motion.div>
               ) : (
                 <>
-                  <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
-                    {user?.grad}
-                  </Text>
+                  <motion.div
+                    className="motion-div"
+                    initial={{ x: "-50%", opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                  >
+                    <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
+                      {user?.grad}
+                    </Text>
+                  </motion.div>
                 </>
               )}
             </div>
@@ -219,52 +274,76 @@ function AccountComponent() {
                 Poštanski broj
               </Text>
               {editProfile ? (
-                <Input
-                  outline={"no-outline"}
-                  ref={newPostalRef}
-                  color="#5f5f5f"
-                  autoComplete={"off"}
-                  outlineColor={"transparent"}
-                  _hover={{ outline: "no-outline" }}
-                  _focusVisible={{ outline: "no-outline" }}
-                  // borderColor={"#f89a20"}
-                  borderRadius={"15rem"}
-                  backgroundColor="#fff"
-                  type="text"
-                  placeholder={user?.postanski_broj}
-                />
+                <motion.div
+                  className="motion-div"
+                  initial={{ x: "-50%", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                >
+                  <Input
+                    outline={"no-outline"}
+                    ref={newPostalRef}
+                    color="#5f5f5f"
+                    autoComplete={"off"}
+                    outlineColor={"transparent"}
+                    _hover={{ outline: "no-outline" }}
+                    _focusVisible={{ outline: "no-outline" }}
+                    // borderColor={"#f89a20"}
+                    borderRadius={"15rem"}
+                    backgroundColor="#fff"
+                    type="text"
+                    placeholder={user?.postanski_broj}
+                  />
+                </motion.div>
               ) : (
                 <>
-                  <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
-                    {user?.postanski_broj}
-                  </Text>
+                  <motion.div
+                    className="motion-div"
+                    initial={{ x: "-50%", opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                  >
+                    <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
+                      {user?.postanski_broj}
+                    </Text>
+                  </motion.div>
                 </>
               )}
             </div>
-            <div className="account-showcase-body-single">
+            <div className={"account-showcase-body-single"}>
               <Text color={"#5f5f5f"} fontSize={"xl"}>
                 Broj Telefona
               </Text>
               {editProfile ? (
-                <Input
-                  outline={"no-outline"}
-                  ref={newNumberRef}
-                  color="#5f5f5f"
-                  autoComplete={"off"}
-                  outlineColor={"transparent"}
-                  _hover={{ outline: "no-outline" }}
-                  _focusVisible={{ outline: "no-outline" }}
-                  // borderColor={"#f89a20"}
-                  borderRadius={"15rem"}
-                  backgroundColor="#fff"
-                  type="number"
-                  placeholder={user?.broj_telefona}
-                />
+                <motion.div
+                  className="motion-div"
+                  initial={{ x: "-50%", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                >
+                  <Input
+                    outline={"no-outline"}
+                    ref={newNumberRef}
+                    color="#5f5f5f"
+                    autoComplete={"off"}
+                    outlineColor={"transparent"}
+                    _hover={{ outline: "no-outline" }}
+                    _focusVisible={{ outline: "no-outline" }}
+                    // borderColor={"#f89a20"}
+                    borderRadius={"15rem"}
+                    backgroundColor="#fff"
+                    type="number"
+                    placeholder={user?.broj_telefona}
+                  />
+                </motion.div>
               ) : (
                 <>
-                  <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
-                    {"+387" + user?.broj_telefona}
-                  </Text>
+                  <motion.div
+                    className="motion-div"
+                    initial={{ x: "-50%", opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                  >
+                    <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
+                      {"+387" + user?.broj_telefona}
+                    </Text>
+                  </motion.div>
                 </>
               )}
             </div>

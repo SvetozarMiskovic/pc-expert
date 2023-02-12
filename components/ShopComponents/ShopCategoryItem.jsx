@@ -79,7 +79,9 @@ function ShopCategoryItem({ dataCategory, dataAll, category }) {
               fontWeight={"bold"}
               textColor={"#0c0c0d"}
             >
-              {dataCategory.cijena}
+              {dataCategory?.akcija
+                ? dataCategory?.akcija
+                : dataCategory?.cijena}
             </Text>
             <Text
               width={"100%"}
@@ -158,6 +160,11 @@ function ShopCategoryItem({ dataCategory, dataAll, category }) {
         <div className="shop-category-item-product-waranty">
           <Text fontSize="md">GARANCIJA: {dataCategory.garancija}</Text>
         </div>
+        {dataCategory?.akcija && (
+          <div className="shop-category-item-product-sale">
+            <Text fontSize="md">AKCIJA</Text>
+          </div>
+        )}
       </div>
     </div>
   ) : (
@@ -196,7 +203,7 @@ function ShopCategoryItem({ dataCategory, dataAll, category }) {
               fontWeight={"bold"}
               textColor={"#0c0c0d"}
             >
-              {dataAll.cijena}
+              {dataAll?.akcija ? dataAll?.akcija : dataAll?.cijena}
             </Text>
             <Text
               width={"100%"}
@@ -275,8 +282,15 @@ function ShopCategoryItem({ dataCategory, dataAll, category }) {
             </Button>
           </div>
         </div>
-        <div className="shop-category-item-product-waranty">
-          <Text fontSize="md">GARANCIJA: {dataAll.garancija}</Text>
+        <div className="shop-category-item-product-cards">
+          <div className="shop-category-item-product-waranty">
+            <Text fontSize="md">GARANCIJA: {dataAll.garancija}</Text>
+          </div>
+          {dataAll?.akcija && (
+            <div className="shop-category-item-product-sale">
+              <Text fontSize="md">AKCIJA</Text>
+            </div>
+          )}
         </div>
       </div>
     </div>

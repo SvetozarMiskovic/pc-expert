@@ -17,7 +17,7 @@ export async function getServerSideProps(ctx) {
 
   return {
     props: {
-      data: res,
+      data: JSON.parse(JSON.stringify(res)),
     },
   };
 }

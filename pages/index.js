@@ -32,7 +32,7 @@ export async function getServerSideProps(ctx) {
 
   return {
     props: {
-      data: data,
+      data: JSON.parse(JSON.stringify(data)),
     },
   };
 }
