@@ -6,11 +6,10 @@ import { useGlobalContext } from "../../context/GlobalContext";
 import { useRouter } from "next/router";
 
 function AccountSidebar() {
-  const { isLoged } = useAuthContext();
-  const { updateEditProfile } = useGlobalContext();
+  const { isLoged, role } = useAuthContext();
+
   const router = useRouter();
 
-  const glupost = [];
   return (
     <div className="account-sidebar-wrapper">
       <div className="account-sidebar-container">
@@ -37,6 +36,19 @@ function AccountSidebar() {
                 fontSize="md"
               >
                 Promjeni lozinku
+              </Text>
+            </Link>
+          )}
+
+          {isLoged && role === "admin" && (
+            <Link href="/admin">
+              <Text
+                color={"#5f5f5f"}
+                cursor="pointer"
+                className="account-sidebar-link"
+                fontSize="md"
+              >
+                Admin menu
               </Text>
             </Link>
           )}

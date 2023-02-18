@@ -275,11 +275,12 @@ function RegisterForm() {
             gap={"0.4rem"}
           >
             <Checkbox
+              borderColor={"#0c0c0c"}
               colorScheme={"green"}
               size={"lg"}
               onChange={e => setTerms(e.target.checked)}
             />
-            <FormLabel color={"#4CBB17"}>
+            <FormLabel margin={0} cursor={"pointer"} color={"#0c0c0c"}>
               Upoznat/a sam i slažem se sa pravilima privatnosti.
             </FormLabel>
           </FormControl>

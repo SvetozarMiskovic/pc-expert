@@ -12,12 +12,13 @@ const AuthContextProvider = ({ children }) => {
     const checkLoginUser = async () => {
       const res = await checkLogin();
 
+      console.log(res);
       setIsLoged(!!res.data?.isValid);
       setLogedUser(res.data?.userId);
       setRole(res.data?.role);
     };
     checkLoginUser();
-  }, []);
+  }, [isLoged]);
 
   const updateLoged = val => {
     setIsLoged(val);
@@ -34,6 +35,7 @@ const AuthContextProvider = ({ children }) => {
         isLoged,
         updateLogedUser,
         logedUser,
+        role,
       }}
     >
       {children}

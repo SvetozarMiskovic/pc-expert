@@ -8,25 +8,22 @@ function RandomProducts({ data }) {
 
     return shuffled.slice(0, num);
   }
-  const randomLaptops = getMultipleRandom(data?.laptopi, 10);
-  const randomMonitors = getMultipleRandom(data?.monitori, 2);
-  const randomTVs = getMultipleRandom(data?.televizori, 2);
-  const randomPhones = getMultipleRandom(data?.telefoni, 2);
-  const randomPerifery = getMultipleRandom(data?.periferija, 2);
-  const randomComponents = getMultipleRandom(data?.komponente, 2);
-  const randomComputers = getMultipleRandom(data?.racunari, 2);
-  const randomMining = getMultipleRandom(data?.mining, 1);
 
-  const final = [
-    ...randomLaptops,
-    ...randomMonitors,
-    ...randomComponents,
-    ...randomTVs,
-    ...randomPhones,
-    ...randomPerifery,
-    ...randomComputers,
-    ...randomMining,
+  const allData = [
+    ...data?.laptopi,
+    ...data?.monitori,
+    ...data?.telefoni,
+    ...data?.televizori,
+    ...data?.periferija,
+    ...data?.komponente,
+    ...data?.racunari,
+    ...data?.mining,
   ];
+
+  const randomData = allData.filter(item => !item?.akcija);
+  console.log(allData, randomData);
+
+  const final = getMultipleRandom(randomData, 24);
 
   return (
     <div className="random-products-component">

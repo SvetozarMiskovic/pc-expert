@@ -21,6 +21,7 @@ import {
   Collapse,
 } from "@chakra-ui/react";
 import ShopCategoryItem from "../ShopComponents/ShopCategoryItem";
+import EmptySale from "./EmptySale";
 function NewCategories({ data }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -34,15 +35,15 @@ function NewCategories({ data }) {
   const onToggle = () => {
     setIsOpen(prevState => !prevState);
   };
-  const randomLaptops = getMultipleRandom(data?.laptopi, 4);
-  const randomMonitors = getMultipleRandom(data?.monitori, 4);
-  const randomTVs = getMultipleRandom(data?.televizori, 4);
-  const randomPhones = getMultipleRandom(data?.telefoni, 4);
-  const randomPerifery = getMultipleRandom(data?.periferija, 4);
-  const randomComponents = getMultipleRandom(data?.komponente, 4);
-  const randomComputers = getMultipleRandom(data?.racunari, 4);
-  const randomMining = getMultipleRandom(data?.mining, 4);
-  console.log(randomLaptops);
+
+  const saleLaptops = data?.laptopi.filter(item => item?.akcija);
+  const saleMonitors = data?.monitori.filter(item => item?.akcija);
+  const saleTVs = data?.televizori.filter(item => item?.akcija);
+  const salePhones = data?.telefoni.filter(item => item?.akcija);
+  const salePerifery = data?.periferija.filter(item => item?.akcija);
+  const saleComponents = data?.komponente.filter(item => item?.akcija);
+  const saleComputers = data?.racunari.filter(item => item?.akcija);
+  const saleMining = data?.mining.filter(item => item?.akcija);
 
   return (
     <div className="new-categories-wrapper">
@@ -186,15 +187,24 @@ function NewCategories({ data }) {
             <Text fontSize={"md"}>Mining </Text>
           </Tab>
         </TabList>
-        <Collapse in={isOpen} animateOpacity endingHeight={450}>
+        <Collapse
+          in={isOpen}
+          animateOpacity
+          endingHeight={470}
+          style={{ overflowY: "hidden", overflowX: "auto" }}
+        >
           <TabPanels
-            display={isOpen ? "inline-block" : "none"}
-            overflowX={"auto"}
+            width={"100%"}
+            height={"100%"}
+            display={isOpen ? "flex" : "none"}
+            // scrollbarGutter={"auto"}
             // margin="0.5rem"
           >
-            <TabPanel>
+            <TabPanel width={"100%"}>
               <div className="new-category-items">
-                {randomLaptops?.map(item => {
+                {saleLaptops?.length === 0 && <EmptySale />}
+
+                {saleLaptops?.map(item => {
                   return (
                     <ShopCategoryItem
                       key={item?.id}
@@ -205,9 +215,11 @@ function NewCategories({ data }) {
                 })}
               </div>
             </TabPanel>
-            <TabPanel>
+            <TabPanel width={"100%"}>
               <div className="new-category-items">
-                {randomMonitors?.map(item => {
+                {saleMonitors?.length === 0 && <EmptySale />}
+
+                {saleMonitors?.map(item => {
                   return (
                     <ShopCategoryItem
                       key={item?.id}
@@ -218,9 +230,11 @@ function NewCategories({ data }) {
                 })}
               </div>
             </TabPanel>
-            <TabPanel>
+            <TabPanel width={"100%"}>
               <div className="new-category-items">
-                {randomComputers?.map(item => {
+                {saleComputers?.length === 0 && <EmptySale />}
+
+                {saleComputers?.map(item => {
                   return (
                     <ShopCategoryItem
                       key={item?.id}
@@ -231,9 +245,11 @@ function NewCategories({ data }) {
                 })}
               </div>
             </TabPanel>
-            <TabPanel>
+            <TabPanel width={"100%"}>
               <div className="new-category-items">
-                {randomTVs?.map(item => {
+                {saleTVs?.length === 0 && <EmptySale />}
+
+                {saleTVs?.map(item => {
                   return (
                     <ShopCategoryItem
                       key={item?.id}
@@ -244,9 +260,11 @@ function NewCategories({ data }) {
                 })}
               </div>
             </TabPanel>
-            <TabPanel>
+            <TabPanel width={"100%"}>
               <div className="new-category-items">
-                {randomPhones?.map(item => {
+                {salePhones?.length === 0 && <EmptySale />}
+
+                {salePhones?.map(item => {
                   return (
                     <ShopCategoryItem
                       key={item?.id}
@@ -257,9 +275,11 @@ function NewCategories({ data }) {
                 })}
               </div>
             </TabPanel>
-            <TabPanel>
+            <TabPanel width={"100%"}>
               <div className="new-category-items">
-                {randomComponents?.map(item => {
+                {saleComponents?.length === 0 && <EmptySale />}
+
+                {saleComponents?.map(item => {
                   return (
                     <ShopCategoryItem
                       key={item?.id}
@@ -270,9 +290,11 @@ function NewCategories({ data }) {
                 })}
               </div>
             </TabPanel>
-            <TabPanel>
+            <TabPanel width={"100%"}>
               <div className="new-category-items">
-                {randomPerifery?.map(item => {
+                {salePerifery?.length === 0 && <EmptySale />}
+
+                {salePerifery?.map(item => {
                   return (
                     <ShopCategoryItem
                       key={item?.id}
@@ -283,9 +305,10 @@ function NewCategories({ data }) {
                 })}
               </div>
             </TabPanel>
-            <TabPanel>
+            <TabPanel width={"100%"}>
               <div className="new-category-items">
-                {randomMining?.map(item => {
+                {saleMining?.length === 0 && <EmptySale />}
+                {saleMining?.map(item => {
                   return (
                     <ShopCategoryItem
                       key={item?.id}

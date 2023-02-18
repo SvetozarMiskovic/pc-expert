@@ -157,14 +157,16 @@ function ShopCategoryItem({ dataCategory, dataAll, category }) {
             </Button>
           </div>
         </div>
-        <div className="shop-category-item-product-waranty">
-          <Text fontSize="md">GARANCIJA: {dataCategory.garancija}</Text>
-        </div>
-        {dataCategory?.akcija && (
-          <div className="shop-category-item-product-sale">
-            <Text fontSize="md">AKCIJA</Text>
+        <div className="shop-category-item-product-cards">
+          <div className="shop-category-item-product-waranty">
+            <Text fontSize="md">GARANCIJA: {dataCategory.garancija}</Text>
           </div>
-        )}
+          {dataCategory?.akcija && (
+            <div className="shop-category-item-product-sale">
+              <Text fontSize="md">AKCIJA</Text>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   ) : (
