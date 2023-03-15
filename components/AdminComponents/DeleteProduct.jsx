@@ -2,11 +2,34 @@ import { Select, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import Icon from "@chakra-ui/icon";
 import { FaMinusCircle } from "react-icons/fa";
+import { createProductData } from "../../helpers/createProductData";
+import DeleteModal from "./DeleteModal";
 
-function DeleteProduct() {
+function DeleteProduct({ data }) {
   const [category, setCategory] = useState("laptop");
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [open, setOpen] = useState(false);
+
+  const openModal = () => {
+    setOpen(true);
+  };
+
+  const closeModal = () => {
+    setOpen(false);
+  };
+  const updateSelectedProduct = id => {
+    setSelectedProduct(id);
+  };
   return (
     <div className="delete-product-wrapper">
+      <DeleteModal
+        openModal={openModal}
+        closeModal={closeModal}
+        open={open}
+        selectedProduct={selectedProduct}
+        data={data}
+        category={category}
+      />
       <div className="delete-product-content">
         <div className="delete-product-content-sidebar">
           <div className="delete-product-content-sidebar-header">
@@ -25,16 +48,26 @@ function DeleteProduct() {
             >
               <option value={"laptop"}>Laptop</option>
               <option value={"monitor"}>Monitor</option>
-              <option value={"televizor"}>Televizor</option>
-              <option value={"telefon"}>Telefon</option>
-              <option value={"komponenta"}>Komponenta</option>
-              <option value={"periferija"}>Periferija</option>
-              <option value={"racunar"}>Računar</option>
+              <option value={"tv"}>Televizor</option>
+              <option value={"phone"}>Telefon</option>
+              <option value={"component"}>Komponenta</option>
+              <option value={"perifery"}>Periferija</option>
+              <option value={"computer"}>Računar</option>
               <option value={"mining"}>Mining rig</option>
             </Select>
           </div>
         </div>
-        <div className="delete-product-content-body"></div>
+        <div className="delete-product-content-body">
+          <div className="delete-product-data">
+            {createProductData(
+              category,
+              data,
+              updateSelectedProduct,
+              openModal,
+              selectedProduct
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

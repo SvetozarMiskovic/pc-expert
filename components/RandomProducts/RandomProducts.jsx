@@ -21,7 +21,6 @@ function RandomProducts({ data }) {
   ];
 
   const randomData = allData.filter(item => !item?.akcija);
-  console.log(allData, randomData);
 
   const final = getMultipleRandom(randomData, 24);
 

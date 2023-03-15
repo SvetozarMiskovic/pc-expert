@@ -1,10 +1,10 @@
 import React from "react";
 import Admin from "./Admin";
 
-function AdminComponent({ properties }) {
+function AdminComponent({ properties, data }) {
   return (
     <div className="admin-wrapper">
-      <Admin properties={properties} />
+      <Admin properties={properties} data={data} />
     </div>
   );
 }

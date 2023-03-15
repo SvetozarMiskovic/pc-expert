@@ -27,11 +27,11 @@ function CreateProduct({ properties }) {
             >
               <option value={"laptop"}>Laptop</option>
               <option value={"monitor"}>Monitor</option>
-              <option value={"televizor"}>Televizor</option>
-              <option value={"telefon"}>Telefon</option>
-              <option value={"komponenta"}>Komponenta</option>
-              <option value={"periferija"}>Periferija</option>
-              <option value={"racunar"}>Računar</option>
+              <option value={"tv"}>Televizor</option>
+              <option value={"phone"}>Telefon</option>
+              <option value={"component"}>Komponenta</option>
+              <option value={"perifery"}>Periferija</option>
+              <option value={"computer"}>Računar</option>
               <option value={"mining"}>Mining rig</option>
             </Select>
           </div>

@@ -1,14 +1,14 @@
 import { createId } from "@paralleldrive/cuid2";
 import { Input } from "@chakra-ui/react";
 
-import LaptopProperties from "../components/AdminComponents/LaptopProperties";
-import MonitorProperties from "../components/AdminComponents/MonitorProperties";
-import TVProperties from "../components/AdminComponents/TVProperties";
-import PhoneProperties from "../components/AdminComponents/PhoneProperties";
-import ComponentProperties from "../components/AdminComponents/ComponentProperties";
-import PeriferyProperties from "../components/AdminComponents/PeriferyProperties";
-import ComputerProperties from "../components/AdminComponents/ComputerProperties";
-import MiningProperties from "../components/AdminComponents/MiningProperties";
+import LaptopProperties from "../components/AdminComponents/Properties/LaptopProperties";
+import MonitorProperties from "../components/AdminComponents/Properties/MonitorProperties";
+import TVProperties from "../components/AdminComponents/Properties/TVProperties";
+import PhoneProperties from "../components/AdminComponents/Properties/PhoneProperties";
+import ComponentProperties from "../components/AdminComponents/Properties/ComponentProperties";
+import PeriferyProperties from "../components/AdminComponents/Properties/PeriferyProperties";
+import ComputerProperties from "../components/AdminComponents/Properties/ComputerProperties";
+import MiningProperties from "../components/AdminComponents/Properties/MiningProperties";
 export const createProductProperties = (category, properties) => {
   const formatText = string => {
     const capitalize = string.charAt(0).toUpperCase() + string.slice(1);
@@ -44,7 +44,7 @@ export const createProductProperties = (category, properties) => {
         <MonitorProperties properties={properties.monitor} />
       );
     }
-    case "televizor": {
+    case "tv": {
       return (
         // <form>
         //   {properties?.tv.map(prop => {
@@ -54,7 +54,7 @@ export const createProductProperties = (category, properties) => {
         <TVProperties properties={properties.tv} />
       );
     }
-    case "telefon": {
+    case "phone": {
       return (
         // <form>
         //   {properties?.phone.map(prop => {
@@ -64,7 +64,7 @@ export const createProductProperties = (category, properties) => {
         <PhoneProperties properties={properties.phone} />
       );
     }
-    case "komponenta": {
+    case "component": {
       return (
         // <form>
         //   {properties?.component.map(prop => {
@@ -74,7 +74,7 @@ export const createProductProperties = (category, properties) => {
         <ComponentProperties properties={properties.component} />
       );
     }
-    case "periferija": {
+    case "perifery": {
       return (
         // <form>
         //   {properties?.perifery.map(prop => {
@@ -84,7 +84,7 @@ export const createProductProperties = (category, properties) => {
         <PeriferyProperties properties={properties.perifery} />
       );
     }
-    case "racunar": {
+    case "computer": {
       return (
         // <form>
         //   {properties?.computer.map(prop => {

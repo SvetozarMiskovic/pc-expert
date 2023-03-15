@@ -25,7 +25,6 @@ import EmptySale from "./EmptySale";
 function NewCategories({ data }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(data);
   function getMultipleRandom(arr, num) {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
 
