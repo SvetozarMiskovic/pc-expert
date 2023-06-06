@@ -25,6 +25,7 @@ import RezolucijaGlavne from "../components/ShopComponents/ShopSidebarMenus/Rezo
 import BT from "../components/ShopComponents/ShopSidebarMenus/BT";
 import Vrsta from "../components/ShopComponents/ShopSidebarMenus/Vrsta";
 import KapacitetBaterije from "../components/ShopComponents/ShopSidebarMenus/KapacitetBaterije";
+import Akcija from "../components/ShopComponents/ShopSidebarMenus/Akcija";
 
 export const generateSidebarFilters = category => {
   switch (category) {

@@ -42,6 +42,7 @@ function ShopCategory({ category, data }) {
     onPageChange,
     nextPage,
     prevPage,
+    sortBy,
   } = useShopContext();
 
   useEffect(() => {
@@ -254,8 +255,52 @@ function ShopCategory({ category, data }) {
     updateFilters();
   }, [category]);
 
-  const paginatedData = paginate(data, currentPage, pageSize);
-  const paginatedFilters = paginate(filteredItems, currentPage, pageSize);
+  const paginatedData = paginate(
+    data?.sort((a, b) => {
+      if (sortBy === "asc") {
+        return a?.akcija
+          ? b?.akcija
+            ? a?.akcija - b?.akcija
+            : a?.akcija - b?.cijena
+          : b?.akcija
+          ? a?.cijena - b?.akcija
+          : a?.cijena - b?.cijena;
+      } else {
+        return b?.akcija
+          ? a?.akcija
+            ? b?.akcija - a?.akcija
+            : b?.akcija - a?.cijena
+          : a?.akcija
+          ? b?.cijena - a?.akcija
+          : b?.cijena - a?.cijena;
+      }
+    }),
+    currentPage,
+    pageSize
+  );
+  const paginatedFilters = paginate(
+    filteredItems?.sort((a, b) => {
+      if (sortBy === "asc") {
+        return a?.akcija
+          ? b?.akcija
+            ? a?.akcija - b?.akcija
+            : a?.akcija - b?.cijena
+          : b?.akcija
+          ? a?.cijena - b?.akcija
+          : a?.cijena - b?.cijena;
+      } else {
+        return b?.akcija
+          ? a?.akcija
+            ? b?.akcija - a?.akcija
+            : b?.akcija - a?.cijena
+          : a?.akcija
+          ? b?.cijena - a?.akcija
+          : b?.cijena - a?.cijena;
+      }
+    }),
+    currentPage,
+    pageSize
+  );
   return (
     <div className="shop-category-wrapper">
       <div className="shop-category-container">

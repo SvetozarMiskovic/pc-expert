@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { loginUser } from "../../fetchFunctions/loginUser";
+
 import {
   FormControl,
   Input,
@@ -13,15 +13,26 @@ import {
   Divider,
   Text,
 } from "@chakra-ui/react";
-import { FaEye, FaEyeSlash, FaLock } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGoogle, FaLock } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useAuthContext } from "../../context/AuthContext";
 import { useRouter } from "next/router";
-import { checkLogin } from "../../fetchFunctions/checkLogin";
+
+import {
+  signInWithPopup,
+  getAdditionalUserInfo,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth, googleProvider } from "../../config/firebase";
+import { useRegisterUser } from "../../hooks/useRegisterUser";
+import { useLoginUser } from "../../hooks/useLoginUser";
 
 function LoginForm() {
-  const [loading, setLoading] = useState(false);
+  const [emailLoading, setEmailLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
 
+  const { mutateAsync: registerUser } = useRegisterUser();
+  const { mutateAsync: loginUser } = useLoginUser();
   const [showPw, setShowPW] = useState(false);
   const emailRef = useRef();
   const pwRef = useRef();
@@ -29,51 +40,154 @@ function LoginForm() {
   const { updateLoged, updateLogedUser, isLoged } = useAuthContext();
   const router = useRouter();
 
-  useEffect(() => {
-    if (isLoged) {
-      router.push("/");
-    }
-  }, [isLoged, router]);
+  // useEffect(() => {
+  //   if (isLoged) {
+  //     router.push("/");
+  //   }
+  // }, [isLoged, router]);
 
-  const handleSubmit = async e => {
-    let payload;
+  const handleSignIn = async e => {
     e.preventDefault();
 
-    payload = {
-      email: emailRef.current.value,
-      lozinka: pwRef.current.value,
-    };
-
-    setLoading(prevstate => !prevstate);
-    if (emailRef.current.value && pwRef.current.value) {
-      const response = await loginUser(payload);
-
-      if (response.data.message) {
-        setLoading(prevstate => !prevstate);
-        toast(response.data?.message, {
-          progressStyle: { background: "red" },
+    setEmailLoading(true);
+    signInWithEmailAndPassword(
+      auth,
+      emailRef.current.value,
+      pwRef.current.value
+    )
+      .then(async userCreds => {
+        setEmailLoading(false);
+        console.log(userCreds.user);
+        const payload = { token: userCreds.user.accessToken };
+        console.log("pejloud", payload);
+        const response = await loginUser(payload);
+        toast(response.auth, {
+          progressStyle: {
+            background: "#4CBB17",
+          },
         });
-      } else {
-        const data = await checkLogin();
-
-        updateLoged(!!data.data?.isValid);
-        updateLogedUser(data.data?.userId);
-
         router.push("/");
+      })
+      .catch(err => {
+        console.log(err.code);
+        if (err.code === "auth/invalid-email") {
+          toast("Email nije ispravan!", {
+            progressStyle: {
+              background: "red",
+            },
+          });
+          setEmailLoading(false);
+        }
+        if (err.code === "auth/missing-password") {
+          toast("Unesite lozinku!", {
+            progressStyle: {
+              background: "red",
+            },
+          });
+          setEmailLoading(false);
+        }
+        if (err.code === "auth/wrong-password") {
+          toast("Pogrešna lozinka!", {
+            progressStyle: {
+              background: "red",
+            },
+          });
+          setEmailLoading(false);
+        }
+        if (err.code === "auth/user-not-found") {
+          toast("Korisnik ne postoji!", {
+            progressStyle: {
+              background: "red",
+            },
+          });
+          setEmailLoading(false);
+        }
+      });
+  };
+  const handleGoogleSignIn = async e => {
+    setGoogleLoading(true);
 
-        setLoading(prevstate => !prevstate);
-        toast(response.data?.auth, {
-          progressStyle: { background: "#4CBB17" },
+    const response = signInWithPopup(auth, googleProvider)
+      .then(data => {
+        setGoogleLoading(false);
+        return data;
+      })
+      .catch(err => {
+        console.log(err.message, err.code);
+        toast(
+          err?.code === "auth/popup-closed-by-user"
+            ? "Google prijava otkazana!"
+            : "Došlo je do greške! Osvježite stranicu i pokušajte ponovo!",
+
+          {
+            progressStyle: {
+              background: "red",
+            },
+          }
+        );
+        setGoogleLoading(false);
+      });
+
+    const logedUser = await response;
+
+    if (logedUser) {
+      const isNew = getAdditionalUserInfo(logedUser).isNewUser;
+
+      const userInfo = {
+        ime_i_prezime: logedUser.user.displayName
+          ? logedUser.user.displayName
+          : "",
+        email: logedUser.user.email ? logedUser.user.email : "",
+        broj_telefona: logedUser.user.phoneNumber
+          ? logedUser.user.phoneNumber
+          : "",
+        id: logedUser.user.uid ? logedUser.user.uid : "",
+        role: "customer",
+        adresa: "",
+        grad: "",
+        ulica: "",
+        postanski_broj: "",
+      };
+
+      if (isNew) {
+        const payload = {
+          userInfo,
+          jwt: logedUser?.user?.accessToken,
+          isGoogle: true,
+        };
+
+        const response = await registerUser(payload);
+
+        if (!response.auth) {
+          toast(response?.message, {
+            progressStyle: { background: "red" },
+          });
+        } else {
+          toast(response?.auth, {
+            progressStyle: { background: "#4CBB17" },
+          });
+          router.push("/");
+          router.reload();
+        }
+      } else {
+        const tokenData = { token: logedUser.user.accessToken };
+        console.log("pejloud", tokenData);
+        const response = await loginUser(tokenData);
+        toast(response.auth, {
+          progressStyle: {
+            background: "#4CBB17",
+          },
         });
+        router.push("/");
       }
-    } else {
-      toast("Unesite email i lozinku!");
     }
+
+    // setEmailLoading(prevstate => !prevstate);
   };
 
   return (
     <div className="login-component">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSignIn}>
         <div className="login-header">
           <div className="header-image">
             <Image width={150} height={150} src="/static/T1.png" alt="logo" />
@@ -84,7 +198,7 @@ function LoginForm() {
           </Text> */}
         </div>
         <div className="login-body">
-          <FormControl isRequired>
+          <FormControl>
             <Input
               placeholder={"E-mail"}
               outline={"no-outline"}
@@ -101,7 +215,7 @@ function LoginForm() {
               width={"100%"}
             />
           </FormControl>
-          <FormControl isRequired>
+          <FormControl>
             <InputGroup>
               <Input
                 width={"100%"}
@@ -170,7 +284,8 @@ function LoginForm() {
             backgroundColor={"#4CBB17"}
             color={"#fff"}
             type={"submit"}
-            isLoading={loading}
+            // onClick={() => handleSignIn()}
+            isLoading={emailLoading}
             borderRadius={"15rem"}
           >
             Prijavi se
@@ -192,6 +307,46 @@ function LoginForm() {
             type={"button"}
           >
             Registruj se
+          </Button>
+        </FormControl>
+        <FormControl
+          width={"100%"}
+          display="flex"
+          gap={"1rem"}
+          justifyContent={"center"}
+        >
+          <Button
+            width={"25rem"}
+            height={"3.5rem"}
+            borderRadius={"15rem"}
+            transition={"200ms ease-in"}
+            _hover={{
+              transform: "scaleX(0.95)",
+              transition: "200ms ease-in",
+            }}
+            _active={{
+              transition: "200ms ease-in",
+            }}
+            // backgroundColor={"#007FFF"}
+            bgGradient={
+              "linear-gradient(-120deg, #4285f4, #34a853, #fbbc05, #ea4335)"
+            }
+            color={"#fff"}
+            type={"button"}
+            display={"flex"}
+            gap={"0.5rem"}
+            fontSize={"xl"}
+            isLoading={googleLoading}
+            onClick={handleGoogleSignIn}
+          >
+            <Icon
+              as={FaGoogle}
+              fontSize={"5xl"}
+              padding={"0.3rem"}
+              borderRadius={"3rem"}
+              color={"#fff"}
+            />
+            Prijavi se sa Google nalogom
           </Button>
         </FormControl>
       </form>

@@ -3,13 +3,15 @@ import { Text, Icon } from "@chakra-ui/react";
 import { FaTimes } from "react-icons/fa";
 import { useShopContext } from "../../context/ShopContext";
 function ShopSingleActiveFilter({ data }) {
-  const { removeActiveFilter } = useShopContext();
-  // console.log("IZ OVOG KURCA MALOG", data);
+  const { removeActiveFilter, clearPriceFilter } = useShopContext();
+
   function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1) + ":";
+    return (
+      String(string)?.charAt(0).toUpperCase() + String(string)?.slice(1) + ":"
+    );
   }
   function capitalizeFilterValue(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+    return String(string)?.charAt(0).toUpperCase() + String(string)?.slice(1);
   }
 
   const removeSpace = string => {
@@ -23,7 +25,34 @@ function ShopSingleActiveFilter({ data }) {
         </Text>
       </div>
       <div className="shop-single-active-filter-values">
-        {data.filterValues?.map(value => {
+        {data.filterValues?.map((value, i, arr) => {
+          if (data?.filterProperty === "cijena") {
+            if (i === 0) {
+              const str = arr.join(" - ");
+              return (
+                <div
+                  className="shop-single-active-filter-value"
+                  key={value}
+                  onClick={() => {
+                    clearPriceFilter();
+                  }}
+                >
+                  <Text fontWeight={"bold"} fontSize={"md"}>
+                    {str}
+                  </Text>
+                  <Icon fontSize={"xs"} as={FaTimes} />
+                </div>
+              );
+            } else return;
+
+            // return (
+            //   <div className="shop-single-active-filter-value" key={value}>
+            //     <Text fontWeight={"bold"} fontSize={"md"}>
+            //       {/* {str} */}
+            //     </Text>
+            //   </div>
+            // );
+          }
           return (
             <div
               key={value}

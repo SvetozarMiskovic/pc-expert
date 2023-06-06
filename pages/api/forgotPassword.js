@@ -45,6 +45,7 @@ export default async function handler(req, res) {
         }
         res.send({ msg: `Link za promjenu lozinke je poslan na "${email}"` });
       });
+      res.send({ msg: `Link za promjenu lozinke je poslan na "${email}"` });
     } else {
       res.send({ err: "Email ne postoji!" });
     }

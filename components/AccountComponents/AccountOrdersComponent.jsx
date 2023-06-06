@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { getUser } from "../../fetchFunctions/getUser";
 import {
   Text,
   Icon,
@@ -13,23 +12,22 @@ import {
   Td,
 } from "@chakra-ui/react";
 import { FaBoxes } from "react-icons/fa";
+import { useAuthContext } from "../../context/AuthContext";
+
 function AccountOrdersComponent() {
   const [user, setUser] = useState({});
+  const { activeUser } = useAuthContext();
+  // const updateUser = obj => {
+  //   setUser(obj);
+  // };
 
-  const updateUser = obj => {
-    setUser(obj);
-  };
+  // useEffect(() => {
+  //   getUser().then(res => updateUser(res.data));
+  // }, []);
 
-  useEffect(() => {
-    getUser().then(res => updateUser(res.data));
-  }, []);
-
-  if (!user.id)
-    return (
-      <Text fontSize={"3xl"} color={"#5f5f5f"} fontStyle={"italic"}>
-        {user?.message}
-      </Text>
-    );
+  if (!activeUser) {
+    return <h1>Niste ulogovani</h1>;
+  }
   return (
     <div className="account-showcase-wrapper">
       <div className="account-showcase-component">

@@ -29,29 +29,32 @@ function ShopSingleFilter({ data, filterProperty }) {
     <div
       className="shop-single-menu-filter"
       onClick={() => {
-        console.log();
         setChecked(!checked);
         !checked
           ? updateActiveFilters({ data, filterProperty })
           : removeActiveFilter(filterProperty, data);
       }}
     >
-      <div
-        className={
-          checked
-            ? "shop-single-menu-filter-checkbox-active checkbox"
-            : "shop-single-menu-filter-checkbox checkbox"
-        }
-      >
-        <Icon
-          display={checked ? "block" : "none"}
-          color={"#fff"}
-          as={FaCheck}
-        />
-      </div>
-      <Text color={"#0c0c0d"} fontWeight="600" fontSize={"md"}>
-        {data}
-      </Text>
+      {data && (
+        <div
+          className={
+            checked
+              ? "shop-single-menu-filter-checkbox-active checkbox"
+              : "shop-single-menu-filter-checkbox checkbox"
+          }
+        >
+          <Icon
+            display={checked ? "block" : "none"}
+            color={"#fff"}
+            as={FaCheck}
+          />
+        </div>
+      )}
+      {data && (
+        <Text color={"#0c0c0d"} fontWeight="600" fontSize={"md"}>
+          {data}
+        </Text>
+      )}
     </div>
   );
 }

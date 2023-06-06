@@ -10,8 +10,11 @@ import {
 
 import { FaCartPlus } from "react-icons/fa";
 import Link from "next/link";
+import { useGlobalContext } from "../../context/GlobalContext";
+import { formatPrice } from "../../helpers/formatPrice";
 function ShopCategoryItem({ dataCategory, dataAll, category }) {
   const [counter, setCounter] = useState(1);
+  const { updateCart } = useGlobalContext();
   const maxCounter = 50;
 
   const increment = () => {
@@ -80,8 +83,8 @@ function ShopCategoryItem({ dataCategory, dataAll, category }) {
               textColor={"#0c0c0d"}
             >
               {dataCategory?.akcija
-                ? dataCategory?.akcija
-                : dataCategory?.cijena}
+                ? formatPrice(dataCategory?.akcija)
+                : formatPrice(dataCategory?.cijena)}
             </Text>
             <Text
               width={"100%"}
@@ -151,7 +154,15 @@ function ShopCategoryItem({ dataCategory, dataAll, category }) {
               }}
               color={"#0c0c0d"}
               borderRadius={"5rem"}
-              onClick={() => console.log(counter, dataCategory)}
+              onClick={() => {
+                const payload = {
+                  qty: counter,
+                  product: dataCategory,
+                  category: category,
+                };
+
+                updateCart(payload);
+              }}
             >
               <Icon as={FaCartPlus} />
             </Button>
@@ -205,7 +216,9 @@ function ShopCategoryItem({ dataCategory, dataAll, category }) {
               fontWeight={"bold"}
               textColor={"#0c0c0d"}
             >
-              {dataAll?.akcija ? dataAll?.akcija : dataAll?.cijena}
+              {dataAll?.akcija
+                ? formatPrice(dataAll?.akcija)
+                : formatPrice(dataAll?.cijena)}
             </Text>
             <Text
               width={"100%"}
@@ -278,7 +291,15 @@ function ShopCategoryItem({ dataCategory, dataAll, category }) {
               }}
               color={"#0c0c0d"}
               borderRadius={"5rem"}
-              onClick={() => console.log(counter, dataAll)}
+              onClick={() => {
+                const payload = {
+                  qty: counter,
+                  product: dataAll,
+                  category: category,
+                };
+
+                updateCart(payload);
+              }}
             >
               <Icon as={FaCartPlus} />
             </Button>

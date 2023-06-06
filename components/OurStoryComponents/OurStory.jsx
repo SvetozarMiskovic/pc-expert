@@ -56,7 +56,7 @@ function OurStory() {
           S poštovanjem,
         </Text>
         <div className="our-story-logo-holder">
-            <Image src='/static/T1.png' fill/>
+          <Image src="/static/T1.png" fill alt="logo" />
         </div>
       </div>
     </div>

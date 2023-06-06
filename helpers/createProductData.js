@@ -30,20 +30,6 @@ export const createProductData = (
           openModal={openModal}
           selectedProduct={selectedProduct}
         />
-        // <form>
-        //   {data?.laptop.map(prop => {
-        //     return (
-        //       <Input
-        //         placeholder={
-        //           prop.toLowerCase() === "id" ? createId() : formatText(prop)
-        //         }
-        //         onChange={e => console.log(e.target.value)}
-        //         disabled={prop.toLowerCase() === "id" ? true : false}
-        //         type={"text"}
-        //       />
-        //     );
-        //   })}
-        // </form>
       );
     }
     case "monitor": {

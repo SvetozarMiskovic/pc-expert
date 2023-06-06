@@ -39,7 +39,7 @@ function FeatureList() {
           <div className="feature-header">
             <Icon as={FaCreditCard} />
             <Text fontSize="md" fontWeight={"bold"}>
-              Placanje
+              Plaćanje
             </Text>
           </div>
           <div className="feature-body">
@@ -54,7 +54,7 @@ function FeatureList() {
             </Text>
           </div>
           <div className="feature-body">
-            <Text fontSize="md">na sve uredjaje</Text>
+            <Text fontSize="md">na sve uređaje</Text>
           </div>
         </div>
         <div className="feature">
@@ -72,7 +72,7 @@ function FeatureList() {
           <div className="feature-header">
             <Icon as={FaTools} />
             <Text fontSize="md" fontWeight={"bold"}>
-              Servisiranje uredjaja
+              Servisiranje uređaja
             </Text>
           </div>
           <div className="feature-body">

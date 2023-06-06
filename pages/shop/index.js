@@ -1,11 +1,20 @@
 import ShopComponent from "../../components/ShopComponents/ShopComponent";
 import ShopLayout from "../../components/ShopComponents/ShopLayout";
 import { whatToFetch } from "../../helpers/whatToFetch";
-import { db } from "../../config/prismaClient";
-import ShopContextProvider from "../../context/ShopContext";
 
-export default function Shop({ cat, data }) {
-  // console.log(`Iz sveg shopa:`, data);
+import ShopContextProvider from "../../context/ShopContext";
+import { QueryClient, dehydrate } from "@tanstack/react-query";
+import axios from "axios";
+import { fetchProducts } from "../../hooks/useProducts";
+import { useProducts } from "../../hooks/useProducts";
+
+export default function Shop({ cat }) {
+  console.log("Jel fetcho ista", cat);
+  const { data: products, isLoading, isError } = useProducts();
+  const arrays = Object?.values(products);
+  const data = arrays.flat();
+
+  console.log(data);
   return (
     <ShopContextProvider>
       <div className="shop-page">
@@ -18,19 +27,24 @@ export default function Shop({ cat, data }) {
 }
 
 export async function getServerSideProps(context) {
-  const rez = await whatToFetch(context?.params?.category, db);
+  const queryClient = new QueryClient();
 
+  await queryClient.prefetchQuery({
+    queryKey: ["products"],
+    queryFn: fetchProducts,
+  });
   // const final = rez.map(item => {
   //   item?.cijena = String(item?.cijena)
   //   item?.akcija = String(item?.akcija)
 
   //   return item
   // });
+  // console.log("REZULT", result);
 
   return {
     props: {
       cat: !context.query.category && "all",
-      data: !!rez ? JSON.parse(JSON.stringify(rez)) : [],
+      dehydratedState: dehydrate(queryClient),
     },
   };
 }

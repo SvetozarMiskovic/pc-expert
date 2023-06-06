@@ -18,10 +18,15 @@ import { useRouter } from "next/router";
 import CartComponent from "../CartComponents/CartComponent";
 
 function Navbar() {
-  const { updateMobileSearch, isCart, toggleCart, totalPrice } =
+  const { updateMobileSearch, isCart, openCart, closeCart, cart } =
     useGlobalContext();
   const { isLoged } = useAuthContext();
   const router = useRouter();
+
+  const handleSearch = (e)=>{
+    const value = e.target.value;
+    
+  }
   return (
     <div className="navbar desktop">
       <div className="navbar-logo">
@@ -58,7 +63,7 @@ function Navbar() {
         </ul>
       </div>
       <div className="navbar-search">
-        <input type={"text"} placeholder="Pretraži proizvode..." />
+        <input type={"text"} onChange={(e)=> handleSearch(e)} placeholder="Pretraži proizvode..." />
 
         <Button
           m={0}
@@ -138,15 +143,23 @@ function Navbar() {
             </Button>
           )}
         </div>
-        <div className="cart-button" onClick={() => toggleCart()}>
-          <div className="cart-button-text">
+        <div
+          className="cart-button"
+
+          // onMouseOut={() => closeCart()}
+          // onMouseOutCapture={() => closeCart()}
+        >
+          <div
+            className="cart-button-text"
+            onClick={e => (isCart ? closeCart() : openCart())}
+            display={"block"}
+            fontSize={"md"}
+          >
             <Icon fontSize={"lg"} as={FaShoppingBasket} />
-            <Text display={"block"} fontSize={"md"}>
-              Korpa
-            </Text>
+            <Text>Korpa</Text>
           </div>
           <div className="item-number">
-            <Text fontSize={"sm"}>1</Text>
+            <Text fontSize={"sm"}>{cart?.length}</Text>
           </div>
           <CartComponent isCart={isCart} />
         </div>

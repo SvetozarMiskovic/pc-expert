@@ -16,6 +16,7 @@ function DeleteProduct({ data }) {
 
   const closeModal = () => {
     setOpen(false);
+    setSelectedProduct(null);
   };
   const updateSelectedProduct = id => {
     setSelectedProduct(id);

@@ -43,7 +43,6 @@ function NewPassword({ data }) {
           progressStyle: { background: "red" },
           autoClose: 10000,
         });
-        router.push("/zaboravljenaLozinka");
       }
     } else {
       toast("Lozinke se ne poklapaju! Pokusajte ponovo.", {

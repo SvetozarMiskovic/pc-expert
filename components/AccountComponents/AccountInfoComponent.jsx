@@ -6,14 +6,21 @@ import { FaUserCheck, FaEdit } from "react-icons/fa";
 import Image from "next/image";
 import { MutatingDots } from "react-loader-spinner";
 import axios from "axios";
-import { getUser } from "../../fetchFunctions/getUser";
 import { useGlobalContext } from "../../context/GlobalContext";
-import { updateProfile } from "../../fetchFunctions/updateProfile";
+import { useAuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
+import { useUser } from "../../hooks/useUser";
+import { useUpdateProfile } from "../../hooks/useUpdateProfile";
 
-function AccountComponent() {
-  const [user, setUser] = useState();
+function AccountComponent({ data }) {
+  const { editProfile, updateEditProfile } = useGlobalContext();
+  const { logedUser, updateRole, activeUser } = useAuthContext();
+  const [loading, setLoading] = useState(false);
+  // const [user, setUser] = useState();
+
+  const { mutateAsync: updateProfile } = useUpdateProfile();
+
   const router = useRouter();
   const newNameRef = useRef();
   const newEmailRef = useRef();
@@ -22,29 +29,94 @@ function AccountComponent() {
   const newAddressRef = useRef();
   const newNumberRef = useRef();
   const newPostalRef = useRef();
-  const { editProfile, updateEditProfile } = useGlobalContext();
-  const [loading, setLoading] = useState(false);
-  const updateUser = obj => {
-    setUser(obj);
-  };
+  // const updateUser = obj => {
+  //   setUser(obj);
+  // };
 
   function isEmptyOrSpaces(str) {
     return str === null || str.toString().match(/^ *$/) !== null;
   }
 
-  useEffect(() => {
-    getUser().then(res => {
-      updateUser(res.data);
-    });
-  }, []);
+  const handleUpdate = async () => {
+    setLoading(true);
+    const payload = {
+      ime_i_prezime: newNameRef?.current.value
+        ? newNameRef?.current.value
+        : activeUser?.ime_i_prezime,
+      ulica: newStreetRef?.current.value
+        ? newStreetRef?.current.value
+        : activeUser?.ulica,
+      grad: newCityRef?.current.value
+        ? newCityRef?.current.value
+        : activeUser?.grad,
+      postanski_broj: newPostalRef?.current.value
+        ? newPostalRef?.current.value
+        : activeUser?.postanski_broj,
+      broj_telefona: newNumberRef?.current.value
+        ? newNumberRef?.current.value
+        : activeUser?.broj_telefona,
+      adresa: newAddressRef?.current.value
+        ? newAddressRef?.current.value
+        : activeUser?.adresa,
+      email: activeUser?.email,
+    };
 
-  if (!user?.id)
-    return (
-      <Text fontSize={"3xl"} color={"#5f5f5f"} fontStyle={"italic"}>
-        {user?.message}
-      </Text>
-    );
+    const isUpdated = await updateProfile({ userInfo: payload, id: logedUser });
 
+    console.log("jel apdejtovan", isUpdated);
+    if (isUpdated) {
+      setLoading(false);
+      updateEditProfile();
+      router.reload();
+      toast("Uspješna izmjena!", {
+        progressStyle: {
+          background: "#4CBB17",
+        },
+      });
+    } else {
+      toast("Došlo je do greške! Pokušajte ponovo!", {
+        progressStyle: {
+          background: "red",
+        },
+      });
+      setLoading(false);
+      updateEditProfile();
+    }
+    // if (
+    //   isEmptyOrSpaces(newNameRef.current.value) &
+    //   isEmptyOrSpaces(newAddressRef.current.value) &
+    //   isEmptyOrSpaces(newNumberRef.current.value) &
+    //   isEmptyOrSpaces(newCityRef.current.value) &
+    //   isEmptyOrSpaces(newPostalRef.current.value) &
+    //   isEmptyOrSpaces(newStreetRef.current.value)
+    // ) {
+    //   toast("Nema promjena!", {
+    //     progressStyle: {
+    //       background: "red",
+    //     },
+    //   });
+    //   updateEditProfile();
+    //   setLoading(false);
+    // } else {
+    //   const res = await updateProfile(payload);
+    //   if (res?.activeUser?.msg) {
+    //     toast(res?.activeUser?.msg, {
+    //       progressStyle: { background: "#4CBB17" },
+    //     });
+    //     updateEditProfile();
+    //     setLoading(false);
+    //     router.reload();
+    //   } else {
+    //     toast(res?.activeUser?.err, {
+    //       progressStyle: { background: "red" },
+    //     });
+    //     setLoading(false);
+    //   }
+    // }
+  };
+  if (!activeUser) {
+    return <h1>Niste ulogovani</h1>;
+  }
   return (
     <div className="account-showcase-wrapper">
       <div className="account-showcase-component">
@@ -98,7 +170,7 @@ function AccountComponent() {
                     borderRadius={"15rem"}
                     backgroundColor="#fff"
                     type="text"
-                    placeholder={user?.ime_i_prezime}
+                    placeholder={activeUser?.ime_i_prezime}
                   />
                 </motion.div>
               ) : (
@@ -109,7 +181,7 @@ function AccountComponent() {
                     animate={{ x: 0, opacity: 1 }}
                   >
                     <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
-                      {user?.ime_i_prezime}
+                      {activeUser?.ime_i_prezime}
                     </Text>
                   </motion.div>
                 </>
@@ -119,35 +191,14 @@ function AccountComponent() {
               <Text color={"#5f5f5f"} fontSize={"xl"}>
                 Email
               </Text>
-              {/* {editProfile ? (
-                <Input
-                  outline={"no-outline"}
-                  ref={newEmailRef}
-                  color="#5f5f5f"
-                  autoComplete={"off"}
-                  outlineColor={"transparent"}
-                  _hover={{ outline: "no-outline" }}
-                  _focusVisible={{ outline: "no-outline" }}
-                  // borderColor={"#f89a20"}
-                  borderRadius={"15rem"}
-                  backgroundColor="#fff"
-                  type="text"
-                 
-                  width={"10.5rem"}
-                  placeholder={user?.email}
-                />
-              ) : (
-                <>
-                 
-                </>
-              )} */}
+
               <motion.div
                 className="motion-div"
                 initial={{ x: "-50%", opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
               >
                 <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
-                  {user?.email}
+                  {activeUser?.email}
                 </Text>
               </motion.div>
             </div>
@@ -173,7 +224,7 @@ function AccountComponent() {
                     borderRadius={"15rem"}
                     backgroundColor="#fff"
                     type="text"
-                    placeholder={user?.adresa}
+                    placeholder={activeUser?.adresa}
                   />
                 </motion.div>
               ) : (
@@ -184,7 +235,7 @@ function AccountComponent() {
                     animate={{ x: 0, opacity: 1 }}
                   >
                     <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
-                      {user?.adresa}
+                      {activeUser?.adresa}
                     </Text>
                   </motion.div>
                 </>
@@ -213,7 +264,7 @@ function AccountComponent() {
                     backgroundColor="#fff"
                     type="text"
                     zIndex={"1"}
-                    placeholder={user?.ulica}
+                    placeholder={activeUser?.ulica}
                   />
                 </motion.div>
               ) : (
@@ -224,7 +275,7 @@ function AccountComponent() {
                     animate={{ x: 0, opacity: 1 }}
                   >
                     <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
-                      {user?.ulica}
+                      {activeUser?.ulica}
                     </Text>
                   </motion.div>
                 </>
@@ -252,7 +303,7 @@ function AccountComponent() {
                     borderRadius={"15rem"}
                     backgroundColor="#fff"
                     type="text"
-                    placeholder={user?.grad}
+                    placeholder={activeUser?.grad}
                   />
                 </motion.div>
               ) : (
@@ -263,7 +314,7 @@ function AccountComponent() {
                     animate={{ x: 0, opacity: 1 }}
                   >
                     <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
-                      {user?.grad}
+                      {activeUser?.grad}
                     </Text>
                   </motion.div>
                 </>
@@ -291,7 +342,7 @@ function AccountComponent() {
                     borderRadius={"15rem"}
                     backgroundColor="#fff"
                     type="text"
-                    placeholder={user?.postanski_broj}
+                    placeholder={activeUser?.postanski_broj}
                   />
                 </motion.div>
               ) : (
@@ -302,7 +353,7 @@ function AccountComponent() {
                     animate={{ x: 0, opacity: 1 }}
                   >
                     <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
-                      {user?.postanski_broj}
+                      {activeUser?.postanski_broj}
                     </Text>
                   </motion.div>
                 </>
@@ -330,7 +381,7 @@ function AccountComponent() {
                     borderRadius={"15rem"}
                     backgroundColor="#fff"
                     type="number"
-                    placeholder={user?.broj_telefona}
+                    placeholder={activeUser?.broj_telefona}
                   />
                 </motion.div>
               ) : (
@@ -341,7 +392,9 @@ function AccountComponent() {
                     animate={{ x: 0, opacity: 1 }}
                   >
                     <Text color={"#0c0c0c"} fontSize={"lg"} fontWeight="bold">
-                      {"+387" + user?.broj_telefona}
+                      {activeUser?.broj_telefona
+                        ? activeUser?.broj_telefona
+                        : ""}
                     </Text>
                   </motion.div>
                 </>
@@ -366,62 +419,7 @@ function AccountComponent() {
                   justifySelf={"flex-end"}
                   alignSelf={"flex-end"}
                   // height={"100%"}
-                  onClick={async () => {
-                    setLoading(true);
-                    const payload = {
-                      ime_i_prezime: newNameRef?.current.value
-                        ? newNameRef?.current.value
-                        : user?.ime_i_prezime,
-                      ulica: newStreetRef?.current.value
-                        ? newStreetRef?.current.value
-                        : user?.ulica,
-                      grad: newCityRef?.current.value
-                        ? newCityRef?.current.value
-                        : user?.grad,
-                      postanski_broj: newPostalRef?.current.value
-                        ? newPostalRef?.current.value
-                        : user?.postanski_broj,
-                      broj_telefona: newNumberRef?.current.value
-                        ? newNumberRef?.current.value
-                        : user?.broj_telefona,
-                      adresa: newAddressRef?.current.value
-                        ? newAddressRef?.current.value
-                        : user?.adresa,
-                      email: user?.email,
-                    };
-
-                    if (
-                      isEmptyOrSpaces(newNameRef.current.value) &
-                      isEmptyOrSpaces(newAddressRef.current.value) &
-                      isEmptyOrSpaces(newNumberRef.current.value) &
-                      isEmptyOrSpaces(newCityRef.current.value) &
-                      isEmptyOrSpaces(newPostalRef.current.value) &
-                      isEmptyOrSpaces(newStreetRef.current.value)
-                    ) {
-                      toast("Nema promjena!", {
-                        progressStyle: {
-                          background: "red",
-                        },
-                      });
-                      updateEditProfile();
-                      setLoading(false);
-                    } else {
-                      const res = await updateProfile(payload);
-                      if (res?.data?.msg) {
-                        toast(res?.data?.msg, {
-                          progressStyle: { background: "#4CBB17" },
-                        });
-                        updateEditProfile();
-                        setLoading(false);
-                        router.reload();
-                      } else {
-                        toast(res?.data?.err, {
-                          progressStyle: { background: "red" },
-                        });
-                        setLoading(false);
-                      }
-                    }
-                  }}
+                  onClick={handleUpdate}
                   borderRadius={"15rem"}
                   isLoading={loading}
                 >

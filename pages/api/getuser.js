@@ -1,28 +1,39 @@
 import { db } from "../../config/prismaClient";
 import { verify } from "jsonwebtoken";
+import { userExistsQuery } from "../../queries/userExistsQuery";
+import { getUserQuery } from "../../queries/getUserQuery";
 
 export default async function handler(req, res) {
-  const jwt = req.cookies?.authToken;
+  if (req.method === "POST") {
+    const { id } = req.body;
+    const user = await getUserQuery(id);
 
-  if (jwt) {
-    const isValid = verify(jwt, process.env.JWT_SECRET);
-
-    if (!!isValid) {
-      const userObj = await db.korisnici.findFirst({
-        where: {
-          id: isValid.sub,
-        },
-      });
-
-      if (userObj) {
-        delete userObj.lozinka;
-
-        res.json(userObj);
-      } else {
-        res.json({ message: "Niste ulogovani!" });
-      }
+    if (!user) {
+      res.send(false);
     }
-  } else {
-    res.json({ message: "Niste ulogovani!" });
+    res.send(user);
   }
+  // const jwt = req.cookies?.authToken;
+
+  // if (jwt) {
+  //   const isValid = verify(jwt, process.env.JWT_SECRET);
+
+  //   if (!!isValid) {
+  //     const userObj = await db.korisnici.findFirst({
+  //       where: {
+  //         id: isValid.sub,
+  //       },
+  //     });
+
+  //     if (userObj) {
+  //       delete userObj.lozinka;
+
+  //       res.json(userObj);
+  //     } else {
+  //       res.json({ message: "Niste ulogovani!" });
+  //     }
+  //   }
+  // } else {
+  //   res.json({ message: "Niste ulogovani!" });
+  // }
 }

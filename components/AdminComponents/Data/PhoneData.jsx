@@ -21,8 +21,6 @@ function PhoneData({ data, openModal, updateSelectedProduct }) {
     e.preventDefault();
   };
 
-  console.log(data);
-
   return (
     <form onSubmit={submitRequest}>
       {data?.map(item => {
@@ -37,11 +35,13 @@ function PhoneData({ data, openModal, updateSelectedProduct }) {
           >
             <div className="product-item-content">
               <div className="product-item-id">
-                <Text fontSize={"lg"} textDecoration="underline">
-                  ID: {item.id}
-                </Text>
+                <Text fontSize={"lg"}>ID: {item.id}</Text>
                 <Text fontSize={"xl"}>
-                  {parseFloat(item?.cijena).toFixed(2)} KM
+                  Cijena:{" "}
+                  {item?.akcija
+                    ? parseFloat(item?.akcija).toFixed(2)
+                    : parseFloat(item?.cijena).toFixed(2)}
+                  KM
                 </Text>
               </div>
               <div className="product-item-info">

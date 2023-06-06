@@ -16,6 +16,7 @@ function UpdateProduct({ data }) {
 
   const closeModal = () => {
     setOpen(false);
+    setSelectedProduct(null);
   };
 
   const updateSelectedProduct = id => {

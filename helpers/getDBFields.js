@@ -8,14 +8,29 @@ export const getDBFields = async db => {
   const miningField = await db.mining.findFirst();
   const periferyField = await db.periferija.findFirst();
 
+  // const createEmptyValues = (object, value = "") => {
+  //   const arr = Object.keys(laptopField);
+
+  //   // console.log(arr);
+  //   const obj = {};
+  //   arr.forEach(val => {
+  //     // console.log(val);
+  //     obj[val] = value;
+  //     // console.log("objeket", obj);
+  //   });
+
+  //   console.log(obj);
+  // };
+  // createEmptyValues(laptopField);
+
   return {
-    laptop: Object.keys(laptopField).sort(),
-    monitor: Object.keys(monitorField).sort(),
-    tv: Object.keys(tvField).sort(),
-    phone: Object.keys(phoneField).sort(),
-    component: Object.keys(componentField).sort(),
-    computer: Object.keys(computerField).sort(),
-    mining: Object.keys(miningField).sort(),
-    perifery: Object.keys(periferyField).sort(),
+    laptop: Object.keys(laptopField),
+    monitor: Object.keys(monitorField),
+    tv: Object.keys(tvField),
+    phone: Object.keys(phoneField),
+    component: Object.keys(componentField),
+    computer: Object.keys(computerField),
+    mining: Object.keys(miningField),
+    perifery: Object.keys(periferyField),
   };
 };

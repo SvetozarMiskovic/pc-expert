@@ -1,41 +1,64 @@
 import { db } from "../../config/prismaClient";
+import { remove } from "firebase/database";
 import { hash, compare } from "bcrypt";
+import { userExistsQuery } from "../../queries/userExistsQuery";
+import { registerUserQuery } from "../../queries/registerUserQuery";
+import cookie from "cookie";
+import { removeUserQuery } from "../../queries/removeUserQuery";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
-    const dataGiven = req.body;
-    const hashedPw = await hash(req.body.lozinka, 10);
+    const { userInfo, jwt = null, isGoogle = false } = req.body;
+    // console.log("juzer info", userInfo, jwt);
+    if (userInfo.lozinka) {
+      const hashedPw = await hash(userInfo.lozinka, 10);
+      userInfo.lozinka = hashedPw;
+    }
 
-    dataGiven.lozinka = hashedPw;
-
-    const isDuplicate = await db.korisnici.findUnique({
-      where: {
-        email: dataGiven.email,
-      },
-    });
-
-    if (!!isDuplicate) {
-      res.json({
-        message: "Korisnik sa unesenim emailom vec postoji! Pokusajte ponovo.",
-      });
+    console.log("STIGLO NA SERVER DA KREIRAM", req.body);
+    const isDuplicate = await userExistsQuery(userInfo.email);
+    console.log("JEL DUPLICAT", isDuplicate);
+    if (!isDuplicate?.id) {
+      const isRegistered = await registerUserQuery(userInfo);
+      console.log("TRENUTAK REGISTERA", isRegistered);
+      if (jwt) {
+        res.setHeader(
+          "Set-Cookie",
+          cookie.serialize("authToken", jwt, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV !== "development",
+            sameSite: "strict",
+            path: "/",
+          })
+        );
+        res.send({ auth: "Registracija uspješna!" });
+      }
     } else {
-      const user = await db.korisnici.create({
-        data: {
-          ime_i_prezime: dataGiven?.ime_i_prezime,
-          email: dataGiven?.email,
-          broj_telefona: Number(dataGiven?.broj_telefona),
-          adresa: dataGiven?.adresa,
-          grad: dataGiven?.grad,
-          ulica: dataGiven?.ulica,
-          postanski_broj: Number(dataGiven?.postanski_broj),
-          lozinka: dataGiven?.lozinka,
-          role: dataGiven?.role,
-        },
-      });
+      if (isGoogle) {
+        const removed = await removeUserQuery(isDuplicate?.id);
+        // console.log("jel removed", removed);
+        const success = await registerUserQuery(userInfo);
+        // console.log("jel success register", success);
 
-      res.json({ auth: "Uspjesna registracija!" });
+        // console.log(jwt);
+        if (jwt) {
+          res.setHeader(
+            "Set-Cookie",
+            cookie.serialize("authToken", jwt, {
+              httpOnly: true,
+              secure: process.env.NODE_ENV !== "development",
+              sameSite: "strict",
+              path: "/",
+            })
+          );
+
+          res.send({
+            auth: "Postojeći nalog sa istim emailom uspješno povezan na Google nalog!",
+          });
+        }
+      }
     }
   } else {
-    res.json("It's GET method!");
+    res.send({ message: "Nema odje nista!" });
   }
 }

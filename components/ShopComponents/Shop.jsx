@@ -18,6 +18,8 @@ function Shop({ category, data }) {
     currentPage,
     pageSize,
     onPageChange,
+    filteredItems,
+    sortBy,
   } = useShopContext();
 
   useEffect(() => {
@@ -25,23 +27,79 @@ function Shop({ category, data }) {
     updateActiveCategory(category);
   }, [category]);
 
-  const paginatedData = paginate(data, currentPage, pageSize);
+  const paginatedData = paginate(
+    data?.sort((a, b) => {
+      if (sortBy === "asc") {
+        return a?.akcija
+          ? b?.akcija
+            ? a?.akcija - b?.akcija
+            : a?.akcija - b?.cijena
+          : b?.akcija
+          ? a?.cijena - b?.akcija
+          : a?.cijena - b?.cijena;
+      } else {
+        return b?.akcija
+          ? a?.akcija
+            ? b?.akcija - a?.akcija
+            : b?.akcija - a?.cijena
+          : a?.akcija
+          ? b?.cijena - a?.akcija
+          : b?.cijena - a?.cijena;
+      }
+    }),
+    currentPage,
+    pageSize
+  );
+  const paginatedFilters = paginate(
+    filteredItems?.sort((a, b) => {
+      if (sortBy === "asc") {
+        return a?.akcija
+          ? b?.akcija
+            ? a?.akcija - b?.akcija
+            : a?.akcija - b?.cijena
+          : b?.akcija
+          ? a?.cijena - b?.akcija
+          : a?.cijena - b?.cijena;
+      } else {
+        return b?.akcija
+          ? a?.akcija
+            ? b?.akcija - a?.akcija
+            : b?.akcija - a?.cijena
+          : a?.akcija
+          ? b?.cijena - a?.akcija
+          : b?.cijena - a?.cijena;
+      }
+    }),
+    currentPage,
+    pageSize
+  );
 
   return (
     <>
       <div className="shop-component-container">
-        {paginatedData?.map(item => {
-          return (
-            <ShopCategoryItem
-              key={item.id}
-              dataAll={item}
-              category={category}
-            />
-          );
-        })}
+        {filteredItems?.length < 1 &&
+          paginatedData?.map(item => {
+            return (
+              <ShopCategoryItem
+                key={item.id}
+                dataAll={item}
+                category={category}
+              />
+            );
+          })}
+        {filteredItems?.length > 0 &&
+          paginatedFilters?.map(item => {
+            return (
+              <ShopCategoryItem
+                key={item.id}
+                dataAll={item}
+                category={category}
+              />
+            );
+          })}
       </div>
       <ShopPagination
-        items={data.length} // 100
+        items={filteredItems?.length > 0 ? filteredItems?.length : data?.length} // 100
         currentPage={currentPage} // 1
         pageSize={pageSize} // 10
         onPageChange={onPageChange}

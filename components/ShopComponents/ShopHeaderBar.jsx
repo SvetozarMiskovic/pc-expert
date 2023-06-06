@@ -17,6 +17,7 @@ function ShopHeaderBar() {
     filteredItems,
     allCategoryProducts,
     currentPage,
+    updateSort,
   } = useShopContext();
 
   const calculateFirst = () => {
@@ -89,9 +90,12 @@ function ShopHeaderBar() {
           _focus={{ backgroundColor: "#eaedf1" }}
           _hover={{ backgroundColor: "#eaedf1" }}
           color={"#0c0c0d"}
+          onChange={e => {
+            updateSort(e.target.value);
+          }}
         >
-          <option value={"min-cijena"}>Cijena: Prema najmanjoj</option>
-          <option value={"max-cijena"}>Cijena: Prema najvecoj</option>
+          <option value={"asc"}>Cijena: Prema najmanjoj</option>
+          <option value={"desc"}>Cijena: Prema najvecoj</option>
         </Select>
       </div>
       <div className="shop-category-header-count-view">

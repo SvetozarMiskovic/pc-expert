@@ -1,5 +1,7 @@
+import axios from "axios";
 import Home from "../components/LayoutComponents/Home";
 import { db } from "../config/prismaClient";
+
 export default function LandingPage({ data }) {
   return (
     <div className="homepage">
@@ -8,7 +10,7 @@ export default function LandingPage({ data }) {
   );
 }
 
-export async function getStaticProps(ctx) {
+export async function getServerSideProps(ctx) {
   const laptopi = await db.laptopi.findMany();
   const monitori = await db.monitori.findMany();
   const televizori = await db.televizori.findMany();
@@ -18,6 +20,7 @@ export async function getStaticProps(ctx) {
   const komponente = await db.komponente.findMany();
   const racunari = await db.racunari.findMany();
 
+  // console.log(ctx.req.cookies.authToken);
   const data = {
     laptopi: laptopi,
     monitori: monitori,

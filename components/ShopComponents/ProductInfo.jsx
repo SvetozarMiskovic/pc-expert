@@ -1,10 +1,21 @@
-import { Button, Text, Icon } from "@chakra-ui/react";
+import { Button, Text, Icon, Collapse } from "@chakra-ui/react";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { FaCartPlus } from "react-icons/fa";
+import { useGlobalContext } from "../../context/GlobalContext";
+import { formatPrice } from "../../helpers/formatPrice";
 function ProductInfo({ data }) {
   const startingRef = useRef();
+  const [isDetails, setIsDetails] = useState(true);
+  const [isSpecs, setIsSpecs] = useState(true);
 
+  const updateSpecs = () => {
+    setIsSpecs(prevState => !prevState);
+  };
+  const updateDetails = () => {
+    setIsDetails(prevState => !prevState);
+  };
+  const { updateCart } = useGlobalContext();
   useEffect(() => {
     startingRef?.current.scrollIntoView(true);
   }, []);
@@ -387,15 +398,100 @@ function ProductInfo({ data }) {
             )}
           </div>
           <div className="product-info-component-main-information-price">
-            <Text
+            {data?.akcija ? (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                }}
+              >
+                <div style={{ display: "flex", gap: "0.4rem" }}>
+                  <Text
+                    textDecoration={"line-through"}
+                    textAlign={"center"}
+                    fontSize={"4xl"}
+                    fontWeight={"bold"}
+                    textColor={"#0c0c0d"}
+                  >
+                    {formatPrice(data?.cijena)}
+                  </Text>
+                  <Text
+                    width={"100%"}
+                    alignSelf={"flex-start"}
+                    justifySelf={"flex-start"}
+                    fontSize={"md"}
+                    fontWeight="bold"
+                  >
+                    KM
+                  </Text>
+                </div>
+                <div style={{ display: "flex", gap: "0.4rem" }}>
+                  <Text
+                    textAlign={"center"}
+                    fontSize={"4xl"}
+                    fontWeight={"bold"}
+                    textColor={"#0c0c0d"}
+                  >
+                    {formatPrice(data?.akcija)}
+                  </Text>
+                  <Text
+                    width={"100%"}
+                    alignSelf={"flex-start"}
+                    justifySelf={"flex-start"}
+                    fontSize={"md"}
+                    fontWeight="bold"
+                  >
+                    KM
+                  </Text>
+                  <Text
+                    padding={"0.5rem"}
+                    background={"#007fff"}
+                    borderRadius={"3rem"}
+                    display={"flex"}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    color={"#fff"}
+                    fontWeight={"bold"}
+                    // height={"fit-content"}
+                    width={"fit-content"}
+                  >
+                    A
+                  </Text>
+                </div>
+              </div>
+            ) : (
+              <div style={{ display: "flex", gap: "0.4rem" }}>
+                <Text
+                  textAlign={"center"}
+                  fontSize={"4xl"}
+                  fontWeight={"bold"}
+                  textColor={"#0c0c0d"}
+                >
+                  {formatPrice(data?.cijena)}
+                </Text>
+                <Text
+                  width={"100%"}
+                  alignSelf={"flex-start"}
+                  justifySelf={"flex-start"}
+                  fontSize={"md"}
+                  fontWeight="bold"
+                >
+                  KM
+                </Text>
+              </div>
+            )}
+            {/* <Text
               textAlign={"center"}
               fontSize={"4xl"}
               fontWeight={"bold"}
               textColor={"#0c0c0d"}
             >
-              {data?.cijena}
-            </Text>
-            <Text
+              {data?.akcija
+                ? parseFloat(data?.akcija)?.toFixed(2)
+                : parseFloat(data?.cijena)?.toFixed(2)}
+            </Text> */}
+            {/* <Text
               width={"100%"}
               alignSelf={"flex-start"}
               justifySelf={"flex-start"}
@@ -403,7 +499,7 @@ function ProductInfo({ data }) {
               fontWeight="bold"
             >
               KM
-            </Text>
+            </Text> */}
           </div>
           <div className="product-info-component-main-information-buttons">
             <div className="product-info-options-counter">
@@ -466,7 +562,16 @@ function ProductInfo({ data }) {
                 }}
                 color={"#0c0c0d"}
                 borderRadius={"5rem"}
-                onClick={() => console.log(counter, data)}
+                onClick={() => {
+                  const payload = {
+                    qty: counter,
+                    product: data,
+                    category: "all",
+                  };
+
+                  updateCart(payload);
+                  console.log(counter);
+                }}
               >
                 <Icon as={FaCartPlus} />
                 <Text>Dodaj u korpu</Text>
@@ -475,39 +580,70 @@ function ProductInfo({ data }) {
           </div>
         </div>
       </div>
+      <div className="product-info-component-details">
+        <Text
+          onClick={() => updateDetails()}
+          fontSize={"4xl"}
+          textAlign="center"
+          fontWeight={"bold"}
+          cursor={"pointer"}
+          marginBottom={"1.5"}
+          borderBottom={"1px solid #0c0c0c"}
+        >
+          Detaljne informacije
+        </Text>
+        <Collapse in={isDetails}>
+          <div className="product-info-component-details-container">
+            {properties?.map(pr => {
+              if (pr[0] === "detalji")
+                return (
+                  <Text fontSize={"xl"} key={pr[0]}>
+                    {pr[1] ? pr[1] : "Nema detalja"}
+                  </Text>
+                );
+            })}
+          </div>
+        </Collapse>
+      </div>
+
       <div className="product-info-component-specification">
-        <Text fontSize={"4xl"} textAlign="center" fontWeight={"bold"}>
+        <Text
+          cursor={"pointer"}
+          onClick={() => updateSpecs()}
+          fontSize={"4xl"}
+          textAlign="center"
+          fontWeight={"bold"}
+          borderBottom={"1px solid #0c0c0c"}
+          marginBottom={"1.5"}
+        >
           Tehničke specifikacije
         </Text>
-        <div className="product-info-component-specification-table-wrapper">
-          <table className="table">
-            <tbody className="tbody">
-              {properties?.map(pr => {
-                if (
-                  (pr[0] !== "cijena") &
-                  (pr[0] !== "naslov") &
-                  (pr[0] !== "detalji")
-                )
-                  return (
-                    <tr className="trow" key={pr[0]}>
-                      <td className="left-table-side">
-                        {removeSpace(capitalizeFirstLetter(pr[0]))}
-                      </td>
-                      <td className="right-table-side">
-                        {capitalizeFirstLetter(pr[1])}
-                      </td>
-                    </tr>
-                  );
-              })}
-              <tr className="trow">
-                <td className="left-table-side">Detalji</td>
-                <td className="right-table-side">
-                  {data?.detalji ? data?.detalji : "Nema detalja"}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <Collapse in={isSpecs}>
+          <div className="product-info-component-specification-table-wrapper">
+            <table className="table">
+              <tbody className="tbody">
+                {properties?.map(pr => {
+                  if (
+                    pr[0] !== "cijena" &&
+                    pr[0] !== "naslov" &&
+                    pr[0] !== "detalji" &&
+                    pr[0] !== "akcija"
+                  )
+                    return (
+                      <tr className="trow" key={pr[0]}>
+                        <td className="left-table-side">
+                          {removeSpace(capitalizeFirstLetter(pr[0]))}
+                        </td>
+                        <td className="right-table-side">
+                          {capitalizeFirstLetter(pr[1])}
+                        </td>
+                      </tr>
+                    );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </Collapse>
       </div>
     </div>
   );

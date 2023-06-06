@@ -3,6 +3,7 @@ import cookie from "cookie";
 export default function handler(req, res) {
   if (req.method === "POST") {
     const token = req.cookies?.authToken;
+    console.log("evega token na lagautu");
     res.setHeader(
       "Set-Cookie",
       cookie.serialize("authToken", token, {

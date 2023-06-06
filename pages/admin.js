@@ -5,6 +5,8 @@ import { db } from "../config/prismaClient";
 import { getDBData } from "../helpers/getDBData";
 
 function AdminPage({ properties, data }) {
+  const newData = Object.assign({}, data);
+
   return (
     <div className="admin-page">
       <AdminComponent properties={properties} data={data} />

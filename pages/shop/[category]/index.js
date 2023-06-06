@@ -1,14 +1,23 @@
 import React from "react";
 import ShopCategory from "../../../components/ShopComponents/ShopCategory";
 import ShopLayout from "../../../components/ShopComponents/ShopLayout";
-
-import { db } from "../../../config/prismaClient";
-
-import { whatToFetch } from "../../../helpers/whatToFetch";
 import ShopContextProvider from "../../../context/ShopContext";
+import { QueryClient, dehydrate } from "@tanstack/react-query";
+import {
+  fetchSingleProduct,
+  useSingleProduct,
+} from "../../../hooks/useSingleProduct";
 
-function Category({ cat, data }) {
-  // console.log(`Iz category shopa:`, data);
+function Category({ cat }) {
+  const { data: array, isLoading } = useSingleProduct({ category: cat });
+  let data = [];
+  if (array?.data) {
+    data = [...array.data];
+    // console.log("ovoe akoe array");
+  }
+
+  if (isLoading) return <h1>Loading...</h1>;
+  // console.log("ovo je oridjidji", array, "ovoe nakon pusha", data, cat);
   return (
     <ShopContextProvider>
       <div className="category-page">
@@ -23,15 +32,20 @@ function Category({ cat, data }) {
 export default Category;
 
 export async function getServerSideProps(context) {
+  const queryClient = new QueryClient();
   let currentPage = 1;
-
-  const rez = await whatToFetch(context.params.category, db);
+  const category = context.params.category;
+  await queryClient.prefetchQuery({
+    queryKey: ["singleProduct", category],
+    queryFn: () => fetchSingleProduct({ category }),
+  });
 
   return {
     props: {
       cat: context.query.category,
-      data: !!rez ? JSON.parse(JSON.stringify(rez)) : [],
+
       currentPage: currentPage,
+      dehydratedState: dehydrate(queryClient),
     },
   };
 }

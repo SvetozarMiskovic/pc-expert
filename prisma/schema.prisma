@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url      = env("DATABASE_URL_DEV")
 }
 
 model komponente {
@@ -12,23 +12,24 @@ model komponente {
   cijena      Decimal? @db.Decimal(10, 2)
   garancija   String?  @db.VarChar(100)
   vrsta       String?  @db.VarChar(100)
-  detalji     String?  @db.VarChar(255)
+  detalji     String?  @db.VarChar(3000)
   proizvodjac String?  @db.VarChar(100)
   naslov      String?  @db.VarChar(255)
   akcija      Decimal? @db.Decimal(10, 2)
 }
 
 model korisnici {
-  id             Int     @id @unique(map: "id_UNIQUE") @default(autoincrement())
-  ime_i_prezime  String? @db.VarChar(255)
-  email          String? @unique(map: "email_UNIQUE") @db.VarChar(255)
+  id             Int        @id @unique(map: "id_UNIQUE") @default(autoincrement())
+  ime_i_prezime  String?    @db.VarChar(255)
+  email          String?    @unique(map: "email_UNIQUE") @db.VarChar(255)
   broj_telefona  Int?
   postanski_broj Int?
-  adresa         String? @db.VarChar(255)
-  ulica          String? @db.VarChar(255)
-  lozinka        String? @db.VarChar(255)
-  grad           String? @db.VarChar(255)
-  role           String? @db.VarChar(255)
+  adresa         String?    @db.VarChar(255)
+  ulica          String?    @db.VarChar(255)
+  lozinka        String?    @db.VarChar(255)
+  grad           String?    @db.VarChar(255)
+  role           String?    @db.VarChar(255)
+  narudzbe       narudzbe[]
 }
 
 model laptopi {
@@ -40,21 +41,21 @@ model laptopi {
   garancija        String?  @db.VarChar(100)
   hard_disk        String?  @db.VarChar(100)
   cijena           Decimal? @db.Decimal(10, 2)
+  graficka_kartica String?  @db.VarChar(100)
   tip_procesora    String?  @db.VarChar(100)
   os               String?  @db.VarChar(100)
   boja             String?  @db.VarChar(100)
   tip_hard_diska   String?  @db.VarChar(100)
   tip_ram          String?  @db.VarChar(100)
   velicina_ekrana  String?  @db.VarChar(100)
-  detalji          String?  @db.VarChar(255)
+  detalji          String?  @db.VarChar(3000)
   brzina_procesora String?  @db.VarChar(100)
   bt               String?  @db.VarChar(100)
+  webcam           String?  @db.VarChar(100)
   mikrofon         String?  @db.VarChar(100)
   usb_portovi      String?  @db.VarChar(100)
-  webcam           String?  @db.VarChar(100)
   model_procesora  String?  @db.VarChar(100)
   naslov           String?  @db.VarChar(255)
-  graficka_kartica String?  @db.VarChar(100)
   akcija           Decimal? @db.Decimal(10, 2)
 }
 
@@ -62,7 +63,7 @@ model mining {
   id        String   @id @unique(map: "id_UNIQUE") @db.VarChar(100)
   cijena    Decimal? @db.Decimal(10, 2)
   garancija String?  @db.VarChar(100)
-  detalji   String?  @db.VarChar(100)
+  detalji   String?  @db.VarChar(3000)
   naslov    String?  @db.VarChar(255)
   akcija    Decimal? @db.Decimal(10, 2)
 }
@@ -78,11 +79,11 @@ model monitori {
   dvi             String?  @db.VarChar(100)
   display         String?  @db.VarChar(100)
   boja            String?  @db.VarChar(100)
+  tip_ekrana      String?  @db.VarChar(100)
   refresh_rate    String?  @db.VarChar(100)
   garancija       String?  @db.VarChar(100)
   cijena          Decimal? @db.Decimal(10, 2)
-  detalji         String?  @db.VarChar(255)
-  tip_ekrana      String?  @db.VarChar(100)
+  detalji         String?  @db.VarChar(3000)
   naslov          String?  @db.VarChar(255)
   akcija          Decimal? @db.Decimal(10, 2)
 }
@@ -92,7 +93,7 @@ model periferija {
   vrsta       String?  @db.VarChar(100)
   model       String?  @db.VarChar(100)
   proizvodjac String?  @db.VarChar(100)
-  detalji     String?  @db.VarChar(255)
+  detalji     String?  @db.VarChar(3000)
   cijena      Decimal? @db.Decimal(10, 2)
   garancija   String?  @db.VarChar(100)
   naslov      String?  @db.VarChar(255)
@@ -104,7 +105,7 @@ model racunari {
   proizvodjac       String?  @db.VarChar(100)
   cijena            Decimal? @db.Decimal(10, 2)
   garancija         String?  @db.VarChar(100)
-  detalji           String?  @db.VarChar(255)
+  detalji           String?  @db.VarChar(3000)
   procesor          String?  @db.VarChar(100)
   tip_procesora     String?  @db.VarChar(100)
   brzina_procesora  String?  @db.VarChar(100)
@@ -112,13 +113,13 @@ model racunari {
   graficka_kartica  String?  @db.VarChar(100)
   ram               String?  @db.VarChar(100)
   tip_ram           String?  @db.VarChar(100)
+  tip_hard_diska    String?  @db.VarChar(100)
   hard_disk         String?  @db.VarChar(100)
   os                String?  @db.VarChar(100)
   memorija_graficke String?  @db.VarChar(100)
-  model_graficke    String?  @db.VarChar(100)
   model_procesora   String?  @db.VarChar(100)
+  model_graficke    String?  @db.VarChar(100)
   naslov            String?  @db.VarChar(255)
-  tip_hard_diska    String?  @db.VarChar(100)
   akcija            Decimal? @db.Decimal(10, 2)
 }
 
@@ -141,7 +142,7 @@ model telefoni {
   bt                        String?  @db.VarChar(100)
   garancija                 String?  @db.VarChar(100)
   boja                      String?  @db.VarChar(100)
-  detalji                   String?  @db.VarChar(255)
+  detalji                   String?  @db.VarChar(3000)
   naslov                    String?  @db.VarChar(255)
   akcija                    Decimal? @db.Decimal(10, 2)
 }
@@ -153,6 +154,7 @@ model televizori {
   model           String?  @db.VarChar(100)
   proizvodjac     String?  @db.VarChar(100)
   velicina_ekrana String?  @db.VarChar(100)
+  tip_ekrana      String?  @db.VarChar(100)
   rezolucija      String?  @db.VarChar(100)
   smart           String?  @db.VarChar(100)
   lan             String?  @db.VarChar(100)
@@ -160,8 +162,29 @@ model televizori {
   hdmi            String?  @db.VarChar(100)
   vga             String?  @db.VarChar(100)
   scart           String?  @db.VarChar(100)
-  detalji         String?  @db.VarChar(255)
-  tip_ekrana      String?  @db.VarChar(100)
+  detalji         String?  @db.VarChar(3000)
   naslov          String?  @db.VarChar(255)
   akcija          Decimal? @db.Decimal(10, 2)
+}
+
+model narudzbe {
+  id             String     @id @unique(map: "id_UNIQUE") @db.VarChar(250)
+  datum_narudzbe String?    @db.VarChar(250)
+  datum_isporuke String?    @db.VarChar(250)
+  poslano        String?    @db.VarChar(45)
+  ukupna_cijena  Decimal?   @db.Decimal(10, 2)
+  artikli        String?    @db.MediumText
+  id_korisnika   Int?
+  ime_i_prezime  String?    @db.VarChar(250)
+  email          String?    @db.VarChar(250)
+  broj_telefona  String?    @db.VarChar(250)
+  ulica          String?    @db.VarChar(250)
+  napomena       String?    @db.VarChar(3000)
+  postanski_broj String?    @db.VarChar(250)
+  adresa         String?    @db.VarChar(250)
+  adresa_2       String?    @db.VarChar(250)
+  grad           String?    @db.VarChar(250)
+  korisnici      korisnici? @relation(fields: [id_korisnika], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "id_korisnika")
+
+  @@index([id_korisnika], map: "id_korisnika_idx")
 }

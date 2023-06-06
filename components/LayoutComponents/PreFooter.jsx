@@ -11,7 +11,7 @@ import {
 function PreFooter() {
   return (
     <div className="pre-footer">
-      <div className=" pre-footer-child container">
+      <div className=" pre-footer-child">
         <div className="contact">
           <div className="footer-logo">
             <Image width={100} height={100} src="/static/T1.png" alt="logo" />
@@ -47,16 +47,16 @@ function PreFooter() {
           <div className="single-partner-wrapper">
             <div className="single-partner">
               <Image
-                width={300}
-                height={150}
+                width={350}
+                height={90}
                 src={"/static/Prointer.png"}
                 alt="partner"
               />
             </div>
             <div className="single-partner amazon">
               <Image
-                width={300}
-                height={150}
+                width={350}
+                height={140}
                 src={"/static/amazon-logo-transparent.png"}
                 alt="partner"
               />

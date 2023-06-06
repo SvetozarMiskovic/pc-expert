@@ -22,23 +22,15 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useShopContext } from "../../context/ShopContext";
 import { generateSidebarFilters } from "../../helpers/generateSidebarFilters";
+import Akcija from "./ShopSidebarMenus/Akcija";
 
 function ShopSidebar({ data }) {
   const router = useRouter();
-  const { activeCategory, updateActiveFilters } = useShopContext();
+  const { activeCategory, updateActiveFilters, priceRange, updatePriceRange } =
+    useShopContext();
 
-  const [priceRange, setPriceRange] = useState([0, 3000]);
   const [isPrice, setIsPrice] = useState(true);
-  const [isAllCat, setIsAllCat] = useState(() => {
-    return router.asPath === "/shop" ? true : false;
-  });
-
-  // useEffect(() => {
-  //   const res = generateActiveFilter("Cijena", priceRange);
-
-  //   updateActiveFilters(res);
-  //   // console.log(res);
-  // }, [priceRange]);
+  const [isAllCat, setIsAllCat] = useState(true);
 
   const updateIsPrice = () => {
     setIsPrice(prevState => !prevState);
@@ -47,18 +39,13 @@ function ShopSidebar({ data }) {
     setIsAllCat(prevState => !prevState);
   };
 
-  const updatePriceRange = price => {
-    setPriceRange(price);
-  };
-
-  // console.log(data);
   return (
     <div className="shop-sidebar-wrapper">
       <div className="shop-sidebar-container">
         <div className="shop-single-menu">
           <div
             className="shop-single-menu-header"
-            onClick={router.asPath === "/shop" ? null : updateAllCat}
+            onClick={() => updateAllCat()}
           >
             <Text
               fontSize={"lg"}
@@ -141,7 +128,7 @@ function ShopSidebar({ data }) {
         <div className="shop-single-menu">
           <div
             className="shop-single-menu-header"
-            onClick={router.asPath === "/shop" ? null : updateIsPrice}
+            onClick={router.asPath === "/shop" ? updateIsPrice : updateIsPrice}
           >
             <Text
               paddingLeft={"0.4rem"}
@@ -155,10 +142,10 @@ function ShopSidebar({ data }) {
           <Collapse in={isPrice}>
             <div className="shop-single-menu-body">
               <RangeSlider
-                max={3000}
+                max={12000}
                 min={0}
                 aria-label={["min", "max"]}
-                defaultValue={[1, 3000]}
+                defaultValue={[1, 12000]}
                 onChangeEnd={updatePriceRange}
                 // colorScheme={"green"}
               >
@@ -179,6 +166,7 @@ function ShopSidebar({ data }) {
             </div>
           </Collapse>
         </div>
+        <Akcija />
         {!!activeCategory && generateSidebarFilters(activeCategory)}
       </div>
     </div>

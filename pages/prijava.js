@@ -1,6 +1,5 @@
 import React from "react";
 import LoginComponent from "../components/LoginComponents/LoginComponent";
-import { useRouter } from "next/router";
 
 function Login() {
   return (

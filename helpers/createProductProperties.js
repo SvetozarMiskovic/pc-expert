@@ -9,7 +9,12 @@ import ComponentProperties from "../components/AdminComponents/Properties/Compon
 import PeriferyProperties from "../components/AdminComponents/Properties/PeriferyProperties";
 import ComputerProperties from "../components/AdminComponents/Properties/ComputerProperties";
 import MiningProperties from "../components/AdminComponents/Properties/MiningProperties";
-export const createProductProperties = (category, properties) => {
+export const createProductProperties = (
+  category,
+
+  updateNewProduct,
+  initialProduct
+) => {
   const formatText = string => {
     const capitalize = string.charAt(0).toUpperCase() + string.slice(1);
     return capitalize.split("_").join(" ");
@@ -17,91 +22,101 @@ export const createProductProperties = (category, properties) => {
   switch (category) {
     case "laptop": {
       return (
-        <LaptopProperties properties={properties.laptop} />
-        // <form>
-        //   {properties?.laptop.map(prop => {
-        //     return (
-        //       <Input
-        //         placeholder={
-        //           prop.toLowerCase() === "id" ? createId() : formatText(prop)
-        //         }
-        //         onChange={e => console.log(e.target.value)}
-        //         disabled={prop.toLowerCase() === "id" ? true : false}
-        //         type={"text"}
-        //       />
-        //     );
-        //   })}
-        // </form>
+        <LaptopProperties
+          updateNewProduct={updateNewProduct}
+          initialProduct={initialProduct}
+        />
       );
     }
     case "monitor": {
       return (
         // <form>
-        //   {properties?.monitor.map(prop => {
+        //   {?.monitor.map(prop => {
         //     return <Input placeholder={formatText(prop)} type={"text"} />;
         //   })}
         // </form>
-        <MonitorProperties properties={properties.monitor} />
+        <MonitorProperties
+          updateNewProduct={updateNewProduct}
+          initialProduct={initialProduct}
+        />
       );
     }
     case "tv": {
       return (
         // <form>
-        //   {properties?.tv.map(prop => {
+        //   {?.tv.map(prop => {
         //     return <Input placeholder={formatText(prop)} type={"text"} />;
         //   })}
         // </form>
-        <TVProperties properties={properties.tv} />
+        <TVProperties
+          updateNewProduct={updateNewProduct}
+          initialProduct={initialProduct}
+        />
       );
     }
     case "phone": {
       return (
         // <form>
-        //   {properties?.phone.map(prop => {
+        //   {?.phone.map(prop => {
         //     return <Input placeholder={formatText(prop)} type={"text"} />;
         //   })}
         // </form>
-        <PhoneProperties properties={properties.phone} />
+        <PhoneProperties
+          updateNewProduct={updateNewProduct}
+          initialProduct={initialProduct}
+        />
       );
     }
     case "component": {
       return (
         // <form>
-        //   {properties?.component.map(prop => {
+        //   {?.component.map(prop => {
         //     return <Input placeholder={formatText(prop)} type={"text"} />;
         //   })}
         // </form>
-        <ComponentProperties properties={properties.component} />
+        <ComponentProperties
+          updateNewProduct={updateNewProduct}
+          initialProduct={initialProduct}
+        />
       );
     }
     case "perifery": {
       return (
         // <form>
-        //   {properties?.perifery.map(prop => {
+        //   {?.perifery.map(prop => {
         //     return <Input placeholder={formatText(prop)} type={"text"} />;
         //   })}
         // </form>
-        <PeriferyProperties properties={properties.perifery} />
+        <PeriferyProperties
+          updateNewProduct={updateNewProduct}
+          initialProduct={initialProduct}
+        />
       );
     }
     case "computer": {
       return (
         // <form>
-        //   {properties?.computer.map(prop => {
+        //   {?.computer.map(prop => {
         //     return <Input placeholder={formatText(prop)} type={"text"} />;
         //   })}
         // </form>
-        <ComputerProperties properties={properties.computer} />
+        <ComputerProperties
+          updateNewProduct={updateNewProduct}
+          initialProduct={initialProduct}
+        />
       );
     }
     case "mining": {
       return (
         // <form>
-        //   {properties?.mining.map(prop => {
+        //   {?.mining.map(prop => {
         //     return <Input placeholder={formatText(prop)} type={"text"} />;
         //   })}
         // </form>
-        <MiningProperties properties={properties.mining} />
+        <MiningProperties
+          updateNewProduct={updateNewProduct}
+          initialProduct={initialProduct}
+        />
       );
     }
   }

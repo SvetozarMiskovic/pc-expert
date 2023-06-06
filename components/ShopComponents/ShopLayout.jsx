@@ -3,6 +3,7 @@ import ShopSidebar from "./ShopSidebar";
 import ShopHeaderBar from "./ShopHeaderBar";
 import ShopActiveFilters from "./ShopActiveFilters";
 import { useShopContext } from "../../context/ShopContext";
+import { useProducts } from "../../hooks/useProducts";
 
 function ShopLayout({ children, data }) {
   const { currentPage } = useShopContext();
@@ -10,7 +11,7 @@ function ShopLayout({ children, data }) {
   const startingRef = useRef();
 
   useEffect(() => {
-    startingRef?.current.scrollIntoView(true);
+    startingRef?.current?.scrollIntoView(true);
   }, [currentPage]);
 
   return (

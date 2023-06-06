@@ -5,16 +5,24 @@ import { ThreeCircles } from "react-loader-spinner";
 import { toast } from "react-toastify";
 import { useAuthContext } from "../../context/AuthContext";
 import { logoutUser } from "../../fetchFunctions/logoutUser";
-
+import { useGlobalContext } from "../../context/GlobalContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../../config/firebase";
 function Logout() {
-  const { updateLoged, updateLogedUser } = useAuthContext();
+  const { updateLoged, updateLogedUser, updateRole } = useAuthContext();
+  const { resetOrder } = useGlobalContext();
   const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await logoutUser();
+      signOut(auth);
       updateLoged(false);
-      updateLogedUser(undefined);
+      updateLogedUser(null);
+      updateRole(null);
+      resetOrder();
+
+      const res = await logoutUser();
+
       toast(res.data?.message, {
         progressStyle: { background: "#4CBB17" },
       });

@@ -3,13 +3,16 @@ import { createContext, useContext, useEffect, useState } from "react";
 const ShopContext = createContext();
 
 const ShopContextProvider = ({ children }) => {
-  const [activeCategory, setActiveCategory] = useState("");
+  const [activeCategory, setActiveCategory] = useState("all");
   const [activeFilters, setActiveFilters] = useState([]);
 
   const [categoryProducts, setCategoryProducts] = useState([]);
   const [allCategoryProducts, setAllCategoryProducts] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
+  const [priceRange, setPriceRange] = useState([0, 12000]);
+  const [sortBy, setSortBy] = useState("asc");
 
+  const [akcija, setAkcija] = useState(["Akcija"]);
   const [boje, setBoje] = useState([]);
   const [proizvodjac, setProizvodjac] = useState([]);
   const [velicinaEkrana, setVelicinaEkrana] = useState([]);
@@ -41,16 +44,40 @@ const ShopContextProvider = ({ children }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(8);
 
+  useEffect(() => {
+    console.log("PROMJENIJO CIJENU", priceRange);
+    updateActiveFilters({ data: priceRange, filterProperty: "cijena" });
+    setCurrentPage(1);
+  }, [priceRange]);
 
   useEffect(() => {
-    filterItems(activeFilters);
-    setCurrentPage(1);
+    if (activeCategory === "all") {
+      filterAllItems(activeFilters);
+
+      console.log(activeCategory);
+    } else {
+      filterItems(activeFilters);
+      setCurrentPage(1);
+    }
   }, [activeFilters]);
 
   useEffect(() => {
     setActiveFilters([]);
   }, [activeCategory]);
+
+  
   // Sidebar filter setters
+
+  const updateSort = val => {
+    setSortBy(val);
+  };
+
+
+
+  const updatePriceRange = price => {
+    setPriceRange(price);
+  };
+
   const updateBoje = arr => {
     setBoje(() => {
       return arr;
@@ -250,7 +277,7 @@ const ShopContextProvider = ({ children }) => {
   const updateActiveFilters = ({ data, filterProperty }) => {
     const filterObject = {
       filterProperty: filterProperty,
-      filterValues: [data],
+      filterValues: [].concat(data),
     };
 
     setActiveFilters(prevState => {
@@ -259,11 +286,28 @@ const ShopContextProvider = ({ children }) => {
       )?.["0"];
 
       if (!doesExist) return [...prevState, filterObject];
+
+      if (filterProperty === "cijena" && doesExist) {
+        const newPriceObj = {
+          filterProperty,
+          filterValues: filterObject.filterValues,
+        };
+
+        const withoutFilter = prevState.filter(
+          ps => ps.filterProperty !== filterProperty
+        );
+
+        const final = withoutFilter.concat(newPriceObj);
+
+        return [...final];
+      }
+
       const newValues = doesExist?.filterValues.concat(
         filterObject.filterValues
       );
 
       doesExist.filterValues = [...new Set(newValues)];
+
       const withoutFilter = prevState.filter(
         ps => ps.filterProperty !== filterProperty
       );
@@ -276,9 +320,19 @@ const ShopContextProvider = ({ children }) => {
 
   const clearActiveFilters = () => {
     setActiveFilters([]);
+    setCurrentPage(1);
   };
 
+  const clearPriceFilter = () => {
+    setActiveFilters(prevState => {
+      const withoutPrice = prevState?.filter(
+        i => i?.filterProperty !== "cijena"
+      );
+      return [...withoutPrice];
+    });
+  };
   const removeActiveFilter = (filterProperty, filterValue) => {
+    setCurrentPage(1);
     setActiveFilters(prevState => {
       const isSingle = prevState.filter(
         ps => ps.filterProperty === filterProperty
@@ -300,11 +354,52 @@ const ShopContextProvider = ({ children }) => {
     });
   };
 
-  const filterItems = filters => {
-    const items = categoryProducts.filter(el => {
+  const filterAllItems = filters => {
+    const items = allCategoryProducts?.filter((el, i, arr) => {
       return filters?.some(f => {
+        if (f.filterProperty === "cijena") {
+          // const stringValues = f?.filterValues?.map(fv => String(fv));
+
+          return el?.akcija
+            ? Number(el?.akcija) >= f?.filterValues[0] &&
+                Number(el?.akcija) <= f?.filterValues[1]
+            : Number(el?.cijena) >= f?.filterValues[0] &&
+                Number(el?.cijena) <= f?.filterValues[1];
+        }
+
+        return el?.[f.filterProperty];
+      });
+    });
+
+    setFilteredItems(items);
+  };
+  const filterItems = filters => {
+    // console.log("FILTERI", filters);
+
+    const items = categoryProducts?.filter((el, i, arr) => {
+      return filters?.some(f => {
+        if (f.filterProperty === "akcija") {
+          return el?.akcija;
+        }
+        if (f.filterProperty === "cijena") {
+          return el?.akcija
+            ? Number(el?.akcija) >= f?.filterValues[0] &&
+                Number(el?.akcija) <= f?.filterValues[1]
+            : Number(el?.cijena) >= f?.filterValues[0] &&
+                Number(el?.cijena) <= f?.filterValues[1];
+        }
+        // else if (f.filterProperty === "cijena") {
+        //   const stringValues = f?.filterValues?.map(fv => String(fv));
+        //   const asa = arr.filter(
+        //     obj =>
+        //       Number(obj.cijena) >= Number(stringValues[0]) &&
+        //       Number(obj.cijena) <= Number(stringValues[1])
+        //   );
+
+        //   return console.log(asa);
+        // }
         return f?.filterValues.some(
-          fv => fv.toLowerCase() === el[f.filterProperty].toLowerCase()
+          fv => fv?.toLowerCase() === el[f.filterProperty]?.toLowerCase()
         );
       });
     });
@@ -319,7 +414,6 @@ const ShopContextProvider = ({ children }) => {
 
     setFilteredItems(prevState => {
       const final = [...new Set(prevState.concat(singleItem))];
-      console.log(prevState, singleItem);
 
       return [...final];
     });
@@ -401,6 +495,12 @@ const ShopContextProvider = ({ children }) => {
         updatePageSize,
         nextPage,
         prevPage,
+        updatePriceRange,
+        priceRange,
+        akcija,
+        clearPriceFilter,
+        updateSort,
+        sortBy,
       }}
     >
       {children}

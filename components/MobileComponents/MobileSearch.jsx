@@ -24,9 +24,6 @@ function MobileSearch() {
               <input
                 type={"text"}
                 placeholder="npr. Laptop Acer, Televizor Tesla..."
-                onKeyUp={e => {
-                  console.log(e.target.value);
-                }}
               />
             </div>
           </DrawerBody>

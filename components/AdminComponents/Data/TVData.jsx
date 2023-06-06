@@ -10,21 +10,9 @@ function TVData({ data, openModal, updateSelectedProduct }) {
     return capitalize.split("_").join(" ");
   };
 
-  const properties = Object.keys(...data);
-  console.log(properties);
-  const updateState = (prop, value) => {
-    setState(prevState => {
-      return {
-        ...prevState,
-        [prop]: value,
-      };
-    });
-  };
   const submitRequest = e => {
     e.preventDefault();
   };
-
-  console.log(data);
 
   return (
     <form onSubmit={submitRequest}>
@@ -40,11 +28,13 @@ function TVData({ data, openModal, updateSelectedProduct }) {
           >
             <div className="product-item-content">
               <div className="product-item-id">
-                <Text fontSize={"lg"} textDecoration="underline">
-                  ID: {item.id}
-                </Text>
+                <Text fontSize={"lg"}>ID: {item.id}</Text>
                 <Text fontSize={"xl"}>
-                  {parseFloat(item?.cijena).toFixed(2)} KM
+                  Cijena:{" "}
+                  {item?.akcija
+                    ? parseFloat(item?.akcija).toFixed(2)
+                    : parseFloat(item?.cijena).toFixed(2)}
+                  KM
                 </Text>
               </div>
               <div className="product-item-info">
@@ -53,12 +43,6 @@ function TVData({ data, openModal, updateSelectedProduct }) {
                 </Text>
               </div>
             </div>
-            <Divider
-              borderColor={"#4cbb17"}
-              borderWidth="2px"
-              marginLeft={"0.6rem"}
-              orientation="vertical"
-            />
           </div>
         );
       })}

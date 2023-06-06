@@ -20,7 +20,6 @@ function MiningData({ data, openModal, updateSelectedProduct }) {
   const submitRequest = e => {
     e.preventDefault();
   };
-  console.log(data);
 
   return (
     <form onSubmit={submitRequest}>
@@ -36,11 +35,13 @@ function MiningData({ data, openModal, updateSelectedProduct }) {
           >
             <div className="product-item-content">
               <div className="product-item-id">
-                <Text fontSize={"lg"} textDecoration="underline">
-                  ID: {item.id}
-                </Text>
+                <Text fontSize={"lg"}>ID: {item.id}</Text>
                 <Text fontSize={"xl"}>
-                  {parseFloat(item?.cijena).toFixed(2)} KM
+                  Cijena:{" "}
+                  {item?.akcija
+                    ? parseFloat(item?.akcija).toFixed(2)
+                    : parseFloat(item?.cijena).toFixed(2)}{" "}
+                  KM
                 </Text>
               </div>
               <div className="product-item-info">
@@ -49,12 +50,6 @@ function MiningData({ data, openModal, updateSelectedProduct }) {
                 </Text>
               </div>
             </div>
-            <Divider
-              borderColor={"#4cbb17"}
-              borderWidth="2px"
-              marginLeft={"0.6rem"}
-              orientation="vertical"
-            />
           </div>
         );
       })}

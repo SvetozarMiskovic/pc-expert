@@ -7,9 +7,9 @@ import PreFooter from "./PreFooter";
 import MobileMenu from "../MobileComponents/MobileMenu";
 import MobileSearch from "../MobileComponents/MobileSearch";
 import NavbarComponent from "./NavbarComponent";
-
 import { useGlobalContext } from "../../context/GlobalContext";
 import CartComponent from "../CartComponents/CartComponent";
+import { useQuery } from "@tanstack/react-query";
 
 const Layout = ({ children }) => {
   return (
