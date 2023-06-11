@@ -22,17 +22,17 @@ export const createProductData = (
     return capitalize.split("_").join(" ");
   };
   switch (category) {
-    case "laptop": {
+    case "laptopi": {
       return (
         <LaptopData
           updateSelectedProduct={updateSelectedProduct}
-          data={data.laptop}
+          data={data?.laptopi}
           openModal={openModal}
           selectedProduct={selectedProduct}
         />
       );
     }
-    case "monitor": {
+    case "monitori": {
       return (
         // <form>
         //   {data?.monitor.map(prop => {
@@ -42,7 +42,7 @@ export const createProductData = (
         <MonitorData
           openModal={openModal}
           updateSelectedProduct={updateSelectedProduct}
-          data={data.monitor}
+          data={data?.monitori}
           selectedProduct={selectedProduct}
         />
       );
@@ -56,13 +56,13 @@ export const createProductData = (
         // </form>
         <TVData
           updateSelectedProduct={updateSelectedProduct}
-          data={data.tv}
+          data={data?.tv}
           openModal={openModal}
           selectedProduct={selectedProduct}
         />
       );
     }
-    case "phone": {
+    case "telefoni": {
       return (
         // <form>
         //   {data?.phone.map(prop => {
@@ -72,52 +72,52 @@ export const createProductData = (
         <PhoneData
           openModal={openModal}
           updateSelectedProduct={updateSelectedProduct}
-          data={data.phone}
+          data={data?.telefoni}
           selectedProduct={selectedProduct}
         />
       );
     }
-    case "component": {
+    case "komponente": {
       return (
         // <form>
-        //   {data?.component.map(prop => {
+        //   {data?.komponente.map(prop => {
         //     return <Input placeholder={formatText(prop)} type={"text"} />;
         //   })}
         // </form>
         <ComponentData
           openModal={openModal}
           updateSelectedProduct={updateSelectedProduct}
-          data={data.component}
+          data={data?.komponente}
           selectedProduct={selectedProduct}
         />
       );
     }
-    case "perifery": {
+    case "periferija": {
       return (
         // <form>
-        //   {data?.perifery.map(prop => {
+        //   {data?.periferija.map(prop => {
         //     return <Input placeholder={formatText(prop)} type={"text"} />;
         //   })}
         // </form>
         <PeriferyData
           openModal={openModal}
           updateSelectedProduct={updateSelectedProduct}
-          data={data.perifery}
+          data={data?.periferija}
           selectedProduct={selectedProduct}
         />
       );
     }
-    case "computer": {
+    case "racunari": {
       return (
         // <form>
-        //   {data?.computer.map(prop => {
+        //   {data?.racunari.map(prop => {
         //     return <Input placeholder={formatText(prop)} type={"text"} />;
         //   })}
         // </form>
         <ComputerData
           openModal={openModal}
           updateSelectedProduct={updateSelectedProduct}
-          data={data.computer}
+          data={data?.racunari}
           selectedProduct={selectedProduct}
         />
       );
@@ -132,7 +132,7 @@ export const createProductData = (
         <MiningData
           openModal={openModal}
           updateSelectedProduct={updateSelectedProduct}
-          data={data.mining}
+          data={data?.mining}
           selectedProduct={selectedProduct}
         />
       );

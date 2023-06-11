@@ -63,7 +63,6 @@ function AccountComponent({ data }) {
 
     const isUpdated = await updateProfile({ userInfo: payload, id: logedUser });
 
-    console.log("jel apdejtovan", isUpdated);
     if (isUpdated) {
       setLoading(false);
       updateEditProfile();

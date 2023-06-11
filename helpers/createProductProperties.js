@@ -20,7 +20,7 @@ export const createProductProperties = (
     return capitalize.split("_").join(" ");
   };
   switch (category) {
-    case "laptop": {
+    case "laptopi": {
       return (
         <LaptopProperties
           updateNewProduct={updateNewProduct}
@@ -28,7 +28,7 @@ export const createProductProperties = (
         />
       );
     }
-    case "monitor": {
+    case "monitori": {
       return (
         // <form>
         //   {?.monitor.map(prop => {
@@ -54,7 +54,7 @@ export const createProductProperties = (
         />
       );
     }
-    case "phone": {
+    case "telefoni": {
       return (
         // <form>
         //   {?.phone.map(prop => {
@@ -67,7 +67,7 @@ export const createProductProperties = (
         />
       );
     }
-    case "component": {
+    case "komponente": {
       return (
         // <form>
         //   {?.component.map(prop => {
@@ -80,7 +80,7 @@ export const createProductProperties = (
         />
       );
     }
-    case "perifery": {
+    case "periferija": {
       return (
         // <form>
         //   {?.perifery.map(prop => {
@@ -93,7 +93,7 @@ export const createProductProperties = (
         />
       );
     }
-    case "computer": {
+    case "racunari": {
       return (
         // <form>
         //   {?.computer.map(prop => {

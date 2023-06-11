@@ -5,21 +5,11 @@ const getProductCategoryQuery = async category => {
   const productsRef = ref(db, "products/" + category);
 
   const snap = await get(productsRef);
-  // console.log(productsRef.equalTo("product", category));
   const products = snap.val();
 
-  // console.log(`produkti iz ${category}`, products);
-  //   console.log("Products iz query", products);
-  // if (!user) {
-  //   const user2 = await get(userRef).then(snapshot => {
-  //     const value = snapshot.val();
-  //     return value;
-  //   });
+  const array = Object.values(products);
 
-  //   return user2;
-  // }
-
-  return products ? products : [];
+  return array;
 };
 
 export { getProductCategoryQuery };

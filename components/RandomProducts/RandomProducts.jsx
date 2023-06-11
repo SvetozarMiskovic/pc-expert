@@ -9,20 +9,29 @@ function RandomProducts({ data }) {
     return shuffled.slice(0, num);
   }
 
-  const allData = [
-    ...data?.laptopi,
-    ...data?.monitori,
-    ...data?.telefoni,
-    ...data?.televizori,
-    ...data?.periferija,
-    ...data?.komponente,
-    ...data?.racunari,
-    ...data?.mining,
-  ];
+  let final = [];
+  console.log("Istaknuti proizvodi", data);
+  if (data) {
+    // const allData = [
+    //   ...data?.laptopi,
+    //   ...data?.monitori,
+    //   ...data?.telefoni,
+    //   ...data?.televizori,
+    //   ...data?.periferija,
+    //   ...data?.komponente,
+    //   ...data?.racunari,
+    //   ...data?.mining,
+    // ];
+    Object?.keys(data).forEach(cat => {
+      final = [...final, ...data?.[cat]]?.slice(0, 24);
+    });
+    console.log(final);
+    // final = [...data?.laptopi];
+  }
 
-  const randomData = allData.filter(item => !item?.akcija);
+  // const randomData = allData.filter(item => !item?.akcija);
 
-  const final = getMultipleRandom(randomData, 24);
+  // const final = getMultipleRandom(randomData, 24);
 
   return (
     <div className="random-products-component">

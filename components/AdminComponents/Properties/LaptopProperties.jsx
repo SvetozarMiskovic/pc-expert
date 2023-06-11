@@ -29,7 +29,8 @@ function LaptopProperties({ updateNewProduct, initialProduct }) {
               <Input
                 width={"100%"}
                 color={"#0c0c0c"}
-                placeholder={initialProduct?.[prop] || ""}
+                // placeholder={initialProduct?.[prop] || ""}
+                value={initialProduct?.[prop]}
                 onChange={e => {
                   updateNewProduct(prop, e.target.value);
                 }}

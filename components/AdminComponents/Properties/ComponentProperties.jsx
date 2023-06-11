@@ -27,7 +27,7 @@ function ComponentProperties({ properties, updateNewProduct, initialProduct }) {
               <Input
                 width={"100%"}
                 color={"#0c0c0c"}
-                placeholder={initialProduct?.[prop] || ""}
+                value={initialProduct?.[prop]}
                 onChange={e => updateNewProduct(prop, e.target.value)}
                 disabled={prop.toLowerCase() === "id" ? true : false}
               />

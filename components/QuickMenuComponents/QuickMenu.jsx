@@ -20,7 +20,7 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image fill src={"/static/laptop.png"} alt="proizvod" />
+              <Image src={"/static/laptop.png"} alt="proizvod" fill />
             </div>
             <div className="menu-text">
               <Text color={"#0c0c0c"}>Laptopi</Text>

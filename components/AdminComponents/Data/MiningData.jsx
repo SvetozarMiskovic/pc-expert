@@ -21,39 +21,40 @@ function MiningData({ data, openModal, updateSelectedProduct }) {
     e.preventDefault();
   };
 
-  return (
-    <form onSubmit={submitRequest}>
-      {data?.map(item => {
-        return (
-          <div
-            className="product-item"
-            key={item?.id}
-            onClick={() => {
-              openModal();
-              updateSelectedProduct(item?.id);
-            }}
-          >
-            <div className="product-item-content">
-              <div className="product-item-id">
-                <Text fontSize={"lg"}>ID: {item.id}</Text>
-                <Text fontSize={"xl"}>
-                  Cijena:{" "}
-                  {item?.akcija
-                    ? parseFloat(item?.akcija).toFixed(2)
-                    : parseFloat(item?.cijena).toFixed(2)}{" "}
-                  KM
-                </Text>
-              </div>
-              <div className="product-item-info">
-                <Text fontSize={"lg"} fontWeight="bold">
-                  {item?.naslov}
-                </Text>
+  if (data?.length > 0)
+    return (
+      <form onSubmit={submitRequest}>
+        {data?.map(item => {
+          return (
+            <div
+              className="product-item"
+              key={item?.id}
+              onClick={() => {
+                openModal();
+                updateSelectedProduct(item?.id);
+              }}
+            >
+              <div className="product-item-content">
+                <div className="product-item-id">
+                  <Text fontSize={"lg"}>ID: {item.id}</Text>
+                  <Text fontSize={"xl"}>
+                    Cijena:{" "}
+                    {item?.akcija
+                      ? parseFloat(item?.akcija).toFixed(2)
+                      : parseFloat(item?.cijena).toFixed(2)}{" "}
+                    KM
+                  </Text>
+                </div>
+                <div className="product-item-info">
+                  <Text fontSize={"lg"} fontWeight="bold">
+                    {item?.naslov}
+                  </Text>
+                </div>
               </div>
             </div>
-          </div>
-        );
-      })}
-      {/* {data?.map(prop => {
+          );
+        })}
+        {/* {data?.map(prop => {
         return (
           <Input
             color={"#0c0c0c"}
@@ -83,8 +84,8 @@ function MiningData({ data, openModal, updateSelectedProduct }) {
       >
         Kreiraj artikl
       </Button> */}
-    </form>
-  );
+      </form>
+    );
 }
 
 export default MiningData;

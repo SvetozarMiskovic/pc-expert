@@ -9,33 +9,25 @@ export async function middleware(req) {
     if (token) {
       return process.env.NODE_ENV === "development"
         ? NextResponse.redirect("http://localhost:3000/")
-        : NextResponse.redirect("https://pc-expert.vercel.app/");
+        : NextResponse.redirect("http://localhost:3000/");
     } else return;
   } else if (path === "/nalog") {
     return process.env.NODE_ENV === "development"
       ? NextResponse.redirect("http://localhost:3000/nalog/info")
-      : NextResponse.redirect("https://pc-expert.vercel.app/nalog/info");
+      : NextResponse.redirect("http://localhost:3000/nalog/info");
   } else if (path === "/registracija") {
     if (token) {
       return process.env.NODE_ENV === "development"
         ? NextResponse.redirect("http://localhost:3000/")
-        : NextResponse.redirect("https://pc-expert.vercel.app/");
+        : NextResponse.redirect("http://localhost:3000/");
     } else return;
   } else if (path === "/admin") {
-    if (token) {
-      const secret = new TextEncoder().encode(process.env.JWT_SECRET);
-      const { payload, protectedHeader } = await jose.jwtVerify(token, secret);
-      const { role } = payload;
-
-      if (role !== "admin")
-        return process.env.NODE_ENV === "development"
-          ? NextResponse.redirect("http://localhost:3000/")
-          : NextResponse.redirect("https://pc-expert.vercel.app/");
-    } else {
-      return process.env.NODE_ENV === "development"
-        ? NextResponse.redirect("http://localhost:3000/")
-        : NextResponse.redirect("https://pc-expert.vercel.app/");
-    }
+    return;
+    // if (token) {
+    //   return process.env.NODE_ENV === "development"
+    //     ? NextResponse.redirect("http://localhost:3000/")
+    //     : NextResponse.redirect("http://localhost:3000/");
+    // } else return;
   }
 }
 

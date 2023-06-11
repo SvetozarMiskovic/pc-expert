@@ -7,14 +7,7 @@ const getUserQuery = async id => {
     const value = snapshot.val();
     return value;
   });
-  // if (!user) {
-  //   const user2 = await get(userRef).then(snapshot => {
-  //     const value = snapshot.val();
-  //     return value;
-  //   });
 
-  //   return user2;
-  // }
   return user;
 };
 

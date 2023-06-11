@@ -1,5 +1,5 @@
 import Icon from "@chakra-ui/icon";
-import { Text, Select, Button, Textarea } from "@chakra-ui/react";
+import { Text, Select, Button, Textarea, Input } from "@chakra-ui/react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import {
@@ -10,24 +10,75 @@ import {
 } from "react-icons/fa";
 import { createProductProperties } from "../../helpers/createProductProperties";
 import { createId } from "@paralleldrive/cuid2";
-import { createProduct } from "../../fetchFunctions/createProduct";
 import { formatPrice } from "../../helpers/formatPrice";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
+import { useCreateArticle } from "../../hooks/useCreateArticle";
+import { useAuthContext } from "../../context/AuthContext";
+import { storage } from "../../config/firebase";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
 function CreateProduct({ properties }) {
-  const [category, setCategory] = useState("laptop");
+  const [category, setCategory] = useState("laptopi");
   const [initialProduct, setInitialProduct] = useState({});
+  const [images, setImages] = useState([]);
+  const [imageState, setImageState] = useState({
+    active: 1,
+    length: 0,
+  });
+  const { mutateAsync: createArticle } = useCreateArticle();
+  const { role } = useAuthContext();
   const router = useRouter();
 
-  const checkIfEmpty = obj => {
-    const newObj = {};
+  const uploadImage = files => {
+    const final = Object.values(files);
 
-    Object.keys(obj).forEach(i => {
-      newObj[i] = obj[i] === "" ? null : obj[i];
+    setImages(final);
+    toast("Učitavanje završeno!", {
+      progressStyle: {
+        background: "red",
+      },
     });
-
-    return newObj;
+    resetActiveImageState();
   };
+
+  const updateImage = value => {
+    setImageState(prevState => {
+      console.log(value, prevState?.length);
+
+      if (value >= prevState?.length)
+        return {
+          ...prevState,
+          active: 1,
+        };
+
+      return {
+        ...prevState,
+        active: value + 1,
+      };
+    });
+  };
+
+  const resetActiveImageState = () => {
+    setImageState(prevState => {
+      return {
+        ...prevState,
+        active: 1,
+      };
+    });
+  };
+
+  const deleteAddedImage = name => {
+    setImages(prevState => {
+      const arr = prevState?.filter(ps => ps?.name !== name);
+      return arr;
+    });
+  };
+
+  const resetImages = () => {
+    setImages([]);
+  };
+
   const updateCategory = cat => {
     setCategory(cat);
   };
@@ -35,20 +86,53 @@ function CreateProduct({ properties }) {
   const resetInitialProduct = () => {
     const obj = {};
 
-    properties[category].forEach(prop => {
+    properties?.[category]?.forEach(prop => {
       obj[prop] = "";
     });
 
     setInitialProduct(obj);
   };
 
-  useEffect(() => {
-    resetInitialProduct();
-  }, [category]);
+  const imagesLength = (length = 0) => {
+    setImageState(prevState => {
+      return {
+        ...prevState,
+        length: length,
+      };
+    });
+  };
 
   useEffect(() => {
     resetInitialProduct();
-  }, []);
+    resetImages();
+    resetActiveImageState();
+  }, [category]);
+
+  useEffect(() => {
+    imagesLength(images?.length);
+  }, [images]);
+
+  const storeImages = async () => {
+    return images?.map(async (image, i) => {
+      const ID = createId();
+      const articleRef = ref(
+        storage,
+        `/${category}/${initialProduct?.id}/${ID}`
+      );
+
+      return uploadBytesResumable(articleRef, image)
+        .then(data => {
+          return getDownloadURL(data?.ref);
+        })
+        .then(url => {
+          return { url, id: ID };
+        })
+        .catch(err => {
+          console.log(err);
+          throw Error("Upload nije uspio! Obratite se na info@pcexpert.ba");
+        });
+    });
+  };
 
   const updateNewProduct = (key, value) => {
     setInitialProduct(prevState => {
@@ -58,7 +142,7 @@ function CreateProduct({ properties }) {
 
         return {
           ...prevState,
-          [key]: value !== "" ? parseFloat(value).toFixed(2) : "",
+          [key]: value !== "" ? value : "",
         };
       }
       return {
@@ -76,6 +160,63 @@ function CreateProduct({ properties }) {
     return capitalize?.split("_")?.join(" ");
   };
 
+  const handleCreateArticle = async () => {
+    if (
+      initialProduct?.id &&
+      initialProduct?.cijena &&
+      initialProduct?.naslov
+    ) {
+      const promises = await storeImages();
+      const urls = await Promise.all(promises);
+      // console.log("sve zavrseno", promises, urls);
+
+      const payload = {
+        product: { ...initialProduct, slike: urls ? urls : [] },
+        cat: category,
+        role,
+      };
+
+      // console.log(payload);
+      if (urls) {
+        const response = await createArticle(payload);
+
+        if (response?.msg) {
+          toast(response?.msg, {
+            progressStyle: {
+              background: "#4CBB17",
+            },
+          });
+          resetInitialProduct();
+          resetImages();
+        } else {
+          toast(
+            "Greška! Obratite se na info@pcexpert.ba uz napomenu problema.",
+            {
+              progressStyle: {
+                background: "red",
+              },
+            }
+          );
+        }
+        // console.log("risponse", response);
+      } else {
+        toast("Artikl nije kreiran! Obratite se na info@pcexpert.ba.", {
+          progressStyle: {
+            background: "red",
+          },
+        });
+      }
+    } else {
+      toast(
+        "ID, cijena i naslov moraju biti popunjeni da bi kreirali artikl!",
+        {
+          progressStyle: {
+            background: "red",
+          },
+        }
+      );
+    }
+  };
   return (
     <div className="create-product-wrapper">
       <div className="create-product-content">
@@ -94,13 +235,13 @@ function CreateProduct({ properties }) {
               defaultValue={category}
               onChange={e => updateCategory(e.target.value)}
             >
-              <option value={"laptop"}>Laptop</option>
-              <option value={"monitor"}>Monitor</option>
+              <option value={"laptopi"}>Laptop</option>
+              <option value={"monitori"}>Monitor</option>
               <option value={"tv"}>Televizor</option>
-              <option value={"phone"}>Telefon</option>
-              <option value={"component"}>Komponenta</option>
-              <option value={"perifery"}>Periferija</option>
-              <option value={"computer"}>Računar</option>
+              <option value={"telefoni"}>Telefon</option>
+              <option value={"komponente"}>Komponenta</option>
+              <option value={"periferija"}>Periferija</option>
+              <option value={"racunari"}>Računar</option>
               <option value={"mining"}>Mining rig</option>
             </Select>
           </div>
@@ -108,13 +249,91 @@ function CreateProduct({ properties }) {
         <div className="create-product-content-body">
           <div className="create-product-sidebar">
             <div className="create-product-sidebar-image-wrapper">
-              <div className="create-product-big-image">
-                <Image fill src="/static/T1.png" alt="asa" />
+              <Text fontSize={"2xl"} fontWeight={"bold"}>
+                Slike za dodati
+              </Text>
+              {images?.length === 0 && (
+                <Text fontSize={"xl"} fontWeight={"bold"} fontStyle={"italic"}>
+                  Nema slika!
+                </Text>
+              )}
+              {images?.map((slika, index) => {
+                if (index === imageState?.active - 1)
+                  return (
+                    <div
+                      key={index}
+                      className="create-modal-big-image"
+                      onDoubleClick={() => {
+                        console.log(
+                          "PRIJE DUPLOG KLIKA",
+                          imageState?.active,
+                          imageState?.length
+                        );
+                        deleteAddedImage(slika?.name);
+                        resetActiveImageState();
+                        console.log(
+                          "NAKON DUPLOG KLIKA",
+                          imageState?.active,
+                          imageState?.length
+                        );
+                      }}
+                    >
+                      <Image
+                        src={URL.createObjectURL(slika)}
+                        fill
+                        alt="img"
+                        sizes="(min-width: 60em) 24vw,
+                        (min-width: 28em) 45vw,
+                        100vw"
+                      />
+                    </div>
+                  );
+              })}
+
+              <div
+                className="create-modal-smaller-images-holder"
+                style={{
+                  overflowX: "auto",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "0.7rem",
+                    justifyContent: "center",
+                    // width: "100%",
+                  }}
+                >
+                  {images?.map((slika, index) => {
+                    return (
+                      <div
+                        className={`update-modal-single-image-holder`}
+                        key={index}
+                        onClick={() => updateImage(index)}
+                        style={{
+                          border: `2px solid ${
+                            index === imageState?.active - 1
+                              ? "#f89a20"
+                              : "transparent"
+                          }`,
+                        }}
+                      >
+                        <Image
+                          src={URL.createObjectURL(slika)}
+                          alt="img"
+                          fill
+                          sizes="(min-width: 60em) 24vw,
+                        (min-width: 28em) 45vw,
+                        100vw"
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-              <div className="create-product-small-image-holder"></div>
             </div>
             <div className="create-product-sidebar-info">
-              {properties?.[category].map(pp => {
+              {properties?.[category]?.map(pp => {
                 if (pp === "naslov" || pp === "detalji")
                   return (
                     <div className="create-info-group" key={pp}>
@@ -202,51 +421,12 @@ function CreateProduct({ properties }) {
                 _active={{
                   background: "#4cbb17",
                 }}
-                onClick={async () => {
-                  const modifiedObj = checkIfEmpty(initialProduct);
-                  console.log("DAL JE NULIRANO SVE PRAZNO", modifiedObj);
-
-                  const payload = {
-                    product: { ...modifiedObj },
-                    cat: category,
-                  };
-                  if (
-                    initialProduct?.id &&
-                    initialProduct?.cijena &&
-                    initialProduct?.naslov
-                  ) {
-                    const res = await createProduct(payload);
-                    console.log("RISPONSE OD APIJA", res);
-                    console.log("PORUKA NAKON USPJEHA", res?.data?.msg);
-                    if (res?.data?.msg) {
-                      toast(res?.data?.msg, {
-                        progressStyle: {
-                          background: "#4cbb17",
-                        },
-                      });
-                      const t = setTimeout(() => {
-                        router.reload();
-                      }, 1500);
-
-                      return () => clearTimeout(t);
-                    } else {
-                      toast(res?.data?.err, {
-                        progressStyle: {
-                          background: "red",
-                        },
-                      });
-                    }
-                  } else {
-                    toast(
-                      "ID, cijena i naslov moraju biti popunjeni da bi kreirali artikl!"
-                    );
-                  }
-                }}
+                onClick={handleCreateArticle}
               >
                 <Icon as={FaCheckDouble} />
                 Snimi artikl
               </Button>
-              <Button
+              {/* <Button
                 variant={"unstyled"}
                 animation={"ease"}
                 display={"flex"}
@@ -264,7 +444,22 @@ function CreateProduct({ properties }) {
               >
                 <Icon as={FaFileImage} />
                 Dodaj sliku
-              </Button>
+              </Button> */}
+
+              <label
+                htmlFor="upload"
+                className="create-product-upload-image-input"
+              >
+                <Icon as={FaFileImage} />
+                Dodaj sliku
+              </label>
+              <input
+                type="file"
+                id="upload"
+                style={{ display: "none" }}
+                multiple={true}
+                onChange={e => uploadImage(e?.target?.files)}
+              />
             </div>
           </div>
           <div className="create-product-properties">

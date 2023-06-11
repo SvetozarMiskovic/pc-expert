@@ -28,7 +28,7 @@ function MonitorProperties({ properties, updateNewProduct, initialProduct }) {
                 color={"#0c0c0c"}
                 onChange={e => updateNewProduct(prop, e.target.value)}
                 disabled={prop.toLowerCase() === "id" ? true : false}
-                placeholder={initialProduct?.[prop] || ""}
+                value={initialProduct?.[prop]}
               />
             </div>
           );

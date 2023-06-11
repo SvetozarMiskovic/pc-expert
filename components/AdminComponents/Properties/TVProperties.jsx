@@ -30,7 +30,7 @@ function TVProperties({ properties, updateNewProduct, initialProduct }) {
                   updateNewProduct(prop, e.target.value);
                 }}
                 disabled={prop.toLowerCase() === "id" ? true : false}
-                placeholder={initialProduct?.[prop] || ""}
+                value={initialProduct?.[prop]}
               />
             </div>
           );

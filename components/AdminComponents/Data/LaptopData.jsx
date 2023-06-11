@@ -26,6 +26,7 @@ function LaptopData({ data, openModal, updateSelectedProduct }) {
   return (
     <form>
       {data?.map(item => {
+        // console.log(item?.id);
         return (
           <div
             className="product-item"

@@ -51,11 +51,15 @@ function ShopCategoryItem({ dataCategory, dataAll, category }) {
         <div className="shop-category-item-image">
           {/* Slika proizvoda */}
           <div className="shop-category-item-image-box">
-            <Image
-              width={150}
-              height={150}
+            <img
+              // width={150}
+              // height={150}
               alt="product-image"
-              src={"/static/T1.png"}
+              src={
+                dataCategory?.slike?.[0]
+                  ? dataCategory?.slike?.[0]?.url
+                  : "/static/T1.png"
+              }
             />
           </div>
         </div>
@@ -95,6 +99,11 @@ function ShopCategoryItem({ dataCategory, dataAll, category }) {
             >
               KM
             </Text>
+            {dataCategory?.akcija && (
+              <div className="shop-category-item-product-sale">
+                <Text fontSize="md">AKCIJA</Text>
+              </div>
+            )}
           </div>
           {/* Cijena proizvoda */}
         </div>
@@ -172,11 +181,6 @@ function ShopCategoryItem({ dataCategory, dataAll, category }) {
           <div className="shop-category-item-product-waranty">
             <Text fontSize="md">GARANCIJA: {dataCategory.garancija}</Text>
           </div>
-          {dataCategory?.akcija && (
-            <div className="shop-category-item-product-sale">
-              <Text fontSize="md">AKCIJA</Text>
-            </div>
-          )}
         </div>
       </div>
     </div>
@@ -186,11 +190,15 @@ function ShopCategoryItem({ dataCategory, dataAll, category }) {
         <div className="shop-category-item-image">
           {/* Slika proizvoda */}
           <div className="shop-category-item-image-box">
-            <Image
-              width={150}
-              height={150}
+            <img
+              // width={150}
+              // height={150}
               alt="product-image"
-              src={"/static/T1.png"}
+              src={
+                dataAll?.slike?.[0]
+                  ? dataAll?.slike?.[0]?.url
+                  : "/static/T1.png"
+              }
             />
           </div>
         </div>
@@ -229,6 +237,11 @@ function ShopCategoryItem({ dataCategory, dataAll, category }) {
             >
               KM
             </Text>
+            {dataAll?.akcija && (
+              <div className="shop-category-item-product-sale">
+                <Text fontSize="md">AKCIJA</Text>
+              </div>
+            )}
           </div>
           {/* Cijena proizvoda */}
         </div>
@@ -309,11 +322,6 @@ function ShopCategoryItem({ dataCategory, dataAll, category }) {
           <div className="shop-category-item-product-waranty">
             <Text fontSize="md">GARANCIJA: {dataAll.garancija}</Text>
           </div>
-          {dataAll?.akcija && (
-            <div className="shop-category-item-product-sale">
-              <Text fontSize="md">AKCIJA</Text>
-            </div>
-          )}
         </div>
       </div>
     </div>

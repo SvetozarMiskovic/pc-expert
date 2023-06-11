@@ -11,8 +11,12 @@ import { useProducts } from "../../hooks/useProducts";
 export default function Shop({ cat }) {
   console.log("Jel fetcho ista", cat);
   const { data: products, isLoading, isError } = useProducts();
-  const arrays = Object?.values(products);
-  const data = arrays.flat();
+
+  let data = [];
+  if (products) {
+    const arrays = Object?.values(products);
+    data = arrays.flat();
+  }
 
   console.log(data);
   return (

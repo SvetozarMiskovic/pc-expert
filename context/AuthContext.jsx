@@ -1,32 +1,17 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../config/firebase";
-import { getUserRoleQuery } from "../queries/getUserRoleQuery";
-import { useUser } from "../hooks/useUser";
 import { getUserQuery } from "../queries/getUserQuery";
-import { listenForChangeQuery } from "../queries/listenForChangeQuery";
-
+import { useLoginUser } from "../hooks/useLoginUser";
 const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
-  const [user, loading, error, fetched] = useAuthState(auth);
-
-  // console.log(user, loading, error);
-
+  const [user] = useAuthState(auth);
+  const { mutateAsync: loginUser } = useLoginUser();
   const [isLoged, setIsLoged] = useState();
   const [logedUser, setLogedUser] = useState();
   const [role, setRole] = useState();
   const [activeUser, setActiveUser] = useState();
-  // useEffect(() => {
-  //   const checkLoginUser = async () => {
-  //     const res = await checkLogin();
-
-  //     setIsLoged(!!res.data?.isValid);
-  //     setLogedUser(res.data?.userId);
-  //     setRole(res.data?.role);
-  //   };
-  //   checkLoginUser();
-  // }, [isLoged]);
 
   useEffect(() => {
     if (user) {
@@ -34,6 +19,7 @@ const AuthContextProvider = ({ children }) => {
       updateLoged(true);
       const f = async () => {
         const activeUser = await getUserQuery(user?.uid);
+        await loginUser({ token: user?.accessToken });
 
         updateRole(activeUser?.role);
         updateActiveUser(activeUser);

@@ -35,14 +35,15 @@ function NewCategories({ data }) {
     setIsOpen(prevState => !prevState);
   };
 
-  const saleLaptops = data?.laptopi.filter(item => item?.akcija);
-  const saleMonitors = data?.monitori.filter(item => item?.akcija);
-  const saleTVs = data?.televizori.filter(item => item?.akcija);
-  const salePhones = data?.telefoni.filter(item => item?.akcija);
-  const salePerifery = data?.periferija.filter(item => item?.akcija);
-  const saleComponents = data?.komponente.filter(item => item?.akcija);
-  const saleComputers = data?.racunari.filter(item => item?.akcija);
-  const saleMining = data?.mining.filter(item => item?.akcija);
+  // console.log("DATA IZ SALE AJTEMSA", data);
+  const saleLaptops = data?.laptopi?.filter(item => item?.akcija);
+  const saleMonitors = data?.monitori?.filter(item => item?.akcija);
+  const saleTVs = data?.tv?.filter(item => item?.akcija);
+  const salePhones = data?.telefoni?.filter(item => item?.akcija);
+  const salePerifery = data?.periferija?.filter(item => item?.akcija);
+  const saleComponents = data?.komponente?.filter(item => item?.akcija);
+  const saleComputers = data?.racunari?.filter(item => item?.akcija);
+  const saleMining = data?.mining?.filter(item => item?.akcija);
 
   return (
     <div className="new-categories-wrapper">

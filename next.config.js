@@ -4,14 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     formats: ["image/avif", "image/webp"],
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "storage.googleapis.com",
-        port: "",
-        pathname: "/pcexpert-images/**",
-      },
-    ],
+    domains: ["firebasestorage.googleapis.com"],
   },
   generateBuildId: async () => {
     if (process.env.BUILD_ID) {

@@ -1,22 +1,20 @@
 import { get, ref } from "firebase/database";
 import { db } from "../config/firebase";
 
-const getAllProductsQuery = async () => {
+const getAllPropertiesQuery = async () => {
   const productsRef = ref(db, "products");
 
   const products = await get(productsRef).then(snapshot => {
     const value = snapshot.val();
     return value;
   });
+  let properties;
 
-  let final = {};
-
-  Object.keys(products).map(key => {
-    // let obj = { [key]:  };
-    final[key] = Object.values(products?.[key]);
+  Object?.keys(products).map(key => {
+    properties = { ...properties, [key]: Object?.keys(products?.[key]?.[0]) };
   });
-  // console.log(final);
-  return final;
+
+  return properties;
 };
 
-export { getAllProductsQuery };
+export { getAllPropertiesQuery };

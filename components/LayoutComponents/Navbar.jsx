@@ -23,21 +23,14 @@ function Navbar() {
   const { isLoged } = useAuthContext();
   const router = useRouter();
 
-  const handleSearch = (e)=>{
+  const handleSearch = e => {
     const value = e.target.value;
-    
-  }
+  };
   return (
     <div className="navbar desktop">
       <div className="navbar-logo">
-        <Link href="/" passHref legacyBehavior>
-          <Image
-            width={100}
-            height={100}
-            className={"logo-img"}
-            src={"/static/T1.png"}
-            alt="logo"
-          />
+        <Link href="/" passHref>
+          <Image width={100} height={100} src={"/static/T1.png"} alt="logo" />
         </Link>
       </div>
 
@@ -63,7 +56,11 @@ function Navbar() {
         </ul>
       </div>
       <div className="navbar-search">
-        <input type={"text"} onChange={(e)=> handleSearch(e)} placeholder="Pretraži proizvode..." />
+        <input
+          type={"text"}
+          onChange={e => handleSearch(e)}
+          placeholder="Pretraži proizvode..."
+        />
 
         <Button
           m={0}

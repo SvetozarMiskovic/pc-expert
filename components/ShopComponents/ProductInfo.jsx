@@ -50,7 +50,7 @@ function ProductInfo({ data }) {
   };
 
   function capitalizeFirstLetter(string) {
-    return string?.charAt(0).toUpperCase() + string?.slice(1);
+    return string?.charAt(0)?.toUpperCase() + string?.slice(1);
   }
 
   return (
@@ -78,7 +78,7 @@ function ProductInfo({ data }) {
           </div>
           <div className="product-info-component-main-information-manufacturer">
             <Text fontSize={"xl"} fontWeight="bold">
-              {data?.proizvodjac ? data?.proizvodjac : data?.detalji}
+              {data?.proizvodjac}
             </Text>
           </div>
           <div className="product-info-component-main-information-details">
@@ -627,7 +627,8 @@ function ProductInfo({ data }) {
                     pr[0] !== "cijena" &&
                     pr[0] !== "naslov" &&
                     pr[0] !== "detalji" &&
-                    pr[0] !== "akcija"
+                    pr[0] !== "akcija" &&
+                    pr[0] !== "slike"
                   )
                     return (
                       <tr className="trow" key={pr[0]}>

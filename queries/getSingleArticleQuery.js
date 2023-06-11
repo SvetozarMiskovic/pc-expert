@@ -8,30 +8,26 @@ const getSingleArticleQuery = async (category, id) => {
 
     const snap = await get(articlesRef);
     const articles = snap.val();
-    const arrays = Object?.values(articles);
-    const all = arrays.flat();
 
-    const article = all.find(i => i.id === id);
+    let articlesObject = {};
+    Object.keys(articles).map(key => {
+      articlesObject[key] = Object?.values(articles?.[key]);
+    });
+
+    const arrayOfArrays = Object?.values(articlesObject);
+    const article = arrayOfArrays?.flat().find(i => i?.id === id);
     // console.log(article);
 
     return article;
   } else {
     const articleRef = ref(db, "products/" + category);
 
-    console.log(`cat: ${category}, id: ${id}`);
+    // console.log(`cat: ${category}, id: ${id}`);
     const snap = await get(articleRef);
     const articles = snap.val();
 
-    const article = articles.find(i => i.id === id);
-    console.log("article iz query", article);
-    // if (!user) {
-    //   const user2 = await get(userRef).then(snapshot => {
-    //     const value = snapshot.val();
-    //     return value;
-    //   });
-
-    //   return user2;
-    // }
+    const array = Object?.values(articles);
+    const article = array.find(i => i.id === id);
 
     return article;
   }

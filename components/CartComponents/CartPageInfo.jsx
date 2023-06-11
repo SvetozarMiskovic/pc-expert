@@ -4,7 +4,7 @@ import { useGlobalContext } from "../../context/GlobalContext";
 import { useAuthContext } from "../../context/AuthContext";
 import EmptyCart from "./EmptyCart";
 import { FaArrowAltCircleRight } from "react-icons/fa";
-import { getUser } from "../../fetchFunctions/getUser";
+
 function CartPageInfo() {
   const [newAddr, setNewAddr] = useState(false);
 

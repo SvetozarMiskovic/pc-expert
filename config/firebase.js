@@ -29,6 +29,7 @@ const analytics =
   app.name && typeof window !== "undefined" ? getAnalytics(app) : null;
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
+const storage = getStorage(app);
 
 const getAllProducts = async () => {
   const productsRef = ref(db, "products");
@@ -44,4 +45,4 @@ const getAllProducts = async () => {
   return products;
 };
 
-export { db, analytics, getAllProducts, auth, googleProvider };
+export { db, analytics, getAllProducts, auth, googleProvider, storage };

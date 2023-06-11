@@ -6,7 +6,7 @@ import { createProductData } from "../../helpers/createProductData";
 import DeleteModal from "./DeleteModal";
 
 function DeleteProduct({ data }) {
-  const [category, setCategory] = useState("laptop");
+  const [category, setCategory] = useState("laptopi");
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [open, setOpen] = useState(false);
 
@@ -47,13 +47,13 @@ function DeleteProduct({ data }) {
               defaultValue={category}
               onChange={e => setCategory(e.target.value)}
             >
-              <option value={"laptop"}>Laptop</option>
-              <option value={"monitor"}>Monitor</option>
+              <option value={"laptopi"}>Laptop</option>
+              <option value={"monitori"}>Monitor</option>
               <option value={"tv"}>Televizor</option>
-              <option value={"phone"}>Telefon</option>
-              <option value={"component"}>Komponenta</option>
-              <option value={"perifery"}>Periferija</option>
-              <option value={"computer"}>Računar</option>
+              <option value={"telefoni"}>Telefon</option>
+              <option value={"komponente"}>Komponenta</option>
+              <option value={"periferija"}>Periferija</option>
+              <option value={"racunari"}>Računar</option>
               <option value={"mining"}>Mining rig</option>
             </Select>
           </div>

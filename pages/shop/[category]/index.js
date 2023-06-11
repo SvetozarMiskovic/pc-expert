@@ -12,7 +12,7 @@ function Category({ cat }) {
   const { data: array, isLoading } = useSingleProduct({ category: cat });
   let data = [];
   if (array?.data) {
-    data = [...array.data];
+    data.push(...array?.data);
     // console.log("ovoe akoe array");
   }
 

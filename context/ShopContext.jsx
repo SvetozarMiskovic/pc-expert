@@ -53,6 +53,7 @@ const ShopContextProvider = ({ children }) => {
   useEffect(() => {
     if (activeCategory === "all") {
       filterAllItems(activeFilters);
+      setCurrentPage(1);
 
       console.log(activeCategory);
     } else {
@@ -65,14 +66,11 @@ const ShopContextProvider = ({ children }) => {
     setActiveFilters([]);
   }, [activeCategory]);
 
-  
   // Sidebar filter setters
 
   const updateSort = val => {
     setSortBy(val);
   };
-
-
 
   const updatePriceRange = price => {
     setPriceRange(price);

@@ -29,7 +29,7 @@ import EmptyCart from "./EmptyCart";
 import { useRouter } from "next/router";
 import CartPagePayment from "./CartPagePayment";
 import { toast } from "react-toastify";
-import { createOrder } from "../../fetchFunctions/createOrder";
+
 import { useAuthContext } from "../../context/AuthContext";
 import { createId } from "@paralleldrive/cuid2";
 

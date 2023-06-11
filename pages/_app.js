@@ -5,7 +5,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import GlobalContext from "../context/GlobalContext";
 import { useEffect, useState } from "react";
 import { ThreeCircles } from "react-loader-spinner";
-import AuthContextProvider from "../context/AuthContext";
+import AuthContextProvider, { useAuthContext } from "../context/AuthContext";
 import {
   QueryClient,
   QueryClientProvider,
