@@ -31,6 +31,7 @@ function NewCategories({ data }) {
     return shuffled.slice(0, num);
   }
 
+  console.log(data);
   const onToggle = () => {
     setIsOpen(prevState => !prevState);
   };
@@ -190,17 +191,22 @@ function NewCategories({ data }) {
         <Collapse
           in={isOpen}
           animateOpacity
-          endingHeight={470}
-          style={{ overflowY: "hidden", overflowX: "auto" }}
+          endingHeight={490}
+          style={{
+            overflowY: "hidden",
+            overflowX: "auto",
+          }}
         >
           <TabPanels
             width={"100%"}
             height={"100%"}
             display={isOpen ? "flex" : "none"}
+            // padding={"2rem"}
+            margin={"auto"}
             // scrollbarGutter={"auto"}
             // margin="0.5rem"
           >
-            <TabPanel width={"100%"}>
+            <TabPanel>
               <div className="new-category-items">
                 {saleLaptops?.length === 0 && <EmptySale />}
 
@@ -215,7 +221,7 @@ function NewCategories({ data }) {
                 })}
               </div>
             </TabPanel>
-            <TabPanel width={"100%"}>
+            <TabPanel>
               <div className="new-category-items">
                 {saleMonitors?.length === 0 && <EmptySale />}
 
@@ -230,7 +236,7 @@ function NewCategories({ data }) {
                 })}
               </div>
             </TabPanel>
-            <TabPanel width={"100%"}>
+            <TabPanel>
               <div className="new-category-items">
                 {saleComputers?.length === 0 && <EmptySale />}
 
@@ -245,7 +251,7 @@ function NewCategories({ data }) {
                 })}
               </div>
             </TabPanel>
-            <TabPanel width={"100%"}>
+            <TabPanel>
               <div className="new-category-items">
                 {saleTVs?.length === 0 && <EmptySale />}
 
@@ -260,7 +266,7 @@ function NewCategories({ data }) {
                 })}
               </div>
             </TabPanel>
-            <TabPanel width={"100%"}>
+            <TabPanel>
               <div className="new-category-items">
                 {salePhones?.length === 0 && <EmptySale />}
 
@@ -275,7 +281,7 @@ function NewCategories({ data }) {
                 })}
               </div>
             </TabPanel>
-            <TabPanel width={"100%"}>
+            <TabPanel>
               <div className="new-category-items">
                 {saleComponents?.length === 0 && <EmptySale />}
 
@@ -290,7 +296,7 @@ function NewCategories({ data }) {
                 })}
               </div>
             </TabPanel>
-            <TabPanel width={"100%"}>
+            <TabPanel>
               <div className="new-category-items">
                 {salePerifery?.length === 0 && <EmptySale />}
 
@@ -305,7 +311,7 @@ function NewCategories({ data }) {
                 })}
               </div>
             </TabPanel>
-            <TabPanel width={"100%"}>
+            <TabPanel>
               <div className="new-category-items">
                 {saleMining?.length === 0 && <EmptySale />}
                 {saleMining?.map(item => {
