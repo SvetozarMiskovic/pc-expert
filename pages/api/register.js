@@ -1,5 +1,4 @@
 import { db } from "../../config/prismaClient";
-import { remove } from "firebase/database";
 import { hash, compare } from "bcrypt";
 import { userExistsQuery } from "../../queries/userExistsQuery";
 import { registerUserQuery } from "../../queries/registerUserQuery";

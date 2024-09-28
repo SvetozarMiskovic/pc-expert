@@ -21,8 +21,6 @@ import { useRouter } from "next/router";
 import { useUpdateArticle } from "../../hooks/useUpdateArticle";
 import { useAuthContext } from "../../context/AuthContext";
 import { FaFileImage, FaImage, FaTimes } from "react-icons/fa";
-// import { storage } from "../../config/firebase";
-// import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { createId } from "@paralleldrive/cuid2";
 
 function UpdateModal({

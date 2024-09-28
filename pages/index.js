@@ -3,8 +3,6 @@ import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { fetchProducts, useProducts } from "../hooks/useProducts";
 // import { useLoginUser } from "../hooks/useLoginUser";
 // import { useAuthContext } from "../context/AuthContext";
-// import { getApp } from "firebase/app";
-// import { useRouter } from "next/router";
 
 export default function LandingPage() {
   const { data, isLoading } = useProducts();

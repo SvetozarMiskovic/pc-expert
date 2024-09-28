@@ -1,5 +1,3 @@
-// import { get, onValue, ref } from "firebase/database";
-// import { db } from "../config/firebase";
 import { db } from "../config/prismaClient";
 import { getAllProductsQuery } from "./getAllProductsQuery";
 

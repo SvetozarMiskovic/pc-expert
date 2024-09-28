@@ -1,6 +1,3 @@
-// import { get, ref, set, remove } from "firebase/database";
-// import { db } from "../config/firebase";
-
 const deleteArticleQuery = async (id = "sveto", category = "sveto") => {
   // const articleRef = ref(db, "products/" + category + "/" + id);
 

@@ -6,8 +6,7 @@ import { toast } from "react-toastify";
 import { useAuthContext } from "../../context/AuthContext";
 import { logoutUser } from "../../fetchFunctions/logoutUser";
 import { useGlobalContext } from "../../context/GlobalContext";
-// import { signOut } from "firebase/auth";
-// import { auth } from "../../config/firebase";
+
 function Logout() {
   const { updateLoged, updateLogedUser, updateRole } = useAuthContext();
   const { resetOrder } = useGlobalContext();

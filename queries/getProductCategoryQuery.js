@@ -1,5 +1,3 @@
-// import { get, onValue, ref, equalTo } from "firebase/database";
-// import { db } from "../config/firebase";
 import { db } from "../config/prismaClient";
 
 const getProductCategoryQuery = async (category) => {

@@ -16,9 +16,6 @@ import { useRouter } from "next/router";
 import { useCreateArticle } from "../../hooks/useCreateArticle";
 import { useAuthContext } from "../../context/AuthContext";
 import { useProductProperties } from "../../hooks/useProductProperties";
-// import { useProducts } from "../../hooks/useProducts";
-// import { storage } from "../../config/firebase";
-// import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 function CreateProduct() {
   const [category, setCategory] = useState("laptopi");

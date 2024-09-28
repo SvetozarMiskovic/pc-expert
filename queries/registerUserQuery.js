@@ -1,7 +1,3 @@
-// import { onValue, push, ref, set } from "firebase/database";
-// import { db } from "../config/firebase";
-// import { createId } from "@paralleldrive/cuid2";
-
 const registerUserQuery = async (data) => {
   // console.log("OVO DATU DOBIJAM U KVERI ZA REGISTER", data);
   // if (data.id) {

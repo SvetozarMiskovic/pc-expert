@@ -1,8 +1,6 @@
 import { verify } from "jsonwebtoken";
 import { db } from "../../config/prismaClient";
 import { updateArticleQuery } from "../../queries/updateArticleQuery";
-// import { deleteObject, ref } from "firebase/storage";
-// import { storage } from "../../config/firebase";
 
 export default async function handler(req, res) {
   const id = req.body?.id;
