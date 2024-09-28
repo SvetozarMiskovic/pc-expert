@@ -1,5 +1,5 @@
 import { Select, Text } from "@chakra-ui/react";
-import Icon from "@chakra-ui/icon";
+import { Icon } from "@chakra-ui/icon";
 import React, { useState } from "react";
 import { FaCircleNotch } from "react-icons/fa";
 import { createProductData } from "../../helpers/createProductData";
