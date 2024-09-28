@@ -1,6 +1,6 @@
 import { Select, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
-import Icon from "@chakra-ui/icon";
+import { Icon } from "@chakra-ui/icon";
 import { FaMinusCircle } from "react-icons/fa";
 import { createProductData } from "../../helpers/createProductData";
 import DeleteModal from "./DeleteModal";

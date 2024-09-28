@@ -1,4 +1,4 @@
-import Icon from "@chakra-ui/icon";
+import { Icon } from "@chakra-ui/icon";
 import { Text, Select, Button, Textarea, Input } from "@chakra-ui/react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
