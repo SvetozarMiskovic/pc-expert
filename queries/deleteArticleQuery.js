@@ -1,12 +1,13 @@
-import { get, ref, set, remove } from "firebase/database";
-import { db } from "../config/firebase";
+// import { get, ref, set, remove } from "firebase/database";
+// import { db } from "../config/firebase";
 
-const deleteArticleQuery = async (id, category) => {
-  const articleRef = ref(db, "products/" + category + "/" + id);
+const deleteArticleQuery = async (id = "sveto", category = "sveto") => {
+  // const articleRef = ref(db, "products/" + category + "/" + id);
 
-  const snap = await remove(articleRef);
+  // const snap = await remove(articleRef);
 
-  return snap ? true : false;
+  // return snap ? true : false;
+  console.log("odje obrisi kveri");
 };
 
 export { deleteArticleQuery };

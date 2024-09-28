@@ -18,12 +18,6 @@ import { toast } from "react-toastify";
 import { useAuthContext } from "../../context/AuthContext";
 import { useRouter } from "next/router";
 
-import {
-  signInWithPopup,
-  getAdditionalUserInfo,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { auth, googleProvider } from "../../config/firebase";
 import { useRegisterUser } from "../../hooks/useRegisterUser";
 import { useLoginUser } from "../../hooks/useLoginUser";
 
@@ -46,7 +40,7 @@ function LoginForm() {
   //   }
   // }, [isLoged, router]);
 
-  const handleSignIn = async e => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
 
     setEmailLoading(true);
@@ -55,7 +49,7 @@ function LoginForm() {
       emailRef.current.value,
       pwRef.current.value
     )
-      .then(async userCreds => {
+      .then(async (userCreds) => {
         setEmailLoading(false);
         console.log(userCreds.user);
         const payload = { token: userCreds.user.accessToken };
@@ -68,7 +62,7 @@ function LoginForm() {
         });
         router.push("/");
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err.code);
         if (err.code === "auth/invalid-email") {
           toast("Email nije ispravan!", {
@@ -104,15 +98,15 @@ function LoginForm() {
         }
       });
   };
-  const handleGoogleSignIn = async e => {
+  const handleGoogleSignIn = async (e) => {
     setGoogleLoading(true);
 
     const response = signInWithPopup(auth, googleProvider)
-      .then(data => {
+      .then((data) => {
         setGoogleLoading(false);
         return data;
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err.message, err.code);
         toast(
           err?.code === "auth/popup-closed-by-user"

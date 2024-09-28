@@ -1,15 +1,24 @@
-import { get, onValue, ref, equalTo } from "firebase/database";
-import { db } from "../config/firebase";
+// import { get, onValue, ref, equalTo } from "firebase/database";
+// import { db } from "../config/firebase";
+import { db } from "../config/prismaClient";
 
-const getProductCategoryQuery = async category => {
-  const productsRef = ref(db, "products/" + category);
+const getProductCategoryQuery = async (category) => {
+  const data = await db?.[category]?.findMany();
 
-  const snap = await get(productsRef);
-  const products = snap.val();
+  // console.log(await db?.laptopi?.findMany());
+  // console.log("kategorija je", category);
 
-  const array = Object.values(products);
+  // const array = Object.values(data);
+  return data;
+  // const productsRef = ref(db, "products/" + category);
 
-  return array;
+  // const snap = await get(productsRef);
+  // const products = snap.val();
+
+  // const array = Object.values(products);
+
+  // return array;
+  // console.log("odje dobij kategoriju produkta kveri");
 };
 
 export { getProductCategoryQuery };

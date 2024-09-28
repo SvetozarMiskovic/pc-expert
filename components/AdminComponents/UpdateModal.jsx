@@ -21,8 +21,8 @@ import { useRouter } from "next/router";
 import { useUpdateArticle } from "../../hooks/useUpdateArticle";
 import { useAuthContext } from "../../context/AuthContext";
 import { FaFileImage, FaImage, FaTimes } from "react-icons/fa";
-import { storage } from "../../config/firebase";
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+// import { storage } from "../../config/firebase";
+// import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { createId } from "@paralleldrive/cuid2";
 
 function UpdateModal({
@@ -45,8 +45,8 @@ function UpdateModal({
 
   const router = useRouter();
 
-  const updateToDelete = id => {
-    setToDelete(prevState => {
+  const updateToDelete = (id) => {
+    setToDelete((prevState) => {
       return [...prevState, id];
     });
   };
@@ -54,23 +54,23 @@ function UpdateModal({
   const resetToDelete = () => {
     setToDelete([]);
   };
-  const deleteAddedImage = name => {
-    setImages(prevState => {
-      const arr = prevState?.filter(ps => ps?.name !== name);
+  const deleteAddedImage = (name) => {
+    setImages((prevState) => {
+      const arr = prevState?.filter((ps) => ps?.name !== name);
       return arr;
     });
   };
 
-  const deleteSavedImage = url => {
-    setProduct(prevState => {
-      const arr = prevState?.slike?.filter(slika => slika?.url !== url);
+  const deleteSavedImage = (url) => {
+    setProduct((prevState) => {
+      const arr = prevState?.slike?.filter((slika) => slika?.url !== url);
       return {
         ...prevState,
         slike: arr,
       };
     });
   };
-  const uploadImage = files => {
+  const uploadImage = (files) => {
     const final = Object.values(files);
     // console.log(final);
     setImages(final);
@@ -86,15 +86,15 @@ function UpdateModal({
   };
 
   const resetActiveImageState = () => {
-    setImageState(prevState => {
+    setImageState((prevState) => {
       return {
         ...prevState,
         active: 1,
       };
     });
   };
-  const updateImage = value => {
-    setImageState(prevState => {
+  const updateImage = (value) => {
+    setImageState((prevState) => {
       console.log(value, prevState?.length);
 
       if (value >= prevState?.length)
@@ -111,7 +111,7 @@ function UpdateModal({
   };
 
   const nextImage = () => {
-    setImageState(prevState => {
+    setImageState((prevState) => {
       if (prevState?.active === prevState?.length) {
         return {
           ...prevState,
@@ -125,7 +125,7 @@ function UpdateModal({
   };
 
   const prevImage = () => {
-    setImageState(prevState => {
+    setImageState((prevState) => {
       if (prevState?.active === 1) {
         return {
           ...prevState,
@@ -138,7 +138,7 @@ function UpdateModal({
     });
   };
   const imagesLength = (length = 0) => {
-    setImageState(prevState => {
+    setImageState((prevState) => {
       return {
         ...prevState,
         length: length,
@@ -146,7 +146,7 @@ function UpdateModal({
     });
   };
 
-  const formatText = string => {
+  const formatText = (string) => {
     const capitalize =
       String(string)?.charAt(0).toUpperCase() + string?.slice(1);
     return capitalize?.split("_")?.join(" ");
@@ -158,14 +158,14 @@ function UpdateModal({
       const articleRef = ref(storage, `/${category}/${product?.id}/${ID}`);
 
       return uploadBytesResumable(articleRef, image)
-        .then(data => {
+        .then((data) => {
           console.log(data?.ref?.id, data?.ref);
           return getDownloadURL(data?.ref);
         })
-        .then(url => {
+        .then((url) => {
           return { url, id: ID };
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
           throw Error("Upload nije uspio! Obratite se na info@pcexpert.ba");
         });
@@ -173,7 +173,7 @@ function UpdateModal({
   };
 
   const updateProduct = (key, value) => {
-    setProduct(prevState => {
+    setProduct((prevState) => {
       if (key === "akcija" || key === "cijena") {
         return {
           ...prevState,
@@ -194,8 +194,8 @@ function UpdateModal({
   }, [product]);
 
   useEffect(() => {
-    const filterSelectedProduct = id => {
-      const newData = data?.[category]?.find(item => {
+    const filterSelectedProduct = (id) => {
+      const newData = data?.[category]?.find((item) => {
         if (selectedProduct)
           return item?.id?.toString() === selectedProduct?.toString();
       });
@@ -212,7 +212,7 @@ function UpdateModal({
         });
       }
 
-      setProduct(prevState => {
+      setProduct((prevState) => {
         return newData;
       });
     };
@@ -419,7 +419,7 @@ function UpdateModal({
                 })}
               </div>
               <div className="update-modal-title-info">
-                {Object.keys(product)?.map(pp => {
+                {Object.keys(product)?.map((pp) => {
                   if (pp === "detalji" || pp === "naslov")
                     return (
                       <div className="update-modal-info-group" key={pp}>
@@ -451,7 +451,7 @@ function UpdateModal({
                           _focusVisible={{
                             borderColor: "#4cbb17",
                           }}
-                          onKeyUp={e => {
+                          onKeyUp={(e) => {
                             updateProduct(pp, e.currentTarget.value);
                           }}
                           defaultValue={product?.[pp]}
@@ -473,7 +473,7 @@ function UpdateModal({
               </div>
             </div>
             <div className="update-modal-content">
-              {Object.keys(product)?.map(pp => {
+              {Object.keys(product)?.map((pp) => {
                 const enabled = pp.toLowerCase() === "id" ? true : false;
 
                 if (pp !== "detalji" && pp !== "naslov" && pp !== "slike")
@@ -502,7 +502,7 @@ function UpdateModal({
                               borderColor: "red",
                             },
                           }}
-                          onKeyUp={e => {
+                          onKeyUp={(e) => {
                             updateProduct(pp, e.currentTarget.value);
                           }}
                           // borderColor={
@@ -544,7 +544,7 @@ function UpdateModal({
               id="updateUpload"
               style={{ display: "none" }}
               multiple
-              onChange={e => uploadImage(e?.target?.files)}
+              onChange={(e) => uploadImage(e?.target?.files)}
             />
 
             {/* <Button

@@ -1,8 +1,8 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
 
-const createArticle = async data => {
+const createArticle = async (data) => {
   const response = await axios.post(
     "http://localhost:3000/api/createProduct",
     data
@@ -12,7 +12,12 @@ const createArticle = async data => {
 };
 
 const useCreateArticle = () => {
-  return useMutation(createArticle);
+  const queryClient = useQueryClient();
+
+  return useMutation(
+    { mutationFn: createArticle, mutationKey: ["createArticle"] },
+    queryClient
+  );
 };
 
 export { useCreateArticle, createArticle };

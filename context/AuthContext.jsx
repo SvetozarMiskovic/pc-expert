@@ -1,12 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../config/firebase";
+// import { useAuthState } from "react-firebase-hooks/auth";
+// import { auth } from "../config/firebase";
 import { getUserQuery } from "../queries/getUserQuery";
 import { useLoginUser } from "../hooks/useLoginUser";
 const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
-  const [user] = useAuthState(auth);
+  // const [user] = useAuthState(auth);
+  const user = "sveto";
   const { mutateAsync: loginUser } = useLoginUser();
   const [isLoged, setIsLoged] = useState();
   const [logedUser, setLogedUser] = useState();
@@ -35,19 +36,19 @@ const AuthContextProvider = ({ children }) => {
     }
   }, [user]);
 
-  const updateLoged = val => {
+  const updateLoged = (val) => {
     setIsLoged(val);
   };
 
-  const updateLogedUser = userId => {
+  const updateLogedUser = (userId) => {
     setLogedUser(userId);
   };
 
-  const updateRole = role => {
+  const updateRole = (role) => {
     setRole(role);
   };
 
-  const updateActiveUser = user => {
+  const updateActiveUser = (user) => {
     setActiveUser(user);
   };
   return (

@@ -10,7 +10,7 @@ import {
 import CreateProduct from "./CreateProduct";
 import UpdateProduct from "./UpdateProduct";
 import DeleteProduct from "./DeleteProduct";
-function Admin({ properties, data }) {
+function Admin() {
   return (
     <div className="admin-component">
       <Tabs isFitted width={"100%"}>
@@ -33,13 +33,13 @@ function Admin({ properties, data }) {
         </TabList>
         <TabPanels width={"100%"}>
           <TabPanel width={"100%"}>
-            <CreateProduct properties={properties} />
+            <CreateProduct />
           </TabPanel>
           <TabPanel width={"100%"}>
-            <UpdateProduct data={data} />
+            <UpdateProduct />
           </TabPanel>
           <TabPanel width={"100%"}>
-            <DeleteProduct data={data} />
+            <DeleteProduct />
           </TabPanel>
         </TabPanels>
       </Tabs>

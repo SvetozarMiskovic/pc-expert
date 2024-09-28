@@ -4,8 +4,10 @@ import React, { useState } from "react";
 import { FaCircleNotch } from "react-icons/fa";
 import { createProductData } from "../../helpers/createProductData";
 import UpdateModal from "./UpdateModal";
+import { useProducts } from "../../hooks/useProducts";
 
-function UpdateProduct({ data }) {
+function UpdateProduct() {
+  const { data } = useProducts();
   const [category, setCategory] = useState("laptopi");
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [open, setOpen] = useState(false);
@@ -19,7 +21,7 @@ function UpdateProduct({ data }) {
     setSelectedProduct(null);
   };
 
-  const updateSelectedProduct = id => {
+  const updateSelectedProduct = (id) => {
     setSelectedProduct(id);
   };
 
@@ -47,7 +49,7 @@ function UpdateProduct({ data }) {
             </Text>
             <Select
               defaultValue={category}
-              onChange={e => setCategory(e.target.value)}
+              onChange={(e) => setCategory(e.target.value)}
             >
               <option value={"laptopi"}>Laptop</option>
               <option value={"monitori"}>Monitor</option>

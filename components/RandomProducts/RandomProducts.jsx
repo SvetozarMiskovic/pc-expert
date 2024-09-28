@@ -22,7 +22,7 @@ function RandomProducts({ data }) {
     //   ...data?.racunari,
     //   ...data?.mining,
     // ];
-    Object?.keys(data).forEach(cat => {
+    Object?.keys(data).forEach((cat) => {
       final = [...final, ...data?.[cat]]?.slice(0, 24);
     });
     console.log(final);
@@ -44,7 +44,7 @@ function RandomProducts({ data }) {
         Istaknuti proizvodi
       </Text>
       <div className="random-products-holder">
-        {final?.map(item => {
+        {final?.map((item) => {
           return (
             <ShopCategoryItem key={item?.id} dataAll={item} category={"all"} />
           );

@@ -1,8 +1,8 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
 
-const deleteArticle = async data => {
+const deleteArticle = async (data) => {
   const response = await axios.post(
     "http://localhost:3000/api/deleteProduct",
     data
@@ -12,7 +12,11 @@ const deleteArticle = async data => {
 };
 
 const useDeleteArticle = () => {
-  return useMutation(deleteArticle);
+  const queryClient = useQueryClient();
+  return useMutation(
+    { mutationFn: deleteArticle, mutationKey: "deleteArticle" },
+    queryClient
+  );
 };
 
 export { useDeleteArticle, deleteArticle };

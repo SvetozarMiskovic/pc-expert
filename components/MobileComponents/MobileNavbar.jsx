@@ -68,7 +68,7 @@ function MobileNavbar() {
         </div>
         <div className="mobile-auth mobile">
           {!isLoged ? (
-            <Link href={"/prijava"}>
+            <Link href={"/api/auth/signIn"}>
               <Button
                 fontSize={"sm"}
                 type="button"

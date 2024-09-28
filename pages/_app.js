@@ -6,13 +6,13 @@ import GlobalContext from "../context/GlobalContext";
 import { useEffect, useState } from "react";
 import { ThreeCircles } from "react-loader-spinner";
 import AuthContextProvider, { useAuthContext } from "../context/AuthContext";
-import {
-  QueryClient,
-  QueryClientProvider,
-  Hydrate,
-} from "@tanstack/react-query";
+import { QueryClient } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { HydrationBoundary } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { SessionProvider } from "next-auth/react";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -41,19 +41,22 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       {!loading ? (
-        <QueryClientProvider client={queryClient}>
-          <Hydrate state={pageProps.dehydratedState}>
-            <GlobalContext>
-              <AuthContextProvider>
-                <ChakraProvider>
-                  <Layout>
-                    <Component {...pageProps} />
-                  </Layout>
-                </ChakraProvider>
-              </AuthContextProvider>
-            </GlobalContext>
-          </Hydrate>
-        </QueryClientProvider>
+        <SessionProvider session={session}>
+          <QueryClientProvider client={queryClient}>
+            <ReactQueryDevtools />
+            <HydrationBoundary state={pageProps.dehydratedState}>
+              <GlobalContext>
+                <AuthContextProvider>
+                  <ChakraProvider>
+                    <Layout>
+                      <Component {...pageProps} />
+                    </Layout>
+                  </ChakraProvider>
+                </AuthContextProvider>
+              </GlobalContext>
+            </HydrationBoundary>
+          </QueryClientProvider>
+        </SessionProvider>
       ) : (
         <div className="loading-screen">
           <h3 style={{ color: "#4CBB17" }}>

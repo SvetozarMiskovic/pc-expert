@@ -1,8 +1,9 @@
 import { verify } from "jsonwebtoken";
 import { db } from "../../config/prismaClient";
 import { updateArticleQuery } from "../../queries/updateArticleQuery";
-import { deleteObject, ref } from "firebase/storage";
-import { storage } from "../../config/firebase";
+// import { deleteObject, ref } from "firebase/storage";
+// import { storage } from "../../config/firebase";
+
 export default async function handler(req, res) {
   const id = req.body?.id;
   const category = req.body?.category;
@@ -13,17 +14,17 @@ export default async function handler(req, res) {
   console.log(id, category, role, payload, toDelete);
 
   if (toDelete?.length !== 0) {
-    const r = toDelete?.forEach(async imgID => {
-      const imageRef = ref(storage, `/${category}/${id}/${imgID}`);
+    // const r = toDelete?.forEach(async (imgID) => {
+    //   const imageRef = ref(storage, `/${category}/${id}/${imgID}`);
 
-      return await deleteObject(imageRef)
-        .then(result => {
-          return result;
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    });
+    //   return await deleteObject(imageRef)
+    //     .then((result) => {
+    //       return result;
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // });
     console.log("Obrisato", r);
   }
   await updateArticleQuery(id, category, payload);

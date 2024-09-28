@@ -9,19 +9,14 @@ import {
 } from "../../hooks/useSingleArticle";
 
 function ID({ id, category }) {
-  const { data: article, isLoading } = useSingleArticle({ category, id });
+  const { data, isLoading } = useSingleArticle({ category, id });
 
-  let data = {};
-  console.log("iz browser", id, category, article);
-  if (article?.data) {
-    data = { ...article?.data };
-  }
-
-  if (isLoading) return <h1>SVETO</h1>;
+  console.log("DEJTA IZ DINAMIK ID", data, id, category);
+  // if (isLoading) return <h1>SVETO</h1>;
   // const data = {};
   return (
     <div className="product-info-page">
-      <ProductInfoComponent data={data} />
+      <ProductInfoComponent data={data?.data} />
     </div>
   );
 }

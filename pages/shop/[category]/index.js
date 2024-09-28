@@ -10,6 +10,7 @@ import {
 
 function Category({ cat }) {
   const { data: array, isLoading } = useSingleProduct({ category: cat });
+  // console.log("DATA IZ KATEGORIJA", array);
   let data = [];
   if (array?.data) {
     data.push(...array?.data);

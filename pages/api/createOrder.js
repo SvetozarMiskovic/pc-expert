@@ -89,7 +89,7 @@ export default async function handler(req, res) {
 
             <h3 style="font-weight: bold;">Artikli:</h3>
 
-            ${order?.artikli?.map(obj => {
+            ${order?.artikli?.map((obj) => {
               return `<div
               className="finished-order-body-single-info-item"
               key={obj?.product?.id}
@@ -149,6 +149,7 @@ export default async function handler(req, res) {
             .create({
               data: {
                 id: order?.id,
+                // OVDE TREBAM PROMJENITI DA DODAM KORISNIKA AKO IMA NEKO LOGGED IN
                 id_korisnika: isValid?.sub,
                 datum_narudzbe: str,
                 datum_isporuke: "Nije odredjeno",
@@ -166,7 +167,7 @@ export default async function handler(req, res) {
                 grad: order?.grad,
               },
             })
-            .catch(err => {
+            .catch((err) => {
               console.log("Greška! ID Narudžbe već postoji!");
               console.log(err);
             });
@@ -236,7 +237,7 @@ export default async function handler(req, res) {
 
             <h3 style="font-weight: bold;">Artikli:</h3>
 
-            ${order?.artikli?.map(obj => {
+            ${order?.artikli?.map((obj) => {
               return `<div
               className="finished-order-body-single-info-item"
               key={obj?.product?.id}
@@ -296,7 +297,7 @@ export default async function handler(req, res) {
             .create({
               data: {
                 id: order?.id,
-                id_korisnika: null,
+                korisnici: null,
                 datum_narudzbe: str,
                 datum_isporuke: "Nije odredjeno",
                 poslano: "Ne",
@@ -313,7 +314,7 @@ export default async function handler(req, res) {
                 grad: order?.grad,
               },
             })
-            .catch(err => {
+            .catch((err) => {
               console.log("Greška! ID Narudžbe već postoji!");
               console.log(err);
             });

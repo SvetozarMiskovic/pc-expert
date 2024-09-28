@@ -1,35 +1,43 @@
-import { get, onValue, ref } from "firebase/database";
-import { db } from "../config/firebase";
+// import { get, onValue, ref } from "firebase/database";
+// import { db } from "../config/firebase";
+import { db } from "../config/prismaClient";
+import { getAllProductsQuery } from "./getAllProductsQuery";
 
 const getSingleArticleQuery = async (category, id) => {
   if (category === "all") {
-    console.log(category, id);
-    const articlesRef = ref(db, "products");
+    const lap = await db.laptopi.findMany();
+    const mon = await db.monitori.findMany();
+    const tel = await db.telefoni.findMany();
+    const rac = await db.racunari.findMany();
+    const komp = await db.komponente.findMany();
+    const min = await db.mining.findMany();
+    const per = await db.periferija.findMany();
+    const tv = await db.tv.findMany();
 
-    const snap = await get(articlesRef);
-    const articles = snap.val();
+    const allProducts = [
+      ...lap,
+      ...mon,
+      ...tel,
+      ...rac,
+      ...komp,
+      ...min,
+      ...per,
+      ...tv,
+    ];
 
-    let articlesObject = {};
-    Object.keys(articles).map(key => {
-      articlesObject[key] = Object?.values(articles?.[key]);
+    console.log("SVI PRODUKTI", allProducts);
+    const product = allProducts?.find((item) => item?.id === id);
+
+    console.log("JEDAN PRODUKTI", product);
+    return product;
+  } else {
+    const product = await db?.[category]?.findUnique({
+      where: {
+        id,
+      },
     });
 
-    const arrayOfArrays = Object?.values(articlesObject);
-    const article = arrayOfArrays?.flat().find(i => i?.id === id);
-    // console.log(article);
-
-    return article;
-  } else {
-    const articleRef = ref(db, "products/" + category);
-
-    // console.log(`cat: ${category}, id: ${id}`);
-    const snap = await get(articleRef);
-    const articles = snap.val();
-
-    const array = Object?.values(articles);
-    const article = array.find(i => i.id === id);
-
-    return article;
+    return product;
   }
 };
 

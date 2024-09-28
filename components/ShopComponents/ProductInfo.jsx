@@ -5,15 +5,16 @@ import { FaCartPlus } from "react-icons/fa";
 import { useGlobalContext } from "../../context/GlobalContext";
 import { formatPrice } from "../../helpers/formatPrice";
 function ProductInfo({ data }) {
+  console.log("DEJTA IZ PRODUKT INFA", data);
   const startingRef = useRef();
   const [isDetails, setIsDetails] = useState(true);
   const [isSpecs, setIsSpecs] = useState(true);
 
   const updateSpecs = () => {
-    setIsSpecs(prevState => !prevState);
+    setIsSpecs((prevState) => !prevState);
   };
   const updateDetails = () => {
-    setIsDetails(prevState => !prevState);
+    setIsDetails((prevState) => !prevState);
   };
   const { updateCart } = useGlobalContext();
   useEffect(() => {
@@ -21,28 +22,28 @@ function ProductInfo({ data }) {
   }, []);
   const [counter, setCounter] = useState(1);
   const maxCounter = 50;
+  const properties = Object.keys(data);
 
-  const properties = Object.entries(data);
-
-  const removeSpace = string => {
+  console.log(typeof properties);
+  const removeSpace = (string) => {
     return string.split("_").join(" ");
   };
 
   const increment = () => {
-    setCounter(prevState => {
+    setCounter((prevState) => {
       if (prevState >= 50) return 50;
       return prevState + 1;
     });
   };
   const decrement = () => {
-    setCounter(prevState => {
+    setCounter((prevState) => {
       if (prevState === 1) return 1;
       return prevState - 1;
     });
   };
 
-  const onChange = e => {
-    setCounter(prevState => {
+  const onChange = (e) => {
+    setCounter((prevState) => {
       if (prevState > 50 || parseInt(e.target.value) > 50) return 50;
       if (parseInt(e.target.value) === 0) return 1;
       return parseInt(e.target.value);
@@ -50,6 +51,7 @@ function ProductInfo({ data }) {
   };
 
   function capitalizeFirstLetter(string) {
+    console.log("shtring", string);
     return string?.charAt(0)?.toUpperCase() + string?.slice(1);
   }
 
@@ -127,6 +129,7 @@ function ProductInfo({ data }) {
                 </Text>
                 <Text fontSize="md">
                   {capitalizeFirstLetter(data?.refresh_rate)}
+                  {data?.refresh_rate}
                 </Text>
               </div>
             )}
@@ -481,25 +484,6 @@ function ProductInfo({ data }) {
                 </Text>
               </div>
             )}
-            {/* <Text
-              textAlign={"center"}
-              fontSize={"4xl"}
-              fontWeight={"bold"}
-              textColor={"#0c0c0d"}
-            >
-              {data?.akcija
-                ? parseFloat(data?.akcija)?.toFixed(2)
-                : parseFloat(data?.cijena)?.toFixed(2)}
-            </Text> */}
-            {/* <Text
-              width={"100%"}
-              alignSelf={"flex-start"}
-              justifySelf={"flex-start"}
-              fontSize={"md"}
-              fontWeight="bold"
-            >
-              KM
-            </Text> */}
           </div>
           <div className="product-info-component-main-information-buttons">
             <div className="product-info-options-counter">
@@ -520,13 +504,13 @@ function ProductInfo({ data }) {
 
               <div className="shop-category-item-options-counter-input">
                 <input
-                  onBlur={e => {
+                  onBlur={(e) => {
                     if (e.target.value === "") setCounter(1);
                   }}
                   max={50}
                   min={1}
                   value={counter}
-                  onChange={e => {
+                  onChange={(e) => {
                     onChange(e);
                   }}
                   type="number"
@@ -594,14 +578,10 @@ function ProductInfo({ data }) {
         </Text>
         <Collapse in={isDetails}>
           <div className="product-info-component-details-container">
-            {properties?.map(pr => {
-              if (pr[0] === "detalji")
-                return (
-                  <Text fontSize={"xl"} key={pr[0]}>
-                    {pr[1] ? pr[1] : "Nema detalja"}
-                  </Text>
-                );
-            })}
+            {!properties?.detalji && <Text fontSize={"xl"}>Nema detalja</Text>}
+            {properties?.detalji && (
+              <Text fontSize={"xl"}>{properties?.detalji}</Text>
+            )}
           </div>
         </Collapse>
       </div>
@@ -622,21 +602,22 @@ function ProductInfo({ data }) {
           <div className="product-info-component-specification-table-wrapper">
             <table className="table">
               <tbody className="tbody">
-                {properties?.map(pr => {
+                {properties?.map((pr) => {
+                  console.log(pr);
                   if (
-                    pr[0] !== "cijena" &&
-                    pr[0] !== "naslov" &&
-                    pr[0] !== "detalji" &&
-                    pr[0] !== "akcija" &&
-                    pr[0] !== "slike"
+                    pr !== "cijena" &&
+                    pr !== "naslov" &&
+                    pr !== "detalji" &&
+                    pr !== "akcija" &&
+                    pr !== "slike"
                   )
                     return (
-                      <tr className="trow" key={pr[0]}>
+                      <tr className="trow" key={pr}>
                         <td className="left-table-side">
-                          {removeSpace(capitalizeFirstLetter(pr[0]))}
+                          {removeSpace(capitalizeFirstLetter(pr))}
                         </td>
                         <td className="right-table-side">
-                          {capitalizeFirstLetter(pr[1])}
+                          {capitalizeFirstLetter(data?.[pr])}
                         </td>
                       </tr>
                     );

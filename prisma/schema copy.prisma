@@ -8,7 +8,7 @@ datasource db {
 }
 
 model komponente {
-  id          String   @id @default(cuid())
+  id          String   @id  
   cijena      Decimal? 
   garancija   String?  
   vrsta       String?  
@@ -19,9 +19,9 @@ model komponente {
 }
 
 model korisnici {
-  id             String  @id  @default(cuid())
+  id             Int        @id  @default(autoincrement())
   ime_i_prezime  String?    
-  email          String?    @unique
+  email          String?    @unique(map: "email_UNIQUE") 
   broj_telefona  Int?
   postanski_broj Int?
   adresa         String?    
@@ -29,31 +29,11 @@ model korisnici {
   lozinka        String?    
   grad           String?    
   role           String?    
-  narudzbe       narudzbe[] 
-}
-
-model narudzbe {
-  id             String     @id @default(cuid())
-  datum_narudzbe String?    
-  datum_isporuke String?    
-  poslano        String?    
-  ukupna_cijena  Decimal?   
-  artikli        String?    
-  korisnici      korisnici? @relation(fields: [id], references: [id])
-  ime_i_prezime  String?    
-  email          String?    
-  broj_telefona  String?    
-  ulica          String?    
-  napomena       String?    
-  postanski_broj String?    
-  adresa         String?    
-  adresa_2       String?    
-  grad           String?    
-  
+  narudzbe       narudzbe[]
 }
 
 model laptopi {
-  id               String   @id @default(cuid())
+  id               String   @id @unique(map: "idlaptopi_UNIQUE") 
   proizvodjac      String?  
   model            String?  
   procesor         String?  
@@ -80,7 +60,7 @@ model laptopi {
 }
 
 model mining {
-  id        String   @id  @default(cuid())
+  id        String   @id  
   cijena    Decimal? 
   garancija String?  
   detalji   String?  
@@ -89,7 +69,7 @@ model mining {
 }
 
 model monitori {
-  id              String   @id  @default(cuid())
+  id              String   @id  
   velicina_ekrana String?  
   rezolucija      String?  
   proizvodjac     String?  
@@ -109,7 +89,7 @@ model monitori {
 }
 
 model periferija {
-  id          String   @id  @default(cuid())
+  id          String   @id  
   vrsta       String?  
   model       String?  
   proizvodjac String?  
@@ -121,7 +101,7 @@ model periferija {
 }
 
 model racunari {
-  id                String   @id  @default(cuid())
+  id                String   @id  
   proizvodjac       String?  
   cijena            Decimal? 
   garancija         String?  
@@ -144,7 +124,7 @@ model racunari {
 }
 
 model telefoni {
-  id                        String   @id  @default(cuid())
+  id                        String   @id  
   proizvodjac               String?  
   cijena                    Decimal? 
   os                        String?  
@@ -167,8 +147,8 @@ model telefoni {
   akcija                    Decimal? 
 }
 
-model tv {
-  id              String   @id  @default(cuid())
+model televizori {
+  id              String   @id  
   cijena          Decimal? 
   garancija       String?  
   model           String?  
@@ -187,3 +167,24 @@ model tv {
   akcija          Decimal? 
 }
 
+model narudzbe {
+  id             String     @id  
+  datum_narudzbe String?    
+  datum_isporuke String?    
+  poslano        String?    (45)
+  ukupna_cijena  Decimal?   
+  artikli        String?    @db.MediumText
+  id_korisnika   Int?
+  ime_i_prezime  String?    
+  email          String?    
+  broj_telefona  String?    
+  ulica          String?    
+  napomena       String?    
+  postanski_broj String?    
+  adresa         String?    
+  adresa_2       String?    
+  grad           String?    
+  korisnici      korisnici? @relation(fields: [id_korisnika], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "id_korisnika")
+
+  @@index([id_korisnika], map: "id_korisnika_idx")
+}

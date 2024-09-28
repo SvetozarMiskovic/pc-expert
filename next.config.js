@@ -4,7 +4,6 @@ const nextConfig = {
   swcMinify: true,
   images: {
     formats: ["image/avif", "image/webp"],
-    domains: ["firebasestorage.googleapis.com"],
   },
   generateBuildId: async () => {
     if (process.env.BUILD_ID) {

@@ -15,10 +15,12 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import { useCreateArticle } from "../../hooks/useCreateArticle";
 import { useAuthContext } from "../../context/AuthContext";
-import { storage } from "../../config/firebase";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { useProductProperties } from "../../hooks/useProductProperties";
+// import { useProducts } from "../../hooks/useProducts";
+// import { storage } from "../../config/firebase";
+// import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
-function CreateProduct({ properties }) {
+function CreateProduct() {
   const [category, setCategory] = useState("laptopi");
   const [initialProduct, setInitialProduct] = useState({});
   const [images, setImages] = useState([]);
@@ -28,9 +30,12 @@ function CreateProduct({ properties }) {
   });
   const { mutateAsync: createArticle } = useCreateArticle();
   const { role } = useAuthContext();
+  const { data: properties, isLoading } = useProductProperties();
+  console.log(properties.data);
+
   const router = useRouter();
 
-  const uploadImage = files => {
+  const uploadImage = (files) => {
     const final = Object.values(files);
 
     setImages(final);
@@ -42,8 +47,8 @@ function CreateProduct({ properties }) {
     resetActiveImageState();
   };
 
-  const updateImage = value => {
-    setImageState(prevState => {
+  const updateImage = (value) => {
+    setImageState((prevState) => {
       console.log(value, prevState?.length);
 
       if (value >= prevState?.length)
@@ -60,7 +65,7 @@ function CreateProduct({ properties }) {
   };
 
   const resetActiveImageState = () => {
-    setImageState(prevState => {
+    setImageState((prevState) => {
       return {
         ...prevState,
         active: 1,
@@ -68,9 +73,9 @@ function CreateProduct({ properties }) {
     });
   };
 
-  const deleteAddedImage = name => {
-    setImages(prevState => {
-      const arr = prevState?.filter(ps => ps?.name !== name);
+  const deleteAddedImage = (name) => {
+    setImages((prevState) => {
+      const arr = prevState?.filter((ps) => ps?.name !== name);
       return arr;
     });
   };
@@ -79,14 +84,14 @@ function CreateProduct({ properties }) {
     setImages([]);
   };
 
-  const updateCategory = cat => {
+  const updateCategory = (cat) => {
     setCategory(cat);
   };
 
   const resetInitialProduct = () => {
     const obj = {};
 
-    properties?.[category]?.forEach(prop => {
+    properties?.data?.[category]?.forEach((prop) => {
       obj[prop] = "";
     });
 
@@ -94,7 +99,7 @@ function CreateProduct({ properties }) {
   };
 
   const imagesLength = (length = 0) => {
-    setImageState(prevState => {
+    setImageState((prevState) => {
       return {
         ...prevState,
         length: length,
@@ -121,13 +126,13 @@ function CreateProduct({ properties }) {
       );
 
       return uploadBytesResumable(articleRef, image)
-        .then(data => {
+        .then((data) => {
           return getDownloadURL(data?.ref);
         })
-        .then(url => {
+        .then((url) => {
           return { url, id: ID };
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
           throw Error("Upload nije uspio! Obratite se na info@pcexpert.ba");
         });
@@ -135,7 +140,7 @@ function CreateProduct({ properties }) {
   };
 
   const updateNewProduct = (key, value) => {
-    setInitialProduct(prevState => {
+    setInitialProduct((prevState) => {
       if (key === "akcija" || key === "cijena") {
         // const val = ;
         // console.log("ovoe value iz inputa", val);
@@ -154,7 +159,7 @@ function CreateProduct({ properties }) {
       // console.log(value, val);
     });
   };
-  const formatText = string => {
+  const formatText = (string) => {
     const capitalize =
       String(string)?.charAt(0).toUpperCase() + string?.slice(1);
     return capitalize?.split("_")?.join(" ");
@@ -233,7 +238,7 @@ function CreateProduct({ properties }) {
             </Text>
             <Select
               defaultValue={category}
-              onChange={e => updateCategory(e.target.value)}
+              onChange={(e) => updateCategory(e.target.value)}
             >
               <option value={"laptopi"}>Laptop</option>
               <option value={"monitori"}>Monitor</option>
@@ -333,7 +338,7 @@ function CreateProduct({ properties }) {
               </div>
             </div>
             <div className="create-product-sidebar-info">
-              {properties?.[category]?.map(pp => {
+              {properties?.data?.[category]?.map((pp) => {
                 if (pp === "naslov" || pp === "detalji")
                   return (
                     <div className="create-info-group" key={pp}>
@@ -346,7 +351,7 @@ function CreateProduct({ properties }) {
                       </Text>
                       <Textarea
                         value={initialProduct?.[pp]}
-                        onChange={e => {
+                        onChange={(e) => {
                           updateNewProduct(pp, e.target.value);
                         }}
                         fontSize={"xl"}
@@ -458,7 +463,7 @@ function CreateProduct({ properties }) {
                 id="upload"
                 style={{ display: "none" }}
                 multiple={true}
-                onChange={e => uploadImage(e?.target?.files)}
+                onChange={(e) => uploadImage(e?.target?.files)}
               />
             </div>
           </div>

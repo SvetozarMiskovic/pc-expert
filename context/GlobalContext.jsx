@@ -34,7 +34,7 @@ function GlobalContextProvider({ children }) {
     napomena: "",
   });
 
-  const updateAllItems = arr => {
+  const updateAllItems = (arr) => {
     setAllItems(arr);
   };
 
@@ -42,13 +42,13 @@ function GlobalContextProvider({ children }) {
     setSentOrder({});
   };
 
-  const updateSentOrder = ord => {
-    setSentOrder(prevState => {
+  const updateSentOrder = (ord) => {
+    setSentOrder((prevState) => {
       return ord;
     });
   };
   const updateOrder = (key, value) => {
-    setOrder(prevState => {
+    setOrder((prevState) => {
       return {
         ...prevState,
         [key]: value,
@@ -57,7 +57,7 @@ function GlobalContextProvider({ children }) {
   };
 
   const resetOrder = () => {
-    setOrder(prevState => {
+    setOrder((prevState) => {
       return {
         id: "",
         ime_i_prezime: "",
@@ -73,8 +73,8 @@ function GlobalContextProvider({ children }) {
     });
   };
 
-  const addCartToOrder = cart => {
-    setOrder(prevState => {
+  const addCartToOrder = (cart) => {
+    setOrder((prevState) => {
       return { ...prevState, artikli: cart };
     });
   };
@@ -93,7 +93,7 @@ function GlobalContextProvider({ children }) {
   };
   useEffect(() => {
     const getPrices = () => {
-      const prices = cart.map(c => {
+      const prices = cart.map((c) => {
         return c?.product?.akcija
           ? c?.qty * c?.product?.akcija
           : c?.qty * c?.product?.cijena;
@@ -108,14 +108,14 @@ function GlobalContextProvider({ children }) {
   useEffect(() => {
     updateTotal();
   }, [sums]);
-  const updateCart = item => {
-    setCart(prevState => {
+  const updateCart = (item) => {
+    setCart((prevState) => {
       const exists = prevState?.find(
-        ps => ps?.product?.id.toString() === item?.product?.id.toString()
+        (ps) => ps?.product?.id.toString() === item?.product?.id.toString()
       );
       if (exists) {
         const rest = prevState?.filter(
-          ps => ps?.product?.id.toString() !== item?.product?.id.toString()
+          (ps) => ps?.product?.id.toString() !== item?.product?.id.toString()
         );
         const qty = exists?.qty + item?.qty;
         const newObj = Object.assign(exists, {
@@ -133,9 +133,9 @@ function GlobalContextProvider({ children }) {
     });
   };
 
-  const removeCartItem = id => {
-    setCart(prevState => {
-      const filtered = prevState?.filter(item => item?.product?.id !== id);
+  const removeCartItem = (id) => {
+    setCart((prevState) => {
+      const filtered = prevState?.filter((item) => item?.product?.id !== id);
 
       setLSCart([...filtered]);
       return [...filtered];
@@ -146,7 +146,7 @@ function GlobalContextProvider({ children }) {
     setCart([]);
   };
   const updateEditProfile = () => {
-    setEditProfile(prevState => {
+    setEditProfile((prevState) => {
       return !prevState;
     });
   };
@@ -159,7 +159,7 @@ function GlobalContextProvider({ children }) {
     setIsCart(false);
   };
 
-  const updateSubCategory = val => {
+  const updateSubCategory = (val) => {
     setSubCategory(val);
   };
 
@@ -172,15 +172,15 @@ function GlobalContextProvider({ children }) {
   };
 
   const updatePopover = () => {
-    setPopover(prevState => !prevState);
+    setPopover((prevState) => !prevState);
   };
 
   const updateMobileSearch = () => {
-    setMobileSearch(prevState => !prevState);
+    setMobileSearch((prevState) => !prevState);
   };
 
   const updateMobile = () => {
-    setMobileMenu(prevState => !prevState);
+    setMobileMenu((prevState) => !prevState);
   };
 
   return (

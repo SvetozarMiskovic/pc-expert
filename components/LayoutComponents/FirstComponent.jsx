@@ -47,7 +47,7 @@ const FirstComponent = () => {
             </div>
           </Link>
           {!isLoged ? (
-            <Link href={"/prijava"} passHref legacyBehavior>
+            <Link href={"/api/auth/github"} passHref legacyBehavior>
               <div className="shop">
                 <Icon w={"15px"} as={FaLock} />
                 <Text>Prijava</Text>

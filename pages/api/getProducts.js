@@ -1,4 +1,3 @@
-import { getAllProducts } from "../../config/firebase";
 import { getAllProductsQuery } from "../../queries/getAllProductsQuery";
 
 export default async function handler(req, res) {

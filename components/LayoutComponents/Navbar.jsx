@@ -23,7 +23,7 @@ function Navbar() {
   const { isLoged } = useAuthContext();
   const router = useRouter();
 
-  const handleSearch = e => {
+  const handleSearch = (e) => {
     const value = e.target.value;
   };
   return (
@@ -58,7 +58,7 @@ function Navbar() {
       <div className="navbar-search">
         <input
           type={"text"}
-          onChange={e => handleSearch(e)}
+          onChange={(e) => handleSearch(e)}
           placeholder="Pretraži proizvode..."
         />
 
@@ -119,7 +119,7 @@ function Navbar() {
               }}
               background="transparent"
               border="1px solid #4cbb17"
-              onClick={() => router.push("/prijava")}
+              onClick={() => router.push("/api/auth/signIn")}
             >
               <Icon as={FaLock} />
             </Button>
@@ -148,7 +148,7 @@ function Navbar() {
         >
           <div
             className="cart-button-text"
-            onClick={e => (isCart ? closeCart() : openCart())}
+            onClick={(e) => (isCart ? closeCart() : openCart())}
             display={"block"}
             fontSize={"md"}
           >

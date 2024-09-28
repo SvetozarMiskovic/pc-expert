@@ -20,7 +20,13 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image src={"/static/laptop.png"} alt="proizvod" fill />
+              <Image
+                src={"/static/laptop.png"}
+                alt="proizvod"
+                width={200}
+                height={200}
+                priority
+              />
             </div>
             <div className="menu-text">
               <Text color={"#0c0c0c"}>Laptopi</Text>
@@ -40,7 +46,12 @@ function QuickMenu() {
             }}
           >
             <div className="menu-img-container">
-              <Image fill src={"/static/monitor.png"} alt="proizvod" />
+              <Image
+                height={0}
+                width={150}
+                src={"/static/monitor.png"}
+                alt="proizvod"
+              />
             </div>
             <div className="menu-text">
               <Text color={"#0c0c0c"}>Monitori</Text>

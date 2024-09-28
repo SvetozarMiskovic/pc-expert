@@ -10,7 +10,7 @@ const fetchProperties = async () => {
 
 const useProductProperties = () => {
   return useQuery({
-    queryKey: ["productProperties"],
+    queryKey: ["properties"],
     queryFn: fetchProperties,
   });
 };
